@@ -57,18 +57,18 @@
   </div>
 
   <!-- investment figures -->
-  <div class="d-flex text-center justify-content-center my-4">
-    <div>
+  <div class="d-flex text-center justify-content-center" style="margin-top: 50px">
+    <div class="mx-5">
       <h1>70m</h1>
       <h4>since last investment</h4>
     </div>
 
-    <div>
+    <div class="mx-5">
       <h1>23 restaurants</h1>
       <h4>funded</h4>
     </div>
 
-    <div>
+    <div class="mx-5">
       <h1>681</h1>
       <h4>investors served</h4>
     </div>
@@ -76,14 +76,71 @@
 
 <!-- view height 100 div -->
 </div>
-
-  <div class="card-investment">
-    <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
-    <img src="" alt="">
+<div class="d-flex justify-content-center">
+  <div class="card-investment mx-3">
+    <div class="card-user">
+      <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+    </div>
+    <!-- background pic -->
+    <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
+    <h5>10 days left</h5>
     <h1>Tipo Siete</h1>
+    <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
+    <h4>$100,000 target</h4>
+    <div class="target-bar">
+      <div class="target-bar percentage">
+        <p>79%</p>
+      </div>
+    </div>
+    <div class="d-flex mt-2 justify-content-around">
+      <div>
+        <h4>$79,540</h4>
+        <p>raised</p>
+      </div>
+      <div>
+        <h4>5%</h4>
+        <p>interest</p>
+      </div>
+      <div>
+        <h4>119</h4>
+        <p>investors</p>
+      </div>
+    </div>
   </div>
 
-  <h5><%= link_to "SHOW MORE", "#", class: "btn btn-secondary" %></h5>
+  <div class="card-investment mx-3">
+    <div class="card-user">
+      <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+    </div>
+    <!-- background pic -->
+    <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
+    <h5>10 days left</h5>
+    <h1>Tipo Siete</h1>
+    <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
+    <h4>$100,000 target</h4>
+    <div class="target-bar"></div>
+  </div>
+
+  <div class="card-investment mx-3">
+    <div class="card-user">
+      <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+    </div>
+    <!-- background pic -->
+    <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
+    <h5>10 days left</h5>
+    <h1>Tipo Siete</h1>
+    <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
+    <h4>$100,000 target</h4>
+    <div class="target-bar">
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  <h5 class="mt-5"><%= link_to "SHOW MORE", "#", class: "btn btn-secondary" %></h5>
 
   <div class="d-flex my-4">
       <img class="pic-home" src="https://images.unsplash.com/photo-1470784790053-6c2f15489967?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2241&q=80" alt="home pic 1">
@@ -107,6 +164,10 @@
     <br>
     <p><strong>Are you with us?</strong></p>
     <h5><%= link_to "FUND RESTAURANTS", "#", class: "btn btn-secondary" %></h5>
+  </div>
+
+  <div style="width: 200px; height: 50px; background-color: lightgrey;">
+    <div style="width: 10%; height: 50px; background-color: lightblue"></div>
   </div>
 
 
