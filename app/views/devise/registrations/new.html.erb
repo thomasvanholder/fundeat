@@ -31,9 +31,11 @@
             <%= f.input :password_confirmation,
             required: true,
             input_html: { autocomplete: "new-password" } %>
-            <%#= f.input :user_type,
-            as: :boolean,
-            input_html: { autocomplete: "user_type" } %>
+            <div class="mt-4">
+              <%= f.input :user_type,
+              as: :boolean,
+              label: "Sign up as a restaurant" %>
+            </div>
           </div>
 
           <div class="form-actions text-center" >
