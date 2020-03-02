@@ -1,3 +1,3 @@
 class Reward < ApplicationRecord
-  belongs_to :campaign_id
+  belongs_to :campaign
 end

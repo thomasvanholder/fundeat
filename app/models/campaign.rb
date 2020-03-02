@@ -1,3 +1,3 @@
 class Campaign < ApplicationRecord
-  belongs_to :company_id
+  belongs_to :company
 end

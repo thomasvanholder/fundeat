@@ -12,7 +12,7 @@ class CreateCampaigns < ActiveRecord::Migration[5.2]
       t.integer :loan_duration
       t.float :return_rate
       t.datetime :expiry_date
-      t.references :company_id, foreign_key: true
+      t.references :company, foreign_key: true
 
       t.timestamps
     end

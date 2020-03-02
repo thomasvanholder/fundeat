@@ -3,7 +3,7 @@ class CreateRewards < ActiveRecord::Migration[5.2]
     create_table :rewards do |t|
       t.string :description
       t.integer :investment_amount
-      t.references :campaign_id, foreign_key: true
+      t.references :campaign, foreign_key: true
 
       t.timestamps
     end
