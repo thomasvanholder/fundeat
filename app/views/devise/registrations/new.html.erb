@@ -31,15 +31,19 @@
             <%= f.input :password_confirmation,
             required: true,
             input_html: { autocomplete: "new-password" } %>
-            <%= f.input :i_am_a_restaurant, as: :boolean %>
+            <%#= f.input :user_type,
+            as: :boolean,
+            input_html: { autocomplete: "user_type" } %>
           </div>
 
           <div class="form-actions text-center" >
-            <%= f.button :submit, "Sign up", class:"btn btn-warning m-3 px-5" %>
+            <%= f.button :submit, "Sign up", class:"btn btn-secondary m-3 px-5" %>
           </div>
           <% end %>
 
-          <%= render "devise/shared/links" %>
+          <div class="my-3">
+            <%= render "devise/shared/links" %>
+          </div>
 
         </div>
       </div>
