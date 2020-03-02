@@ -11,7 +11,7 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :tripadvisor_url
       t.string :googlereview_url
       t.string :description
-      t.references :owner, foreign_key: true
+      t.bigint :owner_id, foreign_key: true
 
       t.timestamps
     end
