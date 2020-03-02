@@ -1,25 +1,48 @@
-<h2>Sign up</h2>
+<div class="" style="background-size: cover; background-image: url('https://images.unsplash.com/photo-1579027989536-b7b1f875659b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="log-12 log-lg-6">
+        <div class="px-4 pt-4 pb-2 my-5" style="background-color: white; opacity: 0.95; border-radius: 5px;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+          <div class="m-4">
+            <h2>Join Our Fundeat Community</h2>
+          </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :first_name,
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "first_name" }%>
+            <%= f.input :last_name,
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "last_name" }%>
+            <%= f.input :email,
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+            required: true,
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+            required: true,
+            input_html: { autocomplete: "new-password" } %>
+            <%= f.input :i_am_a_restaurant, as: :boolean %>
+          </div>
+
+          <div class="form-actions text-center" >
+            <%= f.button :submit, "Sign up", class:"btn btn-warning m-3 px-5" %>
+          </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
