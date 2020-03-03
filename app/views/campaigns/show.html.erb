@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.user_type == 'owner' %>
+<% if user_signed_in? && current_user.user_type == 'true' %>
   <p>Internal note: You are an owner</p>
   <%= render "campaigns/shared/showowner" %>
   <%#= render "devise/shared/links" %>
@@ -8,5 +8,3 @@
   <%= render "campaigns/shared/showinvestor" %>
   <!-- the code on show for investor should be inside the shared/showowner.html.erb -->
 <% end %>
-
-
