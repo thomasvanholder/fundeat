@@ -18,7 +18,7 @@ User.destroy_all
 
 COMPANY = {
   name: %w(Tipo7 Bellagamba Mirutake Tortoni Starbucks DelToro Delicatessen),
-  type: %w(Restaurant CoffeeStore Bar),
+  type_store: %w(Restaurant Coffee_Store Bar),
   address: [
     "Av Niceto Vega #{rand(1..1000)}, CABA, Buenos Aires",
     "Av. Córdoba #{rand(1..1000)},CABA, Buenos Aires",
@@ -132,21 +132,24 @@ end
 USERS[:owners].each do |owner_info|
   owner = User.create!(owner_info)
 
+
   1.times do
     company = Company.new()
-    company.name = company[:name].sample
-    company.type = company[:type].sample
-    company.address = company[:address].sample
+    company.name = COMPANY[:name].sample
+    company.type_store = COMPANY[:type_store].sample
+    # company.type = Company::TYPE.sample
+    company.address = COMPANY[:address].sample
     company.num_employees = rand(9..35)
-    company.instagram_url = company[:instagram_url].sample
-    company.tripadvisor_url = company[:tripadvisor_url].sample
-    company.googlereview_url = company[:googlereview_url].sample
+    company.instagram_url = COMPANY[:instagram_url].sample
+    company.tripadvisor_url = COMPANY[:tripadvisor_url].sample
+    company.googlereview_url = COMPANY[:googlereview_url].sample
     company.description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio vel, libero. Qui ducimus explicabo vitae mollitia, illum harum maxime, magni beatae ipsam, nam nobis nisi. Debitis perferendis officiis ab quos."
-    company.price_per_day = rand(10..150)
     company.owner = owner
     file = URI.open("https://source.unsplash.com/900x600/?restaurant")
     company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
     company.save!
+
+
 
     1.times do
       campaign = Campaign.new()
@@ -167,6 +170,8 @@ USERS[:owners].each do |owner_info|
       # campaign.investor_id = rand(User.first.id..User.last.id)
       campaign.save!
 
+
+
       10.times do
         reward = Reward.new()
         reward.description = "Campaign description.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores, voluptatibus temporibus cupiditate dolorem, voluptate rem dicta aperiam tenetur. Facilis deleniti explicabo provident mollitia nulla inventore libero a consequuntur nemo."
@@ -174,22 +179,19 @@ USERS[:owners].each do |owner_info|
         reward.campaign = campaign
         reward.save!
 
+
+        rand(10..30).times do
+          investment = Investment.new()
+          investment.status = rand(0..4) #check enumerable in investment.rb (model)
+          investment.amount = rand(30000..120000)
+          investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
+          # caution. enhance code as each investor should not have more than one investment on the same company.
+          investment.investor = User.find_by(email: USERS[:investors].sample[:email])
+          investment.campaign = campaign
+          investment.reward = reward
+          investment.save!
+        end
       end
-
-    end
-
-    rand(10..30).times do
-      # n = 0
-      investment = Investment.new()
-      investment.status = rand(0..4) #check enumerable in investment.rb (model)
-      investment.amount = rand(30000..120000)
-      investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
-
-# caution. enhance code as each investor should not have more than one investment on the same company.
-      investment.investor_id = User.find_by(email: USERS[:investors].sample[:email])
-      investment.campaign_id = rand(1..9)
-      investment.reward_id = rand(1..9)
-      investment.save!
     end
   end
 end
