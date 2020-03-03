@@ -16,6 +16,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new(investment_params)
     authorize @investment
     @campaign = Campaign.find(params[:campaign_id])
+    @investment.campaign = @campaign
     @investment.investor = current_user
     if @investment.valid?
       @investment.save
