@@ -4,11 +4,11 @@
   <div class="d-flex justify-content-center">
     <div class="card-invest">
       <!-- invest field and button -->
+      <%= simple_form_for @investment do |f| %>
       <div class="d-flex justify-content-center">
-          <p class="input-field align-self-center">$ ..........</p>
-          <div class="align-self-center">
-            <h5><%= link_to "INVEST", "/#", class: "btn btn-secondary" %></h5>
-          </div>
+        <%= f.input :amount, class: "input-field align-self-center", placeholder: "$250", label: false %>
+        <%= f.submit "INVEST", class: "btn btn-secondary align-self-center" %>
+      <% end %>
       </div>
 
 

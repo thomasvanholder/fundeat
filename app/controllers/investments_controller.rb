@@ -8,8 +8,8 @@ class InvestmentsController < ApplicationController
   end
 
   def new
-    @campaign = Campaign.find(params[:capaign_id])
-    @investment = Investment.new
+    # @campaign = Campaign.find(params[:capaign_id])
+    # @investment = Investment.new
   end
 
   def create
