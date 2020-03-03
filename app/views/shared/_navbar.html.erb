@@ -1,28 +1,52 @@
+
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/", class: "navbar-brand" do %>
+  <%= link_to "/scooters", class: "navbar-brand" do %>
   <img src="https://img.icons8.com/doodle/48/000000/dining-room.png">
-  Fundeat
   <% end %>
 
-  <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+
+       <li class="nav-item active">
         <%= link_to "Investing", "/campaigns", class: "nav-link" %>
       </li>
       <li class="nav-item active">
         <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
       </li>
-      <li class="nav-item active">
-        <%= link_to "Login", "/users/sign_in", class: "nav-link" %>
+
+     <% unless user_signed_in? %>
+
+        <li class="nav-item active">
+          <%= link_to "Login", "/users/sign_in", class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Signup", "/users/sign_up", class: "nav-link" %>
+        </li>
+     <% end %>
+
+      <li class="nav-item dropdown ml-3 d-flex">
+        <% if user_signed_in? %>
+            <div><p class="m-2"><%= current_user.email %></p></div>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key,class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%#= image_tag "avatar.png", class: "avatar dropdown-toggle"%>
+              <%= cl_image_tag "https://img.icons8.com/officel/40/000000/avatar.png",class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
+            <% end %>
+        <% else %>
+         <%#= image_tag "scootercolor.svg", class: "avatar dropdown-toggle"%>
+        <% end %>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%#= link_to "Profile", "#", class: "dropdown-item" %>
+          <%= link_to "Logout", "/users/sign_out", method: :delete, class: "dropdown-item" %>
+        </div>
       </li>
-      <li class="nav-item active">
-        <%= link_to "Signup", "/users/sign_up", class: "nav-link" %>
-      </li>
-      <!--  -->
     </ul>
   </div>
 </div>
