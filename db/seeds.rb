@@ -62,28 +62,28 @@ AMOUNT = %w(500 1000 5000 10000)
 USERS = {
   owners: [
     # { first_name: "admin" , last_name: "admin", email: "admin@gmail.com" , password: 12345678, admin: true},
-    { first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678 },
-    { first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
-    { first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
-    { first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
-    { first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
-    { first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
-    { first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
-    { first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
-    { first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-    { first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
+    { user_type: "owner", first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
   ],
   investors: [
-    { first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678 },
-    { first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678 },
-    { first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678 },
-    { first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678 },
-    { first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678 },
-    { first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678 },
-    { first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678 },
-    { first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678 },
-    { first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678 },
-    { first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678 },
+    { user_type: "investor", first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678 },
 
   ]
 }
@@ -153,7 +153,7 @@ USERS[:owners].each do |owner_info|
     1.times do
       campaign = Campaign.new()
       campaign.title = CAMPAIGNS[:title].sample
-      campaign.title = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nemo aspernatur illo, ut sit harum, architecto laudantium ipsam repellendus iure dolorem, vero, at cumque sint facere! Adipisci, rem sit deserunt."
+      campaign.description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nemo aspernatur illo, ut sit harum, architecto laudantium ipsam repellendus iure dolorem, vero, at cumque sint facere! Adipisci, rem sit deserunt."
       campaign.repayment_capacity = rand(1..3)
       campaign.financial_health = rand(1..3)
       campaign.company_history = rand(1..3)
