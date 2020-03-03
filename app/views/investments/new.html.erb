@@ -1,2 +1,22 @@
-<h1>Investments#new</h1>
-<p>Find me in app/views/investments/new.html.erb</p>
+<div class="container">
+  <h1>Investment Summary</h1>
+
+  <%= form_tag new_campaign_investment_path do %>
+  <%= hidden_field_tag 'investment_id', @investment.id %>
+
+    <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
+    <p>Interest:</p>
+    <p>Duration:</p>
+
+    <br>
+
+    <p><em>additional information...</em></p>
+
+    <br>
+
+    <p>Reward: <%= @investment.reward.description %></p>
+
+    <%= submit_tag 'Pay Now', class: 'btn btn-secondary' %>
+  <% end %>
+
+</div>

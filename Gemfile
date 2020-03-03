@@ -17,6 +17,10 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 
+# payment
+gem 'money-rails'
+gem 'stripe'
+
 gem 'pundit'
 gem 'dotenv-rails', groups: [:development, :test]
 
