@@ -2,7 +2,9 @@
   height: 540px;
   width: 380px;
   background-color: #F3F3F3;
-  border-radius: 20px
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .card-pic {
@@ -24,19 +26,27 @@
 }
 
 .target-bar {
-  width: 350px;
+  width: 340px;
   height: 30px;
   border-radius: 8px;
   background-color: white;
-  margin-left: 20px;
+  margin: 20px;
 }
 
-.target-bar.percentage {
+.target-bar-percentage {
   margin-left: 0px;
   width: 79%;
+  height: 30px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   background-color: lightgrey;
   color: white;
   font-weight: bold;
+  display: flex;
+}
+
+.box-align {
+  margin: 2px 20px;
 }
 
 // fonts and headers
@@ -48,15 +58,20 @@
 
 .card-investment h4 {
   margin-top: 10px;
-  margin-left: 20px;
   font-size: 20px;
   font-weight: bold;
 }
 
 .card-investment h5{
   margin-top: 10px;
-  margin-left: 265px;
-  // margin-right: 15px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+.card-investment h6{
+  margin: 0px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-investment p{
