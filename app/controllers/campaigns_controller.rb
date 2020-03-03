@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+ #Note! pundit was implemented. remember to authorize your variables with for example. authorize@campaign
+
   def index
   end
 
@@ -9,6 +11,8 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    authorize @campaign
+
   end
 
   def edit
