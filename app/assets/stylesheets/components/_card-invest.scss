@@ -1,86 +1,23 @@
-.card-investment {
-  height: 540px;
-  width: 380px;
+.card-invest {
+  height: 460px;
+  width: 370px;
   background-color: #F3F3F3;
   border-radius: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
-.card-pic {
-  height: 190px;
-  width: 380px;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  object-fit: cover;
-}
-
-.card-user {
-  position: relative;
-}
-
-.card-user .avatar-m-square {
-  position: absolute;
-  left: 15px;
-  top: 147px;
-}
-
-.target-bar {
-  width: 340px;
-  height: 30px;
+.card-invest .input-field {
+  width: 200px;
+  height: 35px;
   border-radius: 8px;
   background-color: white;
   margin: 20px;
 }
 
-.target-bar-percentage {
-  margin-left: 0px;
-  width: 79%;
-  height: 30px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  background-color: lightgrey;
-  color: white;
-  font-weight: bold;
-  display: flex;
+.card-invest .range {
+  height: 10px;
+  width: 300px;
+  background-color: grey;
+  border-radius: 8px;
+  margin: 0 auto;
 }
-
-.box-align {
-  margin: 2px 20px;
-}
-
-// fonts and headers
-.card-investment > h1{
-  margin-top: 10px;
-  margin-left: 20px;
-  font-size: 22px;
-}
-
-.card-investment h4 {
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.card-investment h5{
-  margin-top: 10px;
-  margin-right: 20px;
-  text-align: right;
-}
-
-.card-investment h6{
-  margin: 0px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.card-investment p{
-  margin: 0px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font-size: 12px;
-  text-align: justify;
-}
-
-
-

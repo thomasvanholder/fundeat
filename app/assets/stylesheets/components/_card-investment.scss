@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 }
 
-.card-pic {
+.card-investment .card-pic {
   height: 190px;
   width: 380px;
   border-top-right-radius: 20px;
@@ -15,17 +15,17 @@
   object-fit: cover;
 }
 
-.card-user {
+.card-investment .card-user {
   position: relative;
 }
 
-.card-user .avatar-m-square {
+.card-investment .card-user .avatar-m-square {
   position: absolute;
   left: 15px;
   top: 147px;
 }
 
-.target-bar {
+.card-investment .target-bar {
   width: 340px;
   height: 30px;
   border-radius: 8px;
@@ -33,7 +33,7 @@
   margin: 20px;
 }
 
-.target-bar-percentage {
+.card-investment .target-bar-percentage {
   margin-left: 0px;
   width: 79%;
   height: 30px;
@@ -45,7 +45,7 @@
   display: flex;
 }
 
-.box-align {
+.card-investment .box-align {
   margin: 2px 20px;
 }
 
