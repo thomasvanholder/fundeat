@@ -6,12 +6,10 @@
       <!-- invest field and button -->
       <%= simple_form_for @investment do |f| %>
       <div class="d-flex justify-content-center">
-        <%= f.input :amount, class: "input-field align-self-center", placeholder: "$250", label: false %>
+        <%= f.input :amount, class: "input-field", placeholder: "$250", label: false %>
         <%= f.submit "INVEST", class: "btn btn-secondary align-self-center" %>
       <% end %>
       </div>
-
-
 
       <!-- campaign stats -->
       <div class="my-2 mx-3 d-flex justify-content-between">

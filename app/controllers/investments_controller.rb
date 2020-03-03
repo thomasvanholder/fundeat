@@ -19,7 +19,7 @@ class InvestmentsController < ApplicationController
     @investment.investor = current_user
     if @investment.valid?
       @investment.save
-      redirect_to new_campaign_investment_path(@investment)
+      redirect_to campaign_investments_path(@investment)
     else
       render :new
     end
@@ -28,6 +28,6 @@ class InvestmentsController < ApplicationController
   private
 
   def investment_params
-    params.require(:investment).permit(:amount, :)
+    params.require(:investment).permit(:amount)
   end
 end
