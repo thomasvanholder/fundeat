@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @investment = Investment.new
     authorize @campaign
   end
 
