@@ -5,6 +5,10 @@ class InvestmentPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    return true
+  end
+
   def index?
     return true
   end
