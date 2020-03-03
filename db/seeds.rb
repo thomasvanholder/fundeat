@@ -16,34 +16,112 @@ Campaign.destroy_all
 Company.destroy_all
 User.destroy_all
 
+
 USERS = {
   owners: [
-    # { first_name: "admin" , last_name: "admin", email: "admin@gmail.com" , password: 12345678, admin: true},
-    { first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678},
-    { first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
-    { first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
-    { first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
-    { first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
-    { first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
-    { first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
-    { first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
-    { first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-    { first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
-  ],
-  investors: [
-    { first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-    { first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678, link: "https://avatars3.githubusercontent.com/u/40840106?v=4"  },
-    { first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678, link: "https://avatars2.githubusercontent.com/u/57909856?v=4"  },
-    { first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678, link: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1579009572/blngrfxvbltzpwmlyd4y.jpg"  },
-    { first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678, link: "https://res.cloudinary.com/wagon/image/upload/c_fill,w_200/v1575395264/ucdxpmotvcnacyx3p7zp.jpg"  },
-    { first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678, link: "https://avatars2.githubusercontent.com/u/17054475?v=4"  },
-    { first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678, link: "https://avatars3.githubusercontent.com/u/56311999?v=4"  },
-    { first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/47959024?v=4"  },
-    { first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4D03AQErrKBld3u_Bg/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=WypPyeghHmG6GHENN79w4bolUGBAWQMyRHet_Bd5EiM"  },
-    { first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4E03AQHAYB-Ut1y9oQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=MRVdfv2LO7lnckrMzT9VAeZJWe4ScFker8NHNvD6U38"  },
+# { first_name: "admin" , last_name: "admin", email: "admin@gmail.com" , password: 12345678, admin: true},
+{ first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678},
+{ first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
+{ first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
+{ first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
+{ first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
+{ first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
+{ first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
+{ first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
+{ first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
+{ first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
+],
+investors: [
+  { first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
+  { first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678, link: "https://avatars3.githubusercontent.com/u/40840106?v=4"  },
+  { first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678, link: "https://avatars2.githubusercontent.com/u/57909856?v=4"  },
+  { first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678, link: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1579009572/blngrfxvbltzpwmlyd4y.jpg"  },
+  { first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678, link: "https://res.cloudinary.com/wagon/image/upload/c_fill,w_200/v1575395264/ucdxpmotvcnacyx3p7zp.jpg"  },
+  { first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678, link: "https://avatars2.githubusercontent.com/u/17054475?v=4"  },
+  { first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678, link: "https://avatars3.githubusercontent.com/u/56311999?v=4"  },
+  { first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/47959024?v=4"  },
+  { first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4D03AQErrKBld3u_Bg/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=WypPyeghHmG6GHENN79w4bolUGBAWQMyRHet_Bd5EiM"  },
+  { first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4E03AQHAYB-Ut1y9oQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=MRVdfv2LO7lnckrMzT9VAeZJWe4ScFker8NHNvD6U38"  },
+]
+}
+
+# # LICENSE_TYPE = %w(A1 A2 A3)
+AMOUNT = %w(500 1000 5000 10000)
+
+# #OK
+
+# #Edit
+CAMPAIGNS = {
+  title: [
+    'Expansion to Palermo, We will rock it!',
+    'We want to open our third location in CABA. Are you in?',
+    'Now ready to launch our Belgrano store. Be part of it!',
+    'From chacarita to CABA. We are now opening our second location',
+    'Puerto madero second location to be opened. Looking for supporters!'
   ]
 }
 # Edit
+
+def create_investment(campaign, reward)
+
+  USERS[:investors].each do |inv|
+    investor = User.create!(email: inv[:email], first_name: inv[:first_name], last_name: inv[:last_name], user_type: "false", password: "12345678")
+    photo = URI.open(inv[:link])
+    # investor.photo.attach(io: photo, filename: "#{inv[:file]}", content_type: 'image/png')
+    investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+
+    investment = Investment.new()
+investment.status = rand(0..4) #check enumerable in investment.rb (model)
+investment.amount = rand(1..10000)
+# investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
+investment.payment_date = rand(1..30).days.after
+
+# @Hernan need to discuss this
+
+# caution. enhance code as each investor should not have more than one investment on the same company.
+investment.investor = User.find_by(email: USERS[:investors].sample[:email])
+investment.campaign = campaign
+investment.reward = reward
+investment.investor = investor
+investment.save!
+end
+end
+
+def create_reward(campaign)
+  reward = Reward.new()
+  reward.description = "Campaign description.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores, voluptatibus temporibus cupiditate dolorem, voluptate rem dicta aperiam tenetur. Facilis deleniti explicabo provident mollitia nulla inventore libero a consequuntur nemo."
+  reward.investment_amount = AMOUNT.sample
+  reward.campaign = campaign
+  reward.save!
+  rand(10..30).times do
+    create_investment(campaign, reward)
+  end
+end
+
+def create_campaign(company)
+
+  campaign = Campaign.new
+
+  campaign.title = CAMPAIGNS[:title].sample
+
+  campaign.title = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nemo aspernatur illo, ut sit harum, architecto laudantium ipsam repellendus iure dolorem, vero, at cumque sint facere! Adipisci, rem sit deserunt."
+
+  campaign.repayment_capacity = rand(1..3)
+  campaign.financial_health = rand(1..3)
+  campaign.company_history = rand(1..3)
+  campaign.risk_level = rand(1..3)
+
+  campaign.min_target = rand(20000..60000)
+  campaign.max_target = campaign.min_target + rand(20000..60000)
+  campaign.loan_duration = rand(6..48)
+  campaign.return_rate = rand(0.4..0.7)
+  campaign.expiry_date = Date.today + rand(30..90).days
+
+  campaign.company = company
+  # campaign.investor_id = rand(User.first.id..User.last.id)
+  campaign.save!
+  create_reward(campaign)
+end
 
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
@@ -57,83 +135,33 @@ html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').each do |ele
   address = element.search('.c-mapstack__address').text.strip
   description = element.search('.c-entry-content p').text.strip
 
-# create users with company
+  # create users with company
 
-USERS[:owners].each do |owner_info|
-  owner = User.create!(owner_info)
+  USERS[:owners].each do |owner_info|
+    owner = User.create!(owner_info)
+    owner.update(user_type: "true")
 
-  company = Company.new(
-    name: names,
-    address: address,
-    type_store: type_store.sample,
-    description: description,
-    instagram_url: "https://www.instagram.com/#{names}",
-    tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
-    googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
-    )
-  company.num_employees = rand(9..35)
-  company.owner = owner
-  file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")
-  company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
+    company = Company.new(
+      name: names,
+      address: address,
+      type_store: type_store.sample,
+      description: description,
+      instagram_url: "https://www.instagram.com/#{names}",
+      tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
+      googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
+      )
+    company.num_employees = rand(9..35)
+    company.owner = owner
+    file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")
+    company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
 
-  company.save
-  create_campaign(company)
+    company.save
+    puts company.valid?
+    create_campaign(company)
+  end
 end
 
-def create_campaign(company)
 
-  campaign = Campaign.new()
-  campaign.title = CAMPAIGNS[:title].sample
-  campaign.title = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nemo aspernatur illo, ut sit harum, architecto laudantium ipsam repellendus iure dolorem, vero, at cumque sint facere! Adipisci, rem sit deserunt."
-  campaign.repayment_capacity = rand(1..3)
-  campaign.financial_health = rand(1..3)
-  campaign.company_history = rand(1..3)
-  campaign.risk_level = rand(1..3)
-
-  campaign.min_target = rand(20000..60000)
-  campaign.max_target = campaign.min_target + rand(20000..60000)
-  campaign.loan_duration = rand(6..48)
-  campaign.return_rate = rand(0.4..0.7)
-  campaign.expiry_date = Date.today + rand(30..90).days
-
-  campaign.company = company
-      # campaign.investor_id = rand(User.first.id..User.last.id)
-      campaign.save!
-      create_reward(campaign)
-    end
-  end
-
-  def create_reward(campaign)
-    reward = Reward.new()
-    reward.description = "Campaign description.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores, voluptatibus temporibus cupiditate dolorem, voluptate rem dicta aperiam tenetur. Facilis deleniti explicabo provident mollitia nulla inventore libero a consequuntur nemo."
-    reward.investment_amount = AMOUNT.sample
-    reward.campaign = campaign
-    reward.save!
-    rand(10..30).times do
-      create_investment(campaign, reward)
-    end
-  end
-
-  def create_investment(campaign, reward)
-
-    USERS[:investors].each do |inv|
-      investor = User.create!(inv)
-      photo = URI.open(inv.link)
-      investor.photo.attach(io: file, filename: "#{inv.file}", content_type: 'image/png')
-      investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/jpeg')
-
-      investment = Investment.new()
-      investment.status = rand(0..4) #check enumerable in investment.rb (model)
-      investment.amount = rand(30000..120000)
-      investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
-      # caution. enhance code as each investor should not have more than one investment on the same company.
-      investment.investor = User.find_by(email: USERS[:investors].sample[:email])
-      investment.campaign = campaign
-      investment.reward = reward
-      investment.investor = investor
-      investment.save!
-    end
-  end
 
 # COMPANY = {
 #   name: names,
@@ -174,43 +202,27 @@ def create_campaign(company)
 # #   Triumph: %w(80 100 T110 800 955i 1050 Cub Daytona Explore Trail),
 # # }
 
-# # LICENSE_TYPE = %w(A1 A2 A3)
-AMOUNT = %w(500 1000 5000 10000)
-
-# #OK
-
-# #Edit
-
-CAMPAIGNS = {
-  title: [
-    'Expansion to Palermo, We will rock it!',
-    'We want to open our third location in CABA. Are you in?',
-    'Now ready to launch our Belgrano store. Be part of it!',
-    'From chacarita to CABA. We are now opening our second location',
-    'Puerto madero second location to be opened. Looking for supporters!'
-  ]
-}
 
 # Manually seed investor with photos
 
-#1
-photo = URI.open("https://avatars1.githubusercontent.com/u/35240578?v=4")
-investor1 = User.create!(first_name: "Hernan" , last_name: "Kina", email: "newhernan@gmail.com" , password: 12345678 )
-investor1.photo.attach(io: photo, filename: "newhernan.jpeg", content_type: 'image/jpeg')
+# #1
+# photo = URI.open("https://avatars1.githubusercontent.com/u/35240578?v=4")
+# investor1 = User.create!(first_name: "Hernan" , last_name: "Kina", email: "newhernan@gmail.com" , password: 12345678 )
+# investor1.photo.attach(io: photo, filename: "newhernan.jpeg", content_type: 'image/jpeg')
 
-#2
-photo2 = URI.open("https://avatars0.githubusercontent.com/u/36309895?v=4")
-investor2 = User.create!(first_name: "Thomas" , last_name: "Holder", email: "newthomas@gmail.com" , password: 12345678 )
-investor2.photo.attach(io: photo2, filename: "newthomas.jpeg", content_type: 'image/jpeg')
+# #2
+# photo2 = URI.open("https://avatars0.githubusercontent.com/u/36309895?v=4")
+# investor2 = User.create!(first_name: "Thomas" , last_name: "Holder", email: "newthomas@gmail.com" , password: 12345678 )
+# investor2.photo.attach(io: photo2, filename: "newthomas.jpeg", content_type: 'image/jpeg')
 
-#3
-photo3 = URI.open("https://avatars2.githubusercontent.com/u/30577676?v=4")
-investor3 = User.create!(first_name: "Hank" , last_name: "Hng", email: "newhank@gmail.com" , password: 12345678 )
-investor3.photo.attach(io: photo3, filename: "newhank.jpeg", content_type: 'image/jpeg')
+# #3
+# photo3 = URI.open("https://avatars2.githubusercontent.com/u/30577676?v=4")
+# investor3 = User.create!(first_name: "Hank" , last_name: "Hng", email: "newhank@gmail.com" , password: 12345678 )
+# investor3.photo.attach(io: photo3, filename: "newhank.jpeg", content_type: 'image/jpeg')
 
-# 4
-photo4 = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1578932457/vw1y2j5jidn3chpxxbrx.jpg")
-investor4 = User.create!(first_name: "Julius" , last_name: "Ahlert", email: "newjulius@gmail.com" , password: 12345678 )
-investor4.photo.attach(io: photo, filename: "newjulies.jpeg", content_type: 'image/jpeg')
+# # 4
+# photo4 = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1578932457/vw1y2j5jidn3chpxxbrx.jpg")
+# investor4 = User.create!(first_name: "Julius" , last_name: "Ahlert", email: "newjulius@gmail.com" , password: 12345678 )
+# investor4.photo.attach(io: photo, filename: "newjulies.jpeg", content_type: 'image/jpeg')
 
 puts "seeds succesfully"
