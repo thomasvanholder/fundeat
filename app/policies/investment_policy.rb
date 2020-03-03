@@ -4,4 +4,8 @@ class InvestmentPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def index?
+    return true
+  end
 end
