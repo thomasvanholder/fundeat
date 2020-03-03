@@ -13,7 +13,6 @@ Campaign.destroy_all
 Company.destroy_all
 User.destroy_all
 
-
 # Edit
 
 COMPANY = {
