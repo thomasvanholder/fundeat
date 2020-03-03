@@ -17,7 +17,7 @@ User.destroy_all
 # Edit
 
 COMPANY = {
-  name: %w(Tipo7 Bellagamba Mirutake Tortoni Starbucks DelToro Delicatessen),
+  name: %w(Tipo7 Bellagamba Mirutake Tortoni Starbucks DelToro Delicatessen Pokeking Burgermeister Surry),
   type_store: %w(Restaurant Coffee_Store Bar),
   address: [
     "Av Niceto Vega #{rand(1..1000)}, CABA, Buenos Aires",
