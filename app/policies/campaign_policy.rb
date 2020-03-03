@@ -3,10 +3,18 @@ class CampaignPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
-    def create?
-      return true
-    end
-
   end
+
+  def create?
+    return true
+  end
+
+  def show?
+    return true
+  end
+
+  def index?
+    return true
+  end
+
 end

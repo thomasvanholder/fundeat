@@ -43,7 +43,7 @@
     <div class="choose-option d-flex">
       <div class="d-flex flex-column w-50 justify-content-center text-center">
         <h5>Interested in Investing?</h5>
-        <h5><%= link_to "Investments", "#", class: "btn btn-secondary" %></h5>
+        <h5><%= link_to "Investments", "/campaigns", class: "btn btn-secondary" %></h5>
       </div>
       <!-- line -->
       <div class="h-75 align-self-center" style="border: 1px solid lightgrey">
@@ -83,7 +83,7 @@
 
   <!-- investment card -->
   <div class="d-flex justify-content-center">
-    <div class="card-investment mx-3">
+    <div class="card-investment">
       <div class="card-user">
         <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
       </div>
@@ -92,13 +92,15 @@
       <h5>10 days left</h5>
       <h1>Tipo Siete</h1>
       <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
-      <h4>$100,000 target</h4>
+      <div class="box-align">
+        <h4>$100,000 target</h4>
+      </div>
       <div class="target-bar">
-        <div class="target-bar percentage">
-          <p>79%</p>
+        <div class="target-bar-percentage">
+          <p class="w-100 align-self-center">79%</p>
         </div>
       </div>
-      <div class="d-flex mt-2 justify-content-around">
+      <div class="box-align d-flex justify-content-between">
         <div class="text-center">
           <h4>$79,540</h4>
           <p>raised</p>
@@ -121,7 +123,7 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <h5 class="mt-5"><%= link_to "SHOW MORE", "#", class: "btn btn-secondary" %></h5>
+    <h5 class="mt-5"><%= link_to "SHOW MORE", "/campaigns", class: "btn btn-secondary" %></h5>
   </div>
 
   <!-- horizontal line -->
@@ -154,7 +156,7 @@
     <p>Because we know Argentina would be a lot less interesting without them.</p>
     <br>
     <p><strong>Are you with us?</strong></p>
-    <h5><%= link_to "FUND RESTAURANTS", "#", class: "btn btn-secondary" %></h5>
+    <h5><%= link_to "FUND RESTAURANTS", "/campaigns", class: "btn btn-secondary" %></h5>
   </div>
 
 <!-- container closing DIV -->

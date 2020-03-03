@@ -16,6 +16,54 @@ Campaign.destroy_all
 Company.destroy_all
 User.destroy_all
 
+# <<<<<<< HEAD
+# =======
+# # Edit
+
+# COMPANY = {
+#   name: %w(Tipo7 Bellagamba Mirutake Tortoni Starbucks DelToro Delicatessen Pokeking Burgermeister Surry),
+#   type_store: %w(Restaurant Coffee_Store Bar),
+#   address: [
+#     "Av Niceto Vega #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Av. Córdoba #{rand(1..1000)},CABA, Buenos Aires",
+#     "Av. del Libertador #{rand(1..1000)}, C1425 CABA, Buenos Aires",
+#     "Av. Antártida Argentina #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Marcelo Torcuato de Alvear #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Av. Santa Fe #{rand(1..1000)}, CABA, Buenos Aires",
+#     "#{rand(1..1000)} Bartolomé Mitre, CABA, Buenos Aires",
+#     "Av. Federico Lacroze #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Av. Luis María Campos #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Acevedo #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Murillo #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Guardia Vieja #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Paraguay #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Guatemala #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Malabia #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Jorge Luis Borges #{rand(1..1000)}, CABA, Buenos Aires",
+#     "Thames #{rand(1..1000)}, CABA, Buenos Aires"],
+#     # num_employees: %w(Restaurant CoffeeStore Bar),
+#     instagram_url: %w(url1 url2 url3 url4),
+#     tripadvisor_url: %w(url1 url2 url3 url4),
+#     googlereview_url: %w(url1 url2 url3 url4)
+# }
+
+# # MODEL = {
+# #   Yamaha: %w(GT100 IT125 LS2 100 MG1T MX125 RX50 RD200),
+# #   BMW: %w(K1200GT K1300R R75 R90S R100 R1100GS F650CS F800GT G310R G650GS),
+# #   Kawasaki: %w(Z250SL Z250 Z750 Z800 Z1000 ZRX1200R ZZR250 ZZR400 ZZR600 ZZR1100),
+# #   Honda: %w(CN250 Elite Express Joker Juno Motocompo Reflex PCX125 Ruckus SFX50),
+# #   Suzuki: %w(DR125 DR200SE DR350 DR650 FM50 FR50 FR80 FX125 FXR150 FZ50),
+# #   KTM: %w(50SXMini 65SX 390series 450EXC 450Rally 500EXC ),
+# #   Ducati: %w(65TL 65TS 98 125T 125TV 400SS 748 749 750GT 750 800SS),
+# #   Aprilia: %w(RS4125 RS50 RS125 RS250 RSV250 RST1000),
+# #   Triumph: %w(80 100 T110 800 955i 1050 Cub Daytona Explore Trail),
+# # }
+
+# # LICENSE_TYPE = %w(A1 A2 A3)
+# AMOUNT = %w(500 1000 5000 10000)
+
+# #OK
+# >>>>>>> master
 
 USERS = {
   owners: [

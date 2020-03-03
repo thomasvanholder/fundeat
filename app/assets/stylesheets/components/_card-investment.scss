@@ -2,10 +2,12 @@
   height: 540px;
   width: 380px;
   background-color: #F3F3F3;
-  border-radius: 20px
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.card-pic {
+.card-investment .card-pic {
   height: 190px;
   width: 380px;
   border-top-right-radius: 20px;
@@ -13,30 +15,38 @@
   object-fit: cover;
 }
 
-.card-user {
+.card-investment .card-user {
   position: relative;
 }
 
-.card-user .avatar-m-square {
+.card-investment .card-user .avatar-m-square {
   position: absolute;
   left: 15px;
   top: 147px;
 }
 
-.target-bar {
-  width: 350px;
+.card-investment .target-bar {
+  width: 340px;
   height: 30px;
   border-radius: 8px;
   background-color: white;
-  margin-left: 20px;
+  margin: 20px;
 }
 
-.target-bar.percentage {
+.card-investment .target-bar-percentage {
   margin-left: 0px;
   width: 79%;
+  height: 30px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   background-color: lightgrey;
   color: white;
   font-weight: bold;
+  display: flex;
+}
+
+.card-investment .box-align {
+  margin: 2px 20px;
 }
 
 // fonts and headers
@@ -48,15 +58,20 @@
 
 .card-investment h4 {
   margin-top: 10px;
-  margin-left: 20px;
   font-size: 20px;
   font-weight: bold;
 }
 
 .card-investment h5{
   margin-top: 10px;
-  margin-left: 265px;
-  // margin-right: 15px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+.card-investment h6{
+  margin: 0px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-investment p{
