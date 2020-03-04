@@ -105,7 +105,7 @@ def create_reward(campaign)
     reward.investment_amount = amount
     reward.campaign = campaign
     reward.save!
-    puts reward.id
+    # puts reward.id
     # puts "completed create reward"
     create_investment(campaign, reward)
   end
