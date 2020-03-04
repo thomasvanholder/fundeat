@@ -27,7 +27,9 @@
         <!-- background pic -->
 <!-- insert company.photo -->
             <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
-            <h5>10 days left</h5>
+            <!-- <h5>10 days left</h5> -->
+            <h5><%= (campaign.expiry_date - Date.today)%> days left</h5>
+
             <h1><%= campaign.company.name %></h1>
             <p><%= campaign.title %></p>
             <div class="box-align">
