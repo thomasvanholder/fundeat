@@ -92,7 +92,7 @@
 <div class="d-flex justify-content-center">
   <div class="card-invest">
     <!-- invest field and button -->
-    <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign, ), method: :get do |f| %>
+    <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
     <div class="d-flex justify-content-center">
       <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
       <%= f.input :reward, as: :radio_buttons, collection: %w(1 2 3) %>
@@ -100,14 +100,6 @@
       <% end %>
     </div>
 
-
-
-
-    # app/views/teddies/show.html.erb
-    <%= form_tag orders_path do %>
-    <%= hidden_field_tag 'teddy_id', @teddy.id %>
-    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-    <% end %>
 
     <!-- campaign stats -->
     <div class="my-2 mx-3 d-flex justify-content-between">

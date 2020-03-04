@@ -15,20 +15,7 @@ class InvestmentsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @investment = Investment.new(amount: params["investment"]["amount"], reward_id: params["investment"]["reward"].to_i)
     @investment.campaign = @campaign
-    @session = params[:stripe_session_id]
-    authorize @campaign
-    authorize @investment
-  end
-
-  def create
-    @investment = Investment.new()
-    authorize @investment
-    @investment.reward_id = params[:investment][:reward].to_i
-    @investment.amount = params["investment"]["amount"]
-    @campaign = Campaign.find(params[:campaign_id])
-    @investment.campaign = @campaign
     @investment.investor = current_user
-    @investment.save!
 
     if @investment.valid?
       session = Stripe::Checkout::Session.create(
@@ -40,17 +27,25 @@ class InvestmentsController < ApplicationController
           currency: 'usd',
           quantity: 1
         }],
-        success_url: investment_url(@investment),
-        cancel_url: investment_url(@investment)
+        success_url: investments_url,
+        cancel_url: investments_url
         )
+      @investment.save
       @investment.update(stripe_session_id: session.id)
-      @investment.save!
-      redirect_to investment_path(@investment)
     else
-      raise
       render :new
     end
-end
+    authorize @campaign
+    authorize @investment
+  end
+
+  def create
+    @investment = Investment.new()
+    authorize @investment
+
+    @investment.reward_id = params[:investment][:reward].to_i
+    @investment.amount = params["investment"]["amount"]
+  end
 
 private
 

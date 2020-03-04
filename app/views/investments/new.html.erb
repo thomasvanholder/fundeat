@@ -1,49 +1,35 @@
 <div class="container">
   <h1>Investment Summary</h1>
 
-  <%= simple_form_for([@campaign, @investment]) do |f| %>
+  <%= simple_form_for(campaign_investments_path) do |f| %>
 
-    <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
-    <p>Interest:</p>
-    <p>Duration:</p>
+  <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
+  <p>Interest:</p>
+  <p>Duration:</p>
   <%= f.input :amount, :input_html => { :value => @investment.amount }   %>
   <%= f.input :reward, :input_html => { :value => @investment.reward.id }  %>
   <%= f.input :stripe_session_id, :input_html => { :value => @investment.stripe_session_id }  %>
-    <br>
+  <br>
 
-    <p><em>additional information...</em></p>
+  <p><em>additional information...</em></p>
 
-    <br>
+  <br>
 
-    <p>Reward: <%= @investment.reward.description %></p>
+  <p>Reward: <%= @investment.reward.description %></p>
 
+  <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
 
-    <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
-
-
-    <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        const paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @investment.stripe_session_id %>'
-          });
-        });
-      </script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const paymentButton = document.getElementById('pay');
+    paymentButton.addEventListener('click', () => {
+      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      stripe.redirectToCheckout({
+        sessionId: '<%= @investment.stripe_session_id %>'
+      });
+    });
+  </script>
   <% end %>
 
 
-</div>
-
-  <!-- app/views/payments/new.html.erb -->
-<div class="container">
-  <div class="row py-4">
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @investment.campaign.title %></strong></p>
-      <p>Amount: <strong><%= humanized_money_with_symbol @investment.amount %></strong></p>
-
-    </div>
-  </div>
 </div>
