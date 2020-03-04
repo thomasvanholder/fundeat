@@ -46,35 +46,35 @@ investors: [
 ]
 # =======
 #     # { first_name: "admin" , last_name: "admin", email: "admin@gmail.com" , password: 12345678, admin: true},
-#     { user_type: "owner", first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-#     { user_type: "owner", first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Hernan" , last_name: "Kina", email: "hernan@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Hank" , last_name: "Hng", email: "hank@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
+#     { owner: true, first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
 #   ],
 #   investors: [
-#     { user_type: "investor", first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678 },
-#     { user_type: "investor", first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Jose" , last_name: "Ignacio", email: "jose@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Xenia" , last_name: "Boula", email: "xenia@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Nico" , last_name: "Donoso", email: "nico@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Feli" , last_name: "Hernandez", email: "feli@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "James" , last_name: "Loomos", email: "james@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Janette" , last_name: "Kwan", email: "janette@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Maximo" , last_name: "Chalbaud", email: "maximo@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Gerardo" , last_name: "Raiden", email: "gerardo@gmail.com" , password: 12345678 },
+#     { owner: false, first_name: "Nicolas" , last_name: "Kennedy", email: "nicolas@gmail.com" , password: 12345678 },
 
 #   ]
 # >>>>>>> master
 }
 
-# # LICENSE_TYPE = %w(A1 A2 A3)
-AMOUNT = %w(500 1000 5000 10000)
+# Reward amount
+AMOUNT = %w(500 1000 2000 5000)
 
 # #Edit
 CAMPAIGNS = {
@@ -99,8 +99,13 @@ REWARDS = {
 
 # Edit
 USERS[:investors].each do |inv|
+<<<<<<< HEAD
   # puts inv[:first_name]
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], user_type: "false", password: "12345678", email: inv[:email])
+=======
+  puts inv[:first_name]
+  investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
+>>>>>>> master
 #  puts inv[:link]
 #  puts inv[:email]
 photo = URI.open(inv[:link])
@@ -119,7 +124,7 @@ investment = Investment.new
 
 
 # caution. enhance code as each investor should not have more than one investment on the same company.
-investment.investor = User.where(user_type: "false").sample
+investment.investor = User.where(owner: false).sample
 investment.campaign = campaign
 investment.reward = reward
 investment.save!
@@ -127,6 +132,7 @@ investment.save!
 end
 
 def create_reward(campaign)
+<<<<<<< HEAD
   # puts "create reward"
 
   reward = Reward.new()
@@ -139,6 +145,19 @@ def create_reward(campaign)
   reward.id
   # puts "completed create reward"
   create_investment(campaign, reward)
+=======
+  puts "create reward"
+  AMOUNT.each_with_index do |amount, index|
+    reward = Reward.new()
+    reward.description = "#{index} x Free Dinner"
+    reward.investment_amount = amount
+    reward.campaign = campaign
+    reward.save!
+    puts reward.id
+    puts "completed create reward"
+    create_investment(campaign, reward)
+  end
+>>>>>>> master
 end
 
 def create_campaign(company)
@@ -161,17 +180,20 @@ def create_campaign(company)
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
 campaign.save!
-rand(10..20).times do
-  create_reward(campaign)
-end
+create_reward(campaign)
 end
 
 USERS[:owners].each do |owner_info|
   # puts "creating an owner"
   owner = User.create!(owner_info)
 # <<<<<<< HEAD
+<<<<<<< HEAD
 owner.update(user_type: "true")
 # puts owner.first_name
+=======
+owner.update(owner: true)
+puts owner.first_name
+>>>>>>> master
 end
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
@@ -179,7 +201,7 @@ html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
 type_store = %w(Restaurant Coffee_Store Bar)
 
-html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(30).each do |element|
+html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(9).each do |element|
 # puts element.text.strip
 names = element.search('h1').text.strip.gsub!(/\d+. /,"")
 address = element.search('.c-mapstack__address').text.strip
@@ -197,7 +219,7 @@ company = Company.new(
   googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
   )
 company.num_employees = rand(9..35)
-company.owner = User.where(user_type:"true")[count]
+company.owner = User.where(owner: true)[count]
 file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")
 company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
 

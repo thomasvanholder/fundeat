@@ -18,6 +18,10 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'simple_form_extension'
 
+# payment
+gem 'money-rails'
+gem 'stripe'
+
 gem 'pundit'
 gem 'dotenv-rails', groups: [:development, :test]
 

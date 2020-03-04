@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_030644) do
+ActiveRecord::Schema.define(version: 2020_03_04_140254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_030644) do
 
   create_table "investments", force: :cascade do |t|
     t.integer "amount"
+    t.integer "amount_cents", default: 0, null: false
     t.datetime "payment_date"
     t.string "stripe_session_id"
     t.bigint "investor_id"
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_030644) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "user_type"
+    t.boolean "owner"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
