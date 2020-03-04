@@ -12,3 +12,6 @@ rangeInput.addEventListener("click", (event) => {
   console.log(rangeValue);
   console.log(event.currentTarget);
 });
+
+
+test
