@@ -72,46 +72,60 @@
         <h4>Campaign Descriptipn</h4>
         <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months. A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
 
-        <div class="card-risk-level p-3 my-5" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+        <!-- risk card component -->
+        <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
           <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
             <div class="text-center">
-              <p class="m-0">Risk Level</p>
-              <span style="font-size: 48px; font-weight: bold; margin: 0;"><p class="m-0">#</p></span>
-            </div>
-            <div style="border: 1px solid lightgrey; height: 80px"></div>
-            <div>
-              <div style="color: darkgrey;">
-                <p class="m-0 mr-2">Repayment Capacity</p>
-                <p class="m-0 mr-2">Financial Health</p>
-                <p class="m-0 mr-2">Company History</p>
+              <div class="m-0">Risk Level</div>
+              <div class="d-flex justify-content-around mx-2">
+                <div class="circle-icon align-self-center color-type-<%= @campaign.risk_level %>"></div>
+                <span style="font-size: 48px; margin: 0;">
+                  <p class="m-0"><%= @campaign.risk_level %></p></span>
+                </div>
+              </div>
+              <div style="border: 1px solid lightgrey; height: 80px; background-color: lightgrey;"></div>
+              <div>
+                <div class="box-alignment">
+                  <div class="box-alignment-risk">
+                    <p class="small-text-risk">Repayment Capacity</p>
+                    <div class="small-box type-<%= @campaign.repayment_capacity %> align-self-center"><%= @campaign.repayment_capacity %></div>
+                  </div>
+                  <div class="box-alignment-risk">
+                    <p class="small-text-risk">Financial Health</p>
+                    <div class="small-box type-<%= @campaign.financial_health %> align-self-center"><%= @campaign.financial_health %></div>
+                  </div>
+                  <div class="box-alignment-risk">
+                    <p class="small-text-risk">Company History</p>
+                    <div class="small-box type-<%= @campaign.company_history %> align-self-center"><%= @campaign.company_history %></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <h4>Campaign Descriptipn</h4>
+          <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months. A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
+
         </div>
-
-        <h4>Campaign Descriptipn</h4>
-        <p>A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months. A quality and relaxing rural country pub, run by award winning owners. The building and decor are charming and rustic, with elegant modern touches overlooking open country fields or in a pretty courtyard filled with flowers in the summer months.</p>
-
       </div>
-    </div>
 
-    <!-- ------------------------------------------------------------------------------------ -->
-    <!-- ------------------------------------------------------------------------------------ -->
+      <!-- ------------------------------------------------------------------------------------ -->
+      <!-- ------------------------------------------------------------------------------------ -->
 
-    <div class="col-md-4" id="sidebar">
+      <div class="col-md-4" id="sidebar">
 
-      <!-- investment card -->
-      <div class="">
-        <div class="position-fixed" id="card-fixed">
+        <!-- investment card -->
+        <div class="">
+          <div class="position-fixed" id="card-fixed">
 
-          <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-            <!-- invest field and button -->
-            <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-            <div class="d-flex justify-content-between align-items-center">
-              <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
-              <%= f.submit "Invest", class: "btn btn-success" %>
-              <% end %>
-            </div>
+            <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+              <!-- invest field and button -->
+              <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
+              <div class="d-flex justify-content-between align-items-center">
+                <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
+                <%= f.submit "Invest", class: "btn btn-success" %>
+                <% end %>
+              </div>
 
             <!-- <div class="d-flex justify-content-between align-items-center mb-4">
               <p class="input">$ ###</p>
