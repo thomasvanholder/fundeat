@@ -98,18 +98,19 @@ investment.save!
 end
 
 def create_reward(campaign)
-  puts "create reward"
+  # puts "create reward"
   AMOUNT.each_with_index do |amount, index|
     reward = Reward.new()
     reward.description = "#{index + 1} x Free Dinner"
     reward.investment_amount = amount
     reward.campaign = campaign
     reward.save!
-    puts reward.id
-    puts "completed create reward"
+    # puts reward.id
+    # puts "completed create reward"
     create_investment(campaign, reward)
   end
 end
+
 
 def create_campaign(company)
   # puts "creating campaign"
