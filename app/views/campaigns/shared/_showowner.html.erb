@@ -90,89 +90,78 @@
 </div>
 
 <!-- investment card -->
-<div class="d-flex justify-content-center">
-  <div class="card-invest">
-    <!-- invest field and button -->
-    <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-    <div class="d-flex justify-content-center">
-      <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
-      <%= f.input :reward, as: :radio_buttons, collection: %w(1 2 3) %>
-      <%= f.submit "INVEST", class: "btn btn-secondary align-self-center" %>
-      <% end %>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card-invest">
+      <!-- invest field and button -->
+      <div class="d-flex justify-content-center">
+          <p class="input-field align-self-center">$ ..........</p>
+          <div class="align-self-center">
+            <h5><%= link_to "INVEST", "/#", class: "btn btn-secondary" %></h5>
+          </div>
+      </div>
 
-
-    <!-- campaign stats -->
-    <div class="my-2 mx-3 d-flex justify-content-between">
-      <div class="text-center">
-        <h4>5%</h4>
-        <p>interest</p>
-      </div>
-      <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-      </div>
-      <div class="text-center">
-        <h4>48</h4>
-        <p>months</p>
-      </div>
-      <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-      </div>
-      <div class="text-center">
-        <h4>$100,000</h4>
-        <p>target</p>
-      </div>
-    </div>
-
-    <div class="my-1 d-flex flex-column justify-content-between">
-      <!-- investment -->
-      <div class="my-2 mx-3">
-        <h5>My investment</h5>
-        <h4>$100</h4>
-        <!-- range slider  -->
-        <div class="range">
-
+      <!-- campaign stats -->
+      <div class="my-2 mx-3 d-flex justify-content-between">
+        <div class="text-center">
+          <h4>5%</h4>
+          <p>interest</p>
+        </div>
+        <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+        </div>
+        <div class="text-center">
+          <h4>48</h4>
+          <p>months</p>
+        </div>
+        <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+        </div>
+        <div class="text-center">
+          <h4>$100,000</h4>
+          <p>target</p>
         </div>
       </div>
 
-      <!-- return section -->
-      <div class="my-2 mx-3">
-        <h5>My return</h5>
-        <div class="d-flex justify-content-around">
-          <div class="d-flex flex-column text-center">
-            <h4>$2.5</h4>
-            <p>per month</p>
-          </div>
-          <div>X</div>
-          <div class="d-flex flex-column text-center">
-            <h4>48</h4>
-            <p>months</p>
-          </div>
-          <div>=</div>
-          <div class="d-flex flex-column text-center">
-            <h4>$120</h4>
-            <p>total</p>
+      <div class="my-1 d-flex flex-column justify-content-between">
+        <!-- investment -->
+        <div class="my-2 mx-3">
+          <h5>My investment</h5>
+          <h4>$100</h4>
+          <!-- range slider  -->
+          <div class="range">
+
           </div>
         </div>
-      </div>
 
-      <!-- rewards section -->
-      <div class="my-2 mx-3">
-        <h5>My rewards</h5>
-        <p>1x dinner</p>
-      </div>
+        <!-- return section -->
+        <div class="my-2 mx-3">
+          <h5>My return</h5>
+          <div class="d-flex justify-content-around">
+            <div class="d-flex flex-column text-center">
+              <h4>$2.5</h4>
+              <p>per month</p>
+            </div>
+            <div>X</div>
+            <div class="d-flex flex-column text-center">
+              <h4>48</h4>
+              <p>months</p>
+            </div>
+            <div>=</div>
+            <div class="d-flex flex-column text-center">
+              <h4>$120</h4>
+              <p>total</p>
+            </div>
+          </div>
+        </div>
 
+        <!-- rewards section -->
+        <div class="my-2 mx-3">
+          <h5>My rewards</h5>
+          <p>1x dinner</p>
+        </div>
+
+       </div>
+<!-- investment card closing div -->
     </div>
-    <!-- investment card closing div -->
   </div>
-</div>
 
 
-<% if user_signed_in? && current_user.owner == true %>
-  <p>Internal note: You are an owner</p>
-  <%= render "campaigns/shared/showowner" %>
-  <%#= render "devise/shared/links" %>
-
-<% else %>
-  <%= render "campaigns/shared/showinvestor" %>
-  <!-- the code on show for investor should be inside the shared/showowner.html.erb -->
-<% end %>
 
