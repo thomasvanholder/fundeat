@@ -4,17 +4,11 @@
   <%= simple_form_for(campaign_investments_path) do |f| %>
 
   <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
-  <p>Interest:</p>
-  <p>Duration:</p>
-  <%= f.input :amount, :input_html => { :value => @investment.amount }   %>
-  <%= f.input :stripe_session_id, :input_html => { :value => @investment.stripe_session_id }  %>
-  <br>
-
-  <p><em>additional information...</em></p>
-
-  <br>
+  <p>Interest: <%= @campaign.return_rate %></p>
+  <p>Duration: <%= @campaign.loan_duration %></p>
 
 
+  <p>Reward: <%= @reward.description %> </p>
   <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
 
   <script src="https://js.stripe.com/v3/"></script>
@@ -29,5 +23,5 @@
   </script>
   <% end %>
 
-
+<!-- container closing div -->
 </div>
