@@ -17,4 +17,8 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
+  def my_campaigns?
+    return true
+  end
+
 end
