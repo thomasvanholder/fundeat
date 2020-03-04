@@ -145,7 +145,7 @@ url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
-type_store = %w(Restaurant Coffee_Store Bar)
+type_store = %w(Restaurant Cafe Bar)
 
 html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(9).each do |element|
 # puts element.text.strip
