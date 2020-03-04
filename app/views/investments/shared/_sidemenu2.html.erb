@@ -1,33 +1,5 @@
-<!-- graphic area in html -->
+<p>TEST</p>
 
-<h4><small>Public Preferences</small></h4>
-
-<div class="row margin-top">
-
- <div class="col-md-10 col-md-offset-1">
-
-     <div id="chartPreferences" class="ct-chart "></div>
-
- </div>
-
-</div>
-
-<div class="row">
-
- <div class="col-md-10 col-md-offset-1">
-
-     <h6>Legend</h6>
-
-     <i class="fa fa-circle text-info"></i> Apple
-
-     <i class="fa fa-circle text-success"></i> Samsung
-
-     <i class="fa fa-circle text-warning"></i> BlackBerry
-
-     <i class="fa fa-circle text-danger"></i> Windows Phone
-
- </div>
-
-</div>
-
+<canvas data-graph="<%= JSON.generate(@graph_data) %>" id="bar" width="400" height="400"></canvas>
+<canvas data-graph="<%= JSON.generate(@graph_data) %>" id="pie" width="400" height="400"></canvas>
 

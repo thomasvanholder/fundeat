@@ -1,15 +1,18 @@
 import "bootstrap";
 import { setWidth } from '../components/sticky_sidebar';
+import { initCharts } from '../components/init_chart';
+
+initCharts();
 
 setWidth();
 
 const rangeInput = document.getElementById("investmentRange");
 
-rangeInput.addEventListener("click", (event) => {
-  const rangeValue = document.querySelector("#investmentRange").value
-  const investmentAmount = document.querySelector("#investment_amount")
-  investmentAmount.value = rangeValue
-  console.log(rangeValue);
-  console.log(event.currentTarget);
-});
+if (rangeInput) {
+  rangeInput.addEventListener("click", (event) => {
+    const rangeValue = document.querySelector("#investmentRange").value
+    console.log(rangeValue);
+    console.log(event.currentTarget);
+  });
+}
 
