@@ -109,7 +109,6 @@
             <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
             <div class="d-flex justify-content-between align-items-center">
               <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
-              <%= f.input :reward, as: :radio_buttons, collection: %w(1 2 3) %>
               <%= f.submit "Invest", class: "btn btn-success" %>
               <% end %>
             </div>

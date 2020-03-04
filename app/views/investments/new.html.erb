@@ -7,7 +7,6 @@
   <p>Interest:</p>
   <p>Duration:</p>
   <%= f.input :amount, :input_html => { :value => @investment.amount }   %>
-  <%= f.input :reward, :input_html => { :value => @investment.reward.id }  %>
   <%= f.input :stripe_session_id, :input_html => { :value => @investment.stripe_session_id }  %>
   <br>
 
@@ -15,7 +14,6 @@
 
   <br>
 
-  <p>Reward: <%= @investment.reward.description %></p>
 
   <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
 
