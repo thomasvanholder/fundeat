@@ -13,8 +13,11 @@ class InvestmentsController < ApplicationController
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
-    @investment = Investment.new(amount: params["investment"]["amount"], reward_id: params["investment"]["reward"].to_i)
+    @investment = Investment.new(amount: params["investment"]["amount"])
+    @reward = @campaign.rewards.first
+
     @investment.campaign = @campaign
+    @investment.reward = @reward
     @investment.investor = current_user
 
     if @investment.valid?
@@ -23,7 +26,7 @@ class InvestmentsController < ApplicationController
         line_items: [{
           name: @campaign.title,
           # images: [campaign.photo_url],
-          amount: @investment.amount,
+          amount: @investment.amount * 100,
           currency: 'usd',
           quantity: 1
         }],
@@ -47,7 +50,7 @@ class InvestmentsController < ApplicationController
     @investment.amount = params["investment"]["amount"]
   end
 
-private
+  private
 
   # def investment_params
   #   params.require(:investment).permit(:amount, :reward)
