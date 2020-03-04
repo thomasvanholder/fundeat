@@ -3,13 +3,13 @@
 
   <%= simple_form_for(campaign_investments_path) do |f| %>
 
-  <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
-  <p>Interest: <%= @campaign.return_rate %></p>
-  <p>Duration: <%= @campaign.loan_duration %></p>
+  <p>Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
+  <p>Interest: <%= @campaign.return_rate * 100 %> %</p>
+  <p>Duration: <%= @campaign.loan_duration %> months</p>
 
 
   <p>Reward: <%= @reward.description %> </p>
-  <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
+  <%= submit_tag 'Pay Now', class: 'btn btn-secondary', id:"pay" %>
 
   <script src="https://js.stripe.com/v3/"></script>
   <script>
