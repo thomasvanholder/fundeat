@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_03_04_140254) do
 
   create_table "investments", force: :cascade do |t|
     t.integer "amount"
-    t.integer "amount_cents", default: 0, null: false
     t.datetime "payment_date"
     t.string "stripe_session_id"
     t.bigint "investor_id"
@@ -81,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_140254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+    t.integer "amount_cents", default: 0, null: false
     t.index ["campaign_id"], name: "index_investments_on_campaign_id"
     t.index ["reward_id"], name: "index_investments_on_reward_id"
   end
