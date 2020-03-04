@@ -1,0 +1,7 @@
+<% if user_signed_in? && current_user.user_type == 'true' %>
+  <%= render "campaigns/shared/sidemenu" %>
+  <%#= render "devise/shared/links" %>
+
+<% else %>
+  <%= render "Sign up as a raiser now!" %>
+<% end %>

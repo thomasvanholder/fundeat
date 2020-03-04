@@ -9,7 +9,8 @@ require 'nokogiri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "destroy all seeds"
+start = Time.now
+puts "Time is #{start}, destroying seed and restarting seed..."
 Investment.destroy_all
 Reward.destroy_all
 Campaign.destroy_all
@@ -85,10 +86,21 @@ CAMPAIGNS = {
     'Puerto madero second location to be opened. Looking for supporters!'
   ]
 }
+
+REWARDS = {
+  description: [
+    '10%/ Members discount for life!',
+    'Free bottle of champange',
+    'Have a cocktail named after you!',
+    'Have a meal named after you!',
+    'Have your name on the founders list!'
+  ]
+}
+
 # Edit
 USERS[:investors].each do |inv|
-  puts inv[:first_name]
-  investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
+  # puts inv[:first_name]
+  investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], user_type: "false", password: "12345678", email: inv[:email])
 #  puts inv[:link]
 #  puts inv[:email]
 photo = URI.open(inv[:link])
@@ -97,22 +109,20 @@ investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", con
 end
 
 def create_investment(campaign, reward)
-  puts "create investment"
+# puts "create investment"
 
-  investment = Investment.new
-#  puts investment.status = rand(0..4) #check enumerable in investment.rb (model)
-#  puts investment.amount = rand(1..10000)
-# investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
-#  puts investment.payment_date = rand(1..30).days.after
-
-# @Hernan need to discuss this
+investment = Investment.new
+ investment.status = rand(0..4) #check enumerable in investment.rb (model)
+ investment.amount = rand(1..10000)
+ # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
+ investment.payment_date = rand(1..30).days.after
 
 # caution. enhance code as each investor should not have more than one investment on the same company.
 investment.investor = User.where(owner: false).sample
 investment.campaign = campaign
 investment.reward = reward
 investment.save!
-puts "investment completed"
+# puts "investment completed"
 end
 
 def create_reward(campaign)
@@ -130,12 +140,10 @@ def create_reward(campaign)
 end
 
 def create_campaign(company)
-  puts "creating campaign"
+  # puts "creating campaign"
   campaign = Campaign.new
 
   campaign.title = CAMPAIGNS[:title].sample
-
-  campaign.title = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nemo aspernatur illo, ut sit harum, architecto laudantium ipsam repellendus iure dolorem, vero, at cumque sint facere! Adipisci, rem sit deserunt."
 
   campaign.repayment_capacity = rand(1..3)
   campaign.financial_health = rand(1..3)
@@ -155,11 +163,10 @@ create_reward(campaign)
 end
 
 USERS[:owners].each do |owner_info|
-  puts "creating an owner"
+  # puts "creating an owner"
   owner = User.create!(owner_info)
-# <<<<<<< HEAD
-owner.update(owner: true)
-puts owner.first_name
+owner.update(user_type: "true")
+# puts owner.first_name
 end
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
@@ -190,13 +197,17 @@ file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")
 company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
 
 company.save
-puts company.name
+# puts company.name
 
-puts company.valid?
+# company.valid?
 create_campaign(company)
 count += 1
 # =======
 
+end
+
+puts "Seeds succesful"
+puts "It took #{(Time.now - start) / 60}. minutes to seed."
 
 #   1.times do
 #     company = Company.new()
@@ -260,9 +271,6 @@ count += 1
 #     end
 #   end
 # >>>>>>> master
-end
-
-puts "seeds succesfully"
 
 
 # COMPANY = {
