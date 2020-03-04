@@ -106,12 +106,20 @@
 
           <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
             <!-- invest field and button -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
+              <%= f.input :reward, as: :radio_buttons, collection: %w(1 2 3) %>
+              <%= f.submit "Invest", class: "btn btn-success" %>
+              <% end %>
+            </div>
+
+            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
               <p class="input">$ ###</p>
               <div class="">
-                <h5><%= link_to "Invest", "/", class: "btn btn-success" %></h5>
+                <h5><%#= link_to "Invest", "/", class: "btn btn-success" %></h5>
               </div>
-            </div>
+            </div> -->
 
             <!-- campaign stats -->
             <div class="my-2 d-flex justify-content-between">
@@ -138,7 +146,8 @@
               <form>
                 <div class="investment-slider my-3">
                   <label for="investmentRange" style="font-size: 12px;">Investment</label>
-                  <input type="range" class="investment-range" min="100" max="1000" step="10" id="investmentRange">
+                  <br>
+                  <input type="range" class="investment-range w-100" min="100" max="1000" step="10" id="investmentRange">
                 </div>
               </form>
             </div>
