@@ -111,6 +111,7 @@ def create_reward(campaign)
   end
 end
 
+
 def create_campaign(company)
   # puts "creating campaign"
   campaign = Campaign.new
