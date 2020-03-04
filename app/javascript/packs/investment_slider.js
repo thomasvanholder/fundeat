@@ -1,6 +1,7 @@
-const rangeInput = document.getElementById("rangeinput").value;
+const rangeInput = document.getElementById("rangeinput");
 
 rangeInput.addEventListener("click", (event) => {
-  console.log(event);
+  const rangeValue = document.querySelector("#investmentRange").value
+  console.log(rangeValue);
   console.log(event.currentTarget);
 });
