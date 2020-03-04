@@ -99,13 +99,8 @@ REWARDS = {
 
 # Edit
 USERS[:investors].each do |inv|
-<<<<<<< HEAD
   # puts inv[:first_name]
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], user_type: "false", password: "12345678", email: inv[:email])
-=======
-  puts inv[:first_name]
-  investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
->>>>>>> master
 #  puts inv[:link]
 #  puts inv[:email]
 photo = URI.open(inv[:link])
@@ -122,7 +117,6 @@ investment = Investment.new
  # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
  investment.payment_date = rand(1..30).days.after
 
-
 # caution. enhance code as each investor should not have more than one investment on the same company.
 investment.investor = User.where(owner: false).sample
 investment.campaign = campaign
@@ -132,20 +126,6 @@ investment.save!
 end
 
 def create_reward(campaign)
-<<<<<<< HEAD
-  # puts "create reward"
-
-  reward = Reward.new()
-
-  reward.description = REWARDS[:description].sample
-
-  reward.investment_amount = AMOUNT.sample
-  reward.campaign = campaign
-  reward.save!
-  reward.id
-  # puts "completed create reward"
-  create_investment(campaign, reward)
-=======
   puts "create reward"
   AMOUNT.each_with_index do |amount, index|
     reward = Reward.new()
@@ -157,7 +137,6 @@ def create_reward(campaign)
     puts "completed create reward"
     create_investment(campaign, reward)
   end
->>>>>>> master
 end
 
 def create_campaign(company)
@@ -186,14 +165,8 @@ end
 USERS[:owners].each do |owner_info|
   # puts "creating an owner"
   owner = User.create!(owner_info)
-# <<<<<<< HEAD
-<<<<<<< HEAD
 owner.update(user_type: "true")
 # puts owner.first_name
-=======
-owner.update(owner: true)
-puts owner.first_name
->>>>>>> master
 end
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 

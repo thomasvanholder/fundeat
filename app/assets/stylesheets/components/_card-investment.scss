@@ -1,10 +1,16 @@
+
+// progress[value] {
+//   width: 250px;
+//   height: 50px;
+// }
+
 .card-investment {
   height: 540px;
   width: 380px;
   background-color: #F3F3F3;
   border-radius: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
+
 }
 
 .card-investment .card-pic {
@@ -43,6 +49,29 @@
   color: white;
   font-weight: bold;
   display: flex;
+}
+
+#progress-bar-percentage {
+  margin-left: 0px;
+  width: 100%;
+  height: 30px;
+  border-radius: 8px;
+  background-color: white;
+  color: white;
+
+  font-weight: bold;
+  display: flex;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+  -webkit-linear-gradient(left, lightgrey, lightgrey);
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
 .card-investment .box-align {
