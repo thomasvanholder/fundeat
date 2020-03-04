@@ -30,7 +30,7 @@ class InvestmentsController < ApplicationController
           currency: 'usd',
           quantity: 1
         }],
-        success: investments_url
+        success_url: investments_url
         # success_url: campaign_investment_url(@campaign, @investment),
         cancel_url: investments_url
         )
