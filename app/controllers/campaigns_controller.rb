@@ -2,14 +2,14 @@ class CampaignsController < ApplicationController
  #Note! pundit was implemented. remember to authorize your variables with for example. authorize@campaign
  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+    @campaigns = policy_scope(Campaign)
+    authorize @campaigns
   end
 
   def show
-  @campaign = Campaign.find(params[:id])
-  @investment = Investment.new
-  authorize @campaign
+    @campaign = Campaign.find(params[:id])
+    @investment = Investment.new
+    authorize @campaign
   end
 
   def new
@@ -26,8 +26,16 @@ class CampaignsController < ApplicationController
   end
 
   def my_campaigns
-  index
+    index
   end
+
+  # def dashboard
+  #   if current.user.owner?
+  #     :owner_dashboard
+  #   else
+  #     render :investor_dashboard
+  #   end
+  # end
 
   private
 
