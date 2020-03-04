@@ -62,7 +62,7 @@
                 <% raised_sum += investment.amount %>
                 <% end %>
                 <% progress_percentage = ((raised_sum / @campaign.min_target.to_f)*100).round(0) %>
-                <div class="" style="background-color: #1EDD88; width: <%= progress_percentage %>%; border-radius: 50px;">
+                <div class="" style="background-color: #1EDD88; width: <%= progress_percentage < 100 ? progress_percentage : 100 %>%; border-radius: 50px;">
                   <p class="px-3"><%= progress_percentage %>%</p>
                 </div>
               </div>
@@ -90,7 +90,7 @@
           <p><%= @campaign.title %></p>
 
           <!-- risk card component -->
-          <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+          <div class="card-campaign-status p-3 my-5" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
             <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
               <div class="text-center">
                 <div class="m-0">Risk Level</div>
@@ -130,6 +130,8 @@
 
         <!-- ------------------------------------------------------------------------------------ -->
         <!-- ------------------------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------------------------ -->
 
         <div class="col-md-4" id="sidebar">
           <!-- investment card -->
@@ -139,14 +141,14 @@
               <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
                 <!-- invest field and button -->
                 <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-                <div class="d-flex justify-content-between align-items-center">
-                  <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
-                  <%= f.submit "Invest", class: "btn btn-success" %>
+                <div class="form-input d-flex justify-space-between align-items-center mb-4">
+                  <%= f.input :amount, class: "input-field", placeholder: "250", label: false, :required => true,  :input_html => { :type => "number" } %>
+                  <%= f.submit "Invest", class: "btn btn-success", style:"margin-left: 16px;" %>
                   <% end %>
                 </div>
 
                 <!-- campaign stats -->
-                <div class="my-2 d-flex justify-content-between">
+                <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="text-center">
                     <h5 class="m-0"><%= (@campaign.return_rate * 100).round(1) %>%</h5>
                     <p class="text-secondary m-0" style="font-size: 12px;">return</p>
@@ -165,12 +167,12 @@
                   </div>
                 </div>
 
-                <div class="my-1 d-flex flex-column justify-content-between">
+                <div class="d-flex flex-column justify-content-between">
                   <!-- range slider  -->
                   <form>
-                    <div class="investment-slider my-3">
+                    <div class="investment-slider my-2">
                       <label for="investmentRange" style="margin: 0; font-size: 12px;">Investment</label>
-                      <input type="range" class="investment-range w-100" min="100" max="1000" step="10" id="investmentRange">
+                      <input type="range" class="investment-range w-100" min="20" max="10000" step="1" id="investmentRange">
                     </div>
                   </form>
                 </div>
@@ -196,7 +198,7 @@
                 </div>
 
                 <!-- rewards section -->
-                <div class="mt-5">
+                <div class="mt-4">
                   <h5 style="font-size: 12px;">My reward</h5>
                   <div class="d-flex align-items-center px-3 py-1" style="background-color: lightgrey; border-radius: 50px;">
                     <i class="fas fa-gift"></i>
@@ -213,3 +215,20 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <div id="mapbox" class="rounded" style="width: 100%; height: 300px;" data-markers="<%= @marker.to_json %>" data-mapbox-api-key="<%#= ENV['MAPBOX_API_KEY'] %>"></div>
+    <span class="address-box-grey" style="color: white; position: absolute; bottom: 5px; left: 20px;"><%#= @campaign.address %></span>
+  </div>
+</div> -->
+
+<style>
+  .input-group-btn {
+    display: none;
+  }
+
+  .investment_amount {
+    margin: 0;
+  }
+</style>
