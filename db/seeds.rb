@@ -48,6 +48,9 @@ investors: [
 # Reward amount
 AMOUNT = %w(500 1000 2000 5000)
 
+# Loan duration
+DURATION = %w(12 24 36 48 60)
+
 # #Edit
 CAMPAIGNS = {
   title: [
@@ -98,18 +101,19 @@ investment.save!
 end
 
 def create_reward(campaign)
-  puts "create reward"
+  # puts "create reward"
   AMOUNT.each_with_index do |amount, index|
     reward = Reward.new()
     reward.description = "#{index + 1} x Free Dinner"
     reward.investment_amount = amount
     reward.campaign = campaign
     reward.save!
-    puts reward.id
-    puts "completed create reward"
+    # puts reward.id
+    # puts "completed create reward"
     create_investment(campaign, reward)
   end
 end
+
 
 def create_campaign(company)
   # puts "creating campaign"
@@ -117,14 +121,14 @@ def create_campaign(company)
 
   campaign.title = CAMPAIGNS[:title].sample
 
-  campaign.repayment_capacity = rand(1..3)
-  campaign.financial_health = rand(1..3)
-  campaign.company_history = rand(1..3)
-  campaign.risk_level = rand(1..3)
+  campaign.repayment_capacity = ("A".."C").to_a.sample
+  campaign.financial_health = ("A".."C").to_a.sample
+  campaign.company_history = ("A".."C").to_a.sample
+  campaign.risk_level = ("A".."C").to_a.sample
 
   campaign.min_target = rand(20000..60000)
   campaign.max_target = campaign.min_target + rand(20000..60000)
-  campaign.loan_duration = rand(6..48)
+  campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(1)
   campaign.expiry_date = Date.today + rand(30..90).days
 
@@ -144,7 +148,7 @@ url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
-type_store = %w(Restaurant Coffee_Store Bar)
+type_store = %w(Restaurant Cafe Bar)
 
 html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(9).each do |element|
 # puts element.text.strip
