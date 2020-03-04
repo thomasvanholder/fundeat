@@ -10,6 +10,13 @@ class CampaignsController < ApplicationController
   @campaign = Campaign.find(params[:id])
   @investment = Investment.new
   authorize @campaign
+  @company = @campaign.company
+
+  @marker = [{
+    lat: @company.latitude,
+    lng: @company.longitude,
+    image_url: helpers.asset_url('restaurant.png')
+  }]
   end
 
   def new

@@ -48,6 +48,9 @@ investors: [
 # Reward amount
 AMOUNT = %w(500 1000 2000 5000)
 
+# Loan duration
+DURATION = %w(12 24 36 48 60)
+
 # #Edit
 CAMPAIGNS = {
   title: [
@@ -125,7 +128,7 @@ def create_campaign(company)
 
   campaign.min_target = rand(20000..60000)
   campaign.max_target = campaign.min_target + rand(20000..60000)
-  campaign.loan_duration = rand(6..48)
+  campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(1)
   campaign.expiry_date = Date.today + rand(30..90).days
 
