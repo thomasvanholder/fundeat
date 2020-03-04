@@ -100,8 +100,8 @@ def create_investment(campaign, reward)
   puts "create investment"
 
   investment = Investment.new
-#  puts investment.status = rand(0..4) #check enumerable in investment.rb (model)
-#  puts investment.amount = rand(1..10000)
+  investment.status = rand(0..4) #check enumerable in investment.rb (model)
+  investment.amount = rand(1..10000)
 # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
 #  puts investment.payment_date = rand(1..30).days.after
 
