@@ -1,13 +1,14 @@
 <div class="container">
   <h1>Investment Summary</h1>
 
-  <%= form_tag new_campaign_investment_path do %>
-  <%= hidden_field_tag 'investment_id', @investment.id %>
+  <%= simple_form_for([@campaign, @investment]) do |f| %>
 
     <p>Invest Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
     <p>Interest:</p>
     <p>Duration:</p>
-
+  <%= f.input :amount, :input_html => { :value => @investment.amount }   %>
+  <%= f.input :reward, :input_html => { :value => @investment.reward.id }  %>
+  <%= f.input :stripe_session_id, :input_html => { :value => @investment.stripe_session_id }  %>
     <br>
 
     <p><em>additional information...</em></p>
@@ -16,7 +17,33 @@
 
     <p>Reward: <%= @investment.reward.description %></p>
 
-    <%= submit_tag 'Pay Now', class: 'btn btn-secondary' %>
+
+    <%= submit_tag 'Purchase', class: 'btn btn-primary', id:"pay" %>
+
+
+    <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @investment.stripe_session_id %>'
+          });
+        });
+      </script>
   <% end %>
 
+
+</div>
+
+  <!-- app/views/payments/new.html.erb -->
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+      <h1>Checkout summary</h1>
+      <p>Purchase of <strong><%= @investment.campaign.title %></strong></p>
+      <p>Amount: <strong><%= humanized_money_with_symbol @investment.amount %></strong></p>
+
+    </div>
+  </div>
 </div>

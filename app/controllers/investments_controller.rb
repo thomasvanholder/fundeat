@@ -1,16 +1,21 @@
 class InvestmentsController < ApplicationController
+  # attr_reader: investment
+
   def index
     @investments = policy_scope(Investment)
     authorize @investments
   end
 
   def show
+    @investment = Investment.find(params[:id])
+    authorize @investment
   end
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @investment = Investment.new(amount: params["investment"]["amount"], reward_id: params["investment"]["reward"].to_i)
     @investment.campaign = @campaign
+    @session = params[:stripe_session_id]
     authorize @campaign
     authorize @investment
   end
@@ -19,7 +24,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new()
     authorize @investment
     @investment.reward_id = params[:investment][:reward].to_i
-    @investment.amount = params[:investment][:amount]
+    @investment.amount = params["investment"]["amount"]
     @campaign = Campaign.find(params[:campaign_id])
     @investment.campaign = @campaign
     @investment.investor = current_user
@@ -40,8 +45,9 @@ class InvestmentsController < ApplicationController
         )
       @investment.update(stripe_session_id: session.id)
       @investment.save!
-      redirect_to new_campaign_investment_path(@campaign, invest: @investment)
+      redirect_to investment_path(@investment)
     else
+      raise
       render :new
     end
 end
