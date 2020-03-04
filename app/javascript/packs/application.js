@@ -1,3 +1,6 @@
+require("chartkick")
+require("chart.js")
+
 import "bootstrap";
 import { setWidth } from '../components/sticky_sidebar';
 
@@ -12,3 +15,5 @@ rangeInput.addEventListener("click", (event) => {
   console.log(rangeValue);
   console.log(event.currentTarget);
 });
+
+
