@@ -3,6 +3,17 @@
 //   width: 250px;
 //   height: 50px;
 // }
+.wrapper-link {
+  text-decoration: none!important;
+  color: black;
+}
+
+.wrapper-link:hover {
+  text-decoration: none!important;
+  color: black;
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
 
 .card-investment {
   height: 540px;
@@ -10,6 +21,7 @@
   background-color: #F3F3F3;
   border-radius: 20px;
   margin: 20px;
+  box-shadow: 0 0 24px rgba(33,33,33,.3);
 
 }
 
