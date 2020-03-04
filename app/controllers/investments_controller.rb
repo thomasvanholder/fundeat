@@ -6,6 +6,11 @@ class InvestmentsController < ApplicationController
     authorize @investments
   end
 
+  def dashboard
+    @investments = policy_scope(Investment)
+    authorize @investments
+  end
+
   def show
     @investment = Investment.find(params[:id])
     authorize @investment

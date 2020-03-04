@@ -5,6 +5,9 @@ class InvestmentPolicy < ApplicationPolicy
     end
   end
 
+  def dashboard?
+    return true
+  end
   def new?
     return true
   end
