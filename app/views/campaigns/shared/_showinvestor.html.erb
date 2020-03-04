@@ -52,150 +52,164 @@
 
       <h2 class="mt-4" style="font-weight: bold;"><%= @campaign.company.name %></h2>
       <h6 style="color: grey;"><%= @campaign.company.type_store %></h6 style="color: grey;">
-      <!-- CAMPAIGN PROGRESS STATUS -->
-      <div class="justify-content-center">
-        <div class="">
-          <div class="card-campaign-status p-2 mb-5 mt-5" style="max-width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-            <div class="target-bar m-3" style="background-color: white; border-radius: 50px;">
-              <% raised_sum = 0 %>
-              <% @campaign.investments.each do |investment| %>
-              <% raised_sum += investment.amount %>
-              <% end %>
-              <% progress_percentage = ((raised_sum / @campaign.min_target.to_f)*100).round(0) %>
-              <div class="" style="background-color: #1EDD88; width: <%= progress_percentage %>%; border-radius: 50px;">
-                <p class="px-3"><%= progress_percentage %>%</p>
+        <!-- CAMPAIGN PROGRESS STATUS -->
+        <div class="justify-content-center">
+          <div class="">
+            <div class="card-campaign-status p-2 mb-5 mt-5" style="max-width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+              <div class="target-bar m-3" style="background-color: white; border-radius: 50px;">
+                <% raised_sum = 0 %>
+                <% @campaign.investments.each do |investment| %>
+                <% raised_sum += investment.amount %>
+                <% end %>
+                <% progress_percentage = ((raised_sum / @campaign.min_target.to_f)*100).round(0) %>
+                <div class="" style="background-color: #1EDD88; width: <%= progress_percentage %>%; border-radius: 50px;">
+                  <p class="px-3"><%= progress_percentage %>%</p>
+                </div>
               </div>
-            </div>
 
-            <div class="d-flex mt-4 justify-content-around">
-              <div class="text-center">
-                <h5><%= @campaign.investments.count %></h5>
-                <p class="text-secondary mb-2" style="font-size: 12px;">investors</p>
-              </div>
-              <div style="border: 1px solid lightgrey; height: 50px"></div>
-              <div class="text-center">
-                <h5>$<%= number_with_precision(raised_sum, :precision => 0, :delimiter => ',') %></h5>
-                <p class="text-secondary mb-2" style="font-size: 12px;">raised</p>
-              </div>
-              <div style="border: 1px solid lightgrey; height: 50px"></div>
-              <div class="text-center">
-                <h5><%= ((@campaign.expiry_date - DateTime.current)/(24*3600)).round(0) %>d <%= (((@campaign.expiry_date - DateTime.current)/(24*3600)).round(2).to_s.split(".").last.to_i * 0.24).round(0) %>h</h5>
-                <p class="text-secondary mb-2" style="font-size: 12px;">remaining</p>
+              <div class="d-flex mt-4 justify-content-around">
+                <div class="text-center">
+                  <h5><%= @campaign.investments.count %></h5>
+                  <p class="text-secondary mb-2" style="font-size: 12px;">investors</p>
+                </div>
+                <div style="border: 1px solid lightgrey; height: 50px"></div>
+                <div class="text-center">
+                  <h5>$<%= number_with_precision(raised_sum, :precision => 0, :delimiter => ',') %></h5>
+                  <p class="text-secondary mb-2" style="font-size: 12px;">raised</p>
+                </div>
+                <div style="border: 1px solid lightgrey; height: 50px"></div>
+                <div class="text-center">
+                  <h5><%= ((@campaign.expiry_date - DateTime.current)/(24*3600)).round(0) %>d <%= (((@campaign.expiry_date - DateTime.current)/(24*3600)).round(2).to_s.split(".").last.to_i * 0.24).round(0) %>h</h5>
+                  <p class="text-secondary mb-2" style="font-size: 12px;">remaining</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <h4>Campaign Title</h4>
-        <p><%= @campaign.title %></p>
+          <h4>Campaign Title</h4>
+          <p><%= @campaign.title %></p>
 
-        <div class="card-risk-level p-3 my-5" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-          <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
-            <div class="text-center">
-              <p class="m-0">Risk Level</p>
-              <span style="font-size: 48px; font-weight: bold; margin: 0;"><p class="m-0"><%= @campaign.risk_level %></p></span>
-            </div>
-            <div style="border: 1px solid lightgrey; height: 80px"></div>
-            <div>
-              <div style="color: darkgrey;">
-                <p class="m-0 mr-2">Repayment Capacity</p>
-                <p class="m-0 mr-2">Financial Health</p>
-                <p class="m-0 mr-2">Company History</p>
+          <!-- risk card component -->
+          <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+            <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
+              <div class="text-center">
+                <div class="m-0">Risk Level</div>
+                <div class="d-flex justify-content-around mx-2">
+                  <div class="circle-icon align-self-center color-type-<%= @campaign.risk_level %>"></div>
+                  <span style="font-size: 48px; margin: 0;">
+                    <p class="m-0"><%= @campaign.risk_level %></p></span>
+                  </div>
+                </div>
+                <div style="border: 1px solid lightgrey; height: 80px; background-color: lightgrey;"></div>
+                <div>
+                  <div class="box-alignment">
+                    <div class="box-alignment-risk">
+                      <p class="small-text-risk">Repayment Capacity</p>
+                      <div class="small-box type-<%= @campaign.repayment_capacity %> align-self-center"><%= @campaign.repayment_capacity %></div>
+                    </div>
+                    <div class="box-alignment-risk">
+                      <p class="small-text-risk">Financial Health</p>
+                      <div class="small-box type-<%= @campaign.financial_health %> align-self-center"><%= @campaign.financial_health %></div>
+                    </div>
+                    <div class="box-alignment-risk">
+                      <p class="small-text-risk">Company History</p>
+                      <div class="small-box type-<%= @campaign.company_history %> align-self-center"><%= @campaign.company_history %></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <h4>Company Description</h4>
+            <p><%= @campaign.company.description %></p>
+            <br>
+            <br>
+
           </div>
         </div>
 
-        <h4>Company Description</h4>
-        <p><%= @campaign.company.description %></p>
-        <br>
-        <br>
+        <!-- ------------------------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------------------------ -->
 
-      </div>
-    </div>
+        <div class="col-md-4" id="sidebar">
+          <!-- investment card -->
+          <div class="">
+            <div class="position-fixed" id="card-fixed">
 
-    <!-- ------------------------------------------------------------------------------------ -->
-    <!-- ------------------------------------------------------------------------------------ -->
-
-    <div class="col-md-4" id="sidebar">
-
-      <!-- investment card -->
-      <div class="">
-        <div class="position-fixed" id="card-fixed">
-
-          <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-            <!-- invest field and button -->
-            <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-            <div class="d-flex justify-content-between align-items-center">
-              <%= f.input :amount, class: "input-field", placeholder: "$ 250", label: false, :required => true %>
-              <%= f.submit "Invest", class: "btn btn-success" %>
-              <% end %>
-            </div>
-
-            <!-- campaign stats -->
-            <div class="my-2 d-flex justify-content-between">
-              <div class="text-center">
-                <h5 class="m-0"><%= (@campaign.return_rate * 100).round(1) %>%</h5>
-                <p class="text-secondary m-0" style="font-size: 12px;">return</p>
-              </div>
-              <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-              </div>
-              <div class="text-center">
-                <h5 class="m-0"><%= @campaign.loan_duration %></h5>
-                <p class="text-secondary m-0" style="font-size: 12px;">months</p>
-              </div>
-              <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-              </div>
-              <div class="text-center">
-                <h5 class="m-0">$<%= number_with_precision(@campaign.min_target, :precision => 0, :delimiter => ',') %></h5>
-                <p class="text-secondary m-0" style="font-size: 12px;">target</p>
-              </div>
-            </div>
-
-            <div class="my-1 d-flex flex-column justify-content-between">
-              <!-- range slider  -->
-              <form>
-                <div class="investment-slider my-3">
-                  <label for="investmentRange" style="margin: 0; font-size: 12px;">Investment</label>
-                  <input type="range" class="investment-range w-100" min="100" max="1000" step="10" id="investmentRange">
+              <div class="card-investment-play p-4 m-0" style="max-width: 300px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+                <!-- invest field and button -->
+                <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
+                <div class="d-flex justify-content-between align-items-center">
+                  <%= f.input :amount, class: "input-field", placeholder: "$250", label: false, :required => true %>
+                  <%= f.submit "Invest", class: "btn btn-success" %>
+                  <% end %>
                 </div>
-              </form>
-            </div>
 
-            <!-- return section -->
-            <div class="my-2">
-              <div class="d-flex justify-content-around">
-                <div class="d-flex flex-column text-center">
-                  <h5 class="m-0">$2.5</h5>
-                  <p class="text-secondary m-0" style="font-size: 12px;">per month</p>
+                <!-- campaign stats -->
+                <div class="my-2 d-flex justify-content-between">
+                  <div class="text-center">
+                    <h5 class="m-0"><%= (@campaign.return_rate * 100).round(1) %>%</h5>
+                    <p class="text-secondary m-0" style="font-size: 12px;">return</p>
+                  </div>
+                  <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+                  </div>
+                  <div class="text-center">
+                    <h5 class="m-0"><%= @campaign.loan_duration %></h5>
+                    <p class="text-secondary m-0" style="font-size: 12px;">months</p>
+                  </div>
+                  <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+                  </div>
+                  <div class="text-center">
+                    <h5 class="m-0">$<%= number_with_precision(@campaign.min_target, :precision => 0, :delimiter => ',') %></h5>
+                    <p class="text-secondary m-0" style="font-size: 12px;">target</p>
+                  </div>
                 </div>
-                <div>X</div>
-                <div class="d-flex flex-column text-center">
-                  <h5 class="m-0"><%= @campaign.loan_duration %></h5>
-                  <p class="text-secondary m-0" style="font-size: 12px;">months</p>
+
+                <div class="my-1 d-flex flex-column justify-content-between">
+                  <!-- range slider  -->
+                  <form>
+                    <div class="investment-slider my-3">
+                      <label for="investmentRange" style="margin: 0; font-size: 12px;">Investment</label>
+                      <input type="range" class="investment-range w-100" min="100" max="1000" step="10" id="investmentRange">
+                    </div>
+                  </form>
                 </div>
-                <div>=</div>
-                <div class="d-flex flex-column text-center">
-                  <h5 class="m-0">$<%= number_with_precision((@campaign.loan_duration * (@campaign.return_rate).to_f).round(2), :precision => 0, :delimiter => ',') %></h5>
-                  <p class="text-secondary m-0" style="font-size: 12px;">total return</p>
+
+                <!-- return section -->
+                <div class="my-2">
+                  <div class="d-flex justify-content-around">
+                    <div class="d-flex flex-column text-center">
+                      <h5 class="m-0">$2.5</h5>
+                      <p class="text-secondary m-0" style="font-size: 12px;">per month</p>
+                    </div>
+                    <div>X</div>
+                    <div class="d-flex flex-column text-center">
+                      <h5 class="m-0"><%= @campaign.loan_duration %></h5>
+                      <p class="text-secondary m-0" style="font-size: 12px;">months</p>
+                    </div>
+                    <div>=</div>
+                    <div class="d-flex flex-column text-center">
+                      <h5 class="m-0">$<%= number_with_precision((@campaign.loan_duration * (@campaign.return_rate).to_f).round(2), :precision => 0, :delimiter => ',') %></h5>
+                      <p class="text-secondary m-0" style="font-size: 12px;">total return</p>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- rewards section -->
+                <div class="mt-5">
+                  <h5 style="font-size: 12px;">My reward</h5>
+                  <div class="d-flex align-items-center px-3 py-1" style="background-color: lightgrey; border-radius: 50px;">
+                    <i class="fas fa-gift"></i>
+                    <p class="m-0 ml-4"><%= @campaign.rewards.first.description %></p>
+                  </div>
+                </div>
+
               </div>
             </div>
-
-            <!-- rewards section -->
-            <div class="mt-5">
-              <h5 style="font-size: 12px;">My reward</h5>
-              <div class="d-flex align-items-center px-3 py-1" style="background-color: lightgrey; border-radius: 50px;">
-                <i class="fas fa-gift"></i>
-                <p class="m-0 ml-4"><%= @campaign.rewards.first.description %></p>
-              </div>
-            </div>
-
+            <!-- investment card closing div -->
           </div>
         </div>
-        <!-- investment card closing div -->
       </div>
     </div>
   </div>
-</div>
 </div>

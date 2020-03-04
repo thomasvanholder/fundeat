@@ -1,6 +1,6 @@
 
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/scooters", class: "navbar-brand" do %>
+  <%= link_to "/campaigns", class: "navbar-brand" do %>
   <img src="https://img.icons8.com/doodle/48/000000/dining-room.png">
   <% end %>
 
@@ -11,21 +11,34 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-       <li class="nav-item active">
-        <%= link_to "Investing", "/campaigns", class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
-      </li>
+      <% if user_signed_in? && current_user.owner == false %>
+        <li class="nav-item active">
+         <%= link_to "Investing", "/campaigns", class: "nav-link" %>
+        </li>
+      <% elsif user_signed_in? && current_user.owner == true %>
+        <li class="nav-item active">
+          <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
+        </li>
+      <% end %>
 
      <% unless user_signed_in? %>
 
         <li class="nav-item active">
+         <%= link_to "Investing", "/campaigns", class: "nav-link" %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
+        </li>
+
+        <li class="nav-item active">
           <%= link_to "Login", "/users/sign_in", class: "nav-link" %>
         </li>
+
         <li class="nav-item active">
           <%= link_to "Signup", "/users/sign_up", class: "nav-link" %>
         </li>
+
      <% end %>
 
 
