@@ -117,10 +117,10 @@ def create_campaign(company)
 
   campaign.title = CAMPAIGNS[:title].sample
 
-  campaign.repayment_capacity = rand("A".."C")
-  campaign.financial_health = rand("A".."C")
-  campaign.company_history = rand("A".."C")
-  campaign.risk_level = rand("A".."C")
+  campaign.repayment_capacity = ("A".."C").to_a.sample
+  campaign.financial_health = ("A".."C").to_a.sample
+  campaign.company_history = ("A".."C").to_a.sample
+  campaign.risk_level = ("A".."C").to_a.sample
 
   campaign.min_target = rand(20000..60000)
   campaign.max_target = campaign.min_target + rand(20000..60000)

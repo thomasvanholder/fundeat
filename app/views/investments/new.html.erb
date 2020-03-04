@@ -8,6 +8,25 @@
   <p>Duration: <%= @campaign.loan_duration %> months</p>
 
 
+  <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+    <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
+      <div class="text-center">
+        <p class="m-0">Risk Level <%= @campaign.risk_level %></p>
+        <span style="font-size: 48px; font-weight: bold; margin: 0;"><p class="m-0">#</p></span>
+      </div>
+      <div style="border: 1px solid lightgrey; height: 80px"></div>
+      <div>
+        <div style="color: darkgrey;">
+          <p class="m-0 mr-2">Repayment Capacity <%= @campaign.repayment_capacity %></p>
+          <p class="m-0 mr-2">Financial Health <%= @campaign.financial_health %></p>
+          <p class="m-0 mr-2">Company History <%= @campaign.company_history %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <p>Reward: <%= @reward.description %> </p>
   <%= submit_tag 'Pay Now', class: 'btn btn-secondary', id:"pay" %>
 
