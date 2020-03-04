@@ -72,8 +72,8 @@ investors: [
 # >>>>>>> master
 }
 
-# # LICENSE_TYPE = %w(A1 A2 A3)
-AMOUNT = %w(500 1000 5000 10000)
+# Reward amount
+AMOUNT = %w(500 1000 2000 5000)
 
 # #Edit
 CAMPAIGNS = {
@@ -117,15 +117,16 @@ end
 
 def create_reward(campaign)
   puts "create reward"
-
-  reward = Reward.new()
-  reward.description = "Campaign description.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores, voluptatibus temporibus cupiditate dolorem, voluptate rem dicta aperiam tenetur. Facilis deleniti explicabo provident mollitia nulla inventore libero a consequuntur nemo."
-  reward.investment_amount = AMOUNT.sample
-  reward.campaign = campaign
-  reward.save!
-  puts reward.id
-  puts "completed create reward"
-  create_investment(campaign, reward)
+  AMOUNT.each_with_index do |amount, index|
+    reward = Reward.new()
+    reward.description = "#{index} x Free Dinner"
+    reward.investment_amount = amount
+    reward.campaign = campaign
+    reward.save!
+    puts reward.id
+    puts "completed create reward"
+    create_investment(campaign, reward)
+  end
 end
 
 def create_campaign(company)
@@ -150,17 +151,15 @@ def create_campaign(company)
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
 campaign.save!
-rand(10..20).times do
-  create_reward(campaign)
-end
+create_reward(campaign)
 end
 
 USERS[:owners].each do |owner_info|
   puts "creating an owner"
   owner = User.create!(owner_info)
 # <<<<<<< HEAD
-  owner.update(owner: true)
-  puts owner.first_name
+owner.update(owner: true)
+puts owner.first_name
 end
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
@@ -168,7 +167,7 @@ html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
 type_store = %w(Restaurant Coffee_Store Bar)
 
-html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(30).each do |element|
+html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(9).each do |element|
 # puts element.text.strip
 names = element.search('h1').text.strip.gsub!(/\d+. /,"")
 address = element.search('.c-mapstack__address').text.strip
