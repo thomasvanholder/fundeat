@@ -39,3 +39,4 @@ flatpickr("#range_start", {
     span.innerText = `${return_p_month}`
   }
 });
+
