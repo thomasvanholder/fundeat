@@ -1,12 +1,11 @@
 class CampaignsController < ApplicationController
  #Note! pundit was implemented. remember to authorize your variables with for example. authorize@campaign
- skip_before_action :authenticate_user!, only: [:index, :show]
-  def index
-    @campaigns = policy_scope(Campaign)
-    authorize @campaigns
-  end
+ skip_before_action :authenticate_user!, only: [:index, :show, :raising]
+ def index
+  @campaigns = policy_scope(Campaign)
+end
 
-  def show
+def show
   @campaign = Campaign.find(params[:id])
   @investment = Investment.new
   authorize @campaign
@@ -17,24 +16,30 @@ class CampaignsController < ApplicationController
     lng: @company.longitude,
     image_url: helpers.asset_url('restaurant.png')
   }]
-  end
+end
 
-  def new
-  end
+def new
+end
 
-  def create
+def create
   authorize @campaign
-  end
+end
 
-  def edit
-  end
+def edit
+end
 
-  def update
-  end
+def update
+end
 
-  def my_campaigns
-    index
-  end
+def raising
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
+
+def my_campaigns
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
 
   # def dashboard
   #   if current.user.owner?
@@ -47,7 +52,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-  params.require(:campaign).permit(:title)
+    params.require(:campaign).permit(:title)
   end
 
 end

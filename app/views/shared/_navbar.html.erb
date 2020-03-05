@@ -17,7 +17,7 @@
         </li>
       <% elsif user_signed_in? && current_user.owner == true %>
         <li class="nav-item active">
-          <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
+          <%= link_to "Raising", "/raising", class: "nav-link" %>
         </li>
       <% end %>
 
@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item active">
-          <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
+          <%= link_to "Raising", "/raising", class: "nav-link" %>
         </li>
 
         <li class="nav-item active">
