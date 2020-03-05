@@ -1,0 +1,235 @@
+<!-- No longer validating user type on the 'Raising information page' -->
+
+<%# if user_signed_in? && current_user.owner == true %>
+<%# else %>
+<%#= render "campaigns/shared/sidemenu" %>
+<%# end %>
+
+<!-- Head -->
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+  <!-- <meta charset="utf-8"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <!-- <meta name="description" content=""> -->
+  <!-- <meta name="author" content=""> -->
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Custom styles for this template -->
+  <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+  <!-- </head> -->
+  <!-- Head wrapper-->
+
+  <div class="banner-campaign d-flex align-items-center justify-content-center">
+    <h3 class="banner-title">Raise today!</h3>
+  </div>
+
+  <!-- Body -->
+
+  <body>
+
+    <div class="d-flex" id="wrapper">
+
+      <!-- Page Content -->
+
+      <div id="page-content-wrapper">
+
+        <div class="container my-4">
+          <div class="row align-items-start">
+            <div class="col">
+              <br>
+              <br>
+              <p style="font-size:20px"><em>
+                "We're fanatical about supporting passionate founders and their teams who want to leave a mark on the world.
+
+                We're supporting the visionaries whose purpose inspires belief from their colleagues, customers and communities, who want to fuel a brighter future.
+
+                Whether you're a start-up or scale-up, foodie or techie, mover or shaker; we're right behind you."
+              </p></em>
+            </div>
+
+            <div class="col">
+              <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/Qsnap5Oh8S8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- <div class="col"> -->
+            <!-- One of three columns -->
+            <!-- </div> -->
+<!-- <div class="row align-items-center my-4">
+<div class="col mt-5">
+One of three columns
+</div>
+<div class="col">
+One of three columns
+</div>
+<div class="col">
+One of three columns
+</div>
+</div>
+<div class="row align-items-end">
+<div class="col">
+One of three columns
+</div>
+<div class="col">
+One of three columns
+</div>
+<div class="col">
+One of three columns
+</div>
+</div> -->
+</div>
+
+<div class="d-flex justify-content-center">
+  <h5 class="mt-5"><%= link_to "Get started", "/campaigns/new", class: "btn btn-secondary" %></h5>
+</div>
+
+
+<div class="container">
+  <div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
+  </div>
+
+  <div class="d-flex my-4 py-4">
+    <img class="pic-home" src="https://images.unsplash.com/photo-1470784790053-6c2f15489967?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2241&q=80" alt="home pic 1">
+    <div class="ml-4 align-self-center">
+      <h1>Success Stories</h1>
+      <p>Take a look at live investment opportunities on Fundeat today, and give yourself a feel-good factor that's hard to beat by backing a restaurant you believe in.</p>
+    </div>
+  </div>
+
+  <div class="d-flex my-4 py-4">
+    <div class="mr-4 align-self-center">
+      <h1>Here with you every single step of the way</h1>
+      <p>Build a better neighboorhoud, a better city and a better country. Change happens when people feel empowered. Take an active role and make dreams come true.</p>
+    </div>
+    <img class="pic-home" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
+  </div>
+
+
+  <!-- horizontal line -->
+  <div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
+  </div>
+
+  <!-- <button class="btn btn-primary mx-5" id="menu-toggle"><small>Menu</small></button> -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h1 class="mt-4 mb-3 text-center">Fuel your future</h1>
+        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Video</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Video 2</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Video 3</a>
+          </li>
+        </ul>
+
+        <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/0DbVwG0Kze8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/bNpx7gpSqbY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/677ZtSMr4-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- horizontal line -->
+<div class="container">
+  <div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
+  </div>
+</div>
+
+<!-- /#page-content-wrapper -->
+<div class="mb-4 d-flex flex-column text-center">
+  <h1>Are you ready to start raising?</h1>
+  <p>To be eligible to raise investment on Fundeat, we need to check a few things first. Please ready through and confirm the following:</p>
+
+
+  <div class="d-flex justify-content-center my-4">
+    <div class="choose-option-campaigns d-flex h">
+
+      <div class="d-flex flex-column w-50 justify-content-center text-center">
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox1">Your business is based in Argentina</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" disabled checked>
+        </div>
+
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox2">Your business is a private limited business</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"disabled checked>
+        </div>
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox3">You have lead investment</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"disabled checked>
+        </div>
+      </div>
+
+      <!-- line -->
+      <div class="h-75 align-self-center" style="border: 1px solid lightgrey">
+      </div>
+
+      <div class="d-flex flex-column w-50 justify-content-center text-center">
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox1">You have a website (not social channels) or app</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"disabled checked>
+        </div>
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox2">You are looking for $10,000 or more</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"disabled checked>
+        </div>
+        <div class="form-check form-check-inline mb-2 d-flex flex-column text-center">
+          <label class="form-check-label" for="inlineCheckbox3">You understand you need to engage and convert your community into valued shareholders</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"disabled checked>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  <div class="custom-control custom-checkbox my-4">
+    <input type="checkbox" class="custom-control-input" id="customCheck1">
+    <label class="custom-control-label" for="customCheck1">I have read and understand I need the above to be eligible to raise finance.</label>
+  </div>
+
+  <h5><%= link_to "Start raising", "/campaigns/new", class: "btn btn-secondary" %></h5>
+</div>
+
+<!-- /#wrapper -->
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("wrapper").classList.toggle('toggled');
+  });
+</script>
+
+</div>
+
+</body>
+
+</html>
