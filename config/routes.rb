@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'investments', to: 'investments#index', as: :investments
   get 'my_campaigns', to: 'campaigns#my_campaigns', as: :my_campaigns
+  get 'my_campaigns/support', to: 'campaigns#support', as: :support
 
   get 'investments/dashboard', to: 'investments#dashboard', as: :investors_dashboard
 
