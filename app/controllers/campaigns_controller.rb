@@ -12,12 +12,26 @@ class CampaignsController < ApplicationController
   authorize @campaign
   @company = @campaign.company
 
+
   @marker = [{
-    lat: @company.latitude,
-    lng: @company.longitude,
-    image_url: helpers.asset_url('restaurant.png')
+    # lat: @company.latitude,
+    lat: "-42".to_f,
+    # lng: @company.longitude,
+    lng: "31".to_f
+    # image_url: helpers.asset_url('restaurant.png')
   }]
   end
+
+ # def show
+ #    # @scooter = Scooter.find(params[:id])
+ #     # @scooter = Scooter.geocoded #returns scooters with coordinates
+ #     @marker = [{
+ #      lat: @scooter.latitude,
+ #      lng: @scooter.longitude,
+ #      infoWindow: render_to_string(partial: "info_window", locals: { scooter: @scooter }),
+ #      image_url: helpers.asset_url('scooter1.png')
+ #    }]
+ #  end
 
   def new
   end

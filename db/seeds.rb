@@ -167,6 +167,8 @@ company = Company.new(
   tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
   googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
   )
+
+puts company.address
 company.num_employees = rand(9..35)
 company.owner = User.where(owner: true)[count]
 file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")

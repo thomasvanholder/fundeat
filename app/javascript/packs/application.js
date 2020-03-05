@@ -1,5 +1,9 @@
 import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
 import { setWidth } from '../components/sticky_sidebar';
+import { initMapbox } from '../plugins/init_mapbox';
 
 setWidth();
 
@@ -22,3 +26,7 @@ rangeInput.addEventListener("click", (event) => {
   console.log(rangeValue);
   console.log(event.currentTarget);
 });
+
+
+// map
+initMapbox();
