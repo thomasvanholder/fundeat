@@ -11,4 +11,24 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "campaigns/index";
 
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.object-position-center {
+  object-position: center;
+}
+
+.h-300 {
+  height: 300px;
+}
+
+.text-grey {
+  color: $grey;
+}
+
+.bg-lightgreen {
+  background-color: #e8faf0;
+}

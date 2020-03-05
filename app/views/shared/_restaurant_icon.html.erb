@@ -1,0 +1,9 @@
+<div class="layer2">
+  <% if campaign.company.type_store == "Restaurant" %>
+  <%= image_tag "restaurant.png", class:"img-sm-grey", alt: "avatar" %>
+  <% elsif campaign.company.type_store == "Bar" %>
+  <%= image_tag "bar.png", class:"img-sm-grey", alt: "avatar" %>
+  <% else %>
+  <%= image_tag "cafe.png", class:"img-sm-grey", alt: "avatar" %>
+  <% end %>
+</div>
