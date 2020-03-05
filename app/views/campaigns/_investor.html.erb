@@ -24,6 +24,9 @@
         <h4>Company Description</h4>
         <p><%= @campaign.company.description %></p>
       </div>
+      <div class="text-center">
+        <iframe width="100%" height="360" src="https://www.youtube.com/embed/6QS17b1itIE?autoplay=1"></iframe>
+      </div>
     </div>
 
     <div class="col-12 col-lg-4" id="sidebar">
@@ -34,10 +37,10 @@
           <div class="card-investment-play bg-lightgreen p-4 m-0 card-campaign-status">
             <!-- invest field and button -->
             <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-              <div class="form-input d-flex justify-space-between align-items-center mb-4">
-                <%= f.input :amount, class: "input-field", placeholder: "250", label: false, :required => true,  :input_html => { :type => "number" } %>
-                <%= f.submit "Invest", class: "btn btn-success", style:"margin-left: 16px;" %>
-              </div>
+            <div class="form-input d-flex justify-space-between align-items-center mb-4">
+              <%= f.input :amount, class: "input-field", placeholder: "250", label: false, :required => true,  :input_html => { :type => "number" } %>
+              <%= f.submit "Invest", class: "btn btn-success", style:"margin-left: 16px;" %>
+            </div>
             <% end %>
 
             <!-- campaign stats -->
@@ -82,6 +85,7 @@
     <span class="address-box-grey" style="color: white; position: absolute; bottom: 5px; left: 20px;"><%= @company.address %></span>
   </div>
 </div>
+
 
 <style>
   .input-group-btn {
