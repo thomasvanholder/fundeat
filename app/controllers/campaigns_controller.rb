@@ -54,6 +54,9 @@ end
   #   end
   # end
 
+  def support
+  end
+
   private
 
   def campaign_params
