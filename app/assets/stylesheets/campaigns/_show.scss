@@ -15,3 +15,30 @@
     top: 90px;
   }
 }
+
+.card-investment-play {
+  border: 2px solid #1EDD88;
+}
+
+
+.reward {
+  background-color: white;
+  i.fas {
+    // color: #1edd88;
+    color: #a0edc3;
+    // color: grey;
+  }
+  p {
+    color: grey;
+  }
+  &.active {
+    background-color: #a0edc3;
+    i.fas {
+      color: white;
+    }
+    p {
+      color: black;
+    }
+  }
+}
+
