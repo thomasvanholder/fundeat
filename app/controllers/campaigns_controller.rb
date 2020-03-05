@@ -14,10 +14,8 @@ class CampaignsController < ApplicationController
 
 
   @marker = [{
-    # lat: @company.latitude,
-    lat: "-42".to_f,
-    # lng: @company.longitude,
-    lng: "31".to_f
+    lat: @company.latitude,
+    lng: @company.longitude,
     # image_url: helpers.asset_url('restaurant.png')
   }]
   end
