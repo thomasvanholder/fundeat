@@ -6,6 +6,57 @@ class InvestmentsController < ApplicationController
     authorize @investments
   end
 
+  def dashboard
+    @investments = Investment.where(investor_id: current_user.id)
+    authorize @investments
+
+    sum = 0
+    count = 0
+    @investments.each do |inv|
+      sum += inv.campaign.return_rate
+      count += 1
+    end
+    # raise
+    @avge_int_rate = sum/count
+
+    @graph_data = {
+              labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+              datasets: [{
+                  label: '$ Investment / Month',
+                  data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                  ],
+                  borderWidth: 1
+              }]
+          }
+  end
+
   def show
     @investment = Investment.find(params[:id])
     authorize @investment
