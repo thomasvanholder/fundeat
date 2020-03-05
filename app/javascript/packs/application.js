@@ -5,5 +5,5 @@ import '../components/return_calculation';
 import { initCharts } from '../components/init_chart';
 
 initMapbox();
-initCharts();
 setWidth();
+initCharts();
