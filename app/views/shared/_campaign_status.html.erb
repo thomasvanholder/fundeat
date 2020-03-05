@@ -1,0 +1,25 @@
+<div class="card-campaign-status p-2 mb-5 mt-5" style="">
+  <div class="target-bar m-3 bg-white">
+    <% progress_percentage = ((campaign.raised_sum / campaign.min_target.to_f) * 100).round(0) %>
+    <div class="" style="background-color: #1EDD88; width: <%= progress_percentage < 100 ? progress_percentage : 100 %>%; border-radius: 50px;">
+      <p class="px-3"><%= progress_percentage %>%</p>
+    </div>
+  </div>
+
+  <div class="d-flex mt-4 justify-content-around">
+    <div class="text-center">
+      <h5><%= campaign.investments.count %></h5>
+      <p class="text-secondary mb-2" style="font-size: 12px;">investors</p>
+    </div>
+    <div style="border: 1px solid lightgrey; height: 50px"></div>
+    <div class="text-center">
+      <h5>$<%= number_with_precision(campaign.raised_sum, :precision => 0, :delimiter => ',') %></h5>
+      <p class="text-secondary mb-2" style="font-size: 12px;">raised</p>
+    </div>
+    <div style="border: 1px solid lightgrey; height: 50px"></div>
+    <div class="text-center">
+      <h5><%= ((campaign.expiry_date - DateTime.current)/(24*3600)).round(0) %>d <%= (((@campaign.expiry_date - DateTime.current)/(24*3600)).round(2).to_s.split(".").last.to_i * 0.24).round(0) %>h</h5>
+      <p class="text-secondary mb-2" style="font-size: 12px;">remaining</p>
+    </div>
+  </div>
+</div>
