@@ -1,13 +1,24 @@
 .banner-index {
   background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
   background-position: center;
-  height: 250px;
+  height: 300px;
 }
 
 .banner-title {
   color: white;
   text-align: center;
 
+}
+
+.banner-campaign {
+  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("https://images.unsplash.com/photo-1525648199074-cee30ba79a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-position: center;
+  height: 300px;
+}
+
+.banner-title {
+  color: white;
+  text-align: center;
 }
 
 
