@@ -20,17 +20,6 @@ class CampaignsController < ApplicationController
   }]
   end
 
- # def show
- #    # @scooter = Scooter.find(params[:id])
- #     # @scooter = Scooter.geocoded #returns scooters with coordinates
- #     @marker = [{
- #      lat: @scooter.latitude,
- #      lng: @scooter.longitude,
- #      infoWindow: render_to_string(partial: "info_window", locals: { scooter: @scooter }),
- #      image_url: helpers.asset_url('scooter1.png')
- #    }]
- #  end
-
   def new
   end
 

@@ -5,6 +5,7 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { setWidth } from '../components/sticky_sidebar';
 import { initMapbox } from '../plugins/init_mapbox';
 
+initMapbox();
 setWidth();
 
 const rangeInput = document.getElementById("investmentRange");
@@ -29,4 +30,3 @@ rangeInput.addEventListener("click", (event) => {
 
 
 // map
-initMapbox();
