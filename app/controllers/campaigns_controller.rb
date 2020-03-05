@@ -21,6 +21,10 @@ class CampaignsController < ApplicationController
   end
 
   def new
+    @campaign = Campaign.new
+    @company = Company.new
+    authorize @campaign
+    authorize @company
   end
 
   def create
