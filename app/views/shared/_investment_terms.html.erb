@@ -1,0 +1,18 @@
+<div class="my-2 d-flex justify-content-between align-items-center">
+  <div class="text-center">
+    <h5 class="m-0" id="roi"><%= (campaign.return_rate * 100).round(1) %>%</h5>
+    <p class="text-secondary m-0" style="font-size: 12px;">return</p>
+  </div>
+  <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+  </div>
+  <div class="text-center">
+    <h5 class="m-0"><%= campaign.loan_duration %></h5>
+    <p class="text-secondary m-0" style="font-size: 12px;">months</p>
+  </div>
+  <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+  </div>
+  <div class="text-center">
+    <h5 class="m-0">$<%= number_with_precision(campaign.min_target, :precision => 0, :delimiter => ',') %></h5>
+    <p class="text-secondary m-0" style="font-size: 12px;">target</p>
+  </div>
+</div>

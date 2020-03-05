@@ -17,6 +17,11 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'simple_form_extension'
+gem 'geocoder'
+
+
+gem 'groupdate', '~> 2.5'
+gem 'chartkick', '~> 3.3', '>= 3.3.1'
 
 # payment
 gem 'money-rails'

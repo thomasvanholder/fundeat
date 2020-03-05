@@ -15,9 +15,15 @@
         <li class="nav-item active">
          <%= link_to "Investing", "/campaigns", class: "nav-link" %>
         </li>
+        <li class="nav-item active">
+         <%= link_to "Dashboard", "/investments/dashboard", class: "nav-link" %>
+        </li>
       <% elsif user_signed_in? && current_user.owner == true %>
         <li class="nav-item active">
           <%= link_to "Raising", "/raising", class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+         <%= link_to "Dashboard", "/campaigns/dashboard", class: "nav-link" %>
         </li>
       <% end %>
 
@@ -29,6 +35,7 @@
 
         <li class="nav-item active">
           <%= link_to "Raising", "/raising", class: "nav-link" %>
+
         </li>
 
         <li class="nav-item active">

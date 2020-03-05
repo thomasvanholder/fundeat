@@ -1,0 +1,17 @@
+
+.img-sm-grey {
+  padding: 16px;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  border-color: 1px solid white;
+  height: 144px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (min-width: 1024px) {
+  .position-stickty-top-90-right {
+    position: sticky;
+    top: 90px;
+  }
+}

@@ -1,0 +1,94 @@
+<divs>
+  <%= render "carousel" %>
+</div>
+
+<div class="container" style="margin-top: -120px;">
+  <div class="row">
+    <div class="col-lg-8">
+      <!-- COMPANY LOGO -->
+      <div class="restaurant-logo position-relative">
+        <%= render "shared/restaurant_icon", campaign: @campaign %>
+      </div>
+
+      <h2 class="mt-4 font-weight-bold"><%= @campaign.company.name %></h2>
+      <h6 class="text-grey"><%= @campaign.company.type_store %></h6>
+      <div>
+        <div>
+          <%= render "shared/campaign_status", campaign: @campaign %>
+        </div>
+
+        <h4>Campaign Title</h4>
+        <p><%= @campaign.title %></p>
+
+        <%= render "shared/campaign_risk", campaign: @campaign %>
+        <h4>Company Description</h4>
+        <p><%= @campaign.company.description %></p>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4" id="sidebar">
+      <!-- investment card -->
+      <div class="position-stickty-top-90-right">
+        <div id="card-fixed" class="mx-sm-auto">
+
+          <div class="card-investment-play bg-lightgreen p-4 m-0 card-campaign-status">
+            <!-- invest field and button -->
+            <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
+              <div class="form-input d-flex justify-space-between align-items-center mb-4">
+                <%= f.input :amount, class: "input-field", placeholder: "250", label: false, :required => true,  :input_html => { :type => "number" } %>
+                <%= f.submit "Invest", class: "btn btn-success", style:"margin-left: 16px;" %>
+              </div>
+            <% end %>
+
+            <!-- campaign stats -->
+            <%= render "shared/investment_terms", campaign: @campaign %>
+
+            <div class="d-flex flex-column justify-content-between">
+              <!-- range slider  -->
+              <form>
+                <div class="investment-slider my-2">
+                  <label for="investmentRange" style="margin: 0; font-size: 12px;">Investment</label>
+                  <input type="range" class="investment-range w-100" min="20" max="10000" step="1" id="investmentRange">
+                </div>
+              </form>
+            </div>
+
+            <!-- return section -->
+            <%= render "shared/return_calculation", campaign: @campaign %>
+
+            <!-- rewards section -->
+            <div class="mt-4">
+              <h5 style="font-size: 12px;">My reward</h5>
+              <div class="d-flex align-items-center px-3 py-1" style="background-color: lightgrey; border-radius: 50px;">
+                <i class="fas fa-gift"></i>
+                <p class="m-0 ml-4"><%= @campaign.rewards.first.description %></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- investment card closing div -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- map  -->
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <div id="mapbox" class="rounded" style="width: 100%; height: 300px;" data-markers="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <span class="address-box-grey" style="color: white; position: absolute; bottom: 5px; left: 20px;"><%= @company.address %></span>
+  </div>
+</div>
+
+<style>
+  .input-group-btn {
+    display: none;
+  }
+
+  .investment_amount {
+    margin: 0;
+  }
+</style>

@@ -72,6 +72,21 @@ REWARDS = {
   ]
 }
 
+
+COMPANY = {
+  address: [
+    'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
+    'Arribeños 2393 C1428APE CABA',
+    'Lafinur 3368C1425FAJ CABA',
+    'Cavia 2985 C1425DDA CABA',
+    'Arévalo 2024 C1414CQP CABA',
+    'Nicaragua 6002 C1414BWN CABA',
+    'Ángel Justiniano Carranza 2225 C1425FXC CABA',
+    'Costa Rica 5886 C1414BTJ CABA',
+    'Av. Dorrego 1829'
+  ]
+}
+
 # Edit
 USERS[:investors].each do |inv|
   # puts inv[:first_name]
@@ -160,13 +175,14 @@ description = element.search('.c-entry-content p').text.strip
 count = 1
 company = Company.new(
   name: names,
-  address: address,
+  address: COMPANY[:address].sample,
   type_store: type_store.sample,
   description: description,
   instagram_url: "https://www.instagram.com/#{names}",
   tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
   googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
   )
+
 company.num_employees = rand(9..35)
 company.owner = User.where(owner: true)[count]
 file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")

@@ -11,15 +11,20 @@ def show
   authorize @campaign
   @company = @campaign.company
 
+
   @marker = [{
     lat: @company.latitude,
     lng: @company.longitude,
-    image_url: helpers.asset_url('restaurant.png')
+    # image_url: helpers.asset_url('restaurant.png')
   }]
 end
 
-def new
-end
+  def new
+    @campaign = Campaign.new
+    @company = Company.new
+    authorize @campaign
+    authorize @company
+  end
 
 def create
   authorize @campaign
