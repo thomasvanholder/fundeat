@@ -21,4 +21,7 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
+    def raising?
+    return true
+  end
 end
