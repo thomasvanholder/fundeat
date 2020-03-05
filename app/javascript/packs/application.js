@@ -1,13 +1,10 @@
 import "bootstrap";
-import 'mapbox-gl/dist/mapbox-gl.css';
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-
-import { setWidth } from '../components/sticky_sidebar';
 import { initMapbox } from '../plugins/init_mapbox';
+import { setWidth } from '../components/sticky_sidebar';
 import { initCharts } from '../components/init_chart';
 
-initCharts();
 initMapbox();
+initCharts();
 setWidth();
 
 const rangeInput = document.getElementById("investmentRange");
