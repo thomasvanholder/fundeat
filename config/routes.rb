@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'investments', to: 'investments#index', as: :investments
   get 'my_campaigns', to: 'campaigns#my_campaigns', as: :my_campaigns
+  get 'investments/dashboard', to: 'investments#dashboard', as: :investors_dashboard
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

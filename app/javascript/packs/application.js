@@ -1,5 +1,8 @@
 import "bootstrap";
 import { setWidth } from '../components/sticky_sidebar';
+import { initCharts } from '../components/init_chart';
+
+initCharts();
 
 setWidth();
 
