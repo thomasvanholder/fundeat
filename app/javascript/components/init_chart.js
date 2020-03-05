@@ -6,11 +6,10 @@ const pieCanvas = document.getElementById('pie');
 // barCanvas.canvas.width = 100;
 // barCanvas.canvas.height = 80;
 
-const dataBar = barCanvas.dataset.graph
-const dataPie = pieCanvas.dataset.graph
 
 const initCharts = () => {
   if (barCanvas) {
+    const dataBar = barCanvas.dataset.graph
     new Chart(barCanvas, {
       type: 'bar',
       data: JSON.parse(dataBar),
@@ -27,6 +26,7 @@ const initCharts = () => {
   }
 // For a pie chart
   if (pieCanvas) {
+    const dataPie = pieCanvas.dataset.graph
     new Chart(pieCanvas, {
       type: 'pie',
       data: JSON.parse(dataPie),

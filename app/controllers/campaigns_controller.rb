@@ -12,10 +12,11 @@ class CampaignsController < ApplicationController
   authorize @campaign
   @company = @campaign.company
 
+
   @marker = [{
     lat: @company.latitude,
     lng: @company.longitude,
-    image_url: helpers.asset_url('restaurant.png')
+    # image_url: helpers.asset_url('restaurant.png')
   }]
   end
 
