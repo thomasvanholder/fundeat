@@ -6,61 +6,99 @@
     <%= c.error_notification %>
     <%= c.error_notification message: c.object.errors[:base].to_sentence if c.object.errors[:base].present? %>
 
-    <%= simple_fields_for(@company) do |f| %>
-    <div class="form-group row">
-      <label for="company_name" class="col-sm-2 col-form-label">Name</label>
-      <div class="col-sm-10 w-50">
-        <input type="text" class="form-control" id="company_name">
+    <div class="company-form">
+
+      <%= simple_fields_for(@company) do |f| %>
+      <!-- company name input -->
+      <div class="form-group row">
+        <label for="company_name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10 w-50">
+          <input type="text" class="form-control" id="company_name">
+        </div>
       </div>
-    </div>
 
-    <!-- address search field -->
-    <label class="string optional" for="company_address">Address</label>
-    <input id="searchbox" class="form-control mr-sm-2 text-left" type="search" aria-label="Search" name="company[address]">
+      <!-- address search field -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label string optional" for="company_address">Address</label>
+        <div class="col-sm-10 w-50">
+          <input id="searchbox" class="form-control mr-sm-2 text-left" type="search" aria-label="Search" name="company[address]">
+        </div>
+      </div>
 
-    <%= f.input :num_employees, collection: 1..50 %>
+      <!-- number of employees -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label string optional" for="company_num_of_employees">Employees</label>
+        <div class="col-sm-10 w-50">
+         <input type="text" class="form-control" id="company[num_of_employees]">
+       </div>
+     </div>
 
-    <!-- category choice -->
-    <label class="string optional w-25" for="company_type_store">Type Store</label>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" value="company_type_store_restaurant" id="company_type_store_restaurant" name="campaign[loan_duration]" class="custom-control-input">
-      <label class="custom-control-label" for="customRadioInline1">Restaurant</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" value="company_type_store_coffee"  id="company_type_store_coffee" name="customRadioInline1" class="custom-control-input">
-      <label class="custom-control-label" for="customRadioInline2">Coffee</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" value="company_type_store_bar"  id="company_type_store_bar" name="customRadioInline1" class="custom-control-input">
-      <label class="custom-control-label" for="customRadioInline2">Bar</label>
+     <!-- category choice -->
+
+     <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="company_type_store">Type Store</label>
+      <div class="col-sm-10 w-50 align-self-center">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" value="company_type_store_restaurant" id="company_type_store_restaurant" name="campaign[loan_duration]" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline1">Restaurant</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" value="company_type_store_coffee"  id="company_type_store_coffee" name="customRadioInline1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline2">Coffee</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" value="company_type_store_bar"  id="company_type_store_bar" name="customRadioInline1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline2">Bar</label>
+        </div>
+      </div>
     </div>
 
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text">Company description</span>
+        <span class="input-group-text" style="width: 200px;">Company description</span>
       </div>
       <textarea class="form-control" id="company_description" aria-label="With textarea"></textarea>
     </div>
 
-    b
+    <br>
+    <button class="btn btn-outline-secondary" type="submit">Back</button>
+    <button class="btn btn-secondary" type="submit" id="continue">Continue</button>
+
+    <div>All data completed?</div>
 
     <% end %>
 
-    <br>
-    <br>
+  </div>
+
+  <br>
+  <br>
+
+  <div style="display: none;">
 
     <h3>Your campagin</h3>
 
     <div class="form-inputs">
-      <%= c.input :title %>
-      <%= c.input :description, hint: "What\'s your idea? Why are you launching a campaign? Enroll investors into your story"  %>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="width: 200px;">Campaign Title</span>
+        </div>
+        <textarea class="form-control" id="campaign_title" aria-label="With textarea"></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="width: 200px;">Campaign description</span>
+        </div>
+        <textarea class="form-control" id="campaign_description" aria-label="With textarea"></textarea>
+      </div>
 
       <div class="input-group mb-3">
         <label class="string optional w-25" for="min_target">Minimum Amount</label>
         <div class="input-group-prepend">
           <span class="input-group-text">$</span>
         </div>
-        <input type="text" class="integer form-control" aria-label="Amount (to the nearest dollar)" name="campaign[min_target]" id="campaign_min_target">
+        <input type="text" class="integer form-control text-right" aria-label="Amount (to the nearest dollar)" name="campaign[min_target]" id="campaign_min_target">
         <div class="input-group-append">
           <span class="input-group-text">.00</span>
         </div>
@@ -72,7 +110,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">$</span>
         </div>
-        <input type="text" class="integer form-control" aria-label="Amount (to the nearest dollar)" name="campaign[max_target]" id="campaign_max_target">
+        <input type="text" class="integer form-control text-right" aria-label="Amount (to the nearest dollar)" name="campaign[max_target]" id="campaign_max_target">
         <div class="input-group-append">
           <span class="input-group-text">.00</span>
         </div>
@@ -104,11 +142,20 @@
 
     </div>
 
-
     <div class="form-actions">
       <%= c.button :submit, class:"btn btn-secondary" %>
     </div>
     <% end %>
-
   </div>
+
+
 </div>
+</div>
+
+ <script>
+    const toggle = document.getElementById("continue");
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById("company-form").classList.toggle('toggled');
+    });
+  </script>
