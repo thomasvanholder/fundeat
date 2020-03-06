@@ -60,6 +60,13 @@ class CampaignsController < ApplicationController
 
     @campaign.company = @company
 
+
+    # loop missing !!
+    @reward = Reward.new
+    authorize = reward
+    @reward.investment_amount = params[:reward][:investment_amount]
+    @reward.description = params[:reward][:description]
+    raise
     # raise
     if @campaign.save
       redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
@@ -98,7 +105,7 @@ end
     @campaigns = policy_scope(Campaign)
     authorize @campaigns
   end
-  def total_risk_level(company_history)
+  def total_risk_level
     char_array = []
     char_array << @campaign.repayment_capacity
     char_array << @campaign.financial_health
