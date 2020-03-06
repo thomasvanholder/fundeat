@@ -11,20 +11,27 @@ def show
   authorize @campaign
   @company = @campaign.company
 
+  if @company.type_store == "Bar"
+    url = helpers.asset_url('bar.png')
+  elsif @company.type_store == "Cafe"
+    url = helpers.asset_url('cafe.png')
+  else
+    url = helpers.asset_url('restaurant.png')
+  end
 
   @marker = [{
     lat: @company.latitude,
     lng: @company.longitude,
-    # image_url: helpers.asset_url('restaurant.png')
+    image_url: url
   }]
 end
 
-  def new
-    @campaign = Campaign.new
-    @company = Company.new
-    authorize @campaign
-    authorize @company
-  end
+def new
+  @campaign = Campaign.new
+  @company = Company.new
+  authorize @campaign
+  authorize @company
+end
 
 def create
   authorize @campaign

@@ -75,15 +75,32 @@ REWARDS = {
 
 COMPANY = {
   address: [
-    'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
-    'Arribeños 2393 C1428APE CABA',
-    'Lafinur 3368C1425FAJ CABA',
-    'Cavia 2985 C1425DDA CABA',
-    'Arévalo 2024 C1414CQP CABA',
-    'Nicaragua 6002 C1414BWN CABA',
-    'Ángel Justiniano Carranza 2225 C1425FXC CABA',
-    'Costa Rica 5886 C1414BTJ CABA',
-    'Av. Dorrego 1829'
+    # 'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
+    # 'Arribeños 2393 C1428APE CABA',
+    # 'Lafinur 3368C1425FAJ CABA',
+    # 'Cavia 2985 C1425DDA CABA',
+    # 'Arévalo 2024 C1414CQP CABA',
+    # 'Nicaragua 6002 C1414BWN CABA',
+    # 'Ángel Justiniano Carranza 2225 C1425FXC CABA',
+    # 'Costa Rica 5886 C1414BTJ CABA',
+    # 'Av. Dorrego 1829'
+    "Av Niceto Vega #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Córdoba #{rand(100..4000)},CABA, Buenos Aires",
+    "Av. del Libertador #{rand(100..4000)}, C1425 CABA, Buenos Aires",
+    "Av. Antártida Argentina #{rand(100..4000)}, CABA, Buenos Aires",
+    "Marcelo Torcuato de Alvear #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Santa Fe #{rand(100..4000)}, CABA, Buenos Aires",
+    "#{rand(100..4000)} Bartolomé Mitre, CABA, Buenos Aires",
+    "Av. Federico Lacroze #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Luis María Campos #{rand(100..4000)}, CABA, Buenos Aires",
+    "Acevedo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Murillo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guardia Vieja #{rand(100..4000)}, CABA, Buenos Aires",
+    "Paraguay #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guatemala #{rand(100..4000)}, CABA, Buenos Aires",
+    "Malabia #{rand(100..4000)}, CABA, Buenos Aires",
+    "Jorge Luis Borges #{rand(100..4000)}, CABA, Buenos Aires",
+    "Thames #{rand(100..4000)}, CABA, Buenos Aires"
   ]
 }
 
