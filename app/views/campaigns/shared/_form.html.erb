@@ -1,10 +1,13 @@
+<!-- <<<<<<< HEAD
+ <div class="container">
+  <div class="row text-center">
+======= -->
  <div class="container w-50">
   <div class="justify-content-center text-center">
 
     <%= simple_form_for(@campaign) do |c| %>
     <%= c.error_notification %>
     <%= c.error_notification message: c.object.errors[:base].to_sentence if c.object.errors[:base].present? %>
-
 
     <%= simple_fields_for(@company) do |f| %>
     <!-- company name input -->
