@@ -163,6 +163,7 @@ class InvestmentsController < ApplicationController
       render :new
 
     end
+  end
 
     def create
       @investment = Investment.new()
