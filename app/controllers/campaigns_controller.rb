@@ -56,6 +56,16 @@ class CampaignsController < ApplicationController
     @campaign.company_history = ("A".."C").to_a.sample
     @campaign.return_rate = rand(0.05..0.1).round(1)
     @campaign.expiry_date = Date.today + rand(30..90).days
+    @campaign.risk_level = total_risk_level
+
+    @campaign.company = @company
+
+    # raise
+    if @campaign.save
+      redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
+    else
+      render :new
+    end
   end
 
 
@@ -88,13 +98,13 @@ def total_risk_level
   @campaign.risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
 end
 
-  # def dashboard
-  #   if current.user.owner?
-  #     :owner_dashboard
-  #   else
-  #     render :investor_dashboard
-  #   end
-  # end
+  def dashboard
+    if current.user.owner?
+      :owner_dashboard
+    else
+      render :investor_dashboard
+    end
+  end
 
   def support
   end
