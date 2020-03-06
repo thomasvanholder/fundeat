@@ -16,7 +16,7 @@
          <%= link_to "Investing", "/campaigns", class: "nav-link" %>
         </li>
         <li class="nav-item active">
-         <%= link_to "Dashboard", "/investments/dashboard", class: "nav-link" %>
+         <%= link_to "Dashboard", "/myinvestments/dashboard", class: "nav-link" %>
         </li>
       <% elsif user_signed_in? && current_user.owner == true %>
         <li class="nav-item active">

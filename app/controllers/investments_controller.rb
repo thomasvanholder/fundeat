@@ -19,12 +19,12 @@ class InvestmentsController < ApplicationController
     labels_proj = []
     labels_months_of_invest = []
 
-    @investments.each do |inv|
+    @investments.where.not(payment_date: nil).each do |inv|
       sum += inv.campaign.return_rate
       count += 1
       amount_by_proj << inv.amount
       labels_proj << inv.campaign.company.name
-      labels_months_of_invest << (inv.payment_date).strftime("%m/%d/%Y")
+      labels_months_of_invest << (inv.payment_date)&.strftime("%m/%d/%Y")
 
     end
 
