@@ -27,17 +27,28 @@ def new
 end
 
 def create
-
   @company = Company.new
   authorize @company
   @company.owner = current_user
   @company.address = params[:company]["address"]
   @company.name = params[:company]["name"]
   @company.num_employees = params[:company]["num_of_employees"]
-  @company.num_employees = params[:company]["num_of_employees"]
-  # @
+  @company.description = params[:company]["description"]
+
+  @campaign = Campaign.new
   authorize @campaign
-  # @company = @campaign.
+  @campaign.title = params[:campaign][:title]
+  @campaign.description = params[:campaign][:description]
+  @campaign.min_target = params[:campaign][:min_target]
+  @campaign.description = params[:campaign][:description]
+  @campaign.loan_duration = params[:campaign][:loan_duration]
+
+  # seeded data
+  @campaign.repayment_capacity = ("A".."C").to_a.sample
+  @campaign.financial_health = ("A".."C").to_a.sample
+  @campaign.company_history = ("A".."C").to_a.sample
+  @campaign.return_rate = rand(0.05..0.1).round(1)
+  @campaign.expiry_date = Date.today + rand(30..90).days
 end
 
 def edit
