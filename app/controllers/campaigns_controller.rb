@@ -28,6 +28,7 @@ end
 
 def create
   authorize @campaign
+  authorize @company
 end
 
 def edit
