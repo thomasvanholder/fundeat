@@ -49,7 +49,7 @@ class CampaignsController < ApplicationController
   end
 
   def my_campaigns
-    @campaigns = policy_scope(Campaign)
+    @campaigns = Campaign.where(owner_id: current_user.id)
     authorize @campaigns
   end
 
@@ -59,6 +59,9 @@ class CampaignsController < ApplicationController
   end
 
   def mycampaigns
+    @campaign = Campaign.new
+    @company = Company.new
+    authorize @campaign
     @campaigns = policy_scope(Campaign)
     authorize @campaigns
   end

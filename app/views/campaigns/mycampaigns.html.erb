@@ -1,3 +1,4 @@
+
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
@@ -7,13 +8,19 @@
       <a href="/mycampaigns" class="list-group-item list-group-item-action bg-light">Campaign</a>
       <a href="/mycampaigns/support" class="list-group-item list-group-item-action bg-light">Support</a>
     </div>
+
+    <!-- /#closing-wrapper -->
   </div>
+  <!-- /#closing-wrapper -->
 
-<div>
-  <%= render "campaigns/shared/carousel" %>
+  <div class="container mt-5">
+    <h1>Create your campaign on Fundeat!</h1>
+
+    <%= render 'campaigns/shared/form', campaign: @campaign %>
+  </div>
 </div>
 
-<!-- /#closing-wrapper -->
-</div>
-<!-- /#closing-wrapper -->
+
+
+
 
