@@ -1,6 +1,6 @@
 const rangeInput = document.getElementById("investmentRange");
 const payMonth = document.querySelector("#pay_month");
-const roi = Number.parseInt(document.querySelector("#roi").innerText, 10);
+const roi = Number.parseInt(document.querySelector("#roi"));
 const totalRoi = document.querySelector("#total_roi");
 const months = document.querySelector("#months");
 const amountInput = document.getElementById("investment_amount");
@@ -22,7 +22,7 @@ if (rangeInput) {
 
   const calculateReturn = () => {
     const range = document.querySelector("#investmentRange")
-    const monthPay = Math.round(range.value / 12 * roi / 100, 2)
+    const monthPay = Math.round(range.value / 12 * (roi.innerText, 10) / 100, 2)
     payMonth.innerText = `$ ${monthPay}`
     totalRoi.innerText = `$ ${monthPay * parseInt(months.innerText, 10)}`
   }
