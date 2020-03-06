@@ -1,10 +1,5 @@
-<%= link_to my_campaigns_path do %>
+<%= link_to owners_dashboard_path do %>
 <i class="fas fa-chevron-circle-left ml-3 mt-3 exit-button" style="font-size: 48px; color: grey;"></i>
 <% end %>
 
-<div class="container text-center">
-  <h1>Create your campaign on Fundeat!</h1>
-
-</div>
-
-<%= render 'form', campaign: @campaign %>
+<%= render 'campaigns/shared/form', campaign: @campaign %>

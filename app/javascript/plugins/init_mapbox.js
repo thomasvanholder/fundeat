@@ -1,32 +1,55 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
-// import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const initMapbox = () => {
-  const mapElement = document.getElementById('mapbox');
-
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'mapbox',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-
-    const markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
+const mapElement = document.getElementById('mapbox');
+const buildMap = () => {
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  return new mapboxgl.Map({
+    container: 'mapbox',
+    style: 'mapbox://styles/mapbox/light-v10'
   });
+};
 
-  }
+const addMarkersToMap = (map, markers) => {
+  markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+    const element = document.createElement('div');
+    const compType = document.getElementById('company_type')
+    element.className = 'marker';
+    // if (compType == 'Bar') {
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+    //   element.style.backgroundImage = `url('bar.png')`;
+    // } else if (compType == 'Cafe') {
+    //   element.style.backgroundImage = `url('cafe.png')`;
+    // } else {
+    //   element.style.backgroundImage = `url('restaurant.png')`;
+    // }
+    element.style.backgroundSize = 'contain';
+    element.style.width = '32px';
+    element.style.height = '32px';
+
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .setPopup(popup)
+    .addTo(map);
+  });
 };
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 14 });
 };
 
+const initMapbox = () => {
+  if (mapElement) {
+    const map = buildMap();
+    const markers = JSON.parse(mapElement.dataset.markers);
+    addMarkersToMap(map, markers);
+    fitMapToMarkers(map, markers);
+  }
+};
 
 export { initMapbox };
+
