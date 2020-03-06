@@ -202,10 +202,9 @@ company = Company.new(
 
 company.num_employees = rand(9..35)
 company.owner = User.where(owner: true)[count]
-file = URI.open("https://source.unsplash.com/900x600/?#{company.type_store}")
+file = URI.open("https://source.unsplash.com/1600x900/?food")
 company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
-
-company.save
+company.save!
 # puts company.name
 
 # company.valid?

@@ -25,8 +25,14 @@
         </div>
         <!-- background pic -->
 
+
         <!-- insert company.photo -->
-        <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
+       <% if campaign.company.photo.attached? %>
+        <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
+        <% else %>
+          <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
+        <% end %>
+
         <!-- <h5>10 days left</h5> -->
         <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
 
