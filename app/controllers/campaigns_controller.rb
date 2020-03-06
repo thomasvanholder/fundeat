@@ -49,8 +49,13 @@ def raising
 end
 
 def owners_dashboard
-    @campaigns = Campaign.where(owner_id: current_user.id)
-    authorize @campaigns
+  @campaigns = Campaign.where(owner_id: current_user.id)
+  authorize @campaigns
+end
+
+def mycampaigns
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
 end
 
   # def dashboard
@@ -62,6 +67,8 @@ end
   # end
 
   def support
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
   end
 
   private

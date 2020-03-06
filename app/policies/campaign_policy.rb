@@ -17,7 +17,15 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
+  def mycampaigns?
+    return true
+  end
+
   def owners_dashboard?
+    return true
+  end
+
+  def support?
     return true
   end
 
