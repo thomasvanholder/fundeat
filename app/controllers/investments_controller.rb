@@ -8,6 +8,8 @@ class InvestmentsController < ApplicationController
     authorize @investments
   end
 
+
+
   def dashboard
     @investments = Investment.where(investor_id: current_user.id)
     authorize @investments
@@ -106,6 +108,10 @@ class InvestmentsController < ApplicationController
           borderWidth: 1
       }]
   }
+  end
+
+  def dashboard_myinvestments
+    dashboard
   end
 
   def show
