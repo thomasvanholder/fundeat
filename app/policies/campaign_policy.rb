@@ -17,11 +17,19 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
-  def my_campaigns?
+  def mycampaigns?
     return true
   end
 
-    def raising?
+  def owners_dashboard?
+    return true
+  end
+
+  def support?
+    return true
+  end
+
+  def raising?
     return true
   end
 end

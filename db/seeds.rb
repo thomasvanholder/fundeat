@@ -75,15 +75,32 @@ REWARDS = {
 
 COMPANY = {
   address: [
-    'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
-    'Arribeños 2393 C1428APE CABA',
-    'Lafinur 3368C1425FAJ CABA',
-    'Cavia 2985 C1425DDA CABA',
-    'Arévalo 2024 C1414CQP CABA',
-    'Nicaragua 6002 C1414BWN CABA',
-    'Ángel Justiniano Carranza 2225 C1425FXC CABA',
-    'Costa Rica 5886 C1414BTJ CABA',
-    'Av. Dorrego 1829'
+    # 'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
+    # 'Arribeños 2393 C1428APE CABA',
+    # 'Lafinur 3368C1425FAJ CABA',
+    # 'Cavia 2985 C1425DDA CABA',
+    # 'Arévalo 2024 C1414CQP CABA',
+    # 'Nicaragua 6002 C1414BWN CABA',
+    # 'Ángel Justiniano Carranza 2225 C1425FXC CABA',
+    # 'Costa Rica 5886 C1414BTJ CABA',
+    # 'Av. Dorrego 1829'
+    "Av Niceto Vega #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Córdoba #{rand(100..4000)},CABA, Buenos Aires",
+    "Av. del Libertador #{rand(100..4000)}, C1425 CABA, Buenos Aires",
+    "Av. Antártida Argentina #{rand(100..4000)}, CABA, Buenos Aires",
+    "Marcelo Torcuato de Alvear #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Santa Fe #{rand(100..4000)}, CABA, Buenos Aires",
+    "#{rand(100..4000)} Bartolomé Mitre, CABA, Buenos Aires",
+    "Av. Federico Lacroze #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Luis María Campos #{rand(100..4000)}, CABA, Buenos Aires",
+    "Acevedo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Murillo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guardia Vieja #{rand(100..4000)}, CABA, Buenos Aires",
+    "Paraguay #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guatemala #{rand(100..4000)}, CABA, Buenos Aires",
+    "Malabia #{rand(100..4000)}, CABA, Buenos Aires",
+    "Jorge Luis Borges #{rand(100..4000)}, CABA, Buenos Aires",
+    "Thames #{rand(100..4000)}, CABA, Buenos Aires"
   ]
 }
 
@@ -139,7 +156,7 @@ def create_campaign(company)
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
-  campaign.risk_level = ("A".."C").to_a.sample
+  # campaign.risk_level = ("A".."C").to_a.sample
 
   campaign.min_target = rand(20000..60000)
   campaign.max_target = campaign.min_target + rand(20000..60000)
@@ -178,9 +195,9 @@ company = Company.new(
   address: COMPANY[:address].sample,
   type_store: type_store.sample,
   description: description,
-  instagram_url: "https://www.instagram.com/#{names}",
-  tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
-  googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
+  # instagram_url: "https://www.instagram.com/#{names}",
+  # tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
+  # googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
   )
 
 company.num_employees = rand(9..35)
