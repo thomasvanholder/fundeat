@@ -9,15 +9,15 @@ class InvestmentPolicy < ApplicationPolicy
     return true
   end
 
-  def dashboard_myinvestments?
+  def myinvestments?
     return true
   end
 
-  def dashboard_myrewards?
+  def rewards?
     return true
   end
 
-    def dashboard_mymap?
+  def map?
     return true
   end
   def new?
