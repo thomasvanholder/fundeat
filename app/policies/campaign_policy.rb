@@ -17,7 +17,7 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
-  def dashboard?
+  def owners_dashboard?
     return true
   end
 

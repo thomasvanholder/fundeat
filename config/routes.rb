@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'raising', to: 'campaigns#raising', as: :raising
 
-  get 'mycampaigns/dashboard', to: 'campaigns#dashboard', as: :owners_dashboard
+  get 'mycampaigns/owners_dashboard', to: 'campaigns#owners_dashboard', as: :owners_dashboard
   get 'mycampaigns', to: 'campaigns#mycampaigns', as: :mycampaigns
   get 'mycampaigns/myrewards', to: 'campaigns#rewards', as: :owners_rewards
   get 'mycampaigns/support', to: 'campaigns#support', as: :owners_support

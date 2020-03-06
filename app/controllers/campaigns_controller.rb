@@ -40,7 +40,7 @@ def raising
   authorize @campaigns
 end
 
-def dashboard
+def owners_dashboard
     @campaigns = Campaign.where(owner_id: current_user.id)
     authorize @campaigns
 end
