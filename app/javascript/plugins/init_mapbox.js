@@ -15,8 +15,16 @@ const addMarkersToMap = (map, markers) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
     const element = document.createElement('div');
+    const compType = document.getElementById('company_type')
     element.className = 'marker';
-    element.style.backgroundImage = `url('${marker.image_url}')`;
+    // if (compType == 'Bar') {
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+    //   element.style.backgroundImage = `url('bar.png')`;
+    // } else if (compType == 'Cafe') {
+    //   element.style.backgroundImage = `url('cafe.png')`;
+    // } else {
+    //   element.style.backgroundImage = `url('restaurant.png')`;
+    // }
     element.style.backgroundSize = 'contain';
     element.style.width = '32px';
     element.style.height = '32px';
@@ -31,7 +39,7 @@ const addMarkersToMap = (map, markers) => {
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 10 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 14 });
 };
 
 const initMapbox = () => {
