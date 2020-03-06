@@ -85,18 +85,28 @@ def my_campaigns
   authorize @campaigns
 end
 
-def total_risk_level
-  char_array = []
-  char_array << @campaign.repayment_capacity
-  char_array << @campaign.financial_health
-  char_array << @campaign.company_history
-  string = char_array.join.gsub!(/[ABC]/, 'A' => 1, 'B' => 2, 'C' => 3)
-  num_array = string.split(//)
-  sum = 0
-  num_array.each { |i| sum += i.to_i }
-  average = (sum / 3).round(0).to_s
-  @campaign.risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
-end
+
+  def owners_dashboard
+    @campaigns = Campaign.where(owner_id: current_user.id)
+    authorize @campaigns
+  end
+
+  def mycampaigns
+    @campaigns = policy_scope(Campaign)
+    authorize @campaigns
+  end
+  def total_risk_level
+    char_array = []
+    char_array << @campaign.repayment_capacity
+    char_array << @campaign.financial_health
+    char_array << @campaign.company_history
+    string = char_array.join.gsub!(/[ABC]/, 'A' => 1, 'B' => 2, 'C' => 3)
+    num_array = string.split(//)
+    sum = 0
+    num_array.each { |i| sum += i.to_i }
+    average = (sum / 3).round(0).to_s
+    @campaign.risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
+  end
 
   def dashboard
     if current.user.owner?
@@ -107,6 +117,8 @@ end
   end
 
   def support
+    @campaigns = policy_scope(Campaign)
+    authorize @campaigns
   end
 
   private
