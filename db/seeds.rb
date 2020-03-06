@@ -119,10 +119,10 @@ def create_investment(campaign, reward)
 # puts "create investment"
 
 investment = Investment.new
- investment.status = rand(0..4) #check enumerable in investment.rb (model)
- investment.amount = rand(1..10000)
+investment.status = rand(0..4) #check enumerable in investment.rb (model)
+investment.amount = rand(1..10000)
  # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
- investment.payment_date = rand(1..30).days.after
+investment.payment_date = Date.today + rand(-30..1).days
 
 # caution. enhance code as each investor should not have more than one investment on the same company.
 investment.investor = User.where(owner: false).sample
@@ -195,9 +195,9 @@ company = Company.new(
   address: COMPANY[:address].sample,
   type_store: type_store.sample,
   description: description,
-  instagram_url: "https://www.instagram.com/#{names}",
-  tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
-  googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
+  # instagram_url: "https://www.instagram.com/#{names}",
+  # tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
+  # googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
   )
 
 company.num_employees = rand(9..35)

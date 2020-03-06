@@ -1,13 +1,14 @@
 const rangeInput = document.getElementById("investmentRange");
-const payMonth = document.querySelector("#pay_month");
-const roi = Number.parseInt(document.querySelector("#roi"));
-const totalRoi = document.querySelector("#total_roi");
-const months = document.querySelector("#months");
-const amountInput = document.getElementById("investment_amount");
-const investmentReward = document.getElementById("investment_reward");
-const rewards = document.querySelectorAll(".reward")
 
 if (rangeInput) {
+  const payMonth = document.querySelector("#pay_month");
+  const roi = Number.parseInt(document.querySelector("#roi").innerText, 10);
+  const totalRoi = document.querySelector("#total_roi");
+  const months = document.querySelector("#months");
+  const amountInput = document.getElementById("investment_amount");
+  const investmentReward = document.getElementById("investment_reward");
+  const rewards = document.querySelectorAll(".reward")
+
   rangeInput.addEventListener("click", (event) => {
     document.querySelector("#investment_amount").value = event.target.value
     calculateReturn()

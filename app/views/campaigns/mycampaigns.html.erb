@@ -1,3 +1,4 @@
+<% if user_signed_in? && current_user.owner == true %>
 
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
@@ -8,19 +9,21 @@
       <a href="/mycampaigns" class="list-group-item list-group-item-action bg-light">Campaign</a>
       <a href="/mycampaigns/support" class="list-group-item list-group-item-action bg-light">Support</a>
     </div>
-
-    <!-- /#closing-wrapper -->
-  </div>
   <!-- /#closing-wrapper -->
+  </div>
+<!-- /#closing-wrapper -->
 
-  <div class="container mt-5">
-    <h1>Create your campaign on Fundeat!</h1>
-
-    <%= render 'campaigns/shared/form', campaign: @campaign %>
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <h3>Hi there, <%= current_user.first_name%></h3>
+    <p>Ready to launch your first campaign?</p>
+    <h5><%= link_to "Create Campaign", "/campaigns/new", class: "btn btn-secondary" %></h5>
   </div>
 </div>
 
 
+<%#= render "devise/shared/links" %>
 
-
-
+<% else %>
+<%= "Sign up as a raiser now!" %>
+<% end %>
