@@ -11,7 +11,6 @@ def show
   authorize @campaign
   @company = @campaign.company
 
-
   @marker = [{
     lat: @company.latitude,
     lng: @company.longitude,
@@ -41,9 +40,9 @@ def raising
   authorize @campaigns
 end
 
-def my_campaigns
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+def dashboard
+    @campaigns = Campaign.where(owner_id: current_user.id)
+    authorize @campaigns
 end
 
   # def dashboard

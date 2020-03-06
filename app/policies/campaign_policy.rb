@@ -17,11 +17,11 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
-  def my_campaigns?
+  def dashboard?
     return true
   end
 
-    def raising?
+  def raising?
     return true
   end
 end
