@@ -27,10 +27,10 @@
 
 
         <!-- insert company.photo -->
-       <% if campaign.company.photo.attached? %>
+        <% if campaign.company.photo.attached? %>
         <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
         <% else %>
-          <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
+        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
         <% end %>
 
         <!-- <h5>10 days left</h5> -->
@@ -45,9 +45,11 @@
           <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
         </div>
         <div class="target-bar">
-          <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
-          <% target = campaign.min_target %>
-          <% status = ((raised.to_f/target)*100).round(1) %>
+          <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
+            <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
+            <% target = campaign.min_target %>
+            <% status = ((raised&.to_f/target)*100).round(1) %>
+          <% end %>
           <div>
             <progress value=<%= status %> max="100" id="progress-bar-percentage" class="progress-bar notfull">
             </progress>
