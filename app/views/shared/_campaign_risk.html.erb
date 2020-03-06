@@ -3,22 +3,9 @@
     <div class="text-center">
       <div class="m-0">Risk Level</div>
       <div class="d-flex justify-content-around mx-2">
-
-        <% char_array = [] %>
-        <% char_array << campaign.repayment_capacity %>
-        <% char_array << campaign.financial_health %>
-        <% char_array << campaign.company_history %>
-        <% string = char_array.join.gsub!(/[ABC]/, 'A' => 1, 'B' => 2, 'C' => 3) %>
-        <% num_array = string.split(//) %>
-        <% sum = 0 %>
-        <% num_array.each { |i| sum += i.to_i } %>
-        <% average = (sum / 3).round(0).to_s %>
-        <% total_risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C') %>
-
-        <div class="circle-icon align-self-center color-type-<%= total_risk_level %>">
-        </div>
+        <div class="circle-icon align-self-center color-type-<%= @campaign.risk_level %>"></div>
         <span style="font-size: 48px; margin: 0;">
-          <p class="m-0"><%= total_risk_level %></p>
+          <p class="m-0"><%= @campaign.risk_level %></p>
         </span>
       </div>
     </div>
