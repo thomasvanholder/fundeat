@@ -15,7 +15,7 @@ def show
   @marker = [{
     lat: @company.latitude,
     lng: @company.longitude,
-    # image_url: helpers.asset_url('restaurant.png')
+    image_url: helpers.asset_url('restaurant.png')
   }]
 end
 
