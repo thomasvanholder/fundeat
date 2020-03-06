@@ -156,7 +156,7 @@ def create_campaign(company)
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
-  campaign.risk_level = ("A".."C").to_a.sample
+  # campaign.risk_level = ("A".."C").to_a.sample
 
   campaign.min_target = rand(20000..60000)
   campaign.max_target = campaign.min_target + rand(20000..60000)

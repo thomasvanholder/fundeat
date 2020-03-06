@@ -29,7 +29,8 @@
         </div>
 
         <div class="text-center my-5">
-          <iframe width="100%" height="360" frameborder="0" src="https://www.youtube.com/embed/6QS17b1itIE?autoplay=1"></iframe>
+          <% videoIDs = ["IIi4bsY8VaU", "6QS17b1itIE", "RW1t4cVJywA", "8472_XLlenA", "fKi-s-CLVrk", "0HMMiWzTs2E"] %>
+          <iframe width="100%" height="360" frameborder="0" src="https://www.youtube.com/embed/<%= videoIDs.sample %>?autoplay=1"></iframe>
         </div>
 
         <h4><%= @campaign.company.name %></h4>
