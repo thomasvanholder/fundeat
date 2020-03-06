@@ -139,27 +139,29 @@ class InvestmentsController < ApplicationController
       @investment.reward = @reward
       @investment.investor = current_user
 
-      if @investment.valid?
-        session = Stripe::Checkout::Session.create(
-          payment_method_types: ['card'],
-          line_items: [{
-            name: @campaign.title,
-          # images: [campaign.photo_url],
+
+    if @investment.valid?
+      @investment.save
+      investment_link = investment_url(@investment)
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @campaign.title,
+          # images: @campaign.photo_url],
+
           amount: @investment.amount * 100,
           currency: 'usd',
           quantity: 1
         }],
-        success_url: investments_url,
-        # success_url: campaign_investment_url(@campaign, @investment),
-        cancel_url: investments_url
+        # success_url: investments_url,
+        success_url: investment_link,
+        cancel_url: campaigns_url
         )
-        @investment.save
-        @investment.update(stripe_session_id: session.id)
-      else
-        render :new
-      end
-      authorize @campaign
-      authorize @investment
+
+      @investment.update(stripe_session_id: session.id)
+    else
+      render :new
+
     end
 
     def create

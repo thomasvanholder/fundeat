@@ -32,14 +32,14 @@
             required: true,
             input_html: { autocomplete: "new-password" } %>
             <div class="mt-4">
-              <%= f.input :user_type,
+              <%= f.input :owner,
               as: :boolean,
               label: "Sign up as a restaurant" %>
             </div>
           </div>
 
           <div class="form-actions text-center" >
-            <%= f.button :submit, "Sign up", class:"btn btn-secondary m-3 px-5" %>
+            <%= f.button :submit, "Sign up", class:"btn btn-success m-3 px-5" %>
           </div>
           <% end %>
 

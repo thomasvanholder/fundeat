@@ -1,6 +1,6 @@
 
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/campaigns", class: "navbar-brand" do %>
+  <%= link_to "/", class: "navbar-brand" do %>
   <img src="https://img.icons8.com/doodle/48/000000/dining-room.png">
   <% end %>
 
@@ -20,10 +20,10 @@
         </li>
       <% elsif user_signed_in? && current_user.owner == true %>
         <li class="nav-item active">
-          <%= link_to "Raising", "/my_campaigns", class: "nav-link" %>
+          <%= link_to "Raising", "/raising", class: "nav-link" %>
         </li>
         <li class="nav-item active">
-         <%= link_to "Dashboard", "/campaigns/dashboard", class: "nav-link" %>
+         <%= link_to "Dashboard", "/my_campaigns", class: "nav-link" %>
         </li>
       <% end %>
 
@@ -34,8 +34,8 @@
         </li>
 
         <li class="nav-item active">
-  <!-- one we have the link please redirect to  -->
-          <%= link_to "Raising", "#", class: "nav-link" %>
+          <%= link_to "Raising", "/raising", class: "nav-link" %>
+
         </li>
 
         <li class="nav-item active">

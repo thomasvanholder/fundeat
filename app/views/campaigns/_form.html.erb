@@ -1,0 +1,22 @@
+ <div class="container">
+  <div class="row justify-content-center text-center">
+
+    <%= simple_form_for(@campaign) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :description, hint: "What\'s your idea? Why are you launching a campaign? Enroll investors into your story"  %>
+      <%= f.input :min_target, label: 'Minimum amount for succesful campaign'  %>
+      <%= f.input :max_target, label: 'Maximum amount'  %>
+      <%= f.input :loan_duration, as: :radio_buttons, collection: %w(12 24 36 48 60), label: 'Payback period in months' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class:"btn btn-secondary" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
