@@ -1,4 +1,3 @@
-require "pry-byebug"
 
 class InvestmentsController < ApplicationController
   # attr_reader: investment
@@ -27,7 +26,6 @@ class InvestmentsController < ApplicationController
       labels_proj << inv.campaign.company.name
       labels_months_of_invest << (inv.payment_date).strftime("%m/%d/%Y")
 
-      # binding.pry
     end
 
     @avge_int_rate = sum/count

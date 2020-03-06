@@ -16,7 +16,6 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
-gem 'simple_form_extension'
 gem 'geocoder'
 
 
