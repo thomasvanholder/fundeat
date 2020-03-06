@@ -11,7 +11,9 @@
 
 
 <!-- <div class="d-flex justify-content-center"> -->
+
   <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
+
 
     <% @campaigns.each do |campaign| %>
     <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
@@ -34,11 +36,11 @@
         </div>
 
         <div class="box-align">
-          <h4>$ <%= number_with_delimiter(campaign.max_target, :delimiter => ',') %> target</h4>
+          <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
         </div>
         <div class="target-bar">
           <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
-          <% target = campaign.max_target %>
+          <% target = campaign.min_target %>
           <% status = ((raised.to_f/target)*100).round(1) %>
           <div>
             <progress value=<%= status %> max="100" id="progress-bar-percentage" class="progress-bar notfull">
@@ -76,9 +78,11 @@
         </div>
       </div>
     </div>
+
     <% end %>
     <% end %>
     <!-- # investment card closing div -->
+
   </div>
 
   <!--  -->

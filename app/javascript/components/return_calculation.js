@@ -23,7 +23,7 @@ if (rangeInput) {
 
   const calculateReturn = () => {
     const range = document.querySelector("#investmentRange")
-    const monthPay = Math.round(range.value / 12 * roi / 100, 2)
+    const monthPay = Math.round(range.value / 12 * (roi.innerText, 10) / 100, 2)
     payMonth.innerText = `$ ${monthPay}`
     totalRoi.innerText = `$ ${monthPay * parseInt(months.innerText, 10)}`
   }

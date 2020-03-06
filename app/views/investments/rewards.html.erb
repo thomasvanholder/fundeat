@@ -1,0 +1,60 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"><%= current_user.last_name%> <%= current_user.first_name%> </div>
+    <div class="list-group list-group-flush">
+      <a href="/myinvestments/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+      <a href="/myinvestments" class="list-group-item list-group-item-action bg-light">Investments</a>
+      <a href="/myinvestments/myrewards" style="background-color: lightgrey; font-weight: bold!important;" class="list-group-item list-group-item-action">Rewards</a>
+      <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
+
+    </div>
+  </div>
+
+
+<div>
+
+
+  <div class="container">
+  <% if @investments.empty? %>
+  <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
+  <h3>Do you want to invest in a new campaign?</h3>
+
+  <div>
+    <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-secondary" %>
+  </div>
+
+  <% else %>
+
+  <h1>Your rewards </h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Rewards #</th>
+        <th scope="col">TBC</th>
+        <th scope="col">TBC</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+     <% @investments.each_with_index do |investment, index| %>
+     <tr class="<%= index.even? ? 'bg-light' : '' %>">
+      <th scope="row"><%= investment.campaign.title%></th>
+      <td><%= investment.amount %></td>
+      <td>$<%= investment.campaign.title %></td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+</div>
+
+
+</div>
+
+
+
+</div>

@@ -8,6 +8,18 @@ class InvestmentPolicy < ApplicationPolicy
   def dashboard?
     return true
   end
+
+  def myinvestments?
+    return true
+  end
+
+  def rewards?
+    return true
+  end
+
+  def map?
+    return true
+  end
   def new?
     return true
   end

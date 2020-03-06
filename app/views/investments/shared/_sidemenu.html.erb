@@ -5,70 +5,80 @@
   <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"><%= current_user.last_name%> <%= current_user.first_name%> </div>
     <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Investments</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Rewards</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Map</a>
+      <a href="/myinvestments/dashboard" style="background-color: lightgrey; font-weight: bold!important;" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+      <a href="/myinvestments"  class="list-group-item list-group-item-action">Investments</a>
+      <a href="/myinvestments/myrewards" class="list-group-item list-group-item-action bg-light">Rewards</a>
+      <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
 
     </div>
   </div>
-    <!-- /#sidebar-wrapper -->
-<!-- ---------------------------------------- -->
-    <!-- Page Content -->
-    <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
+  <!-- /#sidebar-wrapper -->
+  <!-- ---------------------------------------- -->
+  <!-- Page Content -->
+  <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
 
 
     <!-- Insert cardsinfo -->
-      <div class="card-campaign-status p-2 m-5" style="width: 150px; height:150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-        <div class="d-flex mt-4 justify-content-around">
-          <div class="text-center">
-            <h1>$</h1>
-            <h5><%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h5>
-            <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
-          </div>
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; height:150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1>$</h1>
+          <h5><%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
         </div>
       </div>
-
-      <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-        <div class="d-flex mt-4 justify-content-around">
-          <div class="text-center">
-            <h1>%</h1>
-            <h5><%= @avge_int_rate*100.round(0)%></h5>
-            <p class="text-secondary mb-2" style="font-size: 12px;">% Average Return</p>
-          </div>
-        </div>
-      </div>
-
-       <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-        <div class="d-flex mt-4 justify-content-around">
-          <div class="text-center">
-            <h1><img style="height: 45px;" src="https://img.icons8.com/carbon-copy/100/000000/restaurant.png"></h1>
-            <h5><%= @investments.count%></h5>
-            <p class="text-secondary mb-2" style="font-size: 12px;">Restaurants</p>
-          </div>
-        </div>
-      </div>
-
-
     </div>
-  </div>
-  <!-- Enb of Insert buttons -->
+
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1>%</h1>
+          <h5><%= @avge_int_rate*100.round(0)%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">% Average Return</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1><img style="height: 45px;" src="https://img.icons8.com/carbon-copy/100/000000/restaurant.png"></h1>
+          <h5><%= @investments.where.not(payment_date: nil).count%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">Restaurants</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1><img style="height: 45px;" src="https://img.icons8.com/carbon-copy/100/000000/restaurant.png"></h1>
+          <h5><%= @investments.where(payment_date: nil).count%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">Pending investments</p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
-  <!-- /#wrapper -->
-      <!-- <div class="container-fluid"> -->
-        <div class="container">
-          <div style="position:absolute; top:350px; left:300px; width:500px; height:500px;">
-            <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
-          </div>
+<!-- Enb of Insert buttons -->
+</div>
+</div>
+<!-- /#wrapper -->
+<!-- <div class="container-fluid"> -->
+  <div class="container">
+    <div style="position:absolute; top:350px; left:300px; width:500px; height:500px;">
+      <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
+    </div>
 
-          <div style="position:absolute; top:350px; right:100px; width:500px; height:500px;">
-            <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
-          </div>
-        </div>
-     <!--  </div> -->
+    <div style="position:absolute; top:350px; right:100px; width:500px; height:500px;">
+      <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
+    </div>
+  </div>
+  <!--  </div> -->
 
-    <!-- /#page-content-wrapper -->
+  <!-- /#page-content-wrapper -->
 
 
 
