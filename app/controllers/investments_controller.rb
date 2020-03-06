@@ -108,18 +108,18 @@ class InvestmentsController < ApplicationController
       }
     end
 
-    def dashboard_myinvestments
+    def myinvestments
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
     end
 
-    def dashboard_myrewards
+    def rewards
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards
     end
-    def dashboard_mymap
+    def map
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
     end
