@@ -130,7 +130,10 @@ class InvestmentsController < ApplicationController
 
     def new
       @campaign = Campaign.find(params[:campaign_id])
+      authorize @campaign
       @investment = Investment.new(amount: params["investment"]["amount"])
+      authorize @investment
+
       @reward = @campaign.rewards.first
 
       @investment.campaign = @campaign
