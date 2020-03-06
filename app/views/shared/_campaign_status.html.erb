@@ -1,4 +1,4 @@
-<div class="card-campaign-status p-2 mb-5 mt-5" style="">
+<div class="card-campaign-status p-2 mb-5 mt-3" style="">
   <div class="target-bar m-3 bg-white">
     <% progress_percentage = ((campaign.raised_sum / campaign.min_target.to_f) * 100).round(0) %>
     <div class="" style="background-color: #1EDD88; width: <%= progress_percentage < 100 ? progress_percentage : 100 %>%; border-radius: 50px;">
