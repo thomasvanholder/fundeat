@@ -5,8 +5,8 @@
   <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading"><%= current_user.last_name%> <%= current_user.first_name%> </div>
     <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Investments</a>
+      <a href="/investments/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+      <a href="/investments/dashboard/myinvestments" class="list-group-item list-group-item-action bg-light">Investments</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Rewards</a>
       <a href="#" class="list-group-item list-group-item-action bg-light">Map</a>
 
@@ -57,15 +57,15 @@
 </div>
   <!-- /#wrapper -->
       <!-- <div class="container-fluid"> -->
-        <div class="container">
-          <div style="position:absolute; top:350px; left:300px; width:500px; height:500px;">
-            <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
-          </div>
+<div class="container">
+  <div style="position:absolute; top:350px; left:300px; width:500px; height:500px;">
+    <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
+  </div>
 
-          <div style="position:absolute; top:350px; right:100px; width:500px; height:500px;">
-            <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
-          </div>
-        </div>
+  <div style="position:absolute; top:350px; right:100px; width:500px; height:500px;">
+    <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
+  </div>
+</div>
      <!--  </div> -->
 
     <!-- /#page-content-wrapper -->

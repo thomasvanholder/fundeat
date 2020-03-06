@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'campaigns/dashboard', to: 'campaigns#dashboard', as: :campaigns_dashboard
 
   get 'investments/dashboard', to: 'investments#dashboard', as: :investors_dashboard
+  get 'investments/dashboard/myinvestments', to: 'investments#dashboard_myinvestments', as: :dashboard_myinvestments
+  get 'investments/dashboard/myrewards', to: 'investments#dashboard_myrewards', as: :dashboard_myrewards
+  get 'investments/dashboard/mymap', to: 'investments#dashboard_mymap', as: :dashboard_mymap
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
