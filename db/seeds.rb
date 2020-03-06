@@ -119,10 +119,10 @@ def create_investment(campaign, reward)
 # puts "create investment"
 
 investment = Investment.new
- investment.status = rand(0..4) #check enumerable in investment.rb (model)
- investment.amount = rand(1..10000)
+investment.status = rand(0..4) #check enumerable in investment.rb (model)
+investment.amount = rand(1..10000)
  # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
- investment.payment_date = rand(1..30).days.after
+investment.payment_date = Date.today + rand(-30..1).days
 
 # caution. enhance code as each investor should not have more than one investment on the same company.
 investment.investor = User.where(owner: false).sample
