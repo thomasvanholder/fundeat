@@ -19,16 +19,25 @@ def show
   }]
 end
 
-  def new
-    @campaign = Campaign.new
-    @company = Company.new
-    authorize @campaign
-    authorize @company
-  end
-
-def create
+def new
+  @campaign = Campaign.new
+  @company = Company.new
   authorize @campaign
   authorize @company
+end
+
+def create
+
+  @company = Company.new
+  authorize @company
+  @company.owner = current_user
+  @company.address = params[:company]["address"]
+  @company.name = params[:company]["name"]
+  @company.num_employees = params[:company]["num_of_employees"]
+  @company.num_employees = params[:company]["num_of_employees"]
+  # @
+  authorize @campaign
+  # @company = @campaign.
 end
 
 def edit

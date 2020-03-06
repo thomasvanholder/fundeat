@@ -6,14 +6,14 @@
     <%= c.error_notification %>
     <%= c.error_notification message: c.object.errors[:base].to_sentence if c.object.errors[:base].present? %>
 
-    <div class="company-form">
+  <div id="company-form">
 
       <%= simple_fields_for(@company) do |f| %>
       <!-- company name input -->
       <div class="form-group row">
         <label for="company_name" class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10 w-50">
-          <input type="text" class="form-control" id="company_name">
+          <input type="text" class="form-control" name="company[name]" id="company_name">
         </div>
       </div>
 
@@ -29,7 +29,7 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label string optional" for="company_num_of_employees">Employees</label>
         <div class="col-sm-10 w-50">
-         <input type="text" class="form-control" id="company[num_of_employees]">
+         <input type="text" class="form-control" name="company[num_of_employees]" id="company[num_of_employees]">
        </div>
      </div>
 
@@ -37,27 +37,33 @@
 
      <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="company_type_store">Type Store</label>
+
+
       <div class="col-sm-10 w-50 align-self-center">
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" value="company_type_store_restaurant" id="company_type_store_restaurant" name="campaign[loan_duration]" class="custom-control-input">
-          <label class="custom-control-label" for="customRadioInline1">Restaurant</label>
+          <input type="radio" value="restaurant" id="company[type_store]" name="company[type_store]" class="custom-control-input">
+          <label class="custom-control-label" for="company_type_store">Restaurant</label>
         </div>
+
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" value="company_type_store_coffee"  id="company_type_store_coffee" name="customRadioInline1" class="custom-control-input">
-          <label class="custom-control-label" for="customRadioInline2">Coffee</label>
+          <input type="radio" value="coffee"  id="company[type_store]" name="company[type_store]" class="custom-control-input">
+          <label class="custom-control-label" for="company_type_store">Coffee</label>
         </div>
+
         <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" value="company_type_store_bar"  id="company_type_store_bar" name="customRadioInline1" class="custom-control-input">
-          <label class="custom-control-label" for="customRadioInline2">Bar</label>
+          <input type="radio" value="bar"  id="company[type_store]" name="company[type_store]" class="custom-control-input">
+          <label class="custom-control-label" for="company_type_store">Bar</label>
         </div>
       </div>
+
+
     </div>
 
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text" style="width: 200px;">Company description</span>
+        <label class="col-sm-2 col-form-label string optional" for="company_description">Company Description</label>
       </div>
-      <textarea class="form-control" id="company_description" aria-label="With textarea"></textarea>
+      <textarea class="form-control" name="company[description]" id="company[description]" aria-label="With textarea"></textarea>
     </div>
 
     <br>
@@ -73,7 +79,7 @@
   <br>
   <br>
 
-  <div style="display: none;">
+  <div id="campaign-form" class="d-none" style="">
 
     <h3>Your campagin</h3>
 
@@ -156,6 +162,14 @@
     const toggle = document.getElementById("continue");
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById("company-form").classList.toggle('toggled');
+      document.getElementById("company-form").classList.toggle('d-none');
+      document.getElementById("campaign-form").classList.toggle('d-none');
     });
   </script>
+
+<style>
+  .custom-control-input {
+    z-index: 101;
+  }
+</style>
+
