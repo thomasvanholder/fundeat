@@ -34,8 +34,40 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    @company = Company.new
+    authorize @company
+    @company.owner = current_user
+    @company.address = params[:company]["address"]
+    @company.name = params[:company]["name"]
+    @company.num_employees = params[:company]["num_of_employees"]
+    @company.description = params[:company]["description"]
+
+    @campaign = Campaign.new
     authorize @campaign
+    @campaign.title = params[:campaign][:title]
+    @campaign.description = params[:campaign][:description]
+    @campaign.min_target = params[:campaign][:min_target]
+    @campaign.description = params[:campaign][:description]
+    @campaign.loan_duration = params[:campaign][:loan_duration]
+
+  # seeded data
+    @campaign.repayment_capacity = ("A".."C").to_a.sample
+    @campaign.financial_health = ("A".."C").to_a.sample
+    @campaign.company_history = ("A".."C").to_a.sample
+    @campaign.return_rate = rand(0.05..0.1).round(1)
+    @campaign.expiry_date = Date.today + rand(5..30).days
+    @campaign.risk_level = total_risk_level
+
+    @campaign.company = @company
+
+    # raise
+    if @campaign.save
+      redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
+    else
+      render :new
+    end
   end
+
 
   def edit
   end
@@ -44,14 +76,15 @@ class CampaignsController < ApplicationController
   end
 
   def raising
-    @campaigns = policy_scope(Campaign)
-    authorize @campaigns
-  end
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
 
-  def my_campaigns
-    @campaigns = policy_scope(Campaign)
-    authorize @campaigns
-  end
+def my_campaigns
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
+
 
   def owners_dashboard
     @campaigns = Campaign.where(owner_id: current_user.id)
@@ -62,7 +95,7 @@ class CampaignsController < ApplicationController
     @campaigns = policy_scope(Campaign)
     authorize @campaigns
   end
-  def total_risk_level
+  def total_risk_level(company_history)
     char_array = []
     char_array << @campaign.repayment_capacity
     char_array << @campaign.financial_health
@@ -75,13 +108,13 @@ class CampaignsController < ApplicationController
     @campaign.risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
   end
 
-  # def dashboard
-  #   if current.user.owner?
-  #     :owner_dashboard
-  #   else
-  #     render :investor_dashboard
-  #   end
-  # end
+  def dashboard
+    if current.user.owner?
+      :owner_dashboard
+    else
+      render :investor_dashboard
+    end
+  end
 
   def support
     @campaigns = policy_scope(Campaign)
