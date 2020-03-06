@@ -1,47 +1,40 @@
-<body>
+<div class="d-flex" id="wrapper">
 
-  <div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Dashboard</div>
+    <div class="list-group list-group-flush">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Dashboard</div>
-      <div class="list-group list-group-flush">
-
-        <a href="#" class="list-group-item list-group-item-action bg-light">Campaign</a>
-        <a href="/my_campaigns/support" class="list-group-item list-group-item-action bg-light">Support</a>
-      </div>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Campaign</a>
+      <a href="/my_campaigns/support" class="list-group-item list-group-item-action bg-light">Support</a>
     </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <i class="m-3 fas fa-angle-double-left" id="menu-toggle"></i>
-
-
-      <div class="container-fluid">
-
-        <h3>Hi there, <%= current_user.first_name%></h3>
-        <p>Ready to launch your first campaign?</p>
-        <h5><%= link_to "Create Campaign", "/campaigns/new", class: "btn btn-secondary" %></h5>
-
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-
   </div>
-  <!-- /#wrapper -->
+  <!-- /#sidebar-wrapper -->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <i class="m-3 fas fa-angle-double-left" id="menu-toggle"></i>
+    <div class="container-fluid">
+      <h3>Hi there, <%= current_user.first_name%></h3>
+      <p>Ready to launch your first campaign?</p>
+      <h5><%= link_to "Create Campaign", "/campaigns/new", class: "btn btn-secondary" %></h5>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
 
-  <!-- Menu Toggle Script -->
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById("wrapper").classList.toggle('toggled');
-    });
-  </script>
-</body>
+</div>
+<!-- /#wrapper -->
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("wrapper").classList.toggle('toggled');
+  });
+</script>
 
