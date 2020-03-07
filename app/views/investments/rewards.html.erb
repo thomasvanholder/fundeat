@@ -63,7 +63,7 @@
         <tr>
             <td scope="row"> Total</td>
             <td></td>
-            <td>$<%= @investments_payed.sum("amount") %></td>
+            <td>$<%= number_with_delimiter(@investments_payed.sum("amount"), :delimiter=>',') %></td>
             <td></td>
             <td></td>
             <td></td>
