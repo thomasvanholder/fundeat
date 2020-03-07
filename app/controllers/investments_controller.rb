@@ -122,10 +122,35 @@ class InvestmentsController < ApplicationController
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards
     end
+
     def map
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
+      @markers = []
+
+      @investments.map do |investment|
+        if investment.campaign.company.type_store == "Bar"
+          url = helpers.asset_url('bar.png')
+        elsif investment.campaign.company.type_store == "Cafe"
+          url = helpers.asset_url('cafe.png')
+        else
+          url = helpers.asset_url('restaurant.png')
+        end
+
+      @markers << {
+        lat: investment.campaign.company.latitude,
+        lng: investment.campaign.company.longitude,
+        # infoWindow: render_to_string(partial: "info_window", locals: { company: company }),
+        image_url: url
+      }
+      # authorize @markers
+
+      end
+
+
+
     end
+
     def show
       @investment = Investment.find(params[:id])
       authorize @investment
@@ -144,13 +169,13 @@ class InvestmentsController < ApplicationController
       @investment.investor = current_user
 
 
-    if @investment.valid?
-      @investment.save
-      investment_link = investment_url(@investment)
-      session = Stripe::Checkout::Session.create(
-        payment_method_types: ['card'],
-        line_items: [{
-          name: @campaign.title,
+      if @investment.valid?
+        @investment.save
+        investment_link = investment_url(@investment)
+        session = Stripe::Checkout::Session.create(
+          payment_method_types: ['card'],
+          line_items: [{
+            name: @campaign.title,
           # images: @campaign.photo_url],
 
           amount: @investment.amount * 100,
@@ -162,12 +187,12 @@ class InvestmentsController < ApplicationController
         cancel_url: campaigns_url
         )
 
-      @investment.update(stripe_session_id: session.id)
-    else
-      render :new
+        @investment.update(stripe_session_id: session.id)
+      else
+        render :new
 
+      end
     end
-  end
 
     def create
       @investment = Investment.new()
