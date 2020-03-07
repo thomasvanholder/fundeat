@@ -116,6 +116,9 @@ class InvestmentsController < ApplicationController
     def rewards
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
+      @investments_payed = @investments.where.not(payment_date: nil)
+      authorize @investments_payed
+
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards
     end

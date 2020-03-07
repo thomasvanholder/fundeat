@@ -23,7 +23,7 @@
       <div class="d-flex mt-4 justify-content-around">
         <div class="text-center">
           <h1>$</h1>
-          <h5><%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h5>
+          <h5><%= number_with_delimiter(@investments.where.not(payment_date: nil).sum(:amount), :delimiter => ',')%></h5>
           <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
         </div>
       </div>

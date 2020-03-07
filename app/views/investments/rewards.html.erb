@@ -12,45 +12,68 @@
   </div>
 
 
-<div>
-
-
-  <div class="container">
-  <% if @investments.empty? %>
-  <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
-  <h3>Do you want to invest in a new campaign?</h3>
-
   <div>
-    <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-secondary" %>
-  </div>
 
-  <% else %>
 
-  <h1>Your rewards </h1>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Rewards #</th>
-        <th scope="col">TBC</th>
-        <th scope="col">TBC</th>
+    <div class="container">
+      <% if @investments.empty? %>
+      <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
+      <h3>Do you want to invest in a new campaign?</h3>
 
-      </tr>
-    </thead>
+      <div>
+        <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-secondary" %>
+      </div>
 
-    <tbody>
-     <% @investments.each_with_index do |investment, index| %>
-     <tr class="<%= index.even? ? 'bg-light' : '' %>">
-      <th scope="row"><%= investment.campaign.title%></th>
-      <td><%= investment.amount %></td>
-      <td>$<%= investment.campaign.title %></td>
+      <% else %>
 
-    </tr>
+      <h1>Your rewards </h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Restaurant</th>
+            <th scope="col">Campaign</th>
+            <th scope="col">Amount Invested</th>
+            <th scope="col">Reward</th>
+            <th scope="col">Status</th>
+            <th scope="col">Redeem</th>
+
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+         <% @investments_payed.each_with_index do |investment, index| %>
+
+         <tr class="<%= index.even? ? 'bg-light' : '' %>">
+            <td scope="row"><%= investment.campaign.company.name %></td>
+            <td><%= investment.campaign.title %></td>
+            <td>$<%= number_with_delimiter(investment.amount, :delimiter => ',') %></td>
+            <td><%= investment.reward.description %></td>
+            <td>Pending</td>
+            <td><h5><%= link_to "Redeem", "#", class: "btn btn-secondary" %></h5></td>
+
+
+
+
+        </tr>
+        <% end %>
+
+
+        <tr>
+            <td scope="row"> Total</td>
+            <td></td>
+            <td>$<%= @investments_payed.sum("amount") %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+      </tbody>
+    </table>
+
     <% end %>
-  </tbody>
-</table>
-
-<% end %>
-</div>
+  </div>
 
 
 </div>
