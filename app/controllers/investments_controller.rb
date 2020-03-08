@@ -126,9 +126,11 @@ class InvestmentsController < ApplicationController
     def map
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
+      @investments_payed = @investments.where.not(payment_date: nil)
+      authorize @investments_payed
       @markers = []
 
-      @investments.map do |investment|
+      @investments_payed.map do |investment|
         if investment.campaign.company.type_store == "Bar"
           url = helpers.asset_url('bar.png')
         elsif investment.campaign.company.type_store == "Cafe"
@@ -140,7 +142,7 @@ class InvestmentsController < ApplicationController
       @markers << {
         lat: investment.campaign.company.latitude,
         lng: investment.campaign.company.longitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { company: company }),
+        infoWindow: render_to_string(partial: "info_window", locals: { investment: investment }),
         image_url: url
       }
       # authorize @markers
