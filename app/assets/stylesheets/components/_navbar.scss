@@ -18,11 +18,14 @@
   display: block;
   padding: 0.5rem 1rem;
   &:hover,
-  &:focus,
-  &:active {
-    text-decoration: underline;
+  &:focus {
+    text-decoration: none;
+    border-bottom: 1px solid #00B63A;
+    padding-bottom: 3px;
     color: #00B63A;
   }
 }
 
-
+.nav-link-custom.active {
+ color: #00B63A;
+}
