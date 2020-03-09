@@ -1,5 +1,6 @@
 class InvestmentsController < ApplicationController
   # attr_reader: investment
+  before_action :sidebar_menu
 
   def index
     @investments = policy_scope(Investment)
@@ -127,8 +128,35 @@ class InvestmentsController < ApplicationController
       # end
       # authorize @investments_closed
       # authorize @investments_open
+    end
 
-
+    def sidebar_menu
+      @menu = [
+        {
+          title: "Dashboard",
+          action_name: "dashboard",
+          url: "/myinvestments/dashboard",
+          class: ""
+        },
+        {
+          title: "My investments",
+          action_name: "myinvestments",
+          url: "/myinvestments",
+          class: ""
+        },
+        {
+          title: "My rewards",
+          action_name: "myrewards",
+          url: "/myinvestments/myrewards",
+          class: ""
+        },
+        {
+          title: "Map",
+          action_name: "mymap",
+          url: "/myinvestments/mymap",
+          class: ""
+        }
+      ]
     end
 
     def rewards

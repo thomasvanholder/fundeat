@@ -1,52 +1,48 @@
+<div class="container-fluid p-0">
+  <div class="row">
 
 
-<div class="d-flex" id="wrapper">
-  <!-- Sidebar -->
-  <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading"><%= current_user.last_name%> <%= current_user.first_name%> </div>
-    <div class="list-group list-group-flush">
-      <a href="/myinvestments/dashboard" style="background-color: lightgrey; font-weight: bold!important;" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="/myinvestments"  class="list-group-item list-group-item-action">Investments</a>
-      <a href="/myinvestments/myrewards" class="list-group-item list-group-item-action bg-light">Rewards</a>
-      <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
-
+    <div class="col-md-2 col-lg-2 p-0">
+      <%= render '/shared/investor_dashboard_sidebar' %>
     </div>
-  </div>
-  <!-- /#sidebar-wrapper -->
-  <!-- ---------------------------------------- -->
-  <!-- Page Content -->
-  <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
 
-    <!-- Insert cardsinfo -->
-    <div class="card-campaign-status p-2 m-5" style="width: 150px; height:150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-      <div class="d-flex mt-4 justify-content-around">
-        <div class="text-center">
-          <h1>$</h1>
-          <h5><%= number_with_delimiter(@investments.where.not(payment_date: nil).sum(:amount), :delimiter => ',')%></h5>
-          <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
+    <div class="col-md-10 col-lg-10 p-0">
+
+      <!-- /#sidebar-wrapper -->
+      <!-- ---------------------------------------- -->
+      <!-- Page Content -->
+      <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
+
+        <!-- Insert cardsinfo -->
+        <div class="card-campaign-status p-2 m-5" style="width: 150px; height:150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+          <div class="d-flex mt-4 justify-content-around">
+            <div class="text-center">
+              <h1>$</h1>
+              <h5><%= number_with_delimiter(@investments.where.not(payment_date: nil).sum(:amount), :delimiter => ',')%></h5>
+              <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-      <div class="d-flex mt-4 justify-content-around">
-        <div class="text-center">
-          <h1>%</h1>
-          <h5><%= @avge_int_rate*100.round(0)%></h5>
-          <p class="text-secondary mb-2" style="font-size: 12px;">% Average Return</p>
+        <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+          <div class="d-flex mt-4 justify-content-around">
+            <div class="text-center">
+              <h1>%</h1>
+              <h5><%= @avge_int_rate*100.round(0)%></h5>
+              <p class="text-secondary mb-2" style="font-size: 12px;">% Average Return</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-      <div class="d-flex mt-4 justify-content-around">
-        <div class="text-center">
-          <h1><img style="height: 45px;" src="https://img.icons8.com/carbon-copy/100/000000/restaurant.png"></h1>
-          <h5><%= @investments.where.not(payment_date: nil).count%></h5>
-          <p class="text-secondary mb-2" style="font-size: 12px;">Restaurants</p>
+        <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+          <div class="d-flex mt-4 justify-content-around">
+            <div class="text-center">
+              <h1><img style="height: 45px;" src="https://img.icons8.com/carbon-copy/100/000000/restaurant.png"></h1>
+              <h5><%= @investments.where.not(payment_date: nil).count%></h5>
+              <p class="text-secondary mb-2" style="font-size: 12px;">Restaurants</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
 <!--     <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
       <div class="d-flex mt-4 justify-content-around">
@@ -79,5 +75,6 @@
 
   <!-- /#page-content-wrapper -->
 
-
+</div>
+</div>
 
