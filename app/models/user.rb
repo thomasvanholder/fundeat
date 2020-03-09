@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :investments, foreign_key: "investor_id"
   has_many :companies, foreign_key: "owner_id"
+  has_many :campaigns, through: :companies
   has_one_attached :photo # we might be willing to change it to many. and check how to define which one to show on prod cards that only allow one photo for the time being.
 
 
