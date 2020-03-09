@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   resources :campaigns, only: [:new, :create, :edit, :update, :show, :index] do
     resources :investments, only: [:new, :create]
   end
-  resources :investments, only: [:show]
+  resources :investments, only: [:show] do
+    resources :reward_redemptions, only: [:create]
+  end
 
   get 'investments', to: 'investments#index', as: :investments
+  get 'investments/:id/confirmation', to: 'investments#confirmation', as: :investment_confirmation
 
   get 'raising', to: 'campaigns#raising', as: :raising
 

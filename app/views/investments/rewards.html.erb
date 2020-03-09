@@ -28,13 +28,13 @@
 
       <h1>Your rewards </h1>
       <table class="table table-hover">
-        <thead>
+        <thead class="">
           <tr>
+            <th scope="col"></th>
             <th scope="col">Restaurant</th>
             <th scope="col">Campaign</th>
             <th scope="col">Amount Invested</th>
             <th scope="col">Reward</th>
-            <th scope="col">Status</th>
             <th scope="col">Redeem</th>
 
 
@@ -46,22 +46,32 @@
          <% @investments_payed.each_with_index do |investment, index| %>
 
          <tr class="<%= index.even? ? 'bg-light' : '' %>">
-            <td scope="row"><%= investment.campaign.company.name %></td>
-            <td><%= investment.campaign.title %></td>
-            <td>$<%= number_with_delimiter(investment.amount, :delimiter => ',') %></td>
-            <td><%= investment.reward.description %></td>
-            <td>Pending</td>
-            <td><h5><%= link_to "Redeem", "#", class: "btn btn-secondary" %></h5></td>
+          <td scope="row">
+            <% if investment.reward_redeemed %>
+            <i class="fas fa-check-circle text-success" style="font-size: 24px;"></i>
+            <% else %>
+            <i class="fas fa-circle" style="font-size: 24px; color: lightgrey;"></i>
+            <% end %>
+          </td>
+          <td scope="row"><%= investment.campaign.company.name %></td>
+          <td><%= investment.campaign.title %></td>
+          <td>$<%= number_with_delimiter(investment.amount, :delimiter => ',') %></td>
+          <td><%= investment.reward.description %></td>
+          <td>
+            <% unless investment.reward_redeemed %>
+            <h5><%= link_to "Redeem", investment_reward_redemptions_path(investment), method: :post, class: "btn btn-success" %></h5>
+            <% end %>
+          </td>
         </tr>
         <% end %>
 
         <tr>
-            <td scope="row"> Total</td>
-            <td></td>
-            <td>$<%= number_with_delimiter(@investments_payed.sum("amount"), :delimiter=>',') %></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <td scope="row"></td>
+          <td>Total</td>
+          <td></td>
+          <td>$<%= number_with_delimiter(@investments_payed.sum("amount"), :delimiter=>',') %></td>
+          <td></td>
+          <td></td>
         </tr>
 
       </tbody>
