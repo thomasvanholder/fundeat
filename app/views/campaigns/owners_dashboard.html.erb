@@ -17,18 +17,52 @@
         <div class="text-center">
           <h1>$</h1>
           <h5><%= number_with_delimiter(@company.total_raised, :delimiter => ',')%></h5>
-          <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
+          <p class="text-secondary mb-2" style="font-size: 12px;">USD Raised</p>
         </div>
       </div>
     </div>
 
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1>%</h1>
+          <h5><%= @company.campaigns.first.return_rate*100.round(0)%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">Average Interest %</p>
+        </div>
+      </div>
+    </div>
 
-<!-- Closing id="page-content-wrapper" div -->
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1>#</h1>
+          <h5><%= @company.number_of_investors%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">Number of Investors</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing id="page-content-wrapper" div -->
   </div>
-<!-- Closing id="page-content-wrapper" div -->
+  <!-- Closing id="page-content-wrapper" div -->
 
 
-<!-- Closing id="wrapper" div -->
-</div>
-<!-- Closing id="wrapper" div -->
+  <!-- <div class="container-fluid"> -->
+    <div class="container">
+      <div style="position:absolute; top:350px; left:300px; width:500px; height:500px;">
+        <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
+      </div>
+
+      <div style="position:absolute; top:350px; right:100px; width:500px; height:500px;">
+        <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
+      </div>
+    </div>
+    <!--  </div> -->
+
+
+
+
+    <!-- Closing id="wrapper" div -->
+  </div>
+  <!-- Closing id="wrapper" div -->
 
