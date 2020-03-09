@@ -1,4 +1,3 @@
-
 class InvestmentsController < ApplicationController
   # attr_reader: investment
 
@@ -6,8 +5,6 @@ class InvestmentsController < ApplicationController
     @investments = policy_scope(Investment)
     authorize @investments
   end
-
-
 
   def dashboard
     @investments = Investment.where(investor_id: current_user.id)
