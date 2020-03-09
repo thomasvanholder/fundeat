@@ -43,9 +43,7 @@
           <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
 
           <h1><%= campaign.company.name %></h1>
-          <div style="height: 50px">
-            <p><%= campaign.title %></p>
-          </div>
+            <p class="mb-4"><%= campaign.description %></p>
 
           <div class="box-align">
             <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
