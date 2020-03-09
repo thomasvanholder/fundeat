@@ -54,11 +54,11 @@ DURATION = %w(12 24 36 48 60)
 # #Edit
 CAMPAIGNS = {
   title: [
-    'A new restaurant concept is coming to Palermo Soho., We will rock it!',
-    'We want to open our third location in CABA. Are you in?',
-    'Now ready to launch our Belgrano store. Be part of it!',
-    'From chacarita to CABA. We are now opening our second location',
-    'Puerto madero second location to be opened. Looking for supporters!'
+    'A new restaurant concept is coming to Palermo Soho. Be part of the movement.',
+    'Vegan pizza is taking over Buenos Aires! We need your support to open location #3.',
+    'Great views, great cocktails, great people. Your new place to connect in Palermo Hollywood.',
+    'From chacarita to CABA. Delicious burgers are a human right for all residents in BA!',
+    'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
   ]
 }
 
