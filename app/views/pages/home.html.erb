@@ -90,7 +90,13 @@
     <!-- investment card -->
     <div class="card-investment">
       <div class="card-user">
-        <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+        <% if campaign.company.type_store == "Restaurant" %>
+        <%= image_tag "restaurant.png", class:"avatar-m-square", alt: "avatar" %>
+        <% elsif campaign.company.type_store == "Bar" %>
+        <%= image_tag "bar.png", class:"avatar-m-square", alt: "avatar" %>
+        <% else %>
+        <%= image_tag "cafe.png", class:"avatar-m-square", alt: "avatar" %>
+        <% end %>
       </div>
       <!-- background pic -->
       <!-- insert company.photo -->
