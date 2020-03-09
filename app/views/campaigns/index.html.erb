@@ -8,95 +8,98 @@
 <div class="banner-index">
   <div class="text-center my-5">
     <h3 class="banner-title">Fund your taste!</h3>
-    <form class="form-inline justify-content-center my-5">
-      <input id="searchbox" class="form-control mr-sm-2 text-left" type="search" placeholder="Try Bar" aria-label="Search" name="type_store">
-      <button class="btn btn-secondary" type="submit">Search</button>
-    </form>
+    <%= form_tag campaigns_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control, form-inline, text-center",
+      placeholder: "Find a campaign", placeholder: "try \'bar\'"
+      %>
+      <%= submit_tag "Search", class: "btn btn-secondary" %>
+      <% end %>
+    </div>
   </div>
-</div>
 
+  <!-- <div class="d-flex justify-content-center"> -->
 
-<!-- <div class="d-flex justify-content-center"> -->
+    <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
+      <% @campaigns.each do |campaign| %>
+      <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
+      <div class="card-wrapper">
+        <!-- investment card -->
+        <div class="card-investment">
+          <div class="card-user">
+            <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+          </div>
+          <!-- background pic -->
 
-  <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
-    <% @campaigns.each do |campaign| %>
-    <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
-    <div class="card-wrapper">
-      <!-- investment card -->
-      <div class="card-investment">
-        <div class="card-user">
-          <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
-        </div>
-        <!-- background pic -->
-
-        <!-- insert company.photo -->
-        <% if campaign.company.photo.attached? %>
-        <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
-        <% else %>
-        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
-        <% end %>
-
-        <!-- <h5>10 days left</h5> -->
-        <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
-
-        <h1><%= campaign.company.name %></h1>
-        <div style="height: 50px">
-          <p><%= campaign.title %></p>
-        </div>
-
-        <div class="box-align">
-          <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
-        </div>
-        <div class="target-bar">
-          <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
-          <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
-          <% target = campaign.min_target %>
-          <% status = ((raised&.to_f/target)*100).round(1) %>
+          <!-- insert company.photo -->
+          <% if campaign.company.photo.attached? %>
+          <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
+          <% else %>
+          <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
           <% end %>
-          <div>
-            <progress value=<%= status %> max="100" id="progress-bar-percentage" class="progress-bar notfull">
-            </progress>
-          </div>
-          <div class="relative"> <p><%= status %> %</p></div>
-        </div>
 
-        <style>
-          div.relative {
-            position: relative;
-            left: 0px;
-            bottom:23px;
+          <!-- <h5>10 days left</h5> -->
+          <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
 
-          }
-        </style>
+          <h1><%= campaign.company.name %></h1>
+          <div style="height: 50px">
+            <p><%= campaign.title %></p>
+          </div>
 
-        <div class="box-align d-flex justify-content-between">
-          <div class="text-center">
-            <h4>$ <%= number_with_delimiter(Investment.where(campaign_id: campaign.id).sum("amount"), :delimiter => ',') %></h4>
-            <p>raised</p>
+          <div class="box-align">
+            <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
           </div>
-          <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+          <div class="target-bar">
+            <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
+            <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
+            <% target = campaign.min_target %>
+            <% status = ((raised&.to_f/target)*100).round(1) %>
+            <% end %>
+            <div>
+              <progress value=<%= status %> max="100" id="progress-bar-percentage" class="progress-bar notfull">
+              </progress>
+            </div>
+            <div class="relative"> <p><%= status %> %</p></div>
           </div>
-          <div class="text-center">
-            <h4><%= (campaign.return_rate*100).round(1) %>%</h4>
-            <p>interest</p>
-          </div>
-          <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-          </div>
-          <div class="text-center">
-            <h4><%= Investment.where(campaign_id: campaign.id).count%></h4>
-            <p>investors</p>
+
+          <style>
+            div.relative {
+              position: relative;
+              left: 0px;
+              bottom:23px;
+
+            }
+          </style>
+
+          <div class="box-align d-flex justify-content-between">
+            <div class="text-center">
+              <h4>$ <%= number_with_delimiter(Investment.where(campaign_id: campaign.id).sum("amount"), :delimiter => ',') %></h4>
+              <p>raised</p>
+            </div>
+            <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+            </div>
+            <div class="text-center">
+              <h4><%= (campaign.return_rate*100).round(1) %>%</h4>
+              <p>interest</p>
+            </div>
+            <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+            </div>
+            <div class="text-center">
+              <h4><%= Investment.where(campaign_id: campaign.id).count%></h4>
+              <p>investors</p>
+            </div>
           </div>
         </div>
       </div>
+
+      <% end %>
+      <% end %>
+      <!-- # investment card closing div -->
+
     </div>
 
-    <% end %>
-    <% end %>
-    <!-- # investment card closing div -->
-
-  </div>
-
-  <!--  -->
+    <!--  -->
 
 <!--   # create_table "campaigns", force: :cascade do |t|
   #   t.string "title"

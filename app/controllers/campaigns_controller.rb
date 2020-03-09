@@ -3,7 +3,10 @@ class CampaignsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :raising]
   def index
     if params[:query].present?
-      @campaigns = Campaign.where(type_store: params[:query])
+      sql_query = " \
+      companies.type_store ILIKE :query \
+      "
+      @campaigns = Campaign.joins(:company).where(sql_query, query: "%#{params[:query]}%")
     else
       @campaigns = policy_scope(Campaign)
     end
