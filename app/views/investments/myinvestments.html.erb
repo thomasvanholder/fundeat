@@ -40,8 +40,8 @@
 
 <div class="box-align" >
   <h4>Campaign Overview</h4>
-  <ul>
-    <li><p style="font-size: 16px";>Campaign target: $ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></p> </li>
+  <ul class="patient-item">
+    <li ><p style="font-size: 16px";>Campaign target: $ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></p> </li>
     <li><p style="font-size: 16px";> Funding Status: <%= status %> % ($ <%= raised %>)</p></li>
     <li><p style="font-size: 16px";> #Investors:  <%= Investment.where(campaign_id: investment.campaign.id).count %></p> </li>
     <li><p style="font-size: 16px";>Avge Inv Rate <%= (investment.campaign.return_rate*100).round(1)  %> %</p> </li>
@@ -50,7 +50,7 @@
   <br>
 
   <h4>Your Investment </h4>
-  <ul>
+  <ul class="patient-item">
     <li><p style="font-size: 16px";>Your current investment: $ <%= investment.amount %> </p></li>
     <% if investment.payment_date.nil? %>
     <li><p style="font-size: 16px";> Payment date: Pending </p></li>

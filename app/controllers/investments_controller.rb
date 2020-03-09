@@ -119,31 +119,55 @@ class InvestmentsController < ApplicationController
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards
     end
+
     def map
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
+      @investments_payed = @investments.where.not(payment_date: nil)
+      authorize @investments_payed
+      @markers = []
+
+      @investments_payed.map do |investment|
+        if investment.campaign.company.type_store == "Bar"
+          url = helpers.asset_url('bar.png')
+        elsif investment.campaign.company.type_store == "Cafe"
+          url = helpers.asset_url('cafe.png')
+        else
+          url = helpers.asset_url('restaurant.png')
+        end
+
+        @markers << {
+          lat: investment.campaign.company.latitude,
+          lng: investment.campaign.company.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { investment: investment }),
+          image_url: url
+        }
+      # authorize @markers
+
     end
-    def show
-      @investment = Investment.find(params[:id])
-      authorize @investment
-    end
+  end
 
-    def new
-      @campaign = Campaign.find(params[:campaign_id])
-      authorize @campaign
-      @investment = Investment.new(amount: params["investment"]["amount"])
-      authorize @investment
+  def show
+    @investment = Investment.find(params[:id])
+    authorize @investment
+  end
 
-      @reward = @campaign.rewards.first
+  def new
+    @campaign = Campaign.find(params[:campaign_id])
+    authorize @campaign
+    @investment = Investment.new(amount: params["investment"]["amount"])
+    authorize @investment
 
-      @investment.campaign = @campaign
-      @investment.reward = @reward
-      @investment.investor = current_user
+    @reward = @campaign.rewards.first
+
+    @investment.campaign = @campaign
+    @investment.reward = @reward
+    @investment.investor = current_user
 
 
     if @investment.valid?
       @investment.save
-      investment_link = investment_url(@investment)
+      investment_link = investment_confirmation_url(@investment)
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
@@ -166,15 +190,23 @@ class InvestmentsController < ApplicationController
     end
   end
 
-    def create
-      @investment = Investment.new()
-      authorize @investment
+  def create
+    @investment = Investment.new()
+    authorize @investment
 
-      @investment.reward_id = params[:investment][:reward].to_i
-      @investment.amount = params["investment"]["amount"]
+    @investment.reward_id = params[:investment][:reward].to_i
+    @investment.amount = params["investment"]["amount"]
+  end
+
+  def confirmation
+    @investment = Investment.find(params[:id])
+    authorize @investment
+    if @investment.payment_date.nil?
+      @investment.update(payment_date: Time.zone.now)
     end
+  end
 
-    private
+  private
 
   # def investment_params
   #   params.require(:investment).permit(:amount, :reward)

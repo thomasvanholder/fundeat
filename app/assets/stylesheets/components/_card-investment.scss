@@ -23,7 +23,14 @@
   border-radius: 20px;
   margin: 20px;
   box-shadow: 0 0 24px rgba(33,33,33,.3);
+}
 
+
+.card-investment ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .card-investment .card-pic {
