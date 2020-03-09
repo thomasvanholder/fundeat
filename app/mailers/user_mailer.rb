@@ -4,13 +4,6 @@ class UserMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.user_mailer.welcome.subject
-  #
-  def welcome
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
-  end
-
   def welcome
     @user = params[:user] # Instance variable => available in view
     mail(to: @user.email, subject: 'Welcome to Fundeat')
