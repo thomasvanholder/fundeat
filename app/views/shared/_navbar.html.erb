@@ -14,11 +14,10 @@
       <% if user_signed_in? && current_user.owner == false %>
 
       <li class="nav-item">
-        <% klass = controller_name == "campaigns" && action_name == "index" ? "active" : "" %>
-       <%= link_to "Investing", "/campaigns", class: "nav-link-custom #{klass}" %>
+       <%= link_to "Investing", "/campaigns", class: "nav-link-custom" %>
      </li>
      <li class="nav-item">
-       <%= link_to "Dashboard", "/myinvestments/dashboard", class: "nav-link-custom #{klass}" %>
+       <%= link_to "Dashboard", "/myinvestments/dashboard", class: "nav-link-custom" %>
      </li>
      <% elsif user_signed_in? && current_user.owner == true %>
      <li class="nav-item">
