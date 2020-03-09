@@ -7,8 +7,6 @@ class InvestmentsController < ApplicationController
     authorize @investments
   end
 
-
-
   def dashboard
     @investments = Investment.where(investor_id: current_user.id)
     authorize @investments
@@ -109,8 +107,29 @@ class InvestmentsController < ApplicationController
     end
 
     def myinvestments
-      @investments = Investment.where(investor_id: current_user.id)
+      @investments = current_user.investments
+      # authorize @investments[0].first
       authorize @investments
+
+      @closed, @open = @investments.partition { |investment| investment.campaign.expiry_date < Date.today }
+
+      # raise
+
+     # @investments.first.map {|e| e.campaign.expiry_date }
+
+
+      # @investments_closed = @investments.map do |investment|
+      #   investment.campaign.where(expiry_date: < Date.today)
+      # end
+      # raise
+
+      # @investments_open = @investments.map do |investment|
+      #   investment.campaign.where(expiry_date: >= Date.today)
+      # end
+      # authorize @investments_closed
+      # authorize @investments_open
+
+
     end
 
     def rewards
