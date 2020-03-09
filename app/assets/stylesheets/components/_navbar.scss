@@ -9,6 +9,23 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  height: 25px;
+  width: 140px;
 }
 
+.nav-link-custom {
+  color: #5D5347;
+  display: block;
+  padding: 0.5rem 1rem;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom: 1px solid #00B63A;
+    padding-bottom: 3px;
+    color: #00B63A;
+  }
+}
+
+.nav-link-custom.active {
+ color: #00B63A;
+}
