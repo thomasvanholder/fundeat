@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
       sql_query = " \
       companies.type_store ILIKE :query \
       "
-      @campaigns = Campaign.joins(:company).where(sql_query, query: "%#{params[:query]}%")
+      @campaigns = policy_scope(Campaign.joins(:company).where(sql_query, query: "%#{params[:query]}%"))
     else
       @campaigns = policy_scope(Campaign)
     end
