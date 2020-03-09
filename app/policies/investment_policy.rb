@@ -34,4 +34,7 @@ class InvestmentPolicy < ApplicationPolicy
   def show?
     return true
   end
+  def confirmation?
+    return true
+  end
 end

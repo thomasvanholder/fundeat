@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :investments, only: [:show]
 
   get 'investments', to: 'investments#index', as: :investments
+  get 'investments/:id/confirmation', to: 'investments#confirmation', as: :investment_confirmation
 
   get 'raising', to: 'campaigns#raising', as: :raising
 
