@@ -51,14 +51,14 @@ class CampaignsController < ApplicationController
     @campaign.loan_duration = params[:campaign][:loan_duration]
 
   # seeded data
-    @campaign.repayment_capacity = ("A".."C").to_a.sample
-    @campaign.financial_health = ("A".."C").to_a.sample
-    @campaign.company_history = ("A".."C").to_a.sample
-    @campaign.return_rate = rand(0.05..0.1).round(1)
-    @campaign.expiry_date = Date.today + rand(5..30).days
-    @campaign.risk_level = total_risk_level
+  @campaign.repayment_capacity = ("A".."C").to_a.sample
+  @campaign.financial_health = ("A".."C").to_a.sample
+  @campaign.company_history = ("A".."C").to_a.sample
+  @campaign.return_rate = rand(0.05..0.1).round(1)
+  @campaign.expiry_date = Date.today + rand(5..30).days
+  @campaign.risk_level = total_risk_level
 
-    @campaign.company = @company
+  @campaign.company = @company
 
     # raise
     if @campaign.save
@@ -68,7 +68,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-
   def edit
   end
 
@@ -76,9 +75,9 @@ class CampaignsController < ApplicationController
   end
 
   def raising
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
-end
+    @campaigns = policy_scope(Campaign)
+    authorize @campaigns
+  end
 
   def my_campaigns
     @campaigns = Campaign.where(owner_id: current_user.id)
