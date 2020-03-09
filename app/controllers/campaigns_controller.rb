@@ -34,59 +34,9 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @company = Company.new
-    authorize @company
-    @company.owner = current_user
-    @company.address = params[:company]["address"]
-    @company.name = params[:company]["name"]
-    @company.num_employees = params[:company]["num_of_employees"]
-    @company.description = params[:company]["description"]
-
-    @campaign = Campaign.new
-    authorize @campaign
-    @campaign.title = params[:campaign][:title]
-    @campaign.description = params[:campaign][:description]
-    @campaign.min_target = params[:campaign][:min_target]
-    @campaign.description = params[:campaign][:description]
-    @campaign.loan_duration = params[:campaign][:loan_duration]
-
-    # seeded data
-    @campaign.repayment_capacity = ("A".."C").to_a.sample
-    @campaign.financial_health = ("A".."C").to_a.sample
-    @campaign.company_history = ("A".."C").to_a.sample
-    @campaign.return_rate = rand(0.05..0.1).round(1)
-    @campaign.expiry_date = Date.today + rand(5..30).days
-    @campaign.risk_level = total_risk_level
-
-    @campaign.company = @company
-
-    reward = Reward.new
-    authorize = reward
-    reward.investment_amount = params[:reward1][:investment_amount]
-    reward.description = params[:reward1][:description]
-    reward.campaign = @campaign
-    reward.save
-
-    reward = Reward.new
-    authorize = reward
-    reward.investment_amount = params[:reward2][:investment_amount]
-    reward.description = params[:reward2][:description]
-    reward.campaign = @campaign
-    reward.save
-
-    reward = Reward.new
-    authorize = reward
-    reward.investment_amount = params[:reward3][:investment_amount]
-    reward.description = params[:reward3][:description]
-    reward.campaign = @campaign
-    reward.save
-
-    reward = Reward.new
-    authorize = reward
-    reward.investment_amount = params[:reward4][:investment_amount]
-    reward.description = params[:reward4][:description]
-    reward.campaign = @campaign
-    reward.save
+    create_company
+    create_campaign
+    create_rewards
       # raise
       if @campaign.save
         redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
@@ -156,4 +106,47 @@ class CampaignsController < ApplicationController
       params.require(:campaign).permit(:title)
     end
 
+    def create_company
+      @company = Company.new
+      authorize @company
+      @company.owner = current_user
+      @company.address = params[:company]["address"]
+      @company.name = params[:company]["name"]
+      @company.num_employees = params[:company]["num_of_employees"]
+      @company.description = params[:company]["description"]
+    end
+
+
+    def create_campaign
+      @campaign = Campaign.new
+      authorize @campaign
+      @campaign.title = params[:campaign][:title]
+      @campaign.description = params[:campaign][:description]
+      @campaign.min_target = params[:campaign][:min_target]
+      @campaign.description = params[:campaign][:description]
+      @campaign.loan_duration = params[:campaign][:loan_duration]
+      @campaign.company = @company
+      seed_campaign_data
+    end
+
+    def create_rewards
+      (1..4).each do |reward_number|
+        next if (params["reward#{reward_number}".to_sym][:investment_amount]).blank?
+        reward = Reward.new
+        authorize = reward
+        reward.investment_amount = params["reward#{reward_number}".to_sym][:investment_amount]
+        reward.description = params["reward#{reward_number}".to_sym][:description]
+        reward.campaign = @campaign
+        reward.save
+      end
+    end
+
+    def seed_campaign_data
+      @campaign.repayment_capacity = ("A".."C").to_a.sample
+      @campaign.financial_health = ("A".."C").to_a.sample
+      @campaign.company_history = ("A".."C").to_a.sample
+      @campaign.return_rate = rand(0.05..0.1).round(1)
+      @campaign.expiry_date = Date.today + rand(5..30).days
+      @campaign.risk_level = total_risk_level
+    end
   end
