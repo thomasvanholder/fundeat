@@ -54,11 +54,22 @@ DURATION = %w(12 24 36 48 60)
 # #Edit
 CAMPAIGNS = {
   title: [
-    'Expansion to Palermo, We will rock it!',
-    'We want to open our third location in CABA. Are you in?',
-    'Now ready to launch our Belgrano store. Be part of it!',
-    'From chacarita to CABA. We are now opening our second location',
-    'Puerto madero second location to be opened. Looking for supporters!'
+    'A new restaurant concept is coming to Palermo Soho. Be part of the movement.',
+    'Vegan pizza is taking over Buenos Aires! We need your support to open location #3.',
+    'Great views, great cocktails, great people. Your new place to connect in Palermo Hollywood.',
+    'From chacarita to CABA. Delicious burgers are a human right for all residents in BA!',
+    'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
+  ],
+  description: [
+    'The best of Italy in coming to downtown Buenos Aires. Maria and Fernando are running one of the most pistoresque pizzeria\'s in Rome. Full of excitement for a new adventure they are looking to open their first location in South America. Help bring great pizza to Argentina. Bon Appétit!',
+
+    'Six years and three successful restaurants later, we’re trying for another. Everyone in Palermo deserves the pleasure of eating a great burrito. It\'s time to make the Mexican dream come true. Our chef José migrated from Cancun to Buenos Aires to guarantee all our wraps our made with a Latino flair!',
+
+    'Culture is the weave that holds people in Argentina together. At the center of is Mate. An energizing drink that makes you social around friends and reflect when you\'re by yourself. We source our yerba leaves from local farmers only. All our mate cups are made of 100% Calabash wood.',
+
+    'Buenos Aires had to miss Peruvian ceviche for too long, but suffering is no longer needed! A new Cevicheria is coming to town. High-quality fish, fresh from the local fishmarket. We get firsthand choice from our fish-suppliers and our cooks are ready to delight your tastebuds.',
+
+    'Due to high demand, we\'re are looking for a new home with increased seating capacity to host our empanada-loving customers. We already have a place under contract at the new shopping center, Alto Palermo. Yet we need your support to make the dream come true.'
   ]
 }
 
@@ -129,6 +140,7 @@ existing_investor_ids = campaign.investments.pluck(:investor_id)
 investment.investor = User.where(owner: false).reject do |user|
   existing_investor_ids.include?(user.id)
 end.sample
+
 investment.campaign = campaign
 investment.reward = reward
 investment.save!
@@ -157,6 +169,7 @@ def create_campaign(company)
   campaign = Campaign.new
 
   campaign.title = CAMPAIGNS[:title].sample
+  campaign.description = CAMPAIGNS[:description].sample
 
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
