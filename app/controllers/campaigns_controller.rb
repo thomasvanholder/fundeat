@@ -113,8 +113,8 @@ class CampaignsController < ApplicationController
 
 
     def owners_dashboard
-      @campaigns = Campaign.where(owner_id: current_user.id)
-      authorize @campaigns
+      @company = current_user.companies.first
+      authorize @company
     end
 
     def mycampaigns
@@ -124,6 +124,7 @@ class CampaignsController < ApplicationController
       @campaigns = policy_scope(Campaign)
       authorize @campaigns
     end
+
     def total_risk_level
       char_array = []
       char_array << @campaign.repayment_capacity

@@ -7,7 +7,28 @@
       <a href="/mycampaigns" class="list-group-item list-group-item-action bg-light">Campaign</a>
       <a href="support" class="list-group-item list-group-item-action bg-light">Support</a>
     </div>
+    <!-- /#sidebar-wrapper -->
   </div>
-  <!-- /#sidebar-wrapper -->
 
+  <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
+
+    <div class="card-campaign-status p-2 m-5" style="width: 150px; height:150px; background-color: #f4f4f4; border-radius: 0px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="d-flex mt-4 justify-content-around">
+        <div class="text-center">
+          <h1>$</h1>
+          <h5><%= number_with_delimiter(@company.total_raised, :delimiter => ',')%></h5>
+          <p class="text-secondary mb-2" style="font-size: 12px;">USD Invested</p>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Closing id="page-content-wrapper" div -->
+  </div>
+<!-- Closing id="page-content-wrapper" div -->
+
+
+<!-- Closing id="wrapper" div -->
 </div>
+<!-- Closing id="wrapper" div -->
+
