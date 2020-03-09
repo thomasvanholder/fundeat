@@ -135,6 +135,7 @@ existing_investor_ids = campaign.investments.pluck(:investor_id)
 investment.investor = User.where(owner: false).reject do |user|
   existing_investor_ids.include?(user.id)
 end.sample
+
 investment.campaign = campaign
 investment.reward = reward
 investment.save!
@@ -163,6 +164,7 @@ def create_campaign(company)
   campaign = Campaign.new
 
   campaign.title = CAMPAIGNS[:title].sample
+  campaign.description = CAMPAIGNS[:description].sample
 
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
