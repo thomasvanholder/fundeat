@@ -20,17 +20,19 @@ class InvestmentPolicy < ApplicationPolicy
   def map?
     return true
   end
+
   def new?
-    return true
+    !user.owner?
   end
 
   def create?
-    return true
+    !user.owner?
   end
 
   def index?
     return true
   end
+
   def show?
     return true
   end
