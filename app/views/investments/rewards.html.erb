@@ -7,82 +7,85 @@
       <a href="/myinvestments" class="list-group-item list-group-item-action bg-light">Investments</a>
       <a href="/myinvestments/myrewards" style="background-color: lightgrey; font-weight: bold!important;" class="list-group-item list-group-item-action">Rewards</a>
       <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
-
     </div>
   </div>
 
 
-  <div>
+  <div class="container-fluid">
+    <% if @investments.empty? %>
+    <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
+    <h3>Do you want to invest in a new campaign?</h3>
 
+    <div>
+      <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-success" %>
+    </div>
 
-    <div class="container">
-      <% if @investments.empty? %>
-      <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
-      <h3>Do you want to invest in a new campaign?</h3>
+    <% else %>
 
-      <div>
-        <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-secondary" %>
-      </div>
+    <ul class="p-0 my-5" style="width: 90%; margin: 0 auto;">
+      <li class="d-flex px-3 py-2 my-3" style="background-color: #d3d3d3; border: 1px solid grey; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+        <div class="column0"></div>
+        <div class="column1 p-1">Reward</div>
+        <div class="column2 p-1">Restaurant</div>
+        <div class="column3 p-1 text-center">Amount Invested</div>
+        <div class="column4 p-1 text-center">Redeem</div>
+      </li>
 
-      <% else %>
+      <% @investments_payed.each_with_index do |investment, index| %>
+      <li class="d-flex px-2 py-3 my-3 align-items-center" style="background-color: #f4f4f4; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+        <div class="column0 text-center p-1 mr-2">
+          <% if investment.reward_redeemed %>
+          <i class="fas fa-check-circle" style="font-size: 24px; color: lightgrey;"></i>
+          <% else %>
+          <i class="fas fa-gift text-success" style="font-size: 32px;"></i>
+          <% end %>
+        </div>
+        <div class="column1 p-1">
+          <% if investment.reward_redeemed %>
+          <span style="text-decoration: line-through;"><%= investment.reward.description %></span>
+          <% else %>
+          <span class="font-weight-bold"><%= investment.reward.description %></span>
+          <% end %>
+        </div>
+        <div class="column2 p-1">
+          <p class="m-0"><%= investment.campaign.company.name %></p>
+          <p class="m-0" style="font-style: italic; color: darkgrey;"><%= investment.campaign.company.type_store %></p>
+        </div>
+        <div class="column3 p-1 text-center">
+          $<%= number_with_delimiter(investment.amount, :delimiter => ',') %>
+        </div>
+        <div class="column4 p-1 text-center">
+          <% unless investment.reward_redeemed %>
+          <%= link_to "Redeem", investment_reward_redemptions_path(investment), method: :post, class: "btn btn-success" %>
+          <% else %>
+          <span style="color: grey; display: inline-block; font-weight: 400; text-align: center; vertical-align: middle; background-color: transparent; border: 1px solid grey; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 2px;">
+            Claimed
+          </span>
+          <% end %>
+        </div>
+      </li>
+      <% end %>
 
-      <h1>Your rewards </h1>
-      <table class="table table-hover">
-        <thead class="">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Restaurant</th>
-            <th scope="col">Campaign</th>
-            <th scope="col">Amount Invested</th>
-            <th scope="col">Reward</th>
-            <th scope="col">Redeem</th>
-
-
-          </tr>
-        </thead>
-
-        <tbody>
-
-         <% @investments_payed.each_with_index do |investment, index| %>
-
-         <tr class="<%= index.even? ? 'bg-light' : '' %>">
-          <td scope="row">
-            <% if investment.reward_redeemed %>
-            <i class="fas fa-check-circle text-success" style="font-size: 24px;"></i>
-            <% else %>
-            <i class="fas fa-circle" style="font-size: 24px; color: lightgrey;"></i>
-            <% end %>
-          </td>
-          <td scope="row"><%= investment.campaign.company.name %></td>
-          <td><%= investment.campaign.title %></td>
-          <td>$<%= number_with_delimiter(investment.amount, :delimiter => ',') %></td>
-          <td><%= investment.reward.description %></td>
-          <td>
-            <% unless investment.reward_redeemed %>
-            <h5><%= link_to "Redeem", investment_reward_redemptions_path(investment), method: :post, class: "btn btn-success" %></h5>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-
-        <tr>
-          <td scope="row"></td>
-          <td>Total</td>
-          <td></td>
-          <td>$<%= number_with_delimiter(@investments_payed.sum("amount"), :delimiter=>',') %></td>
-          <td></td>
-          <td></td>
-        </tr>
-
-      </tbody>
-    </table>
-
+    </ul>
     <% end %>
   </div>
-
-
 </div>
 
 
-
-</div>
+<style>
+  .column0 {
+    flex: 1;
+  }
+  .column1 {
+    flex: 2;
+  }
+  .column2 {
+    flex: 3;
+  }
+  .column3 {
+    flex: 2;
+  }
+  .column4 {
+    flex: 2;
+  }
+</style>
