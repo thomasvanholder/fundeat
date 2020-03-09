@@ -4,14 +4,13 @@ body {
 }
 
 .choose-option {
-  width: 800px;
   height: 150px;
+  width:100%;
   border-radius: 10px;
   background-color: #F3F3F3;
 }
 
 .choose-option-campaigns {
-  width: 800px;
   height: 200px;
   border-radius: 10px;
   background-color: #F3F3F3;
@@ -27,3 +26,35 @@ body {
   width: 20%;
   text-align: center;
 }
+
+.status {
+  position: relative;
+  left: 0px;
+  bottom:23px;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .border-md-0 {
+    border: none !important;
+  }
+  .home-cta{
+    // padding-top:50px ;
+    // margin-top: 50px;
+    border-color: black;
+    border-size: 5px;
+  }
+}
+
+@media (min-width: 576px) {
+
+  .choose-option {
+    width:65%;
+}
+
+}
+
+
