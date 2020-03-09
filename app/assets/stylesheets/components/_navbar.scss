@@ -13,3 +13,16 @@
   width: 140px;
 }
 
+.nav-link-custom {
+  color: #5D5347;
+  display: block;
+  padding: 0.5rem 1rem;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    color: #00B63A;
+  }
+}
+
+
