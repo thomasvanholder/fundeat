@@ -1,13 +1,27 @@
-.banner-index {
-  background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
-  background-position: center;
+.banner-index-right {
+  background-image: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/2d72424dcc82f116a7d8850d1f44ec09.svg");
+  background-color: #F4FCDE;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 300px;
+  width: 30%;
 }
 
-.banner-title {
-  color: white;
-  text-align: center;
+.banner-index-left {
+  background-image: url("https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/317b14d7b051b7e496c9f1ba4db156b4.svg");
+  background-color: #F4FCDE;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  width: 30%;
+}
 
+.banner-index-center {
+  background-color: #F4FCDE;
+  height: 300px;
+  width: 40%;
 }
 
 .banner-campaign {
@@ -17,9 +31,16 @@
 }
 
 .banner-title {
-  color: white;
+  color: black;
   text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 25px;
 }
 
 
-
+.search-form {
+  margin: auto;
+  height: 100%;
+  width: 60%;
+}
