@@ -5,16 +5,20 @@
 <%# else %>
 <%# end %>
 
-<div class="banner-index d-flex align-items-center justify-content-center">
-  <h3 class="banner-title">Fund your taste!</h3>
+<div class="banner-index">
+  <div class="text-center my-5">
+    <h3 class="banner-title">Fund your taste!</h3>
+    <form class="form-inline justify-content-center my-5">
+      <input id="searchbox" class="form-control mr-sm-2 text-left" type="search" placeholder="Try Bar" aria-label="Search" name="type_store">
+      <button class="btn btn-secondary" type="submit">Search</button>
+    </form>
+  </div>
 </div>
 
 
 <!-- <div class="d-flex justify-content-center"> -->
 
   <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
-
-
     <% @campaigns.each do |campaign| %>
     <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
     <div class="card-wrapper">
@@ -24,7 +28,6 @@
           <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
         </div>
         <!-- background pic -->
-
 
         <!-- insert company.photo -->
         <% if campaign.company.photo.attached? %>
@@ -46,9 +49,9 @@
         </div>
         <div class="target-bar">
           <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
-            <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
-            <% target = campaign.min_target %>
-            <% status = ((raised&.to_f/target)*100).round(1) %>
+          <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
+          <% target = campaign.min_target %>
+          <% status = ((raised&.to_f/target)*100).round(1) %>
           <% end %>
           <div>
             <progress value=<%= status %> max="100" id="progress-bar-percentage" class="progress-bar notfull">
