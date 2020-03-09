@@ -113,6 +113,9 @@ class InvestmentsController < ApplicationController
     def rewards
       @investments = Investment.where(investor_id: current_user.id)
       authorize @investments
+      @investments_payed = @investments.where.not(payment_date: nil)
+      authorize @investments_payed
+
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards
     end
@@ -127,7 +130,10 @@ class InvestmentsController < ApplicationController
 
     def new
       @campaign = Campaign.find(params[:campaign_id])
+      authorize @campaign
       @investment = Investment.new(amount: params["investment"]["amount"])
+      authorize @investment
+
       @reward = @campaign.rewards.first
 
       @investment.campaign = @campaign
