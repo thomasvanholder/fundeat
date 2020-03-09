@@ -17,7 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
-
+gem 'letter_opener', group: :development
 
 gem 'groupdate', '~> 2.5'
 gem 'chartkick', '~> 3.3', '>= 3.3.1'
