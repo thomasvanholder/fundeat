@@ -2,7 +2,14 @@ class CampaignsController < ApplicationController
   #Note! pundit was implemented. remember to authorize your variables with for example. authorize@campaign
   skip_before_action :authenticate_user!, only: [:index, :show, :raising]
   def index
-    @campaigns = policy_scope(Campaign)
+    if params[:query].present?
+      sql_query = " \
+      companies.type_store ILIKE :query \
+      "
+      @campaigns = policy_scope(Campaign.joins(:company).where(sql_query, query: "%#{params[:query]}%"))
+    else
+      @campaigns = policy_scope(Campaign)
+    end
   end
 
   def show

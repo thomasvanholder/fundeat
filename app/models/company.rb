@@ -7,5 +7,4 @@ class Company < ApplicationRecord
   after_validation :geocode
   # To use this array in views calle it Company::TYPE
   # TYPE = ["Restaurant", "Coffe Shop", "Bar"]
-
 end
