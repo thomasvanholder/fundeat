@@ -1,0 +1,23 @@
+<div class="bg-light border-right text-center" id="sidebar-wrapper" style="position: sticky;top: 67px;">
+  <div class="sidebar-heading text-left">
+    <%= current_user.last_name%> <%= current_user.first_name%>
+  </div>
+  <div class="list-group list-group-flush text-left">
+    <% @menu.each do |item| %>
+    <a href="<%= item[:url] %>" class="list-group-item list-group-item-action <%= item[:action_name] == action_name ? "active-tab": "" %>">
+      <%= item[:title] %>
+    </a>
+    <% end %>
+  </div>
+  <a href="/campaigns" class="mt-4 btn btn-outline-success">New investment</a>
+</div>
+
+
+<!--     <% dashsboard_active = action_name == "dashboard" ? "active-tab": "" %>
+    <% investments_active = action_name == "myinvestments" ? "active-tab": "" %>
+    <a href="/myinvestments" class="list-group-item list-group-item-action bg-light <%= investments_active %>">Investments</a>
+    <a href="/myinvestments/myrewards" class="list-group-item list-group-item-action bg-light">Rewards</a>
+    <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
+    <a href="/campaigns" class="mt-4 btn btn-outline-success">New investment</a> -->
+
+

@@ -1,73 +1,73 @@
-<div class="d-flex" id="wrapper">
-  <!-- Sidebar -->
-  <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading"><%= current_user.last_name%> <%= current_user.first_name%> </div>
-    <div class="list-group list-group-flush">
-      <a href="/myinvestments/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-      <a href="/myinvestments" class="list-group-item list-group-item-action bg-light">Investments</a>
-      <a href="/myinvestments/myrewards" style="background-color: lightgrey; font-weight: bold!important;" class="list-group-item list-group-item-action">Rewards</a>
-      <a href="/myinvestments/mymap" class="list-group-item list-group-item-action bg-light">Map</a>
-    </div>
-  </div>
+<div class="container-fluid p-0">
+  <div class="row">
 
 
-  <div class="container-fluid">
-    <% if @investments.empty? %>
-    <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
-    <h3>Do you want to invest in a new campaign?</h3>
-
-    <div>
-      <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-success" %>
+    <div class="col-md-2 col-lg-2 p-0">
+      <%= render '/shared/investor_dashboard_sidebar' %>
     </div>
 
-    <% else %>
+    <div class="col-md-10 col-lg-10 p-0">
 
-    <ul class="p-0 my-5" style="width: 90%; margin: 0 auto;">
-      <li class="d-flex px-3 py-2 my-3" style="background-color: #d3d3d3; border: 1px solid grey; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-        <div class="column0"></div>
-        <div class="column1 p-1">Reward</div>
-        <div class="column2 p-1">Restaurant</div>
-        <div class="column3 p-1 text-center">Amount Invested</div>
-        <div class="column4 p-1 text-center">Redeem</div>
-      </li>
 
-      <% @investments_payed.each_with_index do |investment, index| %>
-      <li class="d-flex px-2 py-3 my-3 align-items-center" style="background-color: #f4f4f4; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-        <div class="column0 text-center p-1 mr-2">
-          <% if investment.reward_redeemed %>
-          <i class="fas fa-check-circle" style="font-size: 24px; color: lightgrey;"></i>
-          <% else %>
-          <i class="fas fa-gift text-success" style="font-size: 32px;"></i>
-          <% end %>
-        </div>
-        <div class="column1 p-1">
-          <% if investment.reward_redeemed %>
-          <span style="text-decoration: line-through;"><%= investment.reward.description %></span>
-          <% else %>
-          <span class="font-weight-bold"><%= investment.reward.description %></span>
-          <% end %>
-        </div>
-        <div class="column2 p-1">
-          <p class="m-0"><%= investment.campaign.company.name %></p>
-          <p class="m-0" style="font-style: italic; color: darkgrey;"><%= investment.campaign.company.type_store %></p>
-        </div>
-        <div class="column3 p-1 text-center">
-          $<%= number_with_delimiter(investment.amount, :delimiter => ',') %>
-        </div>
-        <div class="column4 p-1 text-center">
-          <% unless investment.reward_redeemed %>
-          <%= link_to "Redeem", investment_reward_redemptions_path(investment), method: :post, class: "btn btn-success" %>
-          <% else %>
-          <span style="color: grey; display: inline-block; font-weight: 400; text-align: center; vertical-align: middle; background-color: transparent; border: 1px solid grey; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 2px;">
-            Claimed
-          </span>
-          <% end %>
-        </div>
-      </li>
-      <% end %>
+      <div class="container-fluid">
+        <% if @investments.empty? %>
+        <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>
+        <h3>Do you want to invest in a new campaign?</h3>
 
-    </ul>
-    <% end %>
+        <div>
+          <%= link_to "Fund a restaurant", investments_path, class:"btn btn-sm btn-outline-success" %>
+        </div>
+
+        <% else %>
+
+        <ul class="p-0 my-5" style="width: 90%; margin: 0 auto;">
+          <li class="d-flex px-3 py-2 my-3" style="background-color: #d3d3d3; border: 1px solid grey; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+            <div class="column0"></div>
+            <div class="column1 p-1">Reward</div>
+            <div class="column2 p-1">Restaurant</div>
+            <div class="column3 p-1 text-center">Amount Invested</div>
+            <div class="column4 p-1 text-center">Redeem</div>
+          </li>
+
+          <% @investments_payed.each_with_index do |investment, index| %>
+          <li class="d-flex px-2 py-3 my-3 align-items-center" style="background-color: #f4f4f4; border-radius: 5px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+            <div class="column0 text-center p-1 mr-2">
+              <% if investment.reward_redeemed %>
+              <i class="fas fa-check-circle" style="font-size: 24px; color: lightgrey;"></i>
+              <% else %>
+              <i class="fas fa-gift text-success" style="font-size: 32px;"></i>
+              <% end %>
+            </div>
+            <div class="column1 p-1">
+              <% if investment.reward_redeemed %>
+              <span style="text-decoration: line-through;"><%= investment.reward.description %></span>
+              <% else %>
+              <span class="font-weight-bold"><%= investment.reward.description %></span>
+              <% end %>
+            </div>
+            <div class="column2 p-1">
+              <p class="m-0"><%= investment.campaign.company.name %></p>
+              <p class="m-0" style="font-style: italic; color: darkgrey;"><%= investment.campaign.company.type_store %></p>
+            </div>
+            <div class="column3 p-1 text-center">
+              $<%= number_with_delimiter(investment.amount, :delimiter => ',') %>
+            </div>
+            <div class="column4 p-1 text-center">
+              <% unless investment.reward_redeemed %>
+              <%= link_to "Redeem", investment_reward_redemptions_path(investment), method: :post, class: "btn btn-success" %>
+              <% else %>
+              <span style="color: grey; display: inline-block; font-weight: 400; text-align: center; vertical-align: middle; background-color: transparent; border: 1px solid grey; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 2px;">
+                Claimed
+              </span>
+              <% end %>
+            </div>
+          </li>
+          <% end %>
+
+        </ul>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
