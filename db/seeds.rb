@@ -54,7 +54,7 @@ DURATION = %w(12 24 36 48 60)
 # #Edit
 CAMPAIGNS = {
   title: [
-    'xpansion to Palermo, We will rock it!',
+    'A new restaurant concept is coming to Palermo Soho., We will rock it!',
     'We want to open our third location in CABA. Are you in?',
     'Now ready to launch our Belgrano store. Be part of it!',
     'From chacarita to CABA. We are now opening our second location',
