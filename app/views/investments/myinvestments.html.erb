@@ -53,9 +53,9 @@
   <ul class="patient-item">
     <li><p style="font-size: 16px";>Your current investment: $ <%= investment.amount %> </p></li>
     <% if investment.payment_date.nil? %>
-    <li><p style="font-size: 16px";> Payment date: Pending </p></li>
+    <li><p style="font-size: 16px;"> Payment date: Pending </p></li>
     <% else %>
-    <li><p style="font-size: 16px";> Payment date: <%= investment.payment_date&.strftime("%m/%d/%Y") %></p></li>
+    <li><p style="font-size: 16px;"> Payment date: <%= investment.payment_date&.strftime("%m/%d/%Y") %></p></li>
     <% end %>
   </ul>
 </div>
