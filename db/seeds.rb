@@ -39,10 +39,10 @@ investors: [
   { first_name: "Nico" , last_name: "Donoso", email: "investornico@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
   { first_name: "Feli" , last_name: "Hernandez", email: "investorfeli@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
   { first_name: "James" , last_name: "Loomos", email: "investorjames@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Janette" , last_name: "Kwan", email: "investorjanette@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Maximo" , last_name: "Chalbaud", email: "investormaximo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Gerardo" , last_name: "Raiden", email: "investorgerardo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Nicolas" , last_name: "Kennedy", email: "investornicolas@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4E03AQHAYB-Ut1y9oQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=MRVdfv2LO7lnckrMzT9VAeZJWe4ScFker8NHNvD6U38"  },
+  # { first_name: "Janette" , last_name: "Kwan", email: "investorjanette@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
+  # { first_name: "Maximo" , last_name: "Chalbaud", email: "investormaximo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
+  # { first_name: "Gerardo" , last_name: "Raiden", email: "investorgerardo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
+  # { first_name: "Nicolas" , last_name: "Kennedy", email: "investornicolas@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4E03AQHAYB-Ut1y9oQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=MRVdfv2LO7lnckrMzT9VAeZJWe4ScFker8NHNvD6U38"  },
 ]}
 
 # Reward amount
@@ -122,10 +122,13 @@ investment = Investment.new
 investment.status = rand(0..4) #check enumerable in investment.rb (model)
 investment.amount = rand(1..10000)
  # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
-investment.payment_date = Date.today + rand(-30..1).days
+ investment.payment_date = Date.today + rand(-30..1).days
 
 # caution. enhance code as each investor should not have more than one investment on the same company.
-investment.investor = User.where(owner: false).sample
+existing_investor_ids = campaign.investments.pluck(:investor_id)
+investment.investor = User.where(owner: false).reject do |user|
+  existing_investor_ids.include?(user.id)
+end.sample
 investment.campaign = campaign
 investment.reward = reward
 investment.save!
@@ -144,6 +147,8 @@ def create_reward(campaign)
     # puts "completed create reward"
     create_investment(campaign, reward)
   end
+  # create_investment(campaign, Reward.sample)
+
 end
 
 
@@ -158,11 +163,11 @@ def create_campaign(company)
   campaign.company_history = ("A".."C").to_a.sample
   # campaign.risk_level = ("A".."C").to_a.sample
 
-  campaign.min_target = rand(20000..60000)
-  campaign.max_target = campaign.min_target + rand(20000..60000)
+  campaign.min_target = rand(20000..100000)
+  campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
   campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(1)
-  campaign.expiry_date = Date.today + rand(30..90).days
+  campaign.expiry_date = Date.today + rand(-90..90).days
 
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
@@ -173,7 +178,7 @@ end
 USERS[:owners].each do |owner_info|
   # puts "creating an owner"
   owner = User.create!(owner_info)
-owner.update(owner: true)
+  owner.update(owner: true)
 # puts owner.first_name
 end
 url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
