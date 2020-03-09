@@ -60,6 +60,12 @@ CAMPAIGNS = {
     'From chacarita to CABA. Delicious burgers are a human right for all residents in BA!',
     'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
   ]
+  description: [
+    'Six years and three successful restaurants later, we’re trying for another. Everyone in Palermo deserves the pleasure of eating a great burrito. It\'s time to make the dream come true.',
+    'Culture is the weave that holds people in Argentina together. At the center of is Mate. We source our yerba leaves from local farmers and all our materials are 100% recyclable.',
+    'Buenos Aires had to miss Peruvian ceviche for too long, but suffer no longer! From the fishmarket to your plate. Firsthand choice of high-quality fish, cooked to delight your tastebuds.'
+    'We\'re are looking for a new home with increased seating capacity to host our empanada-loving customers. We already have a place at Alto Palermo shopping center under conctract, yet we need your help to make it come true.'
+    ]
 }
 
 REWARDS = {
