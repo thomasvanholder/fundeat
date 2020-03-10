@@ -6,7 +6,33 @@
   </div>
 
   <div class="col-md-10 col-lg-10 p-0">
-    <h3>here come's the page for investors</h3>
+    <div class="mt-5 container">
+      <!-- Code your tabs here -->
+      <div class="tabs-all">
+        <a href="#" class="tab-one active">Investors</a>
+        <a href="#" class="tab-one">Tab 2</a>
+        <a href="#" class="tab-one">Tab 3</a>
+      </div>
 
+
+      <div class="notifications">
+        <!-- Code one notification here -->
+        <% @campaigns.each do |campaign| %>
+        <div class="notification">
+          <div class="notification">
+            <img src="../../assets/images/avatars/nico.png" alt="" class="avatar-sm-round">
+            <div class="block-display">
+              <p class="notification-time">14 January</p>
+              <p class="notification-sentence">Nicolas liked
+                <a href="#" class="notification-link"> making a webpage.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- all notifcations closing div -->
+      </div>
+      <!-- container closing di . -->
+    </div>
   </div>
 
+</div>
