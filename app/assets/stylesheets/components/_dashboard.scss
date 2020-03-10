@@ -1,0 +1,38 @@
+.kpidash{
+  color: $fundeatlogo-green;
+
+}
+
+.kpibox{
+  width: 150px;
+  height:150px;
+  background-color: #f4f4f4;
+  border-radius: 0px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.graph-bar {
+
+ // position:absolute;
+ // top:350px;
+ // left:300px;
+ width:500px;
+ height:500px;
+ margin:35px;
+
+}
+
+.graph-pie {
+
+  // position:absolute;
+  // top:350px;
+  // right:100px;
+  width:500px;
+  height:500px;
+
+}
+
+.graph-container {
+  padding:35px;
+
+}
