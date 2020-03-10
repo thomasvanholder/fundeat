@@ -8,6 +8,7 @@ const buildMap = () => {
     container: 'mapbox',
     style: 'mapbox://styles/mapbox/streets-v11'
 
+
   });
 };
 
