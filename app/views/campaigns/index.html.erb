@@ -6,26 +6,23 @@
 <%# end %>
 
 <div class="d-flex">
-  <div class="banner-index-left">
+  <div class="banner-index-left"></div>
+  <div class="banner-index-center">
+    <div class="text-center d-flex flex-column justify-content-center h-100">
+      <h3 class="banner-title">Fund your favorite places</h3>
+      <%= form_tag campaigns_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "search-form form-control, form-inline, text-center",
+        placeholder: "Find a campaign", placeholder: "Enter category"%>
+        <%= submit_tag "Search", class: "btn btn-dark" %>
+        <% end %>
+      </div>
     </div>
-    <div class="banner-index-center">
-      <div class="text-center d-flex flex-column justify-content-center h-100">
-        <h3 class="banner-title">Fund your favorite places</h3>
-        <%= form_tag campaigns_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "search-form form-control, form-inline, text-center",
-          placeholder: "Find a campaign", placeholder: "Enter category"
-          %>
-          <%= submit_tag "Search", class: "btn btn-dark" %>
-          <% end %>
-        </div>
-    </div>
-    <div class="banner-index-right">
-    </div>
+    <div class="banner-index-right"></div>
   </div>
 
- <!--  <h3 class="mt-4 text-left" style="margin-left: 130px">Restaurants in Buenos Aires</h3> -->
+  <!--  <h3 class="mt-4 text-left" style="margin-left: 130px">Restaurants in Buenos Aires</h3> -->
 
   <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
     <% @campaigns.each do |campaign| %>
