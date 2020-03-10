@@ -1,7 +1,9 @@
 <!-- app/views/scooters/index.html.erb -->
 
 <div class="d-flex">
+
   <div class="banner-index-left">
+
   </div>
   <div class="banner-index-center">
     <div class="text-center d-flex flex-column justify-content-center h-100">
@@ -20,10 +22,12 @@
   </div>
 </div>
 
+
 <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
   <% @campaigns.each do |campaign| %>
   <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
   <div class="card-wrapper">
+
       <!-- investment card -->
     <div class="card-investment">
       <div class="card-user">
