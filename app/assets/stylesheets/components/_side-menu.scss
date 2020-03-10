@@ -2,7 +2,9 @@ body {
   overflow-x: hidden;
 }
 
-#wrapper{
+.active-tab {
+ background-color: lightgrey!important;
+ font-weight: bold!important;
 }
 
 #sidebar-wrapper {
@@ -20,7 +22,6 @@ body {
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
 }
 
 #page-content-wrapper {

@@ -9,4 +9,8 @@ class CompanyPolicy < ApplicationPolicy
     return true
   end
 
+  def owners_dashboard?
+    return true
+  end
+
 end

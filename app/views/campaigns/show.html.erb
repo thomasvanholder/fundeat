@@ -8,7 +8,7 @@
     <div class="col-lg-8">
       <!-- COMPANY LOGO -->
       <div class="restaurant-logo position-relative">
-        <%= render "shared/restaurant_icon", campaign: @campaign %>
+        <%= render "shared/restaurant_icon", campaign: @campaign, class: "img-sm-grey", alt: "avatar" %>
       </div>
 
       <h2 class="mt-5 font-weight-bold"><%= @campaign.company.name %></h2>
@@ -53,7 +53,7 @@
             <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
             <div class="form-input d-flex justify-space-between align-items-center mb-4">
               <%= f.input :amount, class: "input-field", placeholder: "$ 250", label: false, :required => true,  :input_html => { :type => "number" } %>
-              <% if current_user.owner? %>
+              <% if !current_user.nil? && current_user.owner? %>
                 <p class="text-center small m-0 p-2"><em>Create investor account</em></p>
               <% else %>
                 <%= f.submit "Invest", class: "btn btn-success px-5", style:"margin-left: 16px;" %>

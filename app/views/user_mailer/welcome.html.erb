@@ -1,0 +1,15 @@
+<p>Hi <%= @user.first_name %>,</p>
+
+<% if @user.owner? %>
+<p>welcome to the Fundeat community! We are happy to have you on board. This is where great Restaurant investing begins... </p>
+<%= link_to("View opportunities", root_url) %>
+<!-- <a href="http://www.fundeat.club/campaigns">Start investing</a> -->
+<% else %>
+<p>welcome to the Fundeat community! We are happy to have you on board. This is your uniqie opportunity to quickly raise money for your restaurant business.</p>
+<%= link_to("Create a campaign", root_url) %>
+<% end %>
+
+
+<p>Best regards,</p>
+
+<p>Your Fundeat-Team</p>
