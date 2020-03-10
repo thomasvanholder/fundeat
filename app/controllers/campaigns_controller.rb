@@ -100,14 +100,14 @@ class CampaignsController < ApplicationController
     end
 
     def owners_dashboard
-      if current_user.companies.first.nil?
+      if current_user.company.nil?
         redirect_to mycampaigns_path, notice: 'Nothing to show, create your first campaign!'
         @campaigns = policy_scope(Campaign)
         authorize @campaigns
         # render :mycampaigns
       else
 
-        @company = current_user.companies.first
+        @company = current_user.company
         authorize @company
         @investments = @company.investments
 
@@ -316,8 +316,8 @@ def support
 end
 
 def investors
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+  @campaign = current_user.company.campaign
+  authorize @campaign
 end
 
 def create_company

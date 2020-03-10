@@ -1,0 +1,39 @@
+<% @closed.each do |investment| %>
+<div class="card-wrapper">
+  <div class="card-investment">
+    <div class="position-relative" style="text-align: center;">
+      <img class="card-pic"src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="food pic">
+      <div style="position:absolute;bottom:20px;left:20px;font-size:35px; color: white;"><%= investment.campaign.company.name %>
+      </div>
+    </div>
+      <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
+      <% if days_left >= 0 %>
+      <h5><%= ((investment.campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
+      <% else %>
+      <h5> Investment Closed </h5>
+      <% end %>
+      <% raised = Investment.where(campaign_id: investment.campaign.id).sum("amount") %>
+      <% target = investment.campaign.min_target %>
+      <% status = ((raised.to_f/target)*100).round(1) %>
+      <div class="box-align" >
+        <h4>Campaign Overview</h4>
+          <ul class="patient-item">
+            <li><p style="font-size: 16px";>Campaign target: $ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></p> </li>
+            <li><p style="font-size: 16px";> Funding Status: <%= status %> % ($ <%= raised %>)</p></li>
+            <li><p style="font-size: 16px";> #Investors:  <%= Investment.where(campaign_id: investment.campaign.id).count %></p> </li>
+            <li><p style="font-size: 16px";>Avge Inv Rate <%= (investment.campaign.return_rate*100).round(1)  %> %</p> </li>
+            <li><p style="font-size: 16px";>Exp.Date <%= (investment.campaign.expiry_date)&.strftime("%m/%d/%Y")  %> </p> </li>
+          </ul>
+        <h4>Your Investment </h4>
+          <ul class="patient-item">
+            <li><p style="font-size: 16px";>Your current investment: $ <%= investment.amount %> </p></li>
+            <% if investment.payment_date.nil? %>
+            <li><p style="font-size: 16px";> Payment date: Pending </p></li>
+            <% else %>
+            <li><p style="font-size: 16px";> Payment date: <%= investment.payment_date&.strftime("%m/%d/%Y") %></p></li>
+            <% end %>
+          </ul>
+      </div>
+  </div>
+</div>
+<% end %>

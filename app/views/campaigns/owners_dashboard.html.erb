@@ -4,7 +4,6 @@
     <%= render '/shared/owner_dashboard_sidebar' %>
   </div>
 
-
   <div class="col-md-10 col-lg-10 p-0">
 
     <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
@@ -23,7 +22,7 @@
         <div class="d-flex mt-4 justify-content-around">
           <div class="text-center">
             <h1>%</h1>
-            <h5><%= @company.campaigns.first.return_rate*100.round(0)%></h5>
+            <h5><%= @company.campaign.return_rate*100.round(0)%></h5>
             <p class="text-secondary mb-2" style="font-size: 12px;">Average Interest %</p>
           </div>
         </div>

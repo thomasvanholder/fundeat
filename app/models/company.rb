@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :owner, class_name: "User" # as we did with spotify project. check
-  has_many :campaigns
-  has_many :investments, through: :campaigns
+  has_one :campaign
+  has_many :investments, through: :campaign
   has_one_attached :photo # we might be willing to change it to many. and check how to define which one to show on prod cards that only allow one photo for the time being.
 
   geocoded_by :address
