@@ -4,6 +4,7 @@ require 'faker'
 
 start = Time.now
 puts "Time is #{start}, destroying seed and restarting seed..."
+puts "Seedmaster says: \"seeds can take up to 5m\""
 Investment.destroy_all
 Reward.destroy_all
 Campaign.destroy_all
@@ -32,6 +33,19 @@ investors: [
   { first_name: "Feli" , last_name: "Hernandez", email: "investorfeli@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
   { first_name: "James" , last_name: "Loomos", email: "investorjames@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
 ]}
+
+# Profile pic
+PICTURE = {
+profile:
+  [
+    "app/assets/images/avatars/anna.png",
+    "app/assets/images/avatars/gerard.png",
+    "app/assets/images/avatars/jim.png",
+    "app/assets/images/avatars/karen.png",
+    "app/assets/images/avatars/nico.png",
+    "app/assets/images/avatars/sofie.png",
+  ]
+}
 
 # Reward amount
 AMOUNT = %w(500 1000 2000 5000)
@@ -104,7 +118,8 @@ end
 50.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
   # photo = URI.open(Faker::Avatar.image)
-  # investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+  photo = PICTURE[:profile].sample
+  investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
   puts "#{investor.first_name} #{investor.last_name}"
 end
 
@@ -152,7 +167,7 @@ create_reward(campaign)
 
 User.where(owner: false).each do |investor|
   create_investment(campaign, Reward.all.sample, investor)
-  end
+end
 end
 
   # data scraper
