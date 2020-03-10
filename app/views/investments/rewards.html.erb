@@ -1,9 +1,12 @@
 <div class="container-fluid p-0">
   <div class="row">
-    <div class="col-2">
+
+    <div class="col-lg-2">
       <%= render '/shared/investor_dashboard_sidebar' %>
     </div>
-    <div class="col-md-10 col-lg-10 p-0">
+
+    <div class="col-lg-10 p-0">
+
       <div class="container-fluid">
         <% if @investments.empty? %>
         <h3 class="my-3">It looks like you don't have any rewards yet, <%= current_user.first_name%></h3>

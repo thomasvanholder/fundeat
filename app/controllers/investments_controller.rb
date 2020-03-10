@@ -150,13 +150,13 @@ class InvestmentsController < ApplicationController
         },
         {
           title: "My rewards",
-          action_name: "myrewards",
+          action_name: "rewards",
           url: "/myinvestments/myrewards",
           class: ""
         },
         {
           title: "Map",
-          action_name: "mymap",
+          action_name: "map",
           url: "/myinvestments/mymap",
           class: ""
         }
