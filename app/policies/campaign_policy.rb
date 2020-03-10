@@ -29,6 +29,10 @@ class CampaignPolicy < ApplicationPolicy
     return true
   end
 
+  def investors?
+    return true
+  end
+
   def raising?
     return true
   end

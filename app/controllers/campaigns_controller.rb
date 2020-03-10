@@ -317,6 +317,11 @@ def support
   authorize @campaigns
 end
 
+def investors
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
+
 def create_company
   @company = Company.new
   authorize @company
