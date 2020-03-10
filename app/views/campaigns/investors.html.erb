@@ -22,17 +22,19 @@
             <div class="d-flex align-items-center">
               <%= image_tag investment.investor.photo, class:"avatar-sm-round" %>
               <div class=" ml-3"><%= investment.investor.first_name %> invested
-                <span class="invested-amount"><%= number_to_currency investment.amount %></span>
+                <span class="invested-amount"><%= number_to_currency investment.amount, strip_insignificant_zeros: true %></span>
                 on <%= investment.payment_date.strftime("%B %e, %Y") %>
               </div>
             </div>
           </div>
           <div class="reward-status h-100 align-middle d-flex align-items-center">
+            <div class="d-flex justify-content-center mx-2">
             <% if investment.reward_redeemed %>
               <i class="mr-2 fas fa-check-circle" style="font-size: 24px; color: lightgrey;"></i>
               <% else %>
-              <i class="mr-2 fas fa-gift text-success" style="font-size: 32px;"></i>
+              <i class="mr-2 fas fa-gift text-success" style="font-size: 24px;"></i>
               <% end %>
+              </div>
               <p class="m-0"><%= investment.reward.description %></p>
             </div>
         </div>

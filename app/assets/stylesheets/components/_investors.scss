@@ -13,6 +13,8 @@
 
 .tab-one:hover {
   opacity: 0.8;
+   text-decoration: none;
+  color: $fundeatlogo-green;
 }
 
 .tab-one.active {
@@ -23,6 +25,7 @@
 
 .tab-one a {
   text-decoration: none;
+  color: $fundeatlogo-green;
 }
 
 //  notifcations
@@ -64,7 +67,7 @@
 }
 
 .invested-amount {
-  color: #01B739;
+  color: $fundeatlogo-green;
   font-weight: bold;
   font-size: 18px;
 }
