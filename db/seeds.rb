@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'faker'
 
 start = Time.now
 puts "Time is #{start}, destroying seed and restarting seed..."
@@ -92,11 +93,19 @@ COMPANY = {
   ]
 }
 
-# Edit
+# named investors to log-in and log-out
 USERS[:investors].each do |inv|
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
   photo = URI.open(inv[:link])
   investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+end
+
+# random faker investors from the web
+50.times do
+  investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
+  # photo = URI.open(Faker::Avatar.image)
+  # investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+  puts "#{investor.first_name} #{investor.last_name}"
 end
 
 def create_investment(campaign, reward, investor)
@@ -157,10 +166,8 @@ end
     description = element.search('.c-entry-content p').text.strip
   # create owner with company
   owner_info = USERS[:owners][count]
-  puts "creating an owner"
   owner = User.create!(owner_info)
   owner.update(owner: true)
-  puts owner.first_name
 
   company = Company.new(
     name: names,
@@ -173,13 +180,12 @@ end
   file = URI.open("https://source.unsplash.com/1600x900/?food")
   company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
   company.save!
-  puts company.name
-  puts company.owner.first_name
-
   create_campaign(company)
 end
 
 
 puts "Seeds succesful"
+puts "#{User.where(owner: false).count} investors created"
+puts "#{User.where(owner: true).count} owners created"
 puts "It took #{(Time.now - start) / 60}. minutes to seed."
 
