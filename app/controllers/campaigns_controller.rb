@@ -84,6 +84,8 @@ class CampaignsController < ApplicationController
 
 
     def owners_dashboard
+      mycampaigns
+
       if current_user.companies.first.nil?
         redirect_to mycampaigns_path, notice: 'Nothing to show, create your first campaign!'
         @campaigns = policy_scope(Campaign)
