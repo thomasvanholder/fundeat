@@ -138,16 +138,17 @@ def create_campaign(company)
 
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
-campaign.save!
-create_reward(campaign)
+  campaign.save!
+  create_reward(campaign)
 
-number_of_investors = User.where(owner: false).count
-half_of_investors = (number_of_investors/2).round(0)
-random_num_of_investors = rand(half_of_investors..number_of_investors)
+# number_of_investors = User.where(owner: false).count
+# half_of_investors = (number_of_investors/2).round(0)
+# random_num_of_investors = rand(half_of_investors..number_of_investors)
 
-User.where(owner: false).take(random_num_of_investors) do |investor|
-  create_investment(campaign, Reward.all.sample, investor)
+  User.where(owner: false) do |investor|
+    create_investment(campaign, Reward.all.sample, investor)
   end
+
 end
 
   # data scraper
