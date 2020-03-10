@@ -42,9 +42,9 @@
         <!-- background pic -->
         <!-- insert company.photo -->
       <% if campaign.company.photo.attached? %>
-      <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
+        <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
       <% else %>
-      <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
+        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
       <% end %>
 
       <% days_left = ((campaign.expiry_date - Time.now)/86400).round(0) %>
