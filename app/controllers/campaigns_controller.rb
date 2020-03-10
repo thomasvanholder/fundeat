@@ -1,6 +1,8 @@
 class CampaignsController < ApplicationController
   #Note! pundit was implemented. remember to authorize your variables with for example. authorize@campaign
   skip_before_action :authenticate_user!, only: [:index, :show, :raising]
+  before_action :owner_sidebar_menu
+
   def index
     if params[:query].present?
       sql_query = " \
@@ -74,13 +76,29 @@ class CampaignsController < ApplicationController
     end
 
 
-    # def mycampaigns
-    #   @campaign = Campaign.new
-    #   @company = Company.new
-    #   authorize @campaign
-    #   @campaigns = policy_scope(Campaign)
-    #   authorize @campaigns
-    # end
+    def owner_sidebar_menu
+      @menu = [
+        {
+          title: "Dashboard",
+          action_name: "owners_dashboard",
+          url: "/mycampaigns/owners_dashboard",
+          class: ""
+        },
+        {
+          title: "Investors",
+          action_name: "myinvestors",
+          url: "/mycampaigns/investors",
+          class: ""
+        },
+        {
+          title: "Support",
+          action_name: "mym",
+          url: "/mycampaigns/support",
+          class: ""
+        }
+      ]
+    end
+
 
 
     def owners_dashboard
@@ -295,6 +313,11 @@ def dashboard
 end
 
 def support
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
+end
+
+def investors
   @campaigns = policy_scope(Campaign)
   authorize @campaigns
 end
