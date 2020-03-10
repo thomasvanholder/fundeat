@@ -1,9 +1,25 @@
 #carouselExampleInterval {
-  width: 600px;
   height: 350px;
   border-radius: 10px;
 }
 
 .carousel-inner {
   border-radius: 10px;
+}
+
+.carousel-img {
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+#carrouselheight{
+  height:600px;
+
+}
+
+#bgcarrousel{
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-position: center;
 }
