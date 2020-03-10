@@ -48,15 +48,15 @@ CAMPAIGNS = {
     'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
   ],
   description: [
-    'The best of Italy in coming to downtown Buenos Aires. Maria and Fernando are running one of the most pistoresque pizzeria\'s in Rome. Help bring great pizza to Argentina. Bon Appétit!',
+    'The best of Italy in coming to downtown Buenos Aires. Maria and Fernando are running one of the most pistoresque pizzeria\'s in Rome.Bon Appétit!',
 
-    'Six years and three successful restaurants later, we’re trying for another.  Our chef José migrated from Cancun to Buenos Aires to guarantee all our wraps our made with a Latino flair!',
+    'Six years and three successful restaurants later, we’re trying for another. Our chef José migrated from Cancun to Buenos Aires to guarantee all our wraps our made with a Latino flair!',
 
-    'Culture is the weave that holds people in Argentina together. At the center of is Mate. An energizing drink that makes you social around friends and reflect when you\'re by yourself. We source our yerba leaves from local farmers only.',
+    'Culture is the weave that holds people in Argentina together. At the center of is Mate. We source our yerba leaves from local farmers only. All our mate cups are made of 100% Calabash wood.',
 
     'Buenos Aires had to miss Peruvian ceviche for too long, but suffering is no longer needed! We get firsthand choice from our fish-suppliers and our cooks are ready to delight your tastebuds.',
 
-    'Due to high demand, we\'re are looking for a new home with increased seating capacity to host our empanada-loving customers. Yet we need your support to make the dream come true.'
+    'Due to high demand, we\'re are looking for a new home with increased seating capacity to host our empanada-loving customers.Yet we need your support to make the dream come true.'
   ]
 }
 
@@ -138,8 +138,8 @@ def create_campaign(company)
 
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
-  campaign.save!
-  create_reward(campaign)
+campaign.save!
+create_reward(campaign)
 
 User.where(owner: false).each do |investor|
   create_investment(campaign, Reward.all.sample, investor)
@@ -154,11 +154,13 @@ end
 
   html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(USERS[:owners].count).each_with_index do |element, count|
     names = element.search('h1').text.strip.gsub!(/\d+. /,"")
-    description = element.search('.c-entry-content p').text.strips
+    description = element.search('.c-entry-content p').text.strip
   # create owner with company
   owner_info = USERS[:owners][count]
+  puts "creating an owner"
   owner = User.create!(owner_info)
   owner.update(owner: true)
+  puts owner.first_name
 
   company = Company.new(
     name: names,
@@ -171,6 +173,9 @@ end
   file = URI.open("https://source.unsplash.com/1600x900/?food")
   company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
   company.save!
+  puts company.name
+  puts company.owner.first_name
+
   create_campaign(company)
 end
 
