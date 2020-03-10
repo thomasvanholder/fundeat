@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'support_controller/create'
   root to: 'pages#home'
   resources :campaigns, only: [:new, :create, :show, :index] do
     resources :investments, only: [:new, :create]
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   get 'mycampaigns', to: 'campaigns#mycampaigns', as: :mycampaigns
   get 'mycampaigns/investors', to: 'campaigns#investors', as: :investors
   get 'mycampaigns/support', to: 'campaigns#support', as: :owners_support
+  post 'mycampaigns/support', to: 'support#create'
+
 
   get 'myinvestments/dashboard', to: 'investments#dashboard', as: :investors_dashboard
   get 'myinvestments', to: 'investments#myinvestments', as: :myinvestments
