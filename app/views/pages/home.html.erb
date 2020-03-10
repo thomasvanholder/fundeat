@@ -1,12 +1,19 @@
 <div class="container-fluid p-0">
   <!-- start of row1 -->
-  <%= render "carousel" %>
+  <div class="row d-flex background-green align-items-end p-5">
+    <div class="col-6 pl-5 py-5">
+      <%= render "hometext" %>
+    </div>
+    <div class="col-6 pr-5 pb-5">
+      <%= render "carousel" %>
+    </div>
+  </div>
+
   <%= render "cta" %>
-  <%= render "investment-information" %>
+  <%#= render "investment-information" %>
 </div>
 
-<div class="row my-4 mx-auto" style="border: 1px solid lightgrey">
-</div>
+<!-- <div class="row my-4 mx-auto" style="border: 1px solid lightgrey"></div> -->
 <div class="row d-flex flex-wrap justify-content-center py-4" style="background-color:rgb(243,243,243);">
 
   <% @campaigns.take(3).each do |campaign| %>
@@ -92,15 +99,15 @@
     </div>
   </div>
 
-    <div class="d-flex my-4">
-      <div class="flex-grow-1">
-        <h1>Create change in your community</h1>
-        <p>Build a better neighboorhoud, a better city and a better country. Change happens when people feel empowered. Take an active role and make dreams come true.</p>
-      </div>
-      <img class="pic-home ml-3 flex-grow-0 w-50 object-fit-cover" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
+  <div class="d-flex my-4">
+    <div class="flex-grow-1">
+      <h1>Create change in your community</h1>
+      <p>Build a better neighboorhoud, a better city and a better country. Change happens when people feel empowered. Take an active role and make dreams come true.</p>
     </div>
-    <img class="pic-home" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
+    <img class="pic-home ml-3 flex-grow-0 w-50 object-fit-cover" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
   </div>
+  <img class="pic-home" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
+</div>
 </div>
 
 <div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
