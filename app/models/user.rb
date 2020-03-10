@@ -14,12 +14,12 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   # has_one_attached :photo
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   private
 
-  def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
-  end
+  # def send_welcome_email
+  #   UserMailer.with(user: self).welcome.deliver_now
+  # end
 
 end
