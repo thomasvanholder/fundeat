@@ -26,7 +26,11 @@ class InvestmentsController < ApplicationController
 
     end
 
-    @avge_int_rate = sum/count
+    if count != nil
+      @avge_int_rate = sum/count
+    else
+      @avge_int_rate = "n/a"
+    end
     @graph_data_pie = {
               # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
               labels: labels_proj,
