@@ -141,7 +141,11 @@ def create_campaign(company)
 campaign.save!
 create_reward(campaign)
 
-User.where(owner: false).each do |investor|
+number_of_investors = User.where(owner: false).count
+half_of_investors = (number_of_investors/2).round(0)
+random_num_of_investors = rand(half_of_investors..number_of_investors)
+
+User.where(owner: false).take(random_num_of_investors) do |investor|
   create_investment(campaign, Reward.all.sample, investor)
   end
 end
@@ -157,10 +161,8 @@ end
     description = element.search('.c-entry-content p').text.strip
   # create owner with company
   owner_info = USERS[:owners][count]
-  puts "creating an owner"
   owner = User.create!(owner_info)
   owner.update(owner: true)
-  puts owner.first_name
 
   company = Company.new(
     name: names,
@@ -173,9 +175,6 @@ end
   file = URI.open("https://source.unsplash.com/1600x900/?food")
   company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
   company.save!
-  puts company.name
-  puts company.owner.first_name
-
   create_campaign(company)
 end
 
