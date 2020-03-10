@@ -79,14 +79,13 @@
   border-radius: 8px;
   background-color: white;
   color: white;
-
   font-weight: bold;
   display: flex;
 }
 
 progress[value]::-webkit-progress-value {
   background-image:
-  -webkit-linear-gradient(left, #1EDD88, #1EDD88);
+  -webkit-linear-gradient(left, $fundeatlogo-green, $fundeatlogo-green);
 }
 
 progress[value]::-webkit-progress-bar {
@@ -136,6 +135,9 @@ progress[value]::-webkit-progress-bar {
   position: relative;
   left: 0px;
   bottom:23px;
+  p{
+    color:white;
+  }
 
 }
 

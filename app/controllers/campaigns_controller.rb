@@ -86,20 +86,18 @@ class CampaignsController < ApplicationController
         },
         {
           title: "Investors",
-          action_name: "myinvestors",
+          action_name: "investors",
           url: "/mycampaigns/investors",
           class: ""
         },
         {
           title: "Support",
-          action_name: "mym",
+          action_name: "support",
           url: "/mycampaigns/support",
           class: ""
         }
       ]
     end
-
-
 
     def owners_dashboard
       if current_user.company.nil?

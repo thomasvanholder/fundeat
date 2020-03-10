@@ -1,7 +1,9 @@
 <!-- app/views/scooters/index.html.erb -->
 
 <div class="d-flex">
+
   <div class="banner-index-left">
+
   </div>
   <div class="banner-index-center">
     <div class="text-center d-flex flex-column justify-content-center h-100">
@@ -20,10 +22,12 @@
   </div>
 </div>
 
+
 <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
   <% @campaigns.each do |campaign| %>
   <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
   <div class="card-wrapper">
+
       <!-- investment card -->
     <div class="card-investment">
       <div class="card-user">
@@ -38,9 +42,9 @@
         <!-- background pic -->
         <!-- insert company.photo -->
       <% if campaign.company.photo.attached? %>
-      <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
+        <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
       <% else %>
-      <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
+        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
       <% end %>
 
       <% days_left = ((campaign.expiry_date - Time.now)/86400).round(0) %>
@@ -49,7 +53,7 @@
       <% elsif days_left = 1 %>
         <h5><span class="badge badge-open "> <%= days_left%> day left  </span></h5>
       <% else %>
-        <h5 class="pb-0"> <span class="badge badge-closed ">Investment Closed </span></h5>
+        <h5 class="pb-0"> <span class="badge badge-closed ">Funded </span></h5>
       <% end %>
       <h1 class="mt-0"><%= campaign.company.name %>
       </h1>
@@ -70,6 +74,7 @@
         </div>
         <div class="statusbar-relative"> <p><%= status %> %</p>
         </div>
+
       </div>
       <div class="box-align d-flex justify-content-between">
         <div class="text-center">
@@ -79,7 +84,7 @@
         <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
         </div>
         <div class="text-center">
-          <h4><%= (campaign.return_rate*100).round(1) %>%</h4>
+          <h4><%= (campaign.return_rate*100) %>%</h4>
           <p>interest</p>
         </div>
         <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
