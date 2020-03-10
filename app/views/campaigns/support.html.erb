@@ -8,36 +8,39 @@
   <div class="col-md-10 col-lg-10 p-0">
     <div class="container">
       <div class="form-wrapper">
-        <div style="margin-bottom: 50px;">
-          <h1>Support</h1>
-        </div>
+
+        <div class="mx-auto my-5 w-50 text-center">Our team of experts stands at your serivce to help you launch your campaign. Schedule a call to get started.</div>
+
+        <div class="page-content my-5">
         <%= simple_form_for :support do |f| %>
         <div class="row">
 
-          <div class="col-12 col-md-6">
-            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-          </div>
-          <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6">
+              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            </div>
+            <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <div class="col-12 col-md-6">
 
-            <div class="form-group pb-2">
-              <label for="InputName">Name</label>
-              <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name" name="support[name]">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <div class="form-group pb-2">
+                <label for="InputName">Name</label>
+                <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name" name="support[name]" value="<%= current_user.first_name%>">
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="form-group pb-2">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="support[email]" value="<%= current_user.email%>">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Your Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="support[message]"></textarea>
+              </div>
+
+              <%= f.button :submit, "Schedule a call now", class: "btn btn-success" %>
             </div>
 
-            <div class="form-group pb-2">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="support[email]">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Your Message</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="support[message]"></textarea>
-            </div>
-
-            <%= f.button :submit, "Schedule an appointment now", class: "btn btn-primary" %>
           </div>
         </div>
         <% end %>
