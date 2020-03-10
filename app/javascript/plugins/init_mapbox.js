@@ -7,6 +7,7 @@ const buildMap = () => {
   return new mapboxgl.Map({
     container: 'mapbox',
     style: 'mapbox://styles/mapbox/streets-v11'
+
   });
 };
 
