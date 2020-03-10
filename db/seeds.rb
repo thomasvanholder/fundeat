@@ -141,11 +141,11 @@ def create_campaign(company)
 campaign.save!
 create_reward(campaign)
 
-number_of_investors = User.where(owner: false).count
-half_of_investors = (number_of_investors/2).round(0)
-random_num_of_investors = rand(half_of_investors..number_of_investors)
+# number_of_investors = User.where(owner: false).count
+# half_of_investors = (number_of_investors/2).round(0)
+# random_num_of_investors = rand(half_of_investors..number_of_investors)
 
-User.where(owner: false).take(random_num_of_investors) do |investor|
+User.where(owner: false).each do |investor|
   create_investment(campaign, Reward.all.sample, investor)
   end
 end
