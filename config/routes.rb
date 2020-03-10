@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  resources :campaigns, only: [:new, :create, :edit, :update, :show, :index] do
+  resources :campaigns, only: [:new, :create, :show, :index] do
     resources :investments, only: [:new, :create]
   end
   resources :investments, only: [:show] do
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'mycampaigns/owners_dashboard', to: 'campaigns#owners_dashboard', as: :owners_dashboard
   get 'mycampaigns', to: 'campaigns#mycampaigns', as: :mycampaigns
-  get 'mycampaigns/myrewards', to: 'campaigns#rewards', as: :owners_rewards
+  get 'mycampaigns/investors', to: 'campaigns#investors', as: :investors
   get 'mycampaigns/support', to: 'campaigns#support', as: :owners_support
 
   get 'myinvestments/dashboard', to: 'investments#dashboard', as: :investors_dashboard
