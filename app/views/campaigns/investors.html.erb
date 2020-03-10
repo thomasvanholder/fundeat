@@ -6,7 +6,42 @@
   </div>
 
   <div class="col-md-10 col-lg-10 p-0">
-    <h3>here come's the page for investors</h3>
+    <div class="mt-5 container">
 
+      <!-- Tabs here -->
+      <div class="tabs-all">
+        <a href="#" class="tab-one active">Investors in <%= @campaign.company.name %></a>
+      </div>
+
+
+      <div class="notifications">
+        <!-- Code one notification here -->
+        <% @campaign.investments.each do |investment| %>
+        <div class="notification p-3">
+          <div class="notification-inner">
+            <div class="d-flex align-items-center">
+              <%= image_tag investment.investor.photo, class:"avatar-sm-round" %>
+              <div class=" ml-3"><%= investment.investor.first_name %> invested
+                <span class="invested-amount"><%= number_to_currency investment.amount, strip_insignificant_zeros: true %></span>
+                on <%= investment.payment_date.strftime("%B %e, %Y") %>
+              </div>
+            </div>
+          </div>
+          <div class="reward-status h-100 align-middle d-flex align-items-center">
+            <div class="d-flex justify-content-center mx-2">
+            <% if investment.reward_redeemed %>
+              <i class="mr-2 fas fa-check-circle" style="font-size: 24px; color: lightgrey;"></i>
+              <% else %>
+              <i class="mr-2 fas fa-gift text-success" style="font-size: 24px;"></i>
+              <% end %>
+              </div>
+              <p class="m-0"><%= investment.reward.description %></p>
+            </div>
+        </div>
+        <% end %>
+        <!-- all notifcations closing div -->
+      </div>
+      <!-- container closing div -->
+    </div>
   </div>
-
+</div>

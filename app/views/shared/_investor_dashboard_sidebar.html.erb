@@ -4,7 +4,7 @@
   </div>
   <div class="list-group list-group-flush text-left">
     <% @menu.each do |item| %>
-    <a href="<%= item[:url] %>" class="list-group-item list-group-item-action <%= item[:action_name] == action_name ? "active-tab": "" %>">
+    <a href="<%= item[:url] %>" class="bg-light list-group-item list-group-item-action <%= item[:action_name] == action_name ? "active-tab": "" %>">
       <%= item[:title] %>
     </a>
     <% end %>
