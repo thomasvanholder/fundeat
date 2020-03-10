@@ -1,8 +1,11 @@
 class Campaign < ApplicationRecord
   belongs_to :company
   has_many :investments
+  has_many :investors, through: :investments
   has_many :rewards
   #belongs_to :owner, class_name: "User"
+
+
   def raised_sum
     self.investments.reduce(0) { |acum, investment| acum + investment.amount }
   end
