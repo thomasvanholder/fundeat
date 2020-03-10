@@ -141,14 +141,9 @@ def create_campaign(company)
   campaign.save!
   create_reward(campaign)
 
-# number_of_investors = User.where(owner: false).count
-# half_of_investors = (number_of_investors/2).round(0)
-# random_num_of_investors = rand(half_of_investors..number_of_investors)
-
-  User.where(owner: false) do |investor|
-    create_investment(campaign, Reward.all.sample, investor)
+User.where(owner: false).each do |investor|
+  create_investment(campaign, Reward.all.sample, investor)
   end
-
 end
 
   # data scraper
@@ -159,7 +154,7 @@ end
 
   html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(USERS[:owners].count).each_with_index do |element, count|
     names = element.search('h1').text.strip.gsub!(/\d+. /,"")
-    description = element.search('.c-entry-content p').text.strip
+    description = element.search('.c-entry-content p').text.strips
   # create owner with company
   owner_info = USERS[:owners][count]
   owner = User.create!(owner_info)
