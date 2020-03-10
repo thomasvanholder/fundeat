@@ -11,8 +11,8 @@
         <%= render "shared/restaurant_icon", campaign: @campaign, class: "img-sm-grey", alt: "avatar" %>
       </div>
 
-      <h2 class="mt-5 font-weight-bold"><%= @campaign.company.name %></h2>
-      <h6 class="text-grey" id="company_type"><%= @campaign.company.type_store %></h6>
+      <h1 class="mt-5 font-weight-bold"><%= @campaign.company.name %></h1>
+      <h4 class="text-grey" id="company_type"><%= @campaign.company.type_store %></h4>
 
       <div>
         <div class="w-75" style="margin: 0 auto;">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="text-center my-5">
-          <iframe width="100%" height="360" frameborder="0" src="https://www.youtube.com/embed/6QS17b1itIE?autoplay=1"></iframe>
+          <iframe width="100%" height="360" frameborder="0" src="https://www.youtube.com/embed/6QS17b1itIE?autoplay=1&modestbranding=1&controls=0"></iframe>
         </div>
 
         <h4><%= @campaign.company.name %></h4>
@@ -38,8 +38,8 @@
 
       <!-- map  -->
       <div class="d-flex justify-content-center my-5">
-        <div id="mapbox" class="rounded" style="width: 100%; height: 300px;" data-markers="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-        <span class="address-box-green" style="z-index: 2; position: absolute; bottom: 53px; left: 20px;"><%= @company.address %></span>
+        <div id="mapbox" data-markers="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        <span class="address-box-green"><%= @company.address %></span>
       </div>
     </div>
 
