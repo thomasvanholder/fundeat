@@ -10,7 +10,7 @@
     </div>
     <div class="banner-index-center">
       <div class="text-center d-flex flex-column justify-content-center h-100">
-        <h3 class="banner-title">Fund your favorite restaurants</h3>
+        <h3 class="banner-title">Fund your favorite places</h3>
         <%= form_tag campaigns_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <h3 class="mt-4 text-left" style="margin-left: 130px">Restaurants in Buenos Aires</h3>
+ <!--  <h3 class="mt-4 text-left" style="margin-left: 130px">Restaurants in Buenos Aires</h3> -->
 
   <div class="px-5 mx-2 d-flex flex-wrap justify-content-around">
     <% @campaigns.each do |campaign| %>
