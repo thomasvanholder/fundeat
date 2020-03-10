@@ -83,35 +83,33 @@ def owner_sidebar_menu
       action_name: "owners_dashboard",
       url: "/mycampaigns/owners_dashboard",
       class: ""
+    },
+    {
+      title: "Investors",
+      action_name: "myinvestors",
+      url: "/mycampaigns/investors",
+        class: ""
       },
       {
-        title: "Investors",
-        action_name: "myinvestors",
-        url: "/mycampaigns/investors",
-        class: ""
-        },
-        {
-          title: "Support",
-          action_name: "mym",
-          url: "/mycampaigns/support",
+        title: "Support",
+        action_name: "mym",
+        url: "/mycampaigns/support",
           class: ""
-          }
-        ]
-      end
+        }
+      ]
+    end
 
-
-
-      def owners_dashboard
-        mycampaigns
-
-        if current_user.companies.first.nil?
-          redirect_to mycampaigns_path, notice: 'Nothing to show, create your first campaign!'
-          @campaigns = policy_scope(Campaign)
-          authorize @campaigns
+    def owners_dashboard
+      if current_user.company.nil?
+        redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
+        @campaigns = policy_scope(Campaign)
+        authorize @campaigns
 # render :mycampaigns
 else
+  @campaigns = policy_scope(Campaign)
+  authorize @campaigns
 
-  @company = current_user.companies.first
+  @company = current_user.company
   authorize @company
   @investments = @company.investments
 
@@ -129,13 +127,175 @@ else
 
     labels_months_of_invest << (inv.payment_date)&.strftime("%m/%d/%Y")
   end
+end
+if @avge_int_rate.nil?
+  @graph_data_pie = {
+# labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+labels: labels_proj,
+datasets: [{
+  label: 'Investment / Month',
+# data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
+data: amount_by_proj,
+backgroundColor: [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+],
+borderColor: [
+  'rgba(255, 99, 132, 1)',
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+],
+borderWidth: 1
+}]
+}
+
+@graph_data_bar = {
+# labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+labels: labels_months_of_invest,
+datasets: [{
+  label: 'Investment / Month',
+# data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
+data: amount_by_proj,
+backgroundColor: [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+],
+borderColor: [
+  'rgba(255, 99, 132, 1)',
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+],
+borderWidth: 1
+}]
+}
+
+
+else
+  @avge_int_rate = sum/count
+
+  @graph_data_pie = {
+# labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+labels: labels_proj,
+datasets: [{
+  label: 'Investment / Month',
+# data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
+data: amount_by_proj,
+backgroundColor: [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+],
+borderColor: [
+  'rgba(255, 99, 132, 1)',
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+],
+borderWidth: 1
+}]
+}
+
+@graph_data_bar = {
+# labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+labels: labels_months_of_invest,
+datasets: [{
+  label: 'Investment / Month',
+# data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
+data: amount_by_proj,
+backgroundColor: [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+],
+borderColor: [
+  'rgba(255, 99, 132, 1)',
+  'rgba(54, 162, 235, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 159, 64, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+  'rgba(255, 206, 86, 1)',
+  'rgba(75, 192, 192, 1)',
+  'rgba(153, 102, 255, 1)',
+],
+borderWidth: 1
+}]
+}
+end
 
 # i.count { |inv| inv.reward.description == "1 x Free Dinner" }
 
 rewards_data = []
 rewards_labels = []
 
-@company.campaigns.first.rewards.each do |reward|
+@company.campaign.rewards.each do |reward|
   rewards_data << @investments.where.not(payment_date: nil).count do |inv|
     inv.reward == reward
   end
@@ -303,7 +463,6 @@ borderWidth: 1
 }
 end
 end
-end
 
 def total_risk_level
   char_array = []
@@ -332,8 +491,8 @@ def support
 end
 
 def investors
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+  @campaign = current_user.company.campaign
+  authorize @campaign
 end
 
 def create_company

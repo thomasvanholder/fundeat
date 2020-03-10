@@ -1,0 +1,74 @@
+/* Your tabs CSS code here */
+.tabs-all {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.tab-one {
+  margin-right: 16px;
+  padding-bottom: 8px;
+  color: black;
+  opacity: 0.6;
+}
+
+.tab-one:hover {
+  opacity: 0.8;
+   text-decoration: none;
+  color: $fundeatlogo-green;
+}
+
+.tab-one.active {
+  text-decoration: none;
+  border-bottom: 3px solid #555555;
+  opacity: 1;
+}
+
+.tab-one a {
+  text-decoration: none;
+  color: $fundeatlogo-green;
+}
+
+//  notifcations
+.notification {
+  background-color: white;
+  display: flex;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-inner {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-time {
+  color: grey;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 16px 0px 0px;
+}
+
+.notification-link {
+  color: #2A83C4;
+}
+
+.notification-text {
+  display: flex;
+ /* justify-content: space-between;*/
+}
+
+
+.block-display {
+  display: block;
+  margin-left: 16px;
+}
+
+.invested-amount {
+  color: $fundeatlogo-green;
+  font-weight: bold;
+  font-size: 18px;
+}
+
