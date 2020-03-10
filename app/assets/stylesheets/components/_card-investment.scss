@@ -17,7 +17,7 @@
 }
 
 .card-investment {
-  height: 480px;
+  height: 530px;
   width: 380px;
   background-color: #F3F3F3;
   border-radius: 20px;
@@ -35,7 +35,7 @@
 }
 
 .card-investment .card-pic {
-  height: 190px;
+  height: 180px;
   width: 380px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -49,7 +49,7 @@
 .card-investment .card-user .avatar-m-square {
   position: absolute;
   left: 15px;
-  top: 147px;
+  top: 150px;
 }
 
 .card-investment .target-bar {
@@ -132,5 +132,10 @@ progress[value]::-webkit-progress-bar {
   text-align: justify;
 }
 
+.statusbar-relative{
+  position: relative;
+  left: 0px;
+  bottom:23px;
 
+}
 
