@@ -1,6 +1,6 @@
 <!-- app/views/scooters/index.html.erb -->
 
-<div class="d-flex banner-height">
+<div class="d-flex">
   <div class="banner-index-left">
   </div>
   <div class="banner-index-center">
@@ -28,11 +28,11 @@
     <div class="card-investment">
       <div class="card-user">
         <% if campaign.company.type_store == "Restaurant" %>
-        <%= image_tag "rest2.png", class:"avatar-m-square", alt: "avatar" %>
+        <%= image_tag "restaurant.png", class:"avatar-m-square", alt: "avatar" %>
         <% elsif campaign.company.type_store == "Bar" %>
-        <%= image_tag "bar2.png", class:"avatar-m-square", alt: "avatar" %>
+        <%= image_tag "bar.png", class:"avatar-m-square", alt: "avatar" %>
         <% else %>
-        <%= image_tag "coffe2.png", class:"avatar-m-square", alt: "avatar" %>
+        <%= image_tag "cafe.png", class:"avatar-m-square", alt: "avatar" %>
         <% end %>
       </div>
         <!-- background pic -->
