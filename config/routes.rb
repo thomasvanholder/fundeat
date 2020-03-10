@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  resources :campaigns, only: [:new, :create, :edit, :update, :show, :index] do
+  resources :campaigns, only: [:new, :create, :show, :index] do
     resources :investments, only: [:new, :create]
   end
   resources :investments, only: [:show] do
