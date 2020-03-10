@@ -48,15 +48,15 @@ CAMPAIGNS = {
     'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
   ],
   description: [
-    'The best of Italy in coming to downtown Buenos Aires. Maria and Fernando are running one of the most pistoresque pizzeria\'s in Rome.Bon Appétit!',
+    'The best of Italy in coming to downtown Buenos Aires. Maria and Fernando are running one of the most pistoresque pizzeria\'s in Rome. Bon Appétit!',
 
     'Six years and three successful restaurants later, we’re trying for another. Our chef José migrated from Cancun to Buenos Aires to guarantee all our wraps our made with a Latino flair!',
 
-    'Culture is the weave that holds people in Argentina together. At the center of is Mate. We source our yerba leaves from local farmers only. All our mate cups are made of 100% Calabash wood.',
+    'Culture is the weave that holds people in Argentina together. At the center of is Mate. We source our yerba leaves from local farmers only.',
 
     'Buenos Aires had to miss Peruvian ceviche for too long, but suffering is no longer needed! We get firsthand choice from our fish-suppliers and our cooks are ready to delight your tastebuds.',
 
-    'Due to high demand, we\'re are looking for a new home with increased seating capacity to host our empanada-loving customers.Yet we need your support to make the dream come true.'
+    'Due to high demand, we\'re are looking for a new home with more seating capacity to host our empanada-loving customers. We need your support to make the dream come true.'
   ]
 }
 
