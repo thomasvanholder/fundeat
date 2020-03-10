@@ -21,6 +21,7 @@ gem 'pg_search', '~> 2.3.0'
 
 gem 'groupdate', '~> 2.5'
 gem 'chartkick', '~> 3.3', '>= 3.3.1'
+gem 'postmark-rails'
 
 # payment
 gem 'money-rails'
