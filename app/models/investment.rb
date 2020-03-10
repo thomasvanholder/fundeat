@@ -2,6 +2,7 @@ class Investment < ApplicationRecord
   belongs_to :investor, class_name: "User"
   belongs_to :campaign
   belongs_to :reward
+  has_one :company, through: :campaign
   # monetize :price_cents
   has_one_attached :photo
 
