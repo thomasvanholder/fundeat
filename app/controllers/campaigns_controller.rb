@@ -75,25 +75,24 @@ def mycampaigns
 
 end
 
-
-def owner_sidebar_menu
-  @menu = [
-    {
-      title: "Dashboard",
-      action_name: "owners_dashboard",
-      url: "/mycampaigns/owners_dashboard",
-      class: ""
-    },
-    {
-      title: "Investors",
-      action_name: "myinvestors",
-      url: "/mycampaigns/investors",
-        class: ""
-      },
-      {
-        title: "Support",
-        action_name: "mym",
-        url: "/mycampaigns/support",
+    def owner_sidebar_menu
+      @menu = [
+        {
+          title: "Dashboard",
+          action_name: "owners_dashboard",
+          url: "/mycampaigns/owners_dashboard",
+          class: ""
+        },
+        {
+          title: "Investors",
+          action_name: "investors",
+          url: "/mycampaigns/investors",
+          class: ""
+        },
+        {
+          title: "Support",
+          action_name: "support",
+          url: "/mycampaigns/support",
           class: ""
         }
       ]
