@@ -1,28 +1,22 @@
 <div class="d-flex" id="wrapper">
 
-  <div class="col-md-3 p-0">
+  <!-- sidebar -->
+  <div class="col-md-2 col-lg-2 p-0">
     <%= render '/shared/owner_dashboard_sidebar' %>
   </div>
 
-  <!-- Page content -->
-  <div class="container">
-
-    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-
-      <div style="margin-bottom: 50px;">
-        <h1>Support</h1>
+  <div class="col-md-10 col-lg-10 p-0">
+    <div class="container">
+      <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+        <div style="margin-bottom: 50px;">
+          <h1>Support</h1>
+        </div>
+        <%= simple_form_for :search, method: "get" do |f| %>
+        <%= f.input :Available_dates, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.button :submit, "Schedule an appointment now", class: "btn btn-primary" %>
+        <% end %>
       </div>
-
-      <%= simple_form_for :search, method: "get" do |f| %>
-      <%= f.input :Available_dates, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Schedule an appointment now", class: "btn btn-primary" %>
-      <% end %>
     </div>
   </div>
 
-  <!-- Page content end-->
-
-  <!-- /#closing-wrapper -->
-</div>
-<!-- /#closing-wrapper -->
