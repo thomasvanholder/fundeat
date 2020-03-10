@@ -8,9 +8,9 @@
   <div class="col-md-10 col-lg-10 p-0">
     <div class="container">
       <div class="form-wrapper">
-        <div style="margin-bottom: 50px;">
-          <h1>Support</h1>
-        </div>
+
+          <h4>Our team of experts can help you create, grow and engage your community. Schedule a call with your dedicated campaign manager to get started.</h4>
+
         <%= simple_form_for :support do |f| %>
         <div class="row">
 
@@ -22,13 +22,13 @@
 
             <div class="form-group pb-2">
               <label for="InputName">Name</label>
-              <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name" name="support[name]">
+              <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name" name="support[name]" value="<%= current_user.first_name%>">
               <small id="emailHelp" class="form-text text-muted"></small>
             </div>
 
             <div class="form-group pb-2">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="support[email]">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="support[email]" value="<%= current_user.email%>">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
