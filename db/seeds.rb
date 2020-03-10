@@ -1,14 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 start = Time.now
 puts "Time is #{start}, destroying seed and restarting seed..."
 Investment.destroy_all
@@ -19,7 +11,6 @@ User.destroy_all
 
 USERS = {
   owners: [
-# <<<<<<< HEAD
 # { first_name: "admin" , last_name: "admin", email: "admin@gmail.com" , password: 12345678, admin: true},
 { first_name: "Ben" , last_name: "Deb", email: "ben@gmail.com" , password: 12345678},
 { first_name: "Thomas" , last_name: "Holder", email: "thomas@gmail.com" , password: 12345678 },
@@ -39,10 +30,6 @@ investors: [
   { first_name: "Nico" , last_name: "Donoso", email: "investornico@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
   { first_name: "Feli" , last_name: "Hernandez", email: "investorfeli@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
   { first_name: "James" , last_name: "Loomos", email: "investorjames@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  # { first_name: "Janette" , last_name: "Kwan", email: "investorjanette@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  # { first_name: "Maximo" , last_name: "Chalbaud", email: "investormaximo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  # { first_name: "Gerardo" , last_name: "Raiden", email: "investorgerardo@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  # { first_name: "Nicolas" , last_name: "Kennedy", email: "investornicolas@gmail.com" , password: 12345678, link: "https://media-exp1.licdn.com/dms/image/C4E03AQHAYB-Ut1y9oQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=MRVdfv2LO7lnckrMzT9VAeZJWe4ScFker8NHNvD6U38"  },
 ]}
 
 # Reward amount
@@ -83,18 +70,8 @@ REWARDS = {
   ]
 }
 
-
 COMPANY = {
   address: [
-    # 'Blanco Encalada 2120, B1609 Boulogne Buenos Aires',
-    # 'Arribeños 2393 C1428APE CABA',
-    # 'Lafinur 3368C1425FAJ CABA',
-    # 'Cavia 2985 C1425DDA CABA',
-    # 'Arévalo 2024 C1414CQP CABA',
-    # 'Nicaragua 6002 C1414BWN CABA',
-    # 'Ángel Justiniano Carranza 2225 C1425FXC CABA',
-    # 'Costa Rica 5886 C1414BTJ CABA',
-    # 'Av. Dorrego 1829'
     "Av Niceto Vega #{rand(100..4000)}, CABA, Buenos Aires",
     "Av. Córdoba #{rand(100..4000)},CABA, Buenos Aires",
     "Av. del Libertador #{rand(100..4000)}, C1425 CABA, Buenos Aires",
@@ -117,55 +94,33 @@ COMPANY = {
 
 # Edit
 USERS[:investors].each do |inv|
-  # puts inv[:first_name]
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
-#  puts inv[:link]
-#  puts inv[:email]
-photo = URI.open(inv[:link])
-# investor.photo.attach(io: photo, filename: "#{inv[:file]}", content_type: 'image/png')
-investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+  photo = URI.open(inv[:link])
+  investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
 end
 
-def create_investment(campaign, reward)
-# puts "create investment"
-
-investment = Investment.new
-investment.status = rand(0..4) #check enumerable in investment.rb (model)
-investment.amount = rand(1..10000)
- # investment.payment_date = campaign.expiry_date + (campaign.loan_duration * 30)
- investment.payment_date = Date.today + rand(-30..1).days
-
-# caution. enhance code as each investor should not have more than one investment on the same company.
-existing_investor_ids = campaign.investments.pluck(:investor_id)
-investment.investor = User.where(owner: false).reject do |user|
-  existing_investor_ids.include?(user.id)
-end.sample
-
-investment.campaign = campaign
-investment.reward = reward
-investment.save!
-# puts "investment completed"
+def create_investment(campaign, reward, investor)
+  investment = Investment.new
+  investment.status = rand(0..4) #check enumerable in investment.rb (model)
+  investment.amount = rand(1..10000)
+  investment.payment_date = Date.today + rand(-30..1).days
+  investment.campaign = campaign
+  investment.reward = reward
+  investment.investor = investor
+  investment.save!
 end
 
 def create_reward(campaign)
-  # puts "create reward"
   AMOUNT.each_with_index do |amount, index|
     reward = Reward.new()
     reward.description = "#{index + 1} x Free Dinner"
     reward.investment_amount = amount
     reward.campaign = campaign
     reward.save!
-    # puts reward.id
-    # puts "completed create reward"
-    create_investment(campaign, reward)
   end
-  # create_investment(campaign, Reward.sample)
-
 end
 
-
 def create_campaign(company)
-  # puts "creating campaign"
   campaign = Campaign.new
 
   campaign.title = CAMPAIGNS[:title].sample
@@ -174,7 +129,6 @@ def create_campaign(company)
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
-  # campaign.risk_level = ("A".."C").to_a.sample
 
   campaign.min_target = rand(20000..100000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
@@ -186,51 +140,45 @@ def create_campaign(company)
 # campaign.investor_id = rand(User.first.id..User.last.id)
 campaign.save!
 create_reward(campaign)
+
+User.where(owner: false).each do |investor|
+  create_investment(campaign, Reward.all.sample, investor)
+  end
 end
 
-USERS[:owners].each do |owner_info|
-  # puts "creating an owner"
+  # data scraper
+  url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
+  html_file = open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+  type_store = %w(Restaurant Cafe Bar)
+
+  html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(USERS[:owners].count).each_with_index do |element, count|
+    names = element.search('h1').text.strip.gsub!(/\d+. /,"")
+    description = element.search('.c-entry-content p').text.strip
+  # create owner with company
+  owner_info = USERS[:owners][count]
+  puts "creating an owner"
   owner = User.create!(owner_info)
   owner.update(owner: true)
-# puts owner.first_name
+  puts owner.first_name
+
+  company = Company.new(
+    name: names,
+    address: COMPANY[:address].sample,
+    type_store: type_store.sample,
+    description: description,
+    owner: owner
+    )
+  company.num_employees = rand(9..35)
+  file = URI.open("https://source.unsplash.com/1600x900/?food")
+  company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
+  company.save!
+  puts company.name
+  puts company.owner.first_name
+
+  create_campaign(company)
 end
-url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
 
-html_file = open(url).read
-html_doc = Nokogiri::HTML(html_file)
-type_store = %w(Restaurant Cafe Bar)
-
-html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(9).each do |element|
-# puts element.text.strip
-names = element.search('h1').text.strip.gsub!(/\d+. /,"")
-address = element.search('.c-mapstack__address').text.strip
-description = element.search('.c-entry-content p').text.strip
-
-# create users with company
-count = 1
-company = Company.new(
-  name: names,
-  address: COMPANY[:address].sample,
-  type_store: type_store.sample,
-  description: description,
-  # instagram_url: "https://www.instagram.com/#{names}",
-  # tripadvisor_url: "https://www.tripadvisor.com/Search?q=#{names}&searchSessionId=1F6B12580414656E2B1F8103584658EB1583247846007ssid&sid=46FA130A0D7E735E3345681E166688851583247849993&blockRedirect=true",
-  # googlereview_url: "https://www.google.com/search?client=ubuntu&hs=hBX&channel=fs&ei=eHNeXpmBGf7Y5OUP-7Ww8Aw&q=#{names}#"
-  )
-
-company.num_employees = rand(9..35)
-company.owner = User.where(owner: true)[count]
-file = URI.open("https://source.unsplash.com/1600x900/?food")
-company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
-company.save!
-# puts company.name
-
-# company.valid?
-create_campaign(company)
-count += 1
-# =======
-
-end
 
 puts "Seeds succesful"
 puts "It took #{(Time.now - start) / 60}. minutes to seed."
