@@ -86,7 +86,7 @@
           <div class="col-md-4 mt-4">
             <div lass="item-dash my-5">
              <%= simple_form_for :support do |f| %>
-             <%= f.input :date, as: :string, label: "Campaign expiration date", required: false, input_html: {class: "datepicker", style:"width: 310px; display:none"} %>
+             <%= f.input :date, as: :string, label: "Campaign expiration date", required: false, input_html: {class: "datepicker", style:"width: 310px; display:none; enableTime: false"} %>
              <% end %>
            </div>
          </div>

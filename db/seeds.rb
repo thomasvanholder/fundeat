@@ -166,11 +166,11 @@ def create_campaign(company)
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
 
-  campaign.min_target = rand(80000..400000)
+  campaign.min_target = rand(80000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
   campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(2)
-  campaign.expiry_date = Date.today + rand(-30..90).days
+  campaign.expiry_date = Date.today + rand(-5..25).days
 
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
