@@ -15,7 +15,7 @@
         <div class="card-campaign-status kpibox m-5">
           <div class="d-flex mt-4 justify-content-around align-items-center">
             <div class="text-center">
-              <h2 class="m-3 kpidash"><%= number_with_delimiter(@investments.where.not(payment_date: nil).sum(:amount), :delimiter => ',')%></h2>
+              <h2 class="m-3 kpidash"><%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h2>
               <h2 class="text-secondary mb-2" style="font-size: 20px;">$ Invested</h2>
             </div>
           </div>

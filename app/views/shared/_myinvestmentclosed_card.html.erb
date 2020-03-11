@@ -13,13 +13,9 @@
       <thead>
         <tr>
           <th scope="col">Restaurant</th>
-          <th scope="col">Campaign target</th>
-          <th scope="col">Total # Investors</th>
-          <th scope="col">Avge Inv Rate</th>
-          <th scope="col">Exp.Date</th>
-          <th scope="col">Your investment</th>
+          <th scope="col">Int Rate</th>
           <th scope="col">Investment Date</th>
-
+          <th scope="col">Your investment</th>
         </tr>
       </thead>
 
@@ -28,16 +24,17 @@
            <tr class="<%= index.even? ? 'bg-light' : '' %>">
             <!-- <th scope="row"><%= investment.id %></th> -->
             <td><%= investment.campaign.company.name %></td>
-            <td>$ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></td>
-            <td><%= Investment.where(campaign_id: investment.campaign.id).count %></td>
             <td><%= (investment.campaign.return_rate*100).round(1)  %> %</td>
-            <td><%= (investment.campaign.expiry_date)&.strftime("%m/%d/%Y")  %></td>
-
-            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
             <td><%= investment.payment_date&.strftime("%m/%d/%Y") %></td>
-
+            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
             </tr>
         <% end %>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td>$ <%= number_with_delimiter(@sum_closed_campaign_amount, :delimiter => ',') %></td>
+          </tr>
       </tbody>
     </table>
   <% end %>
