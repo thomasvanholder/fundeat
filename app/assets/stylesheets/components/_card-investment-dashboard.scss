@@ -1,8 +1,4 @@
 
-// progress[value] {
-//   width: 250px;
-//   height: 50px;
-// }
 .wrapper-link {
   text-decoration: none!important;
   color: black;
@@ -16,18 +12,18 @@
   transition: transform 0.5s ease;
 }
 
-.card-investment {
-  height: 520px;
-  width: 380px;
+.card-investment2 {
+  height: 600px;
+  width: 800px;
   background-color: #F3F3F3;
-  border-radius: 20px;
+  // border-radius: 20px;
   margin: 5px;
   box-shadow: 0 0 24px rgba(33,33,33,.3);
   // padding:20px;
 }
 
 
-.card-investment ul {
+.card-investment2 ul {
   // list-style-type: none;
   margin: 0;
   padding: 0;
@@ -35,25 +31,25 @@
   font-size: 18px;
 }
 
-.card-investment .card-pic {
+.card-investment2 .card-pic {
   height: 180px;
-  width: 380px;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  width: 800px;
+  // border-top-right-radius: 20px;
+  // border-top-left-radius: 20px;
   object-fit: cover;
 }
 
-.card-investment .card-user {
+.card-investment2 .card-user {
   position: relative;
 }
 
-.card-investment .card-user .avatar-m-square {
+.card-investment2 .card-user .avatar-m-square {
   position: absolute;
   left: 15px;
   top: 150px;
 }
 
-.card-investment .target-bar {
+.card-investment2 .target-bar {
   width: 340px;
   height: 30px;
   border-radius: 8px;
@@ -61,7 +57,7 @@
   margin: 10px;
 }
 
-.card-investment .target-bar-percentage {
+.card-investment2 .target-bar-percentage {
   margin-left: 0px;
   width: 79%;
   height: 30px;
@@ -95,36 +91,36 @@ progress[value]::-webkit-progress-bar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-.card-investment .box-align {
+.card-investment2 .box-align {
   margin: 2px 20px;
 }
 
 // fonts and headers
-.card-investment > h1{
+.card-investment2 > h1{
   margin-top: 10px;
   margin-left: 20px;
   font-size: 22px;
 }
 
-.card-investment h4 {
+.card-investment2 h4 {
   margin-top: 10px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.card-investment h5{
+.card-investment2 h5{
   margin-top: 10px;
   margin-right: 20px;
   text-align: right;
 }
 
-.card-investment h6{
+.card-investment2 h6{
   margin: 0px;
   font-weight: bold;
   text-align: center;
 }
 
-.card-investment p{
+.card-investment2 p{
   margin: 0px;
   margin-left: 20px;
   margin-right: 20px;
