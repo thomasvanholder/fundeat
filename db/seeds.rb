@@ -44,7 +44,6 @@ profile:
     "app/assets/images/avatars/karen.png",
     "app/assets/images/avatars/nico.png",
     "app/assets/images/avatars/nick.png",
-    "app/assets/images/avatars/sarah.png",
     "app/assets/images/avatars/laura.png",
     "app/assets/images/avatars/alex.png",
   ]
@@ -110,6 +109,7 @@ COMPANY = {
   ]
 }
 
+puts "creating investors... (1/3)"
 # named investors to log-in and log-out
 USERS[:investors].each do |inv|
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
@@ -127,7 +127,7 @@ end
 def create_investment(campaign, reward, investor)
   investment = Investment.new
   investment.status = rand(0..4) #check enumerable in investment.rb (model)
-  investment.amount = rand(1..4000)
+  investment.amount = rand(100..3000)
   investment.payment_date = Date.today + rand(-30..1).days
   investment.campaign = campaign
   investment.reward = reward
@@ -145,6 +145,7 @@ def create_reward(campaign)
   end
 end
 
+puts "creating campaigns...(2/3)"
 def create_campaign(company)
   campaign = Campaign.new
 
@@ -158,7 +159,7 @@ def create_campaign(company)
   campaign.min_target = rand(20000..100000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
   campaign.loan_duration = DURATION.sample
-  campaign.return_rate = rand(0.05..0.1).round(1)
+  campaign.return_rate = rand(0.05..0.1).round(2)
   campaign.expiry_date = Date.today + rand(-90..90).days
 
   campaign.company = company
@@ -168,25 +169,15 @@ create_reward(campaign)
 
 # randomized number of investors
 total_investors = User.where(owner: false).count
-half_investors = total_investors / 2
-random_investors = rand(half_investors..total_investors)
-p 'total'
-p total_investors
-p "-----"
-p 'half'
-p half_investors
-p "-----"
-p 'rand'
-p random_investors
-p "-----"
-p 'loop'
-p User.where(owner: false).take(random_investors)
+quarter_investors = total_investors / 4
+random_investors = rand(quarter_investors..total_investors)
 
-User.where(owner: false).take(random_investors) do |investor|
+User.where(owner: false).take(random_investors).each do |investor|
   create_investment(campaign, Reward.all.sample, investor)
 end
 end
 
+puts "scraping restaurant data from the web... (3/3)"
   # data scraper
   url = "https://www.eater.com/maps/best-buenos-aires-restaurants-38"
   html_file = open(url).read
@@ -196,28 +187,28 @@ end
   html_doc.search('.c-mapstack__cards--mobile-map .c-mapstack__card').take(USERS[:owners].count).each_with_index do |element, count|
     names = element.search('h1').text.strip.gsub!(/\d+. /,"")
     description = element.search('.c-entry-content p').text.strip
-  # create owner with company
-  owner_info = USERS[:owners][count]
-  owner = User.create!(owner_info)
-  owner.update(owner: true)
+    # create owner with company
+    owner_info = USERS[:owners][count]
+    owner = User.create!(owner_info)
+    owner.update(owner: true)
 
-  company = Company.new(
+    company = Company.new(
     name: names,
     address: COMPANY[:address].sample,
     type_store: type_store.sample,
     description: description,
     owner: owner
     )
-  company.num_employees = rand(9..35)
-  file = URI.open("https://source.unsplash.com/1600x900/?food")
-  company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
-  company.save!
-  create_campaign(company)
+    company.num_employees = rand(9..35)
+    file = URI.open("https://source.unsplash.com/1600x900/?food")
+    company.photo.attach(io: file, filename: "#{rand(1..999)}.jpeg", content_type: 'image/png')
+    company.save!
+    create_campaign(company)
 end
 
-
+puts "---------------"
 puts "Seeds succesful"
-puts "#{User.where(owner: false).count} investors created"
-puts "#{User.where(owner: true).count} owners created"
+puts "+ #{User.where(owner: false).count} investors created"
+puts "+ #{User.where(owner: true).count} owners created"
 puts "It took #{(Time.now - start) / 60}. minutes to seed."
 
