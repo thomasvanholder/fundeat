@@ -21,7 +21,7 @@ gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
 
 gem 'groupdate', '~> 2.5'
-gem 'chartkick', '~> 2.2.0'
+gem 'chartkick', '~> 3.3.0'
 gem 'postmark-rails'
 
 # payment
