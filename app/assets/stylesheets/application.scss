@@ -50,6 +50,7 @@
 .background-green {
   // background-color: $fundeatlogo-green;
   background-color: #cdebcc;
+  background-image: linear-gradient(to bottom right, #cdebcc, lightblue);
 }
 
 .box-shadow {
@@ -58,7 +59,7 @@
 
 .route-button-outline {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
+  border-radius: 5px;
   font-size: 16px;
   width: 180px;
   color: #00B63A;
@@ -76,7 +77,7 @@
 
 .route-button-full {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
+  border-radius: 5px;
   font-size: 16px;
   width: 180px;
   color: white;
@@ -90,4 +91,8 @@
     -webkit-transform: scale(0.95);
     -moz-transform: scale(0.95);
   }
+}
+
+.fundeat-figures {
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.4);
 }
