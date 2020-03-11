@@ -69,7 +69,7 @@
         <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
         <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
         <% target = campaign.min_target %>
-        <% status = ((raised&.to_f/target)*100).round(1) %>
+        <% status = ((raised&.to_f/target)*100).round(0) %>
         <% end %>
         <div>
           <progress value="<%= status %>" max="100" id="progress-bar-percentage" class="progress-bar notfull">
