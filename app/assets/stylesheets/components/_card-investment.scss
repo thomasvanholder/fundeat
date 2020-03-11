@@ -19,7 +19,7 @@
 }
 
 .card-investment {
-  height: 530px;
+  min-height: 510px;
   width: 380px;
   background-color: #F3F3F3;
   border-radius: 20px;
@@ -141,5 +141,9 @@ progress[value]::-webkit-progress-bar {
     color:white;
   }
 
+}
+
+.tall{
+  min-height:72px;
 }
 
