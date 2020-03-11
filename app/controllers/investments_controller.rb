@@ -26,7 +26,7 @@ class InvestmentsController < ApplicationController
 
     end
 
-    if count != nil
+    if count != 0
       @avge_int_rate = sum/count
     else
       @avge_int_rate = "n/a"

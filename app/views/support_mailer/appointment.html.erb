@@ -1,0 +1,18 @@
+<% if @owner == true %>
+<p> Account type: owner </p>
+<% else %>
+<p>Account type: investor</p>
+<% end %>
+<hr>
+<br>
+
+<strong>From:</strong> <p> <%= @name %></p>
+<strong>Email:</strong> <p> <%= @email %></p>
+<strong>Message:</strong> <p> <%= @message %></p>
+<strong>Date:</strong> <p> <%= @date %></p>
+<br>
+<hr>
+
+<p>Best regards,</p>
+
+<p>Your Fundeat-Team</p>
