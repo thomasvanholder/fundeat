@@ -6,10 +6,11 @@
 
   <div class="col-md-10 col-lg-10 p-0">
 
-    <div class="text-center my-5">
-      <h1>Welcome to your dashboard, <%= current_user.first_name%>!</h1>
+    <div class="text-center mt-5">
+      <h4>Campaign dashboard for <%= @company.name%></h4>
+      <%= link_to "Live view", campaign_path(@company.campaign),  class: "mt-4 btn btn-outline-success"%>
     </div>
-  
+
     <div class="container">
       <div class="row">
         <div class="col-md-12 mt-4">
@@ -67,9 +68,10 @@
           </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-8">
           <!-- graph 1 -->
-          <div class="item-dash my-5">
+          <div class="item-dash my-3">
+            <h6 class="text-center">$ Raised over time</h6>
             <% array = @company.campaign.investments.group_by_day(:payment_date).sum(:amount).to_a %>
             <% sum = 0
             array.map! do |date, amount|
@@ -80,7 +82,7 @@
           </div>
 
           <!-- calendar -->
-          <div class="col-md-3">
+          <div class="col-md-4 mt-4">
             <div lass="item-dash my-5">
              <%= simple_form_for :support do |f| %>
              <%= f.input :date, as: :string, label: "Campaign expiration date", required: false, input_html: {class: "datepicker", style:"width: 310px; display:none"} %>
