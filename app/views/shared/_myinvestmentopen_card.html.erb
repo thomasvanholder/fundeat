@@ -1,8 +1,8 @@
 
 <div class="container">
   <% if @open.empty? %>
-  <h3 class="my-3">It looks like you haven't invested in any campaigns yet, <%= current_user.first_name%></h3>
-  <h3>Do you want to Invest in a campaign?</h3>
+  <h3 class="my-3">It looks like you haven't invested in open campaigns, <%= current_user.first_name%></h3>
+  <h3>Do you want to invest in a new campaign?</h3>
 
   <div>
     <%= link_to "Invest Now", campaigns_path, class:"btn btn-sm btn-outline-secondary" %>

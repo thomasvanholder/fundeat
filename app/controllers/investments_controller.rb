@@ -39,32 +39,14 @@ class InvestmentsController < ApplicationController
                   # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
                   data: amount_by_proj,
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(188, 225, 146, 0.2)',
+                    'rgba(103, 219, 118, 0.4)',
+                    'rgba(121, 170, 127, 0.6)',
+                    'rgba(188, 225, 146, 0.8)',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
+                    'rgba(33, 127, 45, 1)',
+                    'rgba(33, 127, 45 1)',
                   ],
                   borderWidth: 1
                 }]
@@ -78,30 +60,10 @@ class InvestmentsController < ApplicationController
           # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
           data: amount_by_proj,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
+            'rgba(188, 225, 146, 0.2)',
+            'rgba(150, 190, 132, 0.2)',
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 206, 86, 1)',
             'rgba(75, 192, 192, 1)',
             'rgba(153, 102, 255, 1)',
           ],
@@ -141,33 +103,33 @@ class InvestmentsController < ApplicationController
           action_name: "dashboard",
           url: "/myinvestments/dashboard",
           class: ""
-        },
-        {
-          title: "My investments",
-          action_name: "myinvestments",
-          url: "/myinvestments",
-          class: ""
-        },
-        {
-          title: "My rewards",
-          action_name: "rewards",
-          url: "/myinvestments/myrewards",
-          class: ""
-        },
-        {
-          title: "Map",
-          action_name: "map",
-          url: "/myinvestments/mymap",
-          class: ""
-        }
-      ]
-    end
+          },
+          {
+            title: "My investments",
+            action_name: "myinvestments",
+            url: "/myinvestments",
+            class: ""
+            },
+            {
+              title: "My rewards",
+              action_name: "rewards",
+              url: "/myinvestments/myrewards",
+              class: ""
+              },
+              {
+                title: "Map",
+                action_name: "map",
+                url: "/myinvestments/mymap",
+                class: ""
+                }
+              ]
+            end
 
-    def rewards
-      @investments = Investment.where(investor_id: current_user.id)
-      authorize @investments
-      @investments_payed = @investments.where.not(payment_date: nil)
-      authorize @investments_payed
+            def rewards
+              @investments = Investment.where(investor_id: current_user.id)
+              authorize @investments
+              @investments_payed = @investments.where.not(payment_date: nil)
+              authorize @investments_payed
 
       # @rewards = Investment.where(investor_id: current_user.id).rewards
       # authorize @rewards

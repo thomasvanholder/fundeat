@@ -70,27 +70,17 @@
             <div class="col-md-8">
               <!-- graph 1 -->
               <div class="item-dash my-3">
-                <h6 class="text-center">$ Invested over time</h6>
-                <%= column_chart @investments.group(:payment_date).sum(:amount), colors: ["lightgrey"], xtitle: "Time", ytitle: "$ invested", min: nil, max: nil%>
+                <h4 class="text-center">$ Invested over time</h4>
+                <%= column_chart @investments.group(:payment_date).sum(:amount), colors: ["#98d1a0"], xtitle: "Time", ytitle: "$ invested", min: nil, max: nil %>
               </div>
-
-              <!-- calendar -->
-              <div class="col-md-4 mt-4">
-
-              </div>
-
             </div>
-          </div>
 
-
-        </div>
-
-        <div class="d-flex graph-container">
-          <div class="graph-bar">
-            <canvas data-graph="<%= JSON.generate(@graph_data_bar) %>" id="bar" ></canvas>
-          </div>
-          <div class="graph-pie">
-            <canvas data-graph="<%= JSON.generate(@graph_data_pie) %>" id="pie"></canvas>
+            <!-- calendar -->
+            <div class="col-md-4 mt-4">
+              <h4 class="text-center">$ per Company</h4>
+              <canvas class="my-5" data-graph="<%= @graph_data_pie.to_json %>" id="pie"></canvas>
+            </div>
+            </div>
           </div>
         </div>
       </div>
