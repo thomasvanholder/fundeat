@@ -66,8 +66,8 @@ class CampaignsController < ApplicationController
     end
 
     def mycampaigns
-      @campaigns = current_user.campaigns
-      authorize @campaigns
+      @campaign = current_user.campaign
+      authorize @campaign
 
       if @campaigns.empty?
         redirect_to new_campaign_path

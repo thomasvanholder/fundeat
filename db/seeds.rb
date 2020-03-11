@@ -43,7 +43,10 @@ profile:
     "app/assets/images/avatars/jim.png",
     "app/assets/images/avatars/karen.png",
     "app/assets/images/avatars/nico.png",
-    "app/assets/images/avatars/sofie.png",
+    "app/assets/images/avatars/nick.png",
+    "app/assets/images/avatars/sarah.png",
+    "app/assets/images/avatars/laura.png",
+    "app/assets/images/avatars/alex.png",
   ]
 }
 
@@ -126,7 +129,7 @@ end
 def create_investment(campaign, reward, investor)
   investment = Investment.new
   investment.status = rand(0..4) #check enumerable in investment.rb (model)
-  investment.amount = rand(1..10000)
+  investment.amount = rand(1..4000)
   investment.payment_date = Date.today + rand(-30..1).days
   investment.campaign = campaign
   investment.reward = reward
