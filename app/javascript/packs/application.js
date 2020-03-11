@@ -5,7 +5,8 @@ import '../components/return_calculation';
 import { initCharts } from '../components/init_chart';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/flatpickr";
-
+require("chartkick")
+require("chart.js")
 
 
 initMapbox();
