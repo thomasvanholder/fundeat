@@ -1,58 +1,57 @@
 
 <div class="container">
   <% if @open.empty? %>
-    <h3 class="my-3">It looks like you haven't invested in any campaigns yet, <%= current_user.first_name%></h3>
-    <h3>Do you want to Invest in a campaign?</h3>
+  <h3 class="my-3">It looks like you haven't invested in any campaigns yet, <%= current_user.first_name%></h3>
+  <h3>Do you want to Invest in a campaign?</h3>
 
-    <div>
-      <%= link_to "Invest Now", campaigns_path, class:"btn btn-sm btn-outline-secondary" %>
-    </div>
+  <div>
+    <%= link_to "Invest Now", campaigns_path, class:"btn btn-sm btn-outline-secondary" %>
+  </div>
   <% else %>
 
-    <h2 class="mt-4">Your investments in <em>open</em> campaigns</h2>
-    <table class="table mt-4 text-center">
-      <thead class="table-secondary">
-        <tr>
-          <th scope="col">Restaurant Campaign</th>
-          <th scope="col">Investment Date</th>
-          <th scope="col">Interest Rate</th>
-          <th scope="col">Loan duration</th>
-          <th scope="col">Your investment</th>
-          <th scope="col">Day until closing</th>
-        </tr>
-      </thead>
+  <h2 class="mt-4">Your investments in <em>open</em> campaigns</h2>
+  <table class="table mt-4 text-center">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">Restaurant Campaign</th>
+        <th scope="col">Days until closing</th>
+        <th scope="col">Investment Date</th>
+        <th scope="col">Interest Rate</th>
+        <th scope="col">Loan duration</th>
+        <th scope="col">Your investment</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <% @open.each_with_index do |investment, index| %>
-           <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
-           <tr class="<%= index.odd? ? 'bg-light' : '' %>">
-            <!-- <th scope="row"><%= investment.id %></th> -->
-            <td><%= link_to investment.campaign.company.name, campaign_path(investment.campaign),class: "wrapper-link2" %></td>
-            <td><%= investment.payment_date&.strftime("%B %e, %Y") %></td>
-            <td><%= (investment.campaign.return_rate*100).round(1) %> %</td>
-            <td><%= investment.campaign.loan_duration %> months</td>
-            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
-
-            <% if days_left >= 2 %>
-              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0 "> <%= days_left%> days left  </span></h5></td>
-            <% elsif days_left = 1 %>
-              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
-            <% else %>
-              <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
-            <% end %>
-
-            </tr>
+    <tbody>
+      <% @open.each_with_index do |investment, index| %>
+      <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
+      <tr class="<%= index.odd? ? 'bg-light' : '' %>">
+        <!-- <th scope="row"><%= investment.id %></th> -->
+        <td><%= link_to investment.campaign.company.name, campaign_path(investment.campaign),class: "wrapper-link2" %></td>
+        <% if days_left >= 2 %>
+        <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0 "> <%= days_left%> days left  </span></h5></td>
+        <% elsif days_left = 1 %>
+        <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
+        <% else %>
+        <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
         <% end %>
 
-          <tr class="table-active">
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>$ <%= number_with_delimiter(@sum_open_campaign_amount, :delimiter => ',') %></td>
-            <td></td>
-          </tr>
-      </tbody>
-    </table>
+        <td><%= investment.payment_date&.strftime("%B %e, %Y") %></td>
+        <td><%= (investment.campaign.return_rate*100).round(1) %> %</td>
+        <td><%= investment.campaign.loan_duration %> months</td>
+        <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %></td>
+      </tr>
+      <% end %>
+
+      <tr class="table-active">
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>$ <%= number_with_delimiter(@sum_open_campaign_amount, :delimiter => ',') %></td>
+      </tr>
+    </tbody>
+  </table>
   <% end %>
 </div>
