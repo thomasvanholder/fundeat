@@ -7,7 +7,8 @@
   <div class="col-md-10 col-lg-10 p-0">
 
     <div class="text-center my-5">
-      <h1>Welcome to your dashboard, <%= current_user.first_name%>!</h1>
+      <h3>Welcome to your dashboard, <%= current_user.first_name%>!</h3>
+      <h5>Check your campaign LIVE</h5>
     </div>
 
     <div class="d-flex justify-content-around align-items-center m-4" style="height: 150px;" id="page-content-wrapper">
@@ -16,17 +17,26 @@
       <div class="card-campaign-status kpibox m-4">
         <div class="d-flex mt-4 justify-content-around align-items-center">
           <div class="text-center">
-            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.total_raised, :delimiter => ',')%></h2>
+            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.campaign.min_target, :delimiter => ',')%></h2>
+            <h2 class="text-secondary mb-2" style="font-size: 20px;">$ Target</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-campaign-status kpibox m-4">
+        <div class="d-flex mt-4 justify-content-around align-items-center">
+          <div class="text-center">
+            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.campaign.raised_sum, :delimiter => ',')%></h2>
             <h2 class="text-secondary mb-2" style="font-size: 20px;">$ Raised</h2>
           </div>
         </div>
       </div>
 
-      <div class="card-campaign-status kpibox m-5">
+      <div class="card-campaign-status kpibox m-4">
         <div class="d-flex mt-4 justify-content-around align-items-center">
           <div class="text-center">
-            <h2 class="m-3 kpidash"><%= @company.campaign.return_rate*100.round(0)%></h2>
-            <h2 class="text-secondary mb-2" style="font-size: 20px;">% Avg. Interest</h2>
+            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.campaign.to_go, :delimiter => ',')%></h2>
+            <h2 class="text-secondary mb-2" style="font-size: 20px;">$ To Go</h2>
           </div>
         </div>
       </div>
@@ -36,7 +46,6 @@
           <div class="text-center">
             <h2 class="m-3 kpidash"><%= @company.number_of_investors%></h2>
             <h2 class="text-secondary mb-2" style="font-size: 20px;">Investors</h2>
-
           </div>
         </div>
       </div>
@@ -45,7 +54,7 @@
       <div class="card-campaign-status kpibox m-5">
         <div class="d-flex mt-4 justify-content-around align-items-center">
           <div class="text-center">
-            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.total_raised / @company.number_of_investors, :delimiter => ',')%></h2>
+            <h2 class="m-3 kpidash"><%= number_with_delimiter(@company.campaign.raised_sum / @company.number_of_investors, :delimiter => ',')%></h2>
             <h2 class="text-secondary mb-2" style="font-size: 20px;">$ Avg. Investment</h2>
           </div>
         </div>

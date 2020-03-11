@@ -9,12 +9,7 @@ class Company < ApplicationRecord
   # To use this array in views calle it Company::TYPE
   # TYPE = ["Restaurant", "Coffe Shop", "Bar"]
 
-  def total_raised
-    investments.where.not(payment_date: nil).sum(:amount)
-  end
-
   def number_of_investors
     investments.where.not(payment_date: nil).count(:investor_id)
   end
-
 end
