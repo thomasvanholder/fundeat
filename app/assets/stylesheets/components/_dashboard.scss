@@ -1,6 +1,5 @@
 .kpidash{
   color: $fundeatlogo-green;
-
 }
 
 .kpibox{
@@ -16,28 +15,6 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.graph-bar {
-
- // position:absolute;
- // top:350px;
- // left:300px;
- width:500px;
- height:500px;
- margin:35px;
-
-}
-
-.graph-pie {
-
-  // position:absolute;
-  // top:350px;
-  // right:100px;
-  width:500px;
-  height:500px;
-
-}
-
-.graph-container {
-  padding:35px;
-
+.item-dash {
+  padding:15px;
 }
