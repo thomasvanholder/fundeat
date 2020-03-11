@@ -14,14 +14,15 @@
 
 .card-investment {
   min-height: 510px;
-  width: 380px;
   background-color: #F3F3F3;
   border-radius: 20px;
-  margin: 5px;
   box-shadow: 0 0 24px rgba(33,33,33,.3);
   // padding:20px;
 }
 
+.card-investment-body {
+    padding: 20px;
+}
 
 .card-investment ul {
   // list-style-type: none;
@@ -33,7 +34,7 @@
 
 .card-investment .card-pic {
   height: 180px;
-  width: 380px;
+  width: 100%;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   object-fit: cover;
@@ -50,7 +51,6 @@
 }
 
 .card-investment .target-bar {
-  width: 340px;
   height: 30px;
   border-radius: 8px;
   background-color: white;
@@ -94,14 +94,16 @@ progress[value]::-webkit-progress-bar {
 }
 
 .card-investment .box-align {
-  margin: 2px 20px;
+  margin: 2px 0;
 }
 
 // fonts and headers
-.card-investment > h1{
-  margin-top: 10px;
-  margin-left: 20px;
+.card-investment h1{
   font-size: 22px;
+  max-height: 35px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card-investment h4 {
@@ -111,8 +113,6 @@ progress[value]::-webkit-progress-bar {
 }
 
 .card-investment h5{
-  margin-top: 10px;
-  margin-right: 20px;
   text-align: right;
 }
 
@@ -124,15 +124,13 @@ progress[value]::-webkit-progress-bar {
 
 .card-investment p{
   margin: 0px;
-  margin-left: 20px;
-  margin-right: 20px;
   font-size: 12px;
   text-align: justify;
 }
 
 .statusbar-relative{
   position: relative;
-  left: 0px;
+  left: 10px;
   bottom:23px;
   p{
     color:white;
