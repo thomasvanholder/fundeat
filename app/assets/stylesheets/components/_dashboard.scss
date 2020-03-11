@@ -1,40 +1,22 @@
 .kpidash{
   color: $fundeatlogo-green;
-
 }
 
 .kpibox{
   width: 150px;
   height:150px;
-  background-color: #f4f4f4;
-  border-radius: 0px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.graph-bar {
-
- // position:absolute;
- // top:350px;
- // left:300px;
- width:500px;
- height:500px;
- margin:35px;
-
+.kpibox-green {
+  border: 0.5px solid rgb(23, 173, 44);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.graph-pie {
-
-  // position:absolute;
-  // top:350px;
-  // right:100px;
-  width:500px;
-  height:500px;
-
-}
-
-.graph-container {
-  padding:35px;
-
+.item-dash {
+  padding:15px;
 }
 
 .wrapper-link2 {

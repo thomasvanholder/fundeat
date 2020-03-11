@@ -1,118 +1,137 @@
 <div class="container-fluid p-0">
   <!-- start of row1 -->
-  <%= render "carousel" %>
-  <%= render "cta" %>
-  <%= render "investment-information" %>
-</div>
-
-<div class="row my-4 mx-auto" style="border: 1px solid lightgrey">
-</div>
-<div class="row d-flex flex-wrap justify-content-center py-4" style="background-color:rgb(243,243,243);">
-
-  <% @campaigns.take(3).each do |campaign| %>
-  <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
-
-  <div class="card-wrapper">
-    <!-- investment card -->
-    <div class="card-investment">
-      <div class="card-user">
-        <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
-      </div>
-      <!-- background pic -->
-      <!-- insert company.photo -->
-      <% if campaign.company.photo.attached? %>
-      <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
-      <% else %>
-      <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
-      <% end %>
-
-      <!-- <h5>10 days left</h5> -->
-      <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
-
-      <h1><%= campaign.company.name %></h1>
-      <div style="height: 50px">
-        <p><%= campaign.title %></p>
-      </div>
-
-      <div class="box-align">
-        <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
-      </div>
-      <div class="target-bar">
-        <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
-        <% target = campaign.min_target %>
-        <% status = ((raised.to_f/target)*100).round(1) %>
-        <div>
-          <progress value="<%= status %>" max="100" id="progress-bar-percentage" class="progress-bar notfull">
-          </progress>
+  <div class="position-relative">
+    <div class="background-green pb-5 pt-3">
+      <div class="row d-flex background-green align-items-end p-5">
+        <div class="col-6 pl-5 py-5">
+          <%= render "hometext" %>
         </div>
-        <div class="status"> <p><%= status %> %</p>
+        <div class="col-6 pr-5 py-5">
+          <%= render "carousel" %>
         </div>
       </div>
-      <div class="box-align d-flex justify-content-between">
-        <div class="text-center">
-          <h4>$ <%= number_with_delimiter(Investment.where(campaign_id: campaign.id).sum("amount"), :delimiter => ',') %></h4>
-          <p>raised</p>
-        </div>
-        <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-        </div>
-        <div class="text-center">
-          <h4><%= (campaign.return_rate*100).round(1) %>%</h4>
-          <p>interest</p>
-        </div>
-        <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
-        </div>
-        <div class="text-center">
-          <h4><%= Investment.where(campaign_id: campaign.id).count%></h4>
-          <p>investors</p>
-        </div>
+      <div class="col-6 justify-content-center mx-auto">
+        <%= render "cta" %>
+        <%#= render "investment-information" %>
       </div>
     </div>
   </div>
-  <% end %>
-  <% end %>
+</div>
+<!-- <div class="row my-4 mx-auto" style="border: 1px solid lightgrey"></div> -->
+<div class="" style="background-color:rgb(243,243,243);">
+  <div class="row d-flex flex-wrap justify-content-center py-4" style="background-color:rgb(243,243,243);">
+
+    <% @campaigns.take(3).each do |campaign| %>
+    <%= link_to campaign_path(campaign), class: "wrapper-link" do %>
+
+    <div class="card-wrapper mt-5 pt-5">
+      <!-- investment card -->
+      <div class="card-investment">
+        <div class="card-user">
+          <img class="avatar-m-square" src="https://www.pinclipart.com/picdir/middle/78-785464_clipart-restaurant-lunch-restaurant-cubiertos-para-colorear-png.png" alt="avatar">
+        </div>
+        <!-- background pic -->
+        <!-- insert company.photo -->
+        <% if campaign.company.photo.attached? %>
+        <%= cl_image_tag campaign.company.photo.key, class: "card-pic"%>
+        <% else %>
+        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
+        <% end %>
+
+        <!-- <h5>10 days left</h5> -->
+        <h5><%= ((campaign.expiry_date - Time.now)/86400).round(0)%> days left</h5>
+
+        <h1><%= campaign.company.name %></h1>
+        <div style="height: 50px">
+          <p><%= campaign.title %></p>
+        </div>
+
+        <div class="box-align">
+          <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
+        </div>
+        <div class="target-bar">
+          <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
+          <% target = campaign.min_target %>
+          <% status = ((raised.to_f/target)*100).round(1) %>
+          <div>
+            <progress value="<%= status %>" max="100" id="progress-bar-percentage" class="progress-bar notfull">
+            </progress>
+          </div>
+          <div class="status"> <p><%= status %> %</p>
+          </div>
+        </div>
+        <div class="box-align d-flex justify-content-between">
+          <div class="text-center">
+            <h4>$ <%= number_with_delimiter(Investment.where(campaign_id: campaign.id).sum("amount"), :delimiter => ',') %></h4>
+            <p>raised</p>
+          </div>
+          <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+          </div>
+          <div class="text-center">
+            <h4><%= (campaign.return_rate*100).round(1) %>%</h4>
+            <p>interest</p>
+          </div>
+          <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
+          </div>
+          <div class="text-center">
+            <h4><%= Investment.where(campaign_id: campaign.id).count%></h4>
+            <p>investors</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
   <!-- # investment card closing div -->
+  <div class="d-flex justify-content-center">
+    <h5 class="mb-4"><%= link_to "SHOW MORE", "/campaigns", class: "btn btn-outline-success" %></h5>
+  </div>
 </div>
 
-<div class="d-flex justify-content-center">
-  <h5 class="mt-5"><%= link_to "SHOW MORE", "/campaigns", class: "btn btn-secondary" %></h5>
-</div>
 
-<!-- horizontal line -->
-<div class=" w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="d-flex my-4">
-      <img class="pic-home w-50 object-fit-cover" src="https://images.unsplash.com/photo-1470784790053-6c2f15489967?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2241&q=80" alt="home pic 1">
-      <div class="ml-4 ml-3">
-        <h1>Support entrepreneurs on a mission</h1>
+<div class="">
+  <div class="row pt-5">
+    <div class="d-flex mt-2 align-items-center">
+      <!-- <img class="col-6 pic-home w-50 object-fit-cover" src="https://images.unsplash.com/photo-1470784790053-6c2f15489967?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2241&q=80" alt="home pic 1"> -->
+      <%= image_tag "chef.svg", class:"col-3 p-5 ml-5" %>
+      <div class="mx-5 pr-5">
+        <h1 class="mb-4">Support entrepreneurs on a mission</h1>
         <p>Take a look at live investment opportunities on Fundeat today, and give yourself a feel-good factor that's hard to beat by backing a restaurant you believe in.</p>
       </div>
     </div>
   </div>
 
-    <div class="d-flex my-4">
-      <div class="flex-grow-1">
-        <h1>Create change in your community</h1>
+  <div class="row" style="background-color: #f3f3f3;">
+    <div class="d-flex align-items-center">
+      <div class="mx-5 pl-5">
+        <h1 class="mb-4">Create change in your community</h1>
         <p>Build a better neighboorhoud, a better city and a better country. Change happens when people feel empowered. Take an active role and make dreams come true.</p>
       </div>
-      <img class="pic-home ml-3 flex-grow-0 w-50 object-fit-cover" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
+      <!-- <img class="pic-home ml-3 flex-grow-0 w-50 object-fit-cover" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2"> -->
+      <%= image_tag "world.svg", class:"col-3", style:"margin-right: 128px; padding: 32px 64px;" %>
     </div>
-    <img class="pic-home" src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="home pic 2">
   </div>
+
+  <div class="row">
+    <div class="d-flex align-items-center">
+      <!-- <img class="col-6 pic-home w-50 object-fit-cover" src="https://images.unsplash.com/photo-1470784790053-6c2f15489967?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2241&q=80" alt="home pic 1"> -->
+      <%= image_tag "invest.svg", class:"col-3 p-5 ml-5" %>
+      <div class="mx-5 pr-5">
+        <h1 class="mb-4">Fiancially benefit from sustainable returns</h1>
+        <p>Take a look at live investment opportunities on Fundeat today, and give yourself a feel-good factor that's hard to beat by backing a restaurant you believe in.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
 </div>
 
-<div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
-</div>
+<div class="row py-4 d-flex flex-column text-center background-green">
 
-<div class="row mb-4 d-flex flex-column text-center">
-
-  <p>We're proud to fund great entrepreneurs.</p>
-  <p>Because we know Argentina would be a lot less interesting without them.</p>
-  <br>
-  <p><strong>Are you with us?</strong></p>
-  <h5><%= link_to "FUND RESTAURANTS", "/campaigns", class: "btn btn-secondary" %></h5>
+  <p class="mb-3">We're proud to fund great entrepreneurs. Because we know Argentina would be a lot less interesting without them.</p>
+  <p class="font-weight-bold" style="font-size: 24px;">Are you with us?</p>
+  <h5><%= link_to "Start investing", "/campaigns", class: "btn btn-success" %></h5>
 </div>
 <!-- end of row6 -->
 

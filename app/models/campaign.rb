@@ -10,6 +10,10 @@ class Campaign < ApplicationRecord
     self.investments.reduce(0) { |acum, investment| acum + investment.amount }
   end
 
+  def to_go
+    self.min_target - raised_sum
+  end
+
   def progress_percentage
     if min_target.to_f == 0
       return 0
