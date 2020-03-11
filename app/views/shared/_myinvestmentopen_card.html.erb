@@ -1,63 +1,52 @@
-<div class=" d-flex flex-wrap justify-content-center">
-<% @open.each do |investment| %>
-      <% raised = Investment.where(campaign_id: investment.campaign.id).sum("amount") %>
-      <% target = investment.campaign.min_target %>
-      <% status = ((raised.to_f/target)*100).round(1) %>
-  <div class="card-wrapper p-4 m-4">
-      <!-- investment card -->
-    <div class="card-investment2">
-      <div class="card-user">
-        <% if investment.campaign.company.type_store == "Restaurant" %>
-        <%= image_tag "restaurant.png", class:"avatar-m-square", alt: "avatar" %>
-        <% elsif investment.campaign.company.type_store == "Bar" %>
-        <%= image_tag "bar.png", class:"avatar-m-square", alt: "avatar" %>
-        <% else %>
-        <%= image_tag "cafe.png", class:"avatar-m-square", alt: "avatar" %>
-        <% end %>
-      </div>
-        <!-- background pic -->
-        <!-- insert company.photo -->
-      <% if investment.campaign.company.photo.attached? %>
-        <%= cl_image_tag investment.campaign.company.photo.key, class: "card-pic"%>
-      <% else %>
-        <img class="card-pic" src="https://source.unsplash.com/1600x900/?food" class="card-img-top" alt="food-img">
-      <% end %>
 
+<div class="container">
+  <% if @open.empty? %>
+    <h3 class="my-3">It looks like you haven't invested in any campaigns yet, <%= current_user.first_name%></h3>
+    <h3>Do you want to Invest in a campaign?</h3>
 
-      <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
-      <% if days_left >= 2 %>
-        <h5><span class="badge badge-open "> <%= days_left%> days left  </span></h5>
-      <% elsif days_left = 1 %>
-        <h5><span class="badge badge-open "> <%= days_left%> day left  </span></h5>
-      <% else %>
-        <h5 class="pb-0"> <span class="badge badge-closed ">Funded </span></h5>
-      <% end %>
-
-
-      <h1 class="mt-0"><%= investment.campaign.company.name %>
-      </h1>
-      <!-- Info for campaign -->
-      <div class="box-align" >
-        <h4>Campaign Overview</h4>
-          <ul>
-            <li><p>Campaign target: $ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></p> </li>
-            <li><p> Funding Status: <%= status %> % ($ <%= raised %>)</p></li>
-            <li><p> #Investors:  <%= Investment.where(campaign_id: investment.campaign.id).count %></p> </li>
-            <li><p>Avge Inv Rate <%= (investment.campaign.return_rate*100).round(1)  %> %</p> </li>
-            <li><p>Exp.Date <%= (investment.campaign.expiry_date)&.strftime("%m/%d/%Y")  %> </p> </li>
-          </ul>
-        <h4>Your Investment </h4>
-          <ul>
-            <li><p>Your current investment: $ <%= investment.amount %> </p></li>
-            <% if investment.payment_date.nil? %>
-            <li><p> Payment date: Pending </p></li>
-            <% else %>
-            <li><p> Payment date: <%= investment.payment_date&.strftime("%m/%d/%Y") %></p></li>
-            <% end %>
-          </ul>
-      </div>
+    <div>
+      <%= link_to "Invest Now", campaigns_path, class:"btn btn-sm btn-outline-secondary" %>
     </div>
-  </div>
-<% end %>
-</div>
+  <% else %>
 
+    <h2 class="mt-4"> Your opened investments, waiting to be launched!</h2>
+    <table class="table table-hover mt-4 text-center">
+      <thead>
+        <tr>
+          <th scope="col">Restaurant</th>
+          <th scope="col">Campaign target</th>
+          <th scope="col">Total # Investors</th>
+          <th scope="col">Avge Inv Rate</th>
+          <th scope="col">Your investment</th>
+          <th scope="col">Invest. Date</th>
+          <th scope="col">Days to launch </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @open.each_with_index do |investment, index| %>
+           <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
+           <tr class="<%= index.even? ? 'bg-light' : '' %>">
+            <!-- <th scope="row"><%= investment.id %></th> -->
+            <td><%= investment.campaign.company.name %></td>
+            <td>$ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></td>
+            <td><%= Investment.where(campaign_id: investment.campaign.id).count %></td>
+            <td><%= (investment.campaign.return_rate*100).round(1)  %> %</td>
+
+            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
+            <td><%= investment.payment_date&.strftime("%m/%d/%Y") %></td>
+
+            <% if days_left >= 2 %>
+              <td><h5 class="m-0"><span class="badge badge-open "> <%= days_left%> days left  </span></h5></td>
+            <% elsif days_left = 1 %>
+              <td><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
+            <% else %>
+              <td><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
+            <% end %>
+
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

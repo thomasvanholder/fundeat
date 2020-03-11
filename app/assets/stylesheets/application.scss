@@ -41,6 +41,58 @@
 
 .btn-outline-success {
   color: #00B63A;
-  background-color: transparent;
+  background-color: $light-green;
   border-color: #00B63A;
+}
+
+////////////////////////////////////////////////////////////////////
+
+.background-green {
+  // background-color: $fundeatlogo-green;
+  background-color: #cdebcc;
+  background-image: linear-gradient(to bottom right, #cdebcc, lightblue);
+}
+
+.box-shadow {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.route-button-outline {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 180px;
+  color: #00B63A;
+  background-color: $light-green;
+  border-color: #00B63A;
+  -webkit-transition:all .2s;
+  -moz-transition:all .2s;
+  &:hover {
+    color: #00B63A;
+    font-weight: bold;
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+  }
+}
+
+.route-button-full {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 180px;
+  color: white;
+  background-color: #00B63A;
+  border-color: #00B63A;
+  -webkit-transition:all .2s;
+  -moz-transition:all .2s;
+  &:hover {
+    color: white;
+    font-weight: bold;
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+  }
+}
+
+.fundeat-figures {
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.4);
 }
