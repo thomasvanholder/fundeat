@@ -26,7 +26,7 @@ class InvestmentsController < ApplicationController
 
     end
 
-    if count != 0
+    if count != 0 && count != nil
       @avge_int_rate = sum/count
     else
       @avge_int_rate = "n/a"
@@ -111,27 +111,27 @@ class InvestmentsController < ApplicationController
     end
 
     def myinvestments
-      @investments = current_user.investments
-      # authorize @investments[0].first
+      @investments = current_user.investments.order(payment_date: :asc)
       authorize @investments
-
       @closed, @open = @investments.partition { |investment| investment.campaign.expiry_date < Date.today }
 
-      # raise
+      @sum_closed_campaign_amount = 0
+      @sum_open_campaign_amount = 0
+      @sum_closed_campaign_mintarget = 0
+      @sum_open_campaign_mintarget = 0
 
-     # @investments.first.map {|e| e.campaign.expiry_date }
+
+      @closed.each do |investment|
+        @sum_closed_campaign_amount += investment.amount
+        @sum_closed_campaign_mintarget += investment.campaign.min_target
+      end
+
+      @open.each do |investment|
+        @sum_open_campaign_amount += investment.amount
+        @sum_open_campaign_mintarget += investment.campaign.min_target
+      end
 
 
-      # @investments_closed = @investments.map do |investment|
-      #   investment.campaign.where(expiry_date: < Date.today)
-      # end
-      # raise
-
-      # @investments_open = @investments.map do |investment|
-      #   investment.campaign.where(expiry_date: >= Date.today)
-      # end
-      # authorize @investments_closed
-      # authorize @investments_open
     end
 
     def sidebar_menu

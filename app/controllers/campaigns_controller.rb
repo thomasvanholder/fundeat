@@ -75,34 +75,34 @@ def mycampaigns
 
 end
 
-    def owner_sidebar_menu
-      @menu = [
-        {
-          title: "Dashboard",
-          action_name: "owners_dashboard",
-          url: "/mycampaigns/owners_dashboard",
-          class: ""
-        },
-        {
-          title: "Investors",
-          action_name: "investors",
-          url: "/mycampaigns/investors",
-          class: ""
+def owner_sidebar_menu
+  @menu = [
+    {
+      title: "Dashboard",
+      action_name: "owners_dashboard",
+      url: "/mycampaigns/owners_dashboard",
+      class: ""
+      },
+      {
+        title: "Investors",
+        action_name: "investors",
+        url: "/mycampaigns/investors",
+        class: ""
         },
         {
           title: "Support",
           action_name: "support",
           url: "/mycampaigns/support",
           class: ""
-        }
-      ]
-    end
+          }
+        ]
+      end
 
-    def owners_dashboard
-      if current_user.company.nil?
-        redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
-        @campaigns = policy_scope(Campaign)
-        authorize @campaigns
+      def owners_dashboard
+        if current_user.company.nil?
+          redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
+          @campaigns = policy_scope(Campaign)
+          authorize @campaigns
 # render :mycampaigns
 else
   @campaigns = policy_scope(Campaign)
@@ -127,12 +127,13 @@ else
     labels_months_of_invest << (inv.payment_date)&.strftime("%m/%d/%Y")
   end
 end
+
 if @avge_int_rate.nil?
   @graph_data_pie = {
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_proj,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [
@@ -171,7 +172,7 @@ borderWidth: 1
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_months_of_invest,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [
@@ -214,7 +215,7 @@ else
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_proj,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [
@@ -253,7 +254,7 @@ borderWidth: 1
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_months_of_invest,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [
@@ -306,7 +307,7 @@ if @avge_int_rate.nil?
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: rewards_labels,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: rewards_data,
 backgroundColor: [
@@ -345,7 +346,7 @@ borderWidth: 1
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_months_of_invest,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [
@@ -387,7 +388,7 @@ else
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: rewards_labels,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: rewards_data,
 backgroundColor: [
@@ -426,7 +427,7 @@ borderWidth: 1
 # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
 labels: labels_months_of_invest,
 datasets: [{
-  label: 'Investment / Month',
+  label: 'Investment over time',
 # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
 data: amount_by_proj,
 backgroundColor: [

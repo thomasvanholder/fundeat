@@ -10,15 +10,13 @@
   <% else %>
 
     <h2 class="mt-4"> Your opened investments, waiting to be launched!</h2>
-    <table class="table table-hover mt-4 text-center">
-      <thead>
+    <table class="table mt-4 text-center">
+      <thead class="table-secondary">
         <tr>
-          <th scope="col">Restaurant</th>
-          <th scope="col">Campaign target</th>
-          <th scope="col">Total # Investors</th>
-          <th scope="col">Avge Inv Rate</th>
-          <th scope="col">Your investment</th>
+          <th scope="col">Restaurant Campaign</th>
+          <th scope="col">Int Rate</th>
           <th scope="col">Invest. Date</th>
+          <th scope="col">Your investment</th>
           <th scope="col">Days to launch </th>
         </tr>
       </thead>
@@ -26,26 +24,31 @@
       <tbody>
         <% @open.each_with_index do |investment, index| %>
            <% days_left = ((investment.campaign.expiry_date - Time.now)/86400).round(0) %>
-           <tr class="<%= index.even? ? 'bg-light' : '' %>">
+           <tr class="<%= index.odd? ? 'bg-light' : '' %>">
             <!-- <th scope="row"><%= investment.id %></th> -->
-            <td><%= investment.campaign.company.name %></td>
-            <td>$ <%= number_with_delimiter(investment.campaign.min_target, :delimiter => ',') %></td>
-            <td><%= Investment.where(campaign_id: investment.campaign.id).count %></td>
-            <td><%= (investment.campaign.return_rate*100).round(1)  %> %</td>
-
-            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
+            <td><%= link_to investment.campaign.company.name, campaign_path(investment.campaign),class: "wrapper-link2" %></td>
+            <td><%= (investment.campaign.return_rate*100).round(1) %> %</td>
             <td><%= investment.payment_date&.strftime("%m/%d/%Y") %></td>
+            <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
 
             <% if days_left >= 2 %>
-              <td><h5 class="m-0"><span class="badge badge-open "> <%= days_left%> days left  </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0 "> <%= days_left%> days left  </span></h5></td>
             <% elsif days_left = 1 %>
-              <td><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
             <% else %>
-              <td><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
             <% end %>
 
             </tr>
         <% end %>
+
+          <tr class="table-active">
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td>$ <%= number_with_delimiter(@sum_open_campaign_amount, :delimiter => ',') %></td>
+            <td></td>
+          </tr>
       </tbody>
     </table>
   <% end %>

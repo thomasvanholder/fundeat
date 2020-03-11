@@ -1,8 +1,4 @@
 
-// progress[value] {
-//   width: 250px;
-//   height: 50px;
-// }
 .wrapper-link {
   text-decoration: none!important;
   color: black;
@@ -17,7 +13,7 @@
 }
 
 .card-investment {
-  height: 520px;
+  min-height: 510px;
   width: 380px;
   background-color: #F3F3F3;
   border-radius: 20px;
@@ -87,6 +83,8 @@
 progress[value]::-webkit-progress-value {
   background-image:
   -webkit-linear-gradient(left, $fundeatlogo-green, $fundeatlogo-green);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+
 }
 
 progress[value]::-webkit-progress-bar {
@@ -141,26 +139,6 @@ progress[value]::-webkit-progress-bar {
   }
 
 }
-
-.cardinv-img{
-  height: 180px;
-  width: 220px;
-  // border-top-right-radius: 20px;
-  // border-top-left-radius: 20px;
-  object-fit: cover;
+.tall{
+  min-height:72px;
 }
-
-.cardinvpos {
-  position: absolute;
-  left: 5px;
-  top: 5px;
-}
-
-.cardinvpos2 {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  padding-right: 5px;
-}
-
-

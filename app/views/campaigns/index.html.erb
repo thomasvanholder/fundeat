@@ -48,16 +48,19 @@
       <% end %>
 
       <% days_left = ((campaign.expiry_date - Time.now)/86400).round(0) %>
-      <% if days_left >= 2 %>
+      <% if days_left > 1 %>
         <h5><span class="badge badge-open "> <%= days_left%> days left  </span></h5>
-      <% elsif days_left = 1 %>
+      <% elsif days_left == 1 %>
         <h5><span class="badge badge-open "> <%= days_left%> day left  </span></h5>
+      <%# elsif days_left = 1 %>
+        <!-- <h5><span class="badge badge-open "> <%= days_left%> day left  </span></h5> -->
+
       <% else %>
         <h5 class="pb-0"> <span class="badge badge-closed ">Funded </span></h5>
       <% end %>
-      <h1 class="mt-0"><%= campaign.company.name %>
+      <h1 class="mt-0 font-weight-bold" ><%= campaign.company.name %>
       </h1>
-      <p class="mb-3"><%= campaign.description %>
+      <p class="mb-3 tall"><%= campaign.description %>
       </p>
       <div class="box-align mb-3">
         <h4>$ <%= number_with_delimiter(campaign.min_target, :delimiter => ',') %> target</h4>
@@ -66,7 +69,7 @@
         <% if Investment.where(campaign_id: campaign.id).sum("amount") != 0 %>
         <% raised = Investment.where(campaign_id: campaign.id).sum("amount") %>
         <% target = campaign.min_target %>
-        <% status = ((raised&.to_f/target)*100).round(1) %>
+        <% status = ((raised&.to_f/target)*100).round(0) %>
         <% end %>
         <div>
           <progress value="<%= status %>" max="100" id="progress-bar-percentage" class="progress-bar notfull">
@@ -76,7 +79,7 @@
         </div>
 
       </div>
-      <div class="box-align d-flex justify-content-between">
+      <div class="box-align d-flex justify-content-between" id="cardkpisbottom">
         <div class="text-center">
           <h4>$ <%= number_with_delimiter(Investment.where(campaign_id: campaign.id).sum("amount"), :delimiter => ',') %></h4>
           <p>raised</p>
@@ -84,7 +87,7 @@
         <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
         </div>
         <div class="text-center">
-          <h4><%= (campaign.return_rate*100) %>%</h4>
+          <h4><%= (campaign.return_rate*100).round(2) %>%</h4>
           <p>interest</p>
         </div>
         <div class="align-self-center" style="border: 1px solid lightgrey; height: 50px">
