@@ -4,7 +4,7 @@ require 'faker'
 
 start = Time.now
 puts "Time is #{start}, destroying seed and restarting seed..."
-puts "Seedmaster says: \"seeds can take up to 5m\""
+puts "Seedmaster says: \"seeds can take up to 15m\""
 Investment.destroy_all
 Reward.destroy_all
 Campaign.destroy_all
@@ -137,7 +137,7 @@ end
 def create_investment(campaign, reward, investor)
   investment = Investment.new
   investment.status = rand(0..4) #check enumerable in investment.rb (model)
-  investment.amount = rand(100..4000)
+  investment.amount = rand(100..3000)
   investment.payment_date = Date.today + rand(-30..1).days
   investment.campaign = campaign
   investment.reward = reward
