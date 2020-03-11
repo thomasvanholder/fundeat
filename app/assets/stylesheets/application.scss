@@ -58,13 +58,13 @@
 }
 
 .route-button-outline {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
   border-radius: 5px;
   font-size: 16px;
   width: 180px;
   color: #00B63A;
   background-color: $light-green;
-  border-color: #00B63A;
+  border: 2px solid #00B63A;
   -webkit-transition:all .2s;
   -moz-transition:all .2s;
   &:hover {
@@ -76,13 +76,13 @@
 }
 
 .route-button-full {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
   border-radius: 5px;
   font-size: 16px;
   width: 180px;
   color: white;
   background-color: #00B63A;
-  border-color: #00B63A;
+  border: 1px solid #00B63A;
   -webkit-transition:all .2s;
   -moz-transition:all .2s;
   &:hover {
