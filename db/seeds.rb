@@ -26,12 +26,12 @@ USERS = {
 { first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
 ],
 investors: [
-  { first_name: "Hernan" , last_name: "Kina", email: "investorhernan@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Jose" , last_name: "Ignacio", email: "investorjose@gmail.com" , password: 12345678, link: "https://avatars3.githubusercontent.com/u/40840106?v=4"  },
-  { first_name: "Xenia" , last_name: "Boula", email: "investorxenia@gmail.com" , password: 12345678, link: "https://avatars2.githubusercontent.com/u/57909856?v=4"  },
-  { first_name: "Nico" , last_name: "Donoso", email: "investornico@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "Feli" , last_name: "Hernandez", email: "investorfeli@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
-  { first_name: "James" , last_name: "Loomos", email: "investorjames@gmail.com" , password: 12345678, link: "https://avatars1.githubusercontent.com/u/35240578?v=4"  },
+  { first_name: "Hernan" , last_name: "Kina", email: "investorhernan@gmail.com" , password: 12345678 },
+  { first_name: "Jose" , last_name: "Ignacio", email: "investorjose@gmail.com" , password: 12345678 },
+  { first_name: "Xenia" , last_name: "Boula", email: "investorxenia@gmail.com" , password: 12345678 },
+  { first_name: "Nico" , last_name: "Donoso", email: "investornico@gmail.com" , password: 12345678 },
+  { first_name: "Feli" , last_name: "Hernandez", email: "investorfeli@gmail.com" , password: 12345678 },
+  { first_name: "James" , last_name: "Loomos", email: "investorjames@gmail.com" , password: 12345678 },
 ]}
 
 # Profile pic
@@ -113,17 +113,15 @@ COMPANY = {
 # named investors to log-in and log-out
 USERS[:investors].each do |inv|
   investor = User.create!(first_name: inv[:first_name], last_name: inv[:last_name], owner: false, password: "12345678", email: inv[:email])
-  photo = URI.open(inv[:link])
-  investor.photo.attach(io: photo, filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
+  photo = PICTURE[:profile].sample
+  investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.jpeg", content_type: 'image/png')
 end
 
 # random faker investors from the web
 50.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
-  # photo = URI.open(Faker::Avatar.image)
   photo = PICTURE[:profile].sample
   investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
-  puts "#{investor.first_name} #{investor.last_name}"
 end
 
 def create_investment(campaign, reward, investor)
@@ -168,7 +166,23 @@ def create_campaign(company)
 campaign.save!
 create_reward(campaign)
 
-User.where(owner: false).each do |investor|
+# randomized number of investors
+total_investors = User.where(owner: false).count
+half_investors = total_investors / 2
+random_investors = rand(half_investors..total_investors)
+p 'total'
+p total_investors
+p "-----"
+p 'half'
+p half_investors
+p "-----"
+p 'rand'
+p random_investors
+p "-----"
+p 'loop'
+p User.where(owner: false).take(random_investors)
+
+User.where(owner: false).take(random_investors) do |investor|
   create_investment(campaign, Reward.all.sample, investor)
 end
 end
