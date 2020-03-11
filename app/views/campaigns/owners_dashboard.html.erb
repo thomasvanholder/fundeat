@@ -8,18 +8,19 @@
 
     <div class="text-center mt-5">
       <h4>Campaign dashboard for <strong><%= @company.name%> </gstrong></h4>
-      <%= link_to "Live view", campaign_path(@company.campaign),  class: "mt-4 btn btn-outline-success"%>
+      <%= link_to "See your campagin live", campaign_path(@company.campaign),  class: "mt-4 btn btn-outline-success"%>
     </div>
 
     <div class="container">
       <div class="row">
 
-        <div class="col-md-12 mt-4">
+        <div class="col-md-12 mt-4 mb-5">
           <div class="row">
             <div class="col">
-              <div class="card-campaign-status kpibox kpibox-green m-4">
+              <div class="card-campaign-status kpibox kpibox-green m-2">
                 <div class="d-flex mt-4 justify-content-around align-items-center">
                   <div class="text-center">
+                  <%= image_tag "investing.svg", class:"dash-pic", alt: "picture" %>
                     <h2 class="m-3 kpidash">$<%= number_with_delimiter(@company.campaign.min_target, :delimiter => ',')%></h2>
                     <h2 class="text-secondary mb-2" style="font-size: 20px;">Target</h2>
                   </div>
@@ -27,9 +28,10 @@
               </div>
             </div>
             <div class="col">
-              <div class="card-campaign-status kpibox kpibox-green m-4">
+              <div class="card-campaign-status kpibox kpibox-green m-2">
                 <div class="d-flex mt-4 justify-content-around align-items-center">
                   <div class="text-center">
+                    <%= image_tag "achieved.svg", class:"dash-pic", alt: "picture" %>
                     <h2 class="m-3 kpidash">$<%= number_with_delimiter(@company.campaign.raised_sum, :delimiter => ',')%></h2>
                     <h2 class="text-secondary mb-2" style="font-size: 20px;">Raised</h2>
                   </div>
@@ -37,9 +39,10 @@
               </div>
             </div>
             <div class="col">
-              <div class="card-campaign-status kpibox kpibox-green m-4">
+              <div class="card-campaign-status kpibox kpibox-green m-2">
                 <div class="d-flex mt-4 justify-content-around align-items-center">
                   <div class="text-center">
+                    <%= image_tag "togo.svg", class:"dash-pic", alt: "picture" %>
                     <h2 class="m-3 kpidash">$<%= number_with_delimiter(@company.campaign.to_go, :delimiter => ',')%></h2>
                     <h2 class="text-secondary mb-2" style="font-size: 20px;">To Go</h2>
                   </div>
@@ -47,9 +50,10 @@
               </div>
             </div>
             <div class="col">
-              <div class="card-campaign-status kpibox kpibox-green m-4">
+              <div class="card-campaign-status kpibox kpibox-green m-2">
                 <div class="d-flex mt-4 justify-content-around align-items-center">
                   <div class="text-center">
+                    <%= image_tag "investors.svg", class:"dash-pic", alt: "picture" %>
                     <h2 class="m-3 kpidash"><%= @company.number_of_investors%></h2>
                     <h2 class="text-secondary mb-2" style="font-size: 20px;">Investors</h2>
                   </div>
@@ -57,9 +61,10 @@
               </div>
             </div>
             <div class="col">
-              <div class="card-campaign-status kpibox kpibox-green m-4">
+              <div class="card-campaign-status kpibox kpibox-green m-2">
                 <div class="d-flex mt-4 justify-content-around align-items-center">
                   <div class="text-center">
+                    <%= image_tag "average2.svg", class:"dash-pic", alt: "picture" %>
                     <h2 class="m-3 kpidash">$<%= number_with_delimiter(@company.campaign.raised_sum / @company.number_of_investors, :delimiter => ',')%></h2>
                     <h2 class="text-secondary mb-2" style="font-size: 20px;">Avg. / investor</h2>
                   </div>
@@ -72,7 +77,7 @@
         <div class="col-md-8">
           <!-- graph 1 -->
           <div class="item-dash my-3">
-            <h6 class="text-center">$ Raised over time</h6>
+            <h4 class="text-center">$ Raised over time</h4>
             <% array = @company.campaign.investments.group_by_day(:payment_date).sum(:amount).to_a %>
             <% sum = 0
             array.map! do |date, amount|
@@ -84,10 +89,11 @@
 
           <!-- calendar -->
           <div class="col-md-4 mt-4">
-            <div lass="item-dash my-5">
-             <%= simple_form_for :support do |f| %>
-             <%= f.input :date, as: :string, label: "Campaign expiration date", required: false, input_html: {class: "datepicker", style:"width: 310px; display:none; enableTime: false"} %>
-             <% end %>
+            <div lass="item-dash my-5 d-flex flex-column">
+               <h4 class="text-center">Campaign expiration date</h4>
+               <div class="align-self-center w-100 px-4">
+                  <div id="datepicker2" data-end-date="<%= @company.campaign.expiry_date %>"></div>
+               </div>
            </div>
          </div>
        </div>

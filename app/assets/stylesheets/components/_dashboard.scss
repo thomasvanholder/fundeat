@@ -3,20 +3,22 @@
 }
 
 .kpibox{
-  width: 150px;
-  height:150px;
+  width: 180px;
+  height:200px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .kpibox-green {
-  border: 0.5px solid rgb(23, 173, 44);
+  border: 0.5px solid lightgrey;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .item-dash {
   padding:15px;
+    border: 0.5px solid lightgrey;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper-link2 {
