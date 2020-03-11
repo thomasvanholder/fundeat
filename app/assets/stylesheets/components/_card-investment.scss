@@ -140,3 +140,14 @@ progress[value]::-webkit-progress-bar {
 .tall{
   min-height:72px;
 }
+
+.spinner-position {
+      position: absolute;
+      top:9px;
+      right:9px;
+      background-color: rgba(255, 49, 33,0.9);
+      padding:0px;
+      border-radius:20px;
+      font-size: 40px;
+      color:white;
+            }
