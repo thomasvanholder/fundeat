@@ -12,7 +12,7 @@
     <table class="table table-hover mt-4 text-center">
       <thead>
         <tr>
-          <th scope="col">Restaurant</th>
+          <th scope="col">Restaurant Campaign</th>
           <th scope="col">Int Rate</th>
           <th scope="col">Investment Date</th>
           <th scope="col">Your investment</th>
@@ -25,10 +25,7 @@
       <tbody>
         <% @closed.each_with_index do |investment, index| %>
            <tr class="<%= index.even? ? 'bg-light' : '' %>">
-
-              <td><%= link_to investment.campaign.company.name, campaign_path(investment.campaign) %></td>
-
-            <!-- <td><%#= investment.campaign.company.name %></td> -->
+            <td><%= link_to investment.campaign.company.name, campaign_path(investment.campaign) %></td>
             <td><%= (investment.campaign.return_rate*100).round(1)  %> %</td>
             <td><%= investment.payment_date&.strftime("%m/%d/%Y") %></td>
             <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>

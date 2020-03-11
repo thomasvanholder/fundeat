@@ -12,7 +12,7 @@
     <table class="table table-hover mt-4 text-center">
       <thead>
         <tr>
-          <th scope="col">Restaurant</th>
+          <th scope="col">Restaurant Campaign</th>
           <th scope="col">Int Rate</th>
           <th scope="col">Invest. Date</th>
           <th scope="col">Your investment</th>
@@ -31,11 +31,11 @@
             <td>$ <%= number_with_delimiter(investment.amount, :delimiter => ',') %> </td>
 
             <% if days_left >= 2 %>
-              <td><h5 class="m-0"><span class="badge badge-open "> <%= days_left%> days left  </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0 "> <%= days_left%> days left  </span></h5></td>
             <% elsif days_left = 1 %>
-              <td><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
             <% else %>
-              <td><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
+              <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
             <% end %>
 
             </tr>
