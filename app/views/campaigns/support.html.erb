@@ -12,15 +12,13 @@
         <div class="mx-auto my-5 w-50 text-center" style="font-size: 20px;">Our team of experts stands at your serivce to help you launch your campaign. Schedule a call to get started.</div>
 
         <div class="page-content my-5">
-        <%= simple_form_for :support do |f| %>
-        <div class="row">
-
+          <%= simple_form_for :support do |f| %>
+          <div class="row">
             <div class="col-12 col-md-6">
               <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
             </div>
             <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
             <div class="col-12 col-md-6">
-
               <div class="form-group pb-2">
                 <label for="InputName">Name</label>
                 <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name" name="support[name]" value="<%= current_user.first_name%>">
