@@ -1,17 +1,16 @@
-
 .countdown {
   display: flex;
-
+  justify-content: center;
   span, h1 {
-    color: $blue;
+    color: $green;
   }
 
   .day, .hour, .min, .sec {
-    padding: 1vw 3vw;
+    padding: 1vw 2vw;
     text-align: center;
     .num {
       display: block;
-      font-size: 8vw;
+      font-size: 6vw;
       line-height: 1em;
     }
     .word {
