@@ -55,10 +55,15 @@ const countdown = function(_config) {
 
 const addZero = (x) => (x < 10 && x >= 0) ? "0"+x : x;
 
-const mylittlething_countdown = new countdown({
-  target: '.countdown',
-  dayWord: ' days',
-  hourWord: ' hours',
-  minWord: ' mins',
-  secWord: ' secs'
-});
+
+const element = document.getElementById(".countdown");
+
+if (element) {
+  const mylittlething_countdown = new countdown({
+    target: '.countdown',
+    dayWord: ' days',
+    hourWord: ' hours',
+    minWord: ' mins',
+    secWord: ' secs'
+  });
+}
