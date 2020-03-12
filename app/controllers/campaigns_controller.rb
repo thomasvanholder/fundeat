@@ -66,7 +66,7 @@ def create
   create_rewards
 # raise
   if @campaign.save
-    redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
+    redirect_to campaign_path(@campaign), notice: 'Campaign was successfully created.'
   else
     render :new
   end

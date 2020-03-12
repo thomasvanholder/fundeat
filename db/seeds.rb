@@ -99,7 +99,7 @@ REWARDS = {
 
 COMPANY = {
   address: [
-    "Av Niceto Vega #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av Niceto Vega #{rand(100..400)}, CABA, Buenos Aires",
     "Av. Córdoba #{rand(100..4000)},CABA, Buenos Aires",
     "Av. del Libertador #{rand(100..4000)}, C1425 CABA, Buenos Aires",
     "Av. Antártida Argentina #{rand(100..4000)}, CABA, Buenos Aires",
@@ -167,7 +167,7 @@ def create_reward(campaign)
     reward = Reward.new()
     reward.description = "#{index + 1} x Free Dinner"
     reward.investment_amount = amount
-    reward.campaign = campaign
+    reward.campaign = campaiherokugn
     reward.save!
   end
 end
