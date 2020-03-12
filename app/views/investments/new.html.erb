@@ -61,16 +61,24 @@
           </div>
         </div>
 
-      <p class="font-weight-bold my-4" style="color: rgb(23,173,44)">Please confirm you understand the risks before you proceed with your investment</p>
+        <p class="font-weight-bold my-4" style="color: rgb(23,173,44)">Please confirm you understand the risks before you proceed with your investment</p>
 
         <div class="custom-control custom-checkbox my-4">
           <input type="checkbox" class="custom-control-input" id="customCheck1">
           <label class="custom-control-label" for="customCheck1">I understand the risks of my investment</label>
         </div>
 
+        <style>
+          input[type="checkbox"]:checked + label::after {
+            background-color: rgb(23,173,44);
+            border-radius: 2px;
+          }
+        </style>
+
+
 
         <script>
-  window.onload = () => {
+          window.onload = () => {
         // const toggle = document.getElementById("menu-toggle");
         // toggle.addEventListener('click', (e) => {
         //   e.preventDefault();
@@ -85,24 +93,24 @@
       }
     </script>
 <!--
-<input type="submit" name="commit" value="Invest" class="btn btn-success px-5" style="margin-left: 16px;" data-disable-with="Invest"> -->
+  <input type="submit" name="commit" value="Invest" class="btn btn-success px-5" style="margin-left: 16px;" data-disable-with="Invest"> -->
 
-        <%= submit_tag 'Pay Now', class: 'btn btn-success px-5', id:"pay", disabled: true %>
+  <%= submit_tag 'Pay Now', class: 'btn btn-success px-5', id:"pay", disabled: true %>
 
-        <script src="https://js.stripe.com/v3/"></script>
-        <script>
-          const paymentButton = document.getElementById('pay');
-          paymentButton.addEventListener('click', () => {
-            const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-            stripe.redirectToCheckout({
-              sessionId: '<%= @investment.stripe_session_id %>'
-            });
-          });
-        </script>
-        <% end %>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const paymentButton = document.getElementById('pay');
+    paymentButton.addEventListener('click', () => {
+      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      stripe.redirectToCheckout({
+        sessionId: '<%= @investment.stripe_session_id %>'
+      });
+    });
+  </script>
+  <% end %>
 
 
-      </div>
-    </div>
-    <!-- container closing div -->
-  </div>
+</div>
+</div>
+<!-- container closing div -->
+</div>
