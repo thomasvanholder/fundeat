@@ -1,3 +1,4 @@
+
 const $ = elem => document.querySelector(elem);
 
 const countdown = function(_config) {
