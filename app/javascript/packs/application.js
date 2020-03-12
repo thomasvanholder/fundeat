@@ -6,9 +6,9 @@ import { initCharts } from '../components/init_chart';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/flatpickr";
 import "../plugins/countdown";
+
 require("chartkick")
 require("chart.js")
-
 
 initMapbox();
 setWidth();
