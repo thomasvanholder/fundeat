@@ -115,7 +115,7 @@ COMPANY = {
     "Guatemala #{rand(100..4000)}, CABA, Buenos Aires",
     "Malabia #{rand(100..4000)}, CABA, Buenos Aires",
     "Jorge Luis Borges #{rand(100..4000)}, CABA, Buenos Aires",
-    "Thames #{rand(100..4000)}, CABA, Buenos Aires"
+    "Thames #{rand(100..4000)}, CABA, Buenos Aires",
   ]
 }
 
