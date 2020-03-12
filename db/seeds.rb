@@ -197,7 +197,7 @@ def create_campaign(company)
   campaign.company_history = ("A".."C").to_a.sample
   campaign.risk_level = total_risk_level(campaign)
 
-  campaign.min_target = rand(80000)
+  campaign.min_target = rand(80000..400000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
   campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(2)
