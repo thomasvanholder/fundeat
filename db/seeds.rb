@@ -145,7 +145,7 @@ USERS[:investors].each do |inv|
 end
 
 # random faker investors from the web
-2.times do
+200.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
   photo = PICTURE[:profile].sample
   investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
