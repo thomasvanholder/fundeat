@@ -11,8 +11,8 @@
         <%= render "shared/restaurant_icon", campaign: @campaign, class: "img-sm-grey", alt: "avatar" %>
       </div>
 
-      <h1 class="mt-5 font-weight-bold"><%= @campaign.company.name %></h1>
-      <h4 class="text-grey" id="company_type"><%= @campaign.company.type_store %></h4>
+      <h1 class="mt-4 font-weight-bold"><%= @campaign.company.name %></h1>
+        <h4 class="text-grey" id="company_type"><%= @campaign.company.type_store %> - <%= @campaign.company.address %></h4>
 
       <div>
         <div class="w-75" style="margin: 0 auto;">
@@ -21,7 +21,7 @@
 
         <h4 class="my-4"><%= @campaign.title %></h4>
         <!-- SWITCH LATER WHEN CAMPAIGN DESCRIPTION GIVEN -->
-        <p><%= @campaign.company.description %></p>
+        <p><%= @campaign.description %></p>
         <!-- -------------------------------------------- -->
 
         <div class="w-75" style="margin: 0 auto;">
@@ -51,12 +51,22 @@
           <div class="card-investment-play bg-lightgreen p-4 m-0 card-campaign-status">
             <!-- invest field and button -->
             <%= simple_form_for [@campaign, @investment], url: new_campaign_investment_path(@campaign), method: :get do |f| %>
-            <div class="form-input d-flex justify-space-between align-items-center mb-4">
-              <%= f.input :amount, class: "input-field", placeholder: "$ 250", label: false, :required => true,  :input_html => { :type => "number" } %>
-              <% if !current_user.nil? && current_user.owner? %>
-                <p class="text-center small m-0 p-2"><em>Create investor account</em></p>
+            <div class="form-input d-flex justify-space-between align-items-center mb-4 text-center justify-content-center">
+
+              <% if (current_user && !current_user.owner?) && !@campaign.expired? %>
+                <%= f.input :amount, class: "input-field", placeholder: "$ 250", label: false, :required => true,  :input_html => { :type => "number" } %>
+              <% end %>
+
+              <% if (current_user && current_user.owner?) %>
+                <h3 class="text-center small m-0 p-2 bg-secondary font-weight-bold"><em> Create Investor Account</em></h3>
+                <!-- Nota: linkear create account button <p><%#= link_to "Create investor account", "/campaigns/new", class: "btn btn-secondary" %></p> -->
               <% else %>
-                <%= f.submit "Invest", class: "btn btn-success px-5", style:"margin-left: 16px;" %>
+                <% if @campaign.expired? %>
+                  <%= image_tag "closed.png",class:"closed-investment-position",  alt: "avatar" %>
+                <% else %>
+                  <%= f.submit "Invest", class: "btn btn-success px-5", style:"margin-left: 16px;" %>
+                <% end %>
+
               <% end %>
             </div>
             <% end %>
