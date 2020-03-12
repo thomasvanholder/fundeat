@@ -1,12 +1,12 @@
 <div class="card-campaign-status p-2 mb-5 mt-3" style="">
   <div class="target-bar m-3 bg-white">
-    <div class="" style="background-color: #1EDD88; width: <%= campaign.progress_percentage < 100 ? campaign.progress_percentage : 100 %>%; border-radius: 50px;">
+    <div class="" style="background-color: rgb(23,173,44); width: <%= campaign.progress_percentage < 100 ? campaign.progress_percentage : 100 %>%; border-radius: 50px;">
       <p class="px-3"><%= campaign.progress_percentage %>%</p>
     </div>
   </div>
   <%# end %>
 
-  <div class="d-flex mt-4 justify-content-around">
+  <div class="d-flex mt-4 justify-content-around px-4">
     <div class="text-center">
       <h5><%= campaign.investments.count %></h5>
       <p class="text-secondary mb-2" style="font-size: 12px;">investors</p>
@@ -18,8 +18,21 @@
     </div>
     <div style="border: 1px solid lightgrey; height: 50px"></div>
     <div class="text-center">
-      <h5><%= ((campaign.expiry_date - DateTime.current)/(24*3600)).round(0) %>d <%= (((campaign.expiry_date - DateTime.current)/(24*3600)).round(2).to_s.split(".").last.to_i * 0.24).round(0) %>h</h5>
-      <p class="text-secondary mb-2" style="font-size: 12px;">remaining</p>
+
+      <% days_left = ((campaign.expiry_date - Time.now)/86400).round(0) %>
+      <% hours_left = (((campaign.expiry_date - DateTime.current)/(24*3600)).round(2).to_s.split(".").last.to_i * 0.24).round(0) %>
+
+      <% if days_left < 0  %>
+        <!-- <h5><i  class="far fa-clock closed-investment-position"></i></h5> -->
+
+          <%#= image_tag "closed.png", class:"page-closed-investment-position", alt: "avatar" %>
+          <%= image_tag "closed.png",class:"closed-investment-position",  alt: "avatar" %>
+          <!-- <h5 class="text-secondary mb-2" style="font-size: 12px;">Closed Investment</h5> -->
+
+      <% else %>
+        <h5><%= days_left %>d <%= hours_left %>h</h5>
+        <p class="text-secondary mb-2" style="font-size: 12px;">remaining</p>
+      <% end %>
     </div>
   </div>
 </div>
