@@ -2,8 +2,6 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const MapboxTraffic = require('@mapbox/mapbox-gl-traffic');
-
 const mapElement = document.getElementById('mapbox');
 const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
