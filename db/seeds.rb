@@ -116,6 +116,23 @@ COMPANY = {
     "Malabia #{rand(100..4000)}, CABA, Buenos Aires",
     "Jorge Luis Borges #{rand(100..4000)}, CABA, Buenos Aires",
     "Thames #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av Niceto Vega #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Córdoba #{rand(100..4000)},CABA, Buenos Aires",
+    "Av. del Libertador #{rand(100..4000)}, C1425 CABA, Buenos Aires",
+    "Av. Antártida Argentina #{rand(100..4000)}, CABA, Buenos Aires",
+    "Marcelo Torcuato de Alvear #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Santa Fe #{rand(100..4000)}, CABA, Buenos Aires",
+    "#{rand(100..4000)} Bartolomé Mitre, CABA, Buenos Aires",
+    "Av. Federico Lacroze #{rand(100..4000)}, CABA, Buenos Aires",
+    "Av. Luis María Campos #{rand(100..4000)}, CABA, Buenos Aires",
+    "Acevedo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Murillo #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guardia Vieja #{rand(100..4000)}, CABA, Buenos Aires",
+    "Paraguay #{rand(100..4000)}, CABA, Buenos Aires",
+    "Guatemala #{rand(100..4000)}, CABA, Buenos Aires",
+    "Malabia #{rand(100..4000)}, CABA, Buenos Aires",
+    "Jorge Luis Borges #{rand(100..4000)}, CABA, Buenos Aires",
+    "Thames #{rand(100..4000)}, CABA, Buenos Aires"
   ]
 }
 
@@ -155,6 +172,19 @@ def create_reward(campaign)
   end
 end
 
+def total_risk_level(campaign)
+  char_array = []
+  char_array << campaign.repayment_capacity
+  char_array << campaign.financial_health
+  char_array << campaign.company_history
+  string = char_array.join.gsub!(/[ABC]/, 'A' => 1, 'B' => 2, 'C' => 3)
+  num_array = string.split(//)
+  sum = 0
+  num_array.each { |i| sum += i.to_i }
+  average = (sum / 3.to_f).round(0).to_s
+  return average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
+end
+
 puts "creating campaigns...(2/3)"
 def create_campaign(company)
   campaign = Campaign.new
@@ -165,6 +195,7 @@ def create_campaign(company)
   campaign.repayment_capacity = ("A".."C").to_a.sample
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
+  campaign.risk_level = total_risk_level(campaign)
 
   campaign.min_target = rand(80000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
