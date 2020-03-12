@@ -117,12 +117,12 @@ def owner_sidebar_menu
         def owners_dashboard
           if current_user.company.nil?
             redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
-            @campaigns = policy_scope(Campaign)
-            authorize @campaigns
+            @campaign = policy_scope(Campaign)
+            authorize @campaign
 # render :mycampaigns
 else
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+  @campaign = policy_scope(Campaign)
+  authorize @campaign
 
   @company = current_user.company
   authorize @company
@@ -503,8 +503,8 @@ def dashboard
 end
 
 def support
-  @campaigns = policy_scope(Campaign)
-  authorize @campaigns
+  @campaign = policy_scope(Campaign)
+  authorize @campaign
 end
 
 def investors
