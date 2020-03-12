@@ -1,14 +1,17 @@
 import Countdown from 'countdown.js';
 
-// const initCountdown = () => {
+const element = document.getElementById(".countdown");
 
-const efcc_countdown = new Countdown({
-  target: '.countdown',
-  dayWord: ' days',
-  hourWord: ' hours',
-  minWord: ' mins',
-  secWord: ' secs'
-});
+// const initCountdown = () => {
+if (element) {
+  const efcc_countdown = new Countdown({
+    target: '.countdown',
+    dayWord: ' days',
+    hourWord: ' hours',
+    minWord: ' mins',
+    secWord: ' secs'
+  });
+}
 
 // }
 

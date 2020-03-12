@@ -5,17 +5,35 @@
   <div class="banner-index-left">
 
   </div>
+
+
   <div class="banner-index-center">
     <div class="text-center d-flex flex-column justify-content-center h-100" >
       <h3 class="banner-title" style="text-align:center;">Fund your favorite places</h3>
-      <%= form_tag campaigns_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "search-form  text-center aligment-search ",
-        placeholder: "Find a campaign", placeholder: "Enter category"
-        %>
-        <%= submit_tag "Search", class: "btn btn-dark" %>
-        <% end %>
+      <div class="d-flex justify-content-around">
+        <%= form_tag campaigns_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "search-form  text-center aligment-search ",
+          placeholder: "Find a campaign", placeholder: "Enter category"
+          %>
+          <%= submit_tag "Search", class: "btn btn-dark" %>
+          <% end %>
+          <div>
+            <h4>OR</h4>
+          </div>
+          <form action="">
+            <select name="order" class="select-filter" id="order_cards">
+              <option value="date">Closing date</option>
+              <option value="amount_low">Target ($ -> $$$)</option>
+              <option value="amount_high">Target ($$$ -> $)</option>
+              <!-- <option value="raised">Raised</option> -->
+              <option value="interest">Interest rate</option>
+            </select>
+            <button class="btn btn-dark">Filter</button>
+          </form>
+
+      </div>
       </div>
     </div>
     <div class="banner-index-right">
@@ -23,15 +41,17 @@
   </div>
 
 
-<div class="container">
-  <div class="row">
-    <% @campaigns.each do |campaign| %>
+  <div class="container">
+
+    <div class="row">
+
+      <% @campaigns.each do |campaign| %>
       <%= link_to campaign_path(campaign), class: "col-md-4 col-sm-6 wrapper-link" do %>
-        <%= render "campaigns/shared/card", campaign: campaign %>
+      <%= render "campaigns/shared/card", campaign: campaign %>
       <% end %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 
 
 
