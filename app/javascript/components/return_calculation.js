@@ -15,11 +15,13 @@ if (rangeInput) {
     selectReward(event.target.value)
   });
 
-  amountInput.addEventListener("change", (event) => {
-    document.querySelector("#investmentRange").value = parseInt(event.target.value)
-    calculateReturn()
-    selectReward(parseInt(event.target.value))
-  });
+  if (amountInput) {
+    amountInput.addEventListener("change", (event) => {
+      document.querySelector("#investmentRange").value = parseInt(event.target.value)
+      calculateReturn()
+      selectReward(parseInt(event.target.value))
+    });
+  }
 
   const calculateReturn = () => {
     const range = document.querySelector("#investmentRange")
