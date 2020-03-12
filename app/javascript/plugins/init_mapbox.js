@@ -1,5 +1,8 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+const MapboxTraffic = require('@mapbox/mapbox-gl-traffic');
 
 const mapElement = document.getElementById('mapbox');
 const buildMap = () => {
@@ -7,6 +10,7 @@ const buildMap = () => {
   return new mapboxgl.Map({
     container: 'mapbox',
     style: 'mapbox://styles/thomasvanholder/ck7mcuz2h08jl1ilxkrfgjhen'
+
   });
 };
 
@@ -26,8 +30,8 @@ const addMarkersToMap = (map, markers) => {
     //   element.style.backgroundImage = `url('restaurant.png')`;
     // }
     element.style.backgroundSize = 'contain';
-    element.style.width = '32px';
-    element.style.height = '32px';
+    element.style.width = '50px';
+    element.style.height = '50px';
 
     new mapboxgl.Marker(element)
     .setLngLat([ marker.lng, marker.lat ])
