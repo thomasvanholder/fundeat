@@ -1,3 +1,4 @@
+
 .countdown {
   display: flex;
   justify-content: center;
@@ -15,6 +16,32 @@
     }
     .word {
       display: block;
+      font-size: 2vw;
+      color: #8a99ab;
+    }
+  }
+}
+
+.owner-countdown {
+  display: flex;
+  justify-content: center;
+  span, h1 {
+    color: $green;
+  }
+
+  .owner-day, .owner-hour, .owner-min, .owner-sec {
+    padding: 1vw 2vw;
+    margin: 2px;
+    text-align: center;
+    .owner-num {
+      display: block;
+      margin: 2px;
+      font-size: 6vw;
+      line-height: 1em;
+    }
+    .owner-word {
+      display: block;
+      margin: 2px;
       font-size: 2vw;
       color: #8a99ab;
     }
