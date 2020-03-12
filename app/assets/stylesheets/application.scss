@@ -114,3 +114,15 @@
   background-color: #00B63A;
   color: white;
 }
+
+////////////////////////////////////////////////////
+
+.check-line-item {
+  border: 1px solid lightgrey;
+  box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
+  padding: 16px;
+  margin: 16px 0;
+  i {
+    font-size: 20px;
+  }
+}
