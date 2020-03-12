@@ -1,57 +1,79 @@
-<div class="container">
-  <h1>Investment Summary</h1>
+<div class="container justify-content-center">
+  <div class="text-center my-4">
+   <h1 class="my-3"><span class="font-weight-bold" style="color: rgb(23,173,44)">Investment Summary</span></h1>
+ </div>
 
-  <%= simple_form_for(campaign_investments_path) do |f| %>
+ <div class="card-investment-summary justify-content-center p-1" style="width: 600px; margin: 0 auto;">
+  <div class="text-center p-1">
 
-  <p>Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
-  <p>Interest: <%= @campaign.return_rate * 100 %> %</p>
-  <p>Duration: <%= @campaign.loan_duration %> months</p>
 
-  <!-- risk card component -->
-  <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
-    <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
-      <div class="text-center">
-        <div class="m-0">Risk Level</div>
-        <div class="d-flex justify-content-around mx-2">
-          <div class="circle-icon align-self-center color-type-<%= @campaign.risk_level %>"></div>
-          <span style="font-size: 48px; margin: 0;">
-            <p class="m-0"><%= @campaign.risk_level %></p></span>
+    <divs>
+      <%= render "campaigns/shared/carousel" %>
+    </div>
+
+    <p><%= @campaign.company.name %></p>
+
+    <%= simple_form_for(campaign_investments_path) do |f| %>
+    <p>Amount: <%= humanized_money_with_symbol(@investment.amount) %></p>
+    <p>Interest: <%= (@campaign.return_rate * 100).round(2) %> %</p>
+    <p>Duration: <%= @campaign.loan_duration %> months</p>
+    <p>Reward: <%= @reward.description %> </p>
+
+
+
+    <div id="mapbox" data-markers="<%= @marker.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <span class="address-box-green"><%= @campaign.company.address %></span>
+
+    <!-- risk card component -->
+    <div class="card-campaign-status p-3 mb-4" style="width: 500px; background-color: #f4f4f4; border-radius: 20px; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);">
+      <div class="p-2 d-flex justify-content-around align-items-center" style="background-color: white; border-radius: 16px;">
+        <div class="text-center">
+          <div class="m-0">Risk Level</div>
+          <div class="d-flex justify-content-around mx-2">
+            <div class="circle-icon align-self-center color-type-<%= @campaign.risk_level %>"></div>
+            <span style="font-size: 48px; margin: 0;">
+              <p class="m-0"><%= @campaign.risk_level %></p></span>
+            </div>
+          </div>
+          <div style="border: 1px solid lightgrey; height: 80px; background-color: lightgrey;"></div>
+          <div>
+            <div class="box-alignment">
+              <div class="box-alignment-risk">
+                <p class="small-text-risk">Repayment Capacity</p>
+                <div class="small-box type-<%= @campaign.repayment_capacity %> align-self-center"><%= @campaign.repayment_capacity %></div>
+              </div>
+              <div class="box-alignment-risk">
+                <p class="small-text-risk">Financial Health</p>
+                <div class="small-box type-<%= @campaign.financial_health %> align-self-center"><%= @campaign.financial_health %></div>
+              </div>
+              <div class="box-alignment-risk">
+                <p class="small-text-risk">Company History</p>
+                <div class="small-box type-<%= @campaign.company_history %> align-self-center"><%= @campaign.company_history %></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div style="border: 1px solid lightgrey; height: 80px; background-color: lightgrey;"></div>
-      <div>
-        <div class="box-alignment">
-          <div class="box-alignment-risk">
-            <p class="small-text-risk">Repayment Capacity</p>
-            <div class="small-box type-<%= @campaign.repayment_capacity %> align-self-center"><%= @campaign.repayment_capacity %></div>
-          </div>
-          <div class="box-alignment-risk">
-            <p class="small-text-risk">Financial Health</p>
-            <div class="small-box type-<%= @campaign.financial_health %> align-self-center"><%= @campaign.financial_health %></div>
-          </div>
-          <div class="box-alignment-risk">
-            <p class="small-text-risk">Company History</p>
-            <div class="small-box type-<%= @campaign.company_history %> align-self-center"><%= @campaign.company_history %></div>
-          </div>
-        </div>
-      </div>
+
+
+      <%= submit_tag 'Pay Now', class: 'btn btn-secondary', id:"pay" %>
+
+
+
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @investment.stripe_session_id %>'
+          });
+        });
+      </script>
+      <% end %>
+
+
     </div>
   </div>
-
-  <p>Reward: <%= @reward.description %> </p>
-  <%= submit_tag 'Pay Now', class: 'btn btn-secondary', id:"pay" %>
-
-  <script src="https://js.stripe.com/v3/"></script>
-  <script>
-    const paymentButton = document.getElementById('pay');
-    paymentButton.addEventListener('click', () => {
-      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-      stripe.redirectToCheckout({
-        sessionId: '<%= @investment.stripe_session_id %>'
-      });
-    });
-  </script>
-  <% end %>
-
-<!-- container closing div -->
+  <!-- container closing div -->
 </div>

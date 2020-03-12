@@ -1,0 +1,68 @@
+// confirmation card
+.card-investment-summary {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-investment-summary > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-investment-summary h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-investment-summary p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-investment-summary .card-investment-summary-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+// card for my bookings
+
+.card-product.booking {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.card-product.booking.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product-info.scooter {
+  width: 100%;
+}
+
+.card-product-info.scooter h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.card.scale{
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+.card:hover.scale {
+  box-shadow: 0 0 24px rgba(33,33,33,.7);
+  transform: scale(1.1, 1.1);
+}
