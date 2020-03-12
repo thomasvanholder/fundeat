@@ -72,11 +72,10 @@ def mycampaigns
   if @campaigns.empty?
     redirect_to new_campaign_path
   end
-
 end
 
 def owner_sidebar_menu
-  @menu = [
+  @menu =[
     {
       title: "Dashboard",
       action_name: "owners_dashboard",
@@ -94,15 +93,14 @@ def owner_sidebar_menu
           action_name: "support",
           url: "/mycampaigns/support",
           class: ""
-          }
-        ]
-      end
+          }]
+        end
 
-      def owners_dashboard
-        if current_user.company.nil?
-          redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
-          @campaigns = policy_scope(Campaign)
-          authorize @campaigns
+        def owners_dashboard
+          if current_user.company.nil?
+            redirect_to mycampaigns_path, notice: 'Nothing to show, create  your first campaign!'
+            @campaigns = policy_scope(Campaign)
+            authorize @campaigns
 # render :mycampaigns
 else
   @campaigns = policy_scope(Campaign)
