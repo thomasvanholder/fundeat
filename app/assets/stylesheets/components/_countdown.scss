@@ -1,0 +1,23 @@
+
+.countdown {
+  display: flex;
+
+  span, h1 {
+    color: $blue;
+  }
+
+  .day, .hour, .min, .sec {
+    padding: 1vw 3vw;
+    text-align: center;
+    .num {
+      display: block;
+      font-size: 8vw;
+      line-height: 1em;
+    }
+    .word {
+      display: block;
+      font-size: 2vw;
+      color: #8a99ab;
+    }
+  }
+}

@@ -14,3 +14,12 @@
 
 </div>
 
+
+<%= @investment.company.name %>
+
+<div class="countdown" data-date="<%= @investment.campaign.expiry_date.strftime("%d-%m-%Y") %>" data-time="00:00">
+  <div class="day"><span class="num"></span><span class="word"></span></div>
+  <div class="hour"><span class="num"></span><span class="word"></span></div>
+  <div class="min"><span class="num"></span><span class="word"></span></div>
+  <div class="sec"><span class="num"></span><span class="word"></span></div>
+</div>
