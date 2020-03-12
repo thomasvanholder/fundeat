@@ -12,6 +12,22 @@ def index
   else
     @campaigns = policy_scope(Campaign)
   end
+  if params[:order] == "amount_low"
+    @campaigns = @campaigns.order(:min_target)
+  elsif
+    params[:order] == "amount_high"
+    @campaigns = @campaigns.order(min_target: :desc)
+  elsif
+    params[:order] == "date"
+    @campaigns = @campaigns.order(:expiry_date)
+  # raised sorting not yet completed
+  # elsif
+  #   params[:order] == "raised"
+  #   @campaigns = @campaigns.order(:raised)
+  else
+    params[:order] == "interest"
+    @campaigns = @campaigns.order(return_rate: :desc)
+  end
 end
 
 def show
