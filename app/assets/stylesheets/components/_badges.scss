@@ -1,3 +1,11 @@
+
+.badge-hour {
+    color: #e9ecef;
+    background-color: red;
+    border-radius: 20px;
+    padding:10px;
+}
+
 .badge-open {
     color: #e9ecef;
     background-color: $fundeatlogo-green;
@@ -7,7 +15,7 @@
 
 .badge-closed {
     color: #e9ecef;
-    background-color: #393939;
+    background-color: orange;
     border-radius: 20px;
     padding:10px;
 }

@@ -4,7 +4,7 @@ require 'faker'
 
 start = Time.now
 puts "Time is #{start}, destroying seed and restarting seed..."
-puts "Seedmaster says: \"seeds can take up to 5m\""
+puts "Seedmaster says: \"seeds can take up to 15m\""
 Investment.destroy_all
 Reward.destroy_all
 Campaign.destroy_all
@@ -23,7 +23,17 @@ USERS = {
 { first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
 { first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
 { first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-{ first_name: "Emilie" , last_name: "Drop", email: "emilie@gmail.com" , password: 12345678 },
+{ first_name: "Silvester" , last_name: "Stalone", email: "Silvester@gmail.com" , password: 12345678 },
+{ first_name: "Gerard" , last_name: "Denofrio", email: "gerard@gmail.com" , password: 12345678},
+{ first_name: "Arnold" , last_name: "Johnson", email: "arnold@gmail.com" , password: 12345678 },
+{ first_name: "Jean-Claude" , last_name: "van Damme", email: "cean-claude@gmail.com" , password: 12345678 },
+{ first_name: "Brent" , last_name: "Capetti", email: "brent@gmail.com" , password: 12345678 },
+{ first_name: "Tim" , last_name: "Hare", email: "tim@gmail.com" , password: 12345678 },
+{ first_name: "Karen" , last_name: "Sempe", email: "karen@gmail.com" , password: 12345678 },
+{ first_name: "Paul" , last_name: "Cinati", email: "paul@gmail.com" , password: 12345678 },
+{ first_name: "Sofie" , last_name: "Miami", email: "sofie@gmail.com" , password: 12345678 },
+{ first_name: "Maria" , last_name: "Bolton", email: "maria@gmail.com" , password: 12345678 },
+{ first_name: "Jennifer" , last_name: "Garcia", email: "jennifer@gmail.com" , password: 12345678 },
 ],
 investors: [
   { first_name: "Hernan" , last_name: "Kina", email: "investorhernan@gmail.com" , password: 12345678 },
@@ -118,7 +128,7 @@ USERS[:investors].each do |inv|
 end
 
 # random faker investors from the web
-50.times do
+200.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
   photo = PICTURE[:profile].sample
   investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
@@ -156,11 +166,11 @@ def create_campaign(company)
   campaign.financial_health = ("A".."C").to_a.sample
   campaign.company_history = ("A".."C").to_a.sample
 
-  campaign.min_target = rand(20000..100000)
+  campaign.min_target = rand(80000)
   campaign.max_target = campaign.min_target * (1+ rand(0.1..0.5))
   campaign.loan_duration = DURATION.sample
   campaign.return_rate = rand(0.05..0.1).round(2)
-  campaign.expiry_date = Date.today + rand(-30..90).days
+  campaign.expiry_date = Date.today + rand(-5..25).days
 
   campaign.company = company
 # campaign.investor_id = rand(User.first.id..User.last.id)
