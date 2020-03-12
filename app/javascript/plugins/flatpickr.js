@@ -31,7 +31,8 @@ if (datePickerElement2) {
     dateFormat: "Y-m-d",
     minDate: "today",
     defaultDate: datePickerElement2.dataset.endDate,
-    enable: defaultDate,
+
+
   })
 }
 
