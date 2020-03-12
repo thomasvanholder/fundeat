@@ -20,20 +20,20 @@ USERS = {
 { first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
 { first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
 { first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
-{ first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
-{ first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
-{ first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-{ first_name: "Silvester" , last_name: "Stalone", email: "Silvester@gmail.com" , password: 12345678 },
-{ first_name: "Gerard" , last_name: "Denofrio", email: "gerard@gmail.com" , password: 12345678},
-{ first_name: "Arnold" , last_name: "Johnson", email: "arnold@gmail.com" , password: 12345678 },
-{ first_name: "Jean-Claude" , last_name: "van Damme", email: "cean-claude@gmail.com" , password: 12345678 },
-{ first_name: "Brent" , last_name: "Capetti", email: "brent@gmail.com" , password: 12345678 },
-{ first_name: "Tim" , last_name: "Hare", email: "tim@gmail.com" , password: 12345678 },
-{ first_name: "Karen" , last_name: "Sempe", email: "karen@gmail.com" , password: 12345678 },
-{ first_name: "Paul" , last_name: "Cinati", email: "paul@gmail.com" , password: 12345678 },
-{ first_name: "Sofie" , last_name: "Miami", email: "sofie@gmail.com" , password: 12345678 },
-{ first_name: "Maria" , last_name: "Bolton", email: "maria@gmail.com" , password: 12345678 },
-{ first_name: "Jennifer" , last_name: "Garcia", email: "jennifer@gmail.com" , password: 12345678 },
+# { first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
+# { first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
+# { first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
+# { first_name: "Silvester" , last_name: "Stalone", email: "Silvester@gmail.com" , password: 12345678 },
+# { first_name: "Gerard" , last_name: "Denofrio", email: "gerard@gmail.com" , password: 12345678},
+# { first_name: "Arnold" , last_name: "Johnson", email: "arnold@gmail.com" , password: 12345678 },
+# { first_name: "Jean-Claude" , last_name: "van Damme", email: "cean-claude@gmail.com" , password: 12345678 },
+# { first_name: "Brent" , last_name: "Capetti", email: "brent@gmail.com" , password: 12345678 },
+# { first_name: "Tim" , last_name: "Hare", email: "tim@gmail.com" , password: 12345678 },
+# { first_name: "Karen" , last_name: "Sempe", email: "karen@gmail.com" , password: 12345678 },
+# { first_name: "Paul" , last_name: "Cinati", email: "paul@gmail.com" , password: 12345678 },
+# { first_name: "Sofie" , last_name: "Miami", email: "sofie@gmail.com" , password: 12345678 },
+# { first_name: "Maria" , last_name: "Bolton", email: "maria@gmail.com" , password: 12345678 },
+# { first_name: "Jennifer" , last_name: "Garcia", email: "jennifer@gmail.com" , password: 12345678 },
 ],
 investors: [
   { first_name: "Hernan" , last_name: "Kina", email: "investorhernan@gmail.com" , password: 12345678 },
@@ -69,7 +69,7 @@ DURATION = %w(12 24 36 48 60)
 CAMPAIGNS = {
   title: [
     'A new restaurant concept is coming to Palermo Soho. Be part of the movement.',
-    'Vegan pizza is taking over Buenos Aires! We need your support to open location #3.',
+    'Vegan pizza is taking over Buenos Aires! We need your support to open our third location.',
     'Great views, great cocktails, great people. Your new place to connect in Palermo Hollywood.',
     'From chacarita to CABA. Delicious burgers are a human right for all residents in BA!',
     'Puerto madero meets Itallian Coffee. Help us create the coolest coffee bar in Argentina.'
@@ -145,7 +145,7 @@ USERS[:investors].each do |inv|
 end
 
 # random faker investors from the web
-200.times do
+2.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
   photo = PICTURE[:profile].sample
   investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
