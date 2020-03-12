@@ -60,8 +60,8 @@
 .route-button-outline {
   box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
   border-radius: 5px;
-  font-size: 16px;
-  width: 180px;
+  font-size: 20px;
+  width: 190px;
   color: #00B63A;
   background-color: $light-green;
   border: 2px solid #00B63A;
@@ -78,8 +78,8 @@
 .route-button-full {
   box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
   border-radius: 5px;
-  font-size: 16px;
-  width: 180px;
+  font-size: 20px;
+  width: 190px;
   color: white;
   background-color: #00B63A;
   border: 1px solid #00B63A;
@@ -113,4 +113,16 @@
 .nav-pills .nav-link.active {
   background-color: #00B63A;
   color: white;
+}
+
+////////////////////////////////////////////////////
+
+.check-line-item {
+  border: 1px solid lightgrey;
+  box-shadow: 0 3px 10px rgba(72, 72, 72, 0.3);
+  padding: 16px;
+  margin: 16px 0;
+  i {
+    font-size: 20px;
+  }
 }

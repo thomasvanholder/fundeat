@@ -473,9 +473,9 @@ def total_risk_level
   num_array = string.split(//)
   sum = 0
   num_array.each { |i| sum += i.to_i }
-  average = (sum / 3).round(0).to_s
-  @campaign.risk_level = average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
-  @campaign.save
+
+  average = (sum / 3.to_f).round(0).to_s
+  return average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
 end
 
 def dashboard
@@ -517,10 +517,11 @@ def create_campaign
   @campaign.loan_duration = params[:campaign][:loan_duration]
   @campaign.company = @company
   seed_campaign_data
+  @campaign.risk_level = total_risk_level
 end
 
 def create_rewards
-  (1..4).each do |reward_number|
+  (1..4).each do |reward_number| #################
     next if (params["reward#{reward_number}".to_sym][:investment_amount]).blank?
     reward = Reward.new
     authorize = reward
@@ -537,7 +538,6 @@ def seed_campaign_data
   @campaign.company_history = ("A".."C").to_a.sample
   @campaign.return_rate = rand(0.05..0.1).round(1)
   @campaign.expiry_date = Date.today + rand(5..30).days
-  @campaign.risk_level = total_risk_level
 end
 
 private

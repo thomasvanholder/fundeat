@@ -1,0 +1,22 @@
+.countdown {
+  display: flex;
+  justify-content: center;
+  span, h1 {
+    color: $green;
+  }
+
+  .day, .hour, .min, .sec {
+    padding: 1vw 2vw;
+    text-align: center;
+    .num {
+      display: block;
+      font-size: 6vw;
+      line-height: 1em;
+    }
+    .word {
+      display: block;
+      font-size: 2vw;
+      color: #8a99ab;
+    }
+  }
+}

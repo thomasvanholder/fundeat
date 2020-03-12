@@ -23,7 +23,9 @@
               <%= image_tag investment.investor.photo, class:"avatar-sm-round" %>
               <div class=" ml-3"><%= investment.investor.first_name %> invested
                 <span class="invested-amount"><%= number_to_currency investment.amount, strip_insignificant_zeros: true %></span>
+                <% if investment.payment_date.present? %>
                 on <%= investment.payment_date.strftime("%B %e, %Y") %>
+                <% end %>
               </div>
             </div>
           </div>
