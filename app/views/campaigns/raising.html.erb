@@ -7,7 +7,7 @@
     </h3>
   </div>
 
-  <div class="container mt-5">
+  <div class="mt-5">
 <!--     <div class="d-flex justify-content-between">
       <p class="text-center align-self-center"style="font-size:18px; width: 300px" >
         <em>"We're fanatical about supporting passionate founders and their teams who want to leave a mark on the world. We're supporting the visionaries whose purpose inspires belief from their colleagues, customers and communities, who want to fuel a brighter future. Whether you're a start-up or scale-up, foodie or techie, mover or shaker; we're right behind you."</em>
@@ -27,7 +27,7 @@
 
 
       <div class="d-flex">
-        <picture>
+        <!-- <picture>
           <source  media="(min-width: 768px)"
           srcset="//my-assets.netlify.com/codepen/dailyui-001/img.png     340w,
           //my-assets.netlify.com/codepen/dailyui-001/img@2x.png  680w,
@@ -41,7 +41,11 @@
           (min-width: 640px) 580px" />
           <img       src="//my-assets.netlify.com/codepen/dailyui-001/img.png"
           alt="Citymap illustration" />
-        </picture>
+        </picture> -->
+
+        <div class="w-25">
+          <%= image_tag "business.svg" %>
+        </div>
 
         <div class="d-flex flex-column align-self-center">
           <div class="ml-4 mt-5 mb-2 d-flex align-items-top">
@@ -80,8 +84,8 @@
       <div class="m-0 mt-5 p-0 w-100" style="background-color: #f3f3f3;">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h1 class="mt-4 mb-3 text-center">Fuel your future</h1>
-            <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+            <h1 class="mt-4 mb-4 text-center">Get to know more about Crowdfunding</h1>
+            <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
               <li class="nav-item mx-3">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">What</a>
               </li>
@@ -95,32 +99,32 @@
               </li>
             </ul>
 
-            <div class="tab-content d-flex justify-content-center" id="pills-tabContent">
+            <div class="tab-content d-flex mb-4 justify-content-center" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/0DbVwG0Kze8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="650" height="350" style="border-radius: 10px" src="https://www.youtube.com/embed/0DbVwG0Kze8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/bNpx7gpSqbY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="650" height="350" style="border-radius: 10px" src="https://www.youtube.com/embed/bNpx7gpSqbY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <!-- <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/677ZtSMr4-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-                <iframe width="650" height="350" style="border-radius: 20px" src="https://www.youtube.com/embed/Qsnap5Oh8S8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <iframe width="650" height="350" style="border-radius: 10px" src="https://www.youtube.com/embed/677ZtSMr4-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                <iframe width="650" height="350" style="border-radius: 10px" src="https://www.youtube.com/embed/Qsnap5Oh8S8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-
             </div>
+
           </div>
         </div>
       </div>
     </div>
 
     <!-- horizontal line -->
-    <div class="container">
+  <!--   <div class="container">
       <div class="w-90 my-4 mx-auto" style="border: 1px solid lightgrey">
       </div>
-    </div>
+    </div> -->
 
     <!-- /#page-content-wrapper -->
-    <div class="mb-4 d-flex flex-column text-center">
+    <div class="my-4 pt-5 d-flex flex-column text-center">
       <h1>Are you ready to start raising?</h1>
       <p>To be eligible to raise investment on Fundeat, we need to check a few things first. Please ready through and confirm the following:</p>
 
@@ -173,16 +177,35 @@
         <label class="custom-control-label" for="customCheck1">I have read and understand I need the above to be eligible to raise finance.</label>
       </div>
 
-      <h5><%= link_to "Start raising", "/campaigns/new", class: "btn btn-secondary" %></h5>
+      <h5>
+        <%= link_to "/campaigns/new" do %>
+          <button class="btn btn-success" style="font-size: 18px;" id="btncheck" disabled>Start raising</button>
+        <% end %>
+        </h5>
     </div>
 
 
+<style>
+  input[type="checkbox"]:checked + label::after {
+    background-color: rgb(23,173,44);
+    border-radius: 2px;
+    }
+</style>
+
     <!-- Menu Toggle Script -->
     <script>
-      const toggle = document.getElementById("menu-toggle");
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById("wrapper").classList.toggle('toggled');
-      });
+      window.onload = () => {
+        // const toggle = document.getElementById("menu-toggle");
+        // toggle.addEventListener('click', (e) => {
+        //   e.preventDefault();
+        //   document.getElementById("wrapper").classList.toggle('toggled');
+        // });
+
+        const chk = document.getElementById('customCheck1');
+        const btn = document.getElementById('btncheck');
+        chk.addEventListener('change', () => {
+          btn.disabled = !btn.disabled; //true: disabled, false: enabled
+        }); //page load trigger event
+      }
     </script>
 
