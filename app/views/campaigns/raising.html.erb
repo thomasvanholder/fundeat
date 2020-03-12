@@ -88,48 +88,47 @@
 
 
     <div class="d-flex justify-content-center my-3">
-      <div class="choose-option-campaignsxx d-flexxx h">
+      <div class="choose-option-campaignsxx d-flex flex-column align-items-start">
+        <div>
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">Your business is based in Argentina</p>
+          </div>
 
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">Your business is based in Argentina</p>
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">Your business is a private limited business</p>
+          </div>
+
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">You have lead investment</p>
+          </div>
+
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">You have a website (not social channels) or app</p>
+          </div>
+
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">You are looking for $10,000 or more</p>
+          </div>
+
+          <div class="check-line-item d-flex align-items-center">
+            <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
+            <p class="m-0">You understand you need to engage and convert your community into valued shareholders</p>
+          </div>
         </div>
 
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">Your business is a private limited business</p>
-        </div>
-
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">You have lead investment</p>
-        </div>
-
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">You have a website (not social channels) or app</p>
-        </div>
-
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">You are looking for $10,000 or more</p>
-        </div>
-
-        <div class="check-line-item d-flex align-items-center">
-          <i class="fas fa-check mr-3 font-weight-bold" style="color: rgb(23,173,44);"></i>
-          <p class="m-0">You understand you need to engage and convert your community into valued shareholders</p>
-        </div>
-
-
-
-        <div class="custom-control d-flex custom-checkbox my-4 align-items-start">
+        <div class="custom-control d-flex custom-checkbox my-4">
           <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label text-left" for="customCheck1">I have read and understand I need the above to be eligible to raise finance.</label>
+          <label class="custom-control-label text-left w-75" for="customCheck1">I have read and understand I need the above to be eligible to raise financing.</label>
         </div>
 
         <h5>
           <%= link_to "/campaigns/new" do %>
-          <button class="btn btn-success px-5 my-4" style="font-size: 18px;" id="btncheck" disabled>Start raising</button>
+          <button class="btn btn-success px-5 my-4 aign" style="font-size: 18px;" id="btncheck" disabled>Start raising</button>
           <% end %>
         </h5>
 
