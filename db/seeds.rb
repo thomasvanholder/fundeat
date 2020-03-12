@@ -20,20 +20,20 @@ USERS = {
 { first_name: "Joaco" , last_name: "Panelati", email: "joaco@gmail.com" , password: 12345678 },
 { first_name: "Morgan" , last_name: "Hare", email: "morgan@gmail.com" , password: 12345678 },
 { first_name: "Sebas" , last_name: "Sempe", email: "sebas@gmail.com" , password: 12345678 },
-# { first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
-# { first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
-# { first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
-# { first_name: "Silvester" , last_name: "Stalone", email: "Silvester@gmail.com" , password: 12345678 },
-# { first_name: "Gerard" , last_name: "Denofrio", email: "gerard@gmail.com" , password: 12345678},
-# { first_name: "Arnold" , last_name: "Johnson", email: "arnold@gmail.com" , password: 12345678 },
-# { first_name: "Jean-Claude" , last_name: "van Damme", email: "cean-claude@gmail.com" , password: 12345678 },
-# { first_name: "Brent" , last_name: "Capetti", email: "brent@gmail.com" , password: 12345678 },
-# { first_name: "Tim" , last_name: "Hare", email: "tim@gmail.com" , password: 12345678 },
-# { first_name: "Karen" , last_name: "Sempe", email: "karen@gmail.com" , password: 12345678 },
-# { first_name: "Paul" , last_name: "Cinati", email: "paul@gmail.com" , password: 12345678 },
-# { first_name: "Sofie" , last_name: "Miami", email: "sofie@gmail.com" , password: 12345678 },
-# { first_name: "Maria" , last_name: "Bolton", email: "maria@gmail.com" , password: 12345678 },
-# { first_name: "Jennifer" , last_name: "Garcia", email: "jennifer@gmail.com" , password: 12345678 },
+{ first_name: "Manuel" , last_name: "Scholz", email: "manuel@gmail.com" , password: 12345678 },
+{ first_name: "Julius" , last_name: "Ahlert", email: "julius@gmail.com" , password: 12345678 },
+{ first_name: "Analida" , last_name: "Corro", email: "analida@gmail.com" , password: 12345678 },
+{ first_name: "Silvester" , last_name: "Stalone", email: "Silvester@gmail.com" , password: 12345678 },
+{ first_name: "Gerard" , last_name: "Denofrio", email: "gerard@gmail.com" , password: 12345678},
+{ first_name: "Arnold" , last_name: "Johnson", email: "arnold@gmail.com" , password: 12345678 },
+{ first_name: "Jean-Claude" , last_name: "van Damme", email: "cean-claude@gmail.com" , password: 12345678 },
+{ first_name: "Brent" , last_name: "Capetti", email: "brent@gmail.com" , password: 12345678 },
+{ first_name: "Tim" , last_name: "Hare", email: "tim@gmail.com" , password: 12345678 },
+{ first_name: "Karen" , last_name: "Sempe", email: "karen@gmail.com" , password: 12345678 },
+{ first_name: "Paul" , last_name: "Cinati", email: "paul@gmail.com" , password: 12345678 },
+{ first_name: "Sofie" , last_name: "Miami", email: "sofie@gmail.com" , password: 12345678 },
+{ first_name: "Maria" , last_name: "Bolton", email: "maria@gmail.com" , password: 12345678 },
+{ first_name: "Jennifer" , last_name: "Garcia", email: "jennifer@gmail.com" , password: 12345678 },
 ],
 investors: [
   { first_name: "Hernan" , last_name: "Kina", email: "investorhernan@gmail.com" , password: 12345678 },
@@ -154,7 +154,7 @@ end
 def create_investment(campaign, reward, investor)
   investment = Investment.new
   investment.status = rand(0..4) #check enumerable in investment.rb (model)
-  investment.amount = rand(100..3000)
+  investment.amount = rand(100..2000)
   investment.payment_date = Date.today + rand(-30..1).days
   investment.campaign = campaign
   investment.reward = reward
