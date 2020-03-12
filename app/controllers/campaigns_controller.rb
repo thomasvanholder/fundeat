@@ -19,6 +19,8 @@ def show
   @investment = Investment.new
   authorize @campaign
   @company = @campaign.company
+  #Note HK - Risklevel: this way risk level is shown in the show page. U comment "campaign.rb" as well. (i am just commenting it as Julius will be trying to fix it directly on the database.)
+    # @campaign.risk_level = @campaign.total_risk_level
 
   if @company.type_store == "Bar"
     url = helpers.asset_url('bar.png')
@@ -47,11 +49,11 @@ def create
   create_campaign
   create_rewards
 # raise
-if @campaign.save
-  redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
-else
-  render :new
-end
+  if @campaign.save
+    redirect_to mycampaigns_path, notice: 'Campaign was successfully created.'
+  else
+    render :new
+  end
 end
 
 def edit
@@ -69,7 +71,7 @@ def mycampaigns
   @campaigns = current_user.campaigns
   authorize @campaigns
 
-  if @campaigns.empty?
+  if @campaigns.nil?
     redirect_to new_campaign_path
   end
 end
@@ -471,6 +473,7 @@ def total_risk_level
   num_array = string.split(//)
   sum = 0
   num_array.each { |i| sum += i.to_i }
+
   average = (sum / 3.to_f).round(0).to_s
   return average.gsub!(/[123]/, '1' => 'A', '2' => 'B', '3' => 'C')
 end
