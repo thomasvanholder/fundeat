@@ -14,7 +14,7 @@ if (datePickerElement1) {
     dateFormat: "Y-m-d H:i",
     minDate: "today",
     minTime: "09:00",
-    maxTime: "18:30"
+    maxTime: "18:30",
   })
 }
 
@@ -31,6 +31,8 @@ if (datePickerElement2) {
     dateFormat: "Y-m-d",
     minDate: "today",
     defaultDate: datePickerElement2.dataset.endDate,
+
+
   })
 }
 

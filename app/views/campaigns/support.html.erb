@@ -15,9 +15,8 @@
           <%= simple_form_for :support do |f| %>
           <div class="row">
             <div class="col-12 col-md-6">
-              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", style:"width: 310px;"} %>
+              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", style:"width: 310px; display: none"} %>
             </div>
-            <%#= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
             <div class="col-12 col-md-6">
               <div class="form-group pb-2">
                 <label for="InputName">Name</label>
