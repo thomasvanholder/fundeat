@@ -9,64 +9,72 @@
       <div class="text-center mt-5">
         <h4>Welcome to your dashboard, <strong><%= current_user.first_name %>! </gstrong></h4>
         </div>
-
         <div class="container">
           <div class="row">
-            <div class="col-md-12 mt-4">
-              <div class="row">
-                <div class="col">
-                  <div class="card-campaign-status kpibox kpibox-green m-4">
-                    <div class="d-flex mt-4 justify-content-around align-items-center">
-                      <div class="text-center">
-                        <h2 class="m-3 kpidash">$<%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h2>
-                        <h2 class="text-secondary mb-2" style="font-size: 20px;">Invested</h2>
-                      </div>
+          <div class="col-md-7 my-4">
+            <div class="row ">
+              <div class="col">
+                <div class="card-campaign-status kpibox kpibox-green m-0">
+                  <div class="d-flex mt-4 justify-content-around align-items-center">
+                    <div class="text-center">
+                      <%= image_tag "investing.svg", class:"dash-pic", alt: "picture" %>
+                      <h2 class="m-3 kpidash">$<%= number_with_delimiter(@investments.sum(:amount), :delimiter => ',')%></h2>
+                      <h2 class="text-secondary mb-2" style="font-size: 20px;">Invested</h2>
                     </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="card-campaign-status kpibox kpibox-green m-4">
-                    <div class="d-flex mt-4 justify-content-around align-items-center">
-                      <div class="text-center">
-                        <h2 class="m-3 kpidash">$<%= number_with_delimiter(@investments.last.amount, :delimiter => ',')%></h2>
-                        <h2 class="text-secondary mb-2" style="font-size: 20px;">Last invested</h2>
-                      </div>
+              </div>
+              <div class="col">
+                <div class="card-campaign-status kpibox kpibox-green m-0">
+                  <div class="d-flex mt-4 justify-content-around align-items-center">
+                    <div class="text-center">
+                      <%= image_tag "achieved.svg", class:"dash-pic", alt: "picture" %>
+                      <h2 class="m-3 kpidash">$<%= number_with_delimiter(@investments.last.amount, :delimiter => ',')%></h2>
+                      <h2 class="text-secondary mb-2" style="font-size: 20px;">Last invested</h2>
                     </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="card-campaign-status kpibox kpibox-green m-4">
-                    <div class="d-flex mt-4 justify-content-around align-items-center">
-                      <div class="text-center">
-                        <h2 class="m-3 kpidash"><%= (@avge_int_rate*100).round(1)%>% </h2>
-                        <h2 class="text-secondary mb-2" style="font-size: 20px;">Avg. Return</h2>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card-campaign-status kpibox kpibox-green m-4">
-                    <div class="d-flex mt-4 justify-content-around align-items-center">
-                      <div class="text-center">
-                        <h2 class="m-3 kpidash"><%= @investments.where.not(payment_date: nil).count%></h2>
-                        <p class="text-secondary mb-2" style="font-size: 20px;">Investments</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card-campaign-status kpibox kpibox-green m-4">
-                    <div class="d-flex mt-4 justify-content-around align-items-center">
-                      <div class="text-center">
-                        <h2 class="m-3 kpidash">Missing</h2>
-                        <p class="text-secondary mb-2" style="font-size: 20px;">Av. Duration</p>
-                      </div>
+              </div>
+              <div class="col">
+                <div class="card-campaign-status kpibox kpibox-green m-0">
+                  <div class="d-flex mt-4 justify-content-around align-items-center">
+                    <div class="text-center">
+                      <%= image_tag "togo.svg", class:"dash-pic", alt: "picture" %>
+                      <h2 class="m-3 kpidash"><%= (@avge_int_rate*100).round(1)%>%</h2>
+                      <h2 class="text-secondary mb-2" style="font-size: 20px;">Avg. Return</h2>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
+          <div class="col-md-5 my-4">
+            <div class="row ">
+              <div class="col">
+                <div class="card-campaign-status kpibox kpibox-green m-0">
+                  <div class="d-flex mt-4 justify-content-around align-items-center">
+                    <div class="text-center">
+                      <%= image_tag "investors.svg", class:"dash-pic", alt: "picture" %>
+                      <h2 class="m-3 kpidash"><%= @investments.where.not(payment_date: nil).count%></h2>
+                      <h2 class="text-secondary mb-2" style="font-size: 20px;">Investments</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card-campaign-status kpibox kpibox-green m-0">
+                  <div class="d-flex mt-4 justify-content-around align-items-center">
+                    <div class="text-center">
+                      <%= image_tag "average2.svg", class:"dash-pic", alt: "picture" %>
+                      <h2 class="m-3 kpidash"><%= @investments.where.not(payment_date: nil).count%></h2>
+                      <h2 class="text-secondary mb-2" style="font-size: 20px;">Av. Duration</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="col-md-8">
               <!-- graph 1 -->
               <div class="item-dash my-3">
