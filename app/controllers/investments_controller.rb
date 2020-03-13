@@ -215,12 +215,10 @@ class InvestmentsController < ApplicationController
         line_items: [{
           name: @campaign.title,
           # images: @campaign.photo_url],
-
           amount: @investment.amount * 100,
           currency: 'usd',
           quantity: 1
         }],
-        # success_url: investments_url,
         success_url: investment_link,
         cancel_url: campaigns_url
         )
