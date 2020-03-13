@@ -91,7 +91,7 @@ class InvestmentsController < ApplicationController
         }]
       }
 
-      @investments_2 = @investments.group(:payment_date).sum(:amount)
+      @investments_2 = @investments.where.not(payment_date: nil).group(:payment_date).sum(:amount)
 
       @investments_2 = @investments_2.to_a.map do |inv|
         [inv.first.strftime("%m/%d/%Y"), inv.last]
