@@ -194,6 +194,17 @@ class InvestmentsController < ApplicationController
     authorize @investment
   end
 
+
+
+  def dashboard
+    if current.user.owner?
+      :owner_dashboard
+    else
+      render :investor_dashboard
+    end
+  end
+
+
   def new
     @campaign = Campaign.find(params[:campaign_id])
     authorize @campaign
@@ -228,7 +239,6 @@ class InvestmentsController < ApplicationController
       @investment.update(stripe_session_id: session.id)
     else
       render :new
-
     end
   end
 
