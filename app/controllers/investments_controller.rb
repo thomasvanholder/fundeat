@@ -11,6 +11,7 @@ class InvestmentsController < ApplicationController
     @investments = Investment.where(investor_id: current_user.id)
     authorize @investments
 
+    # method for avgeintrate
     sum = 0
     count = 0
     amount_by_proj = []
@@ -31,6 +32,24 @@ class InvestmentsController < ApplicationController
     else
       @avge_int_rate = "n/a"
     end
+
+    # method for avgeduration
+    sum_loan_dur = 0
+    count_loan_dur = 0
+
+    @investments.where.not(payment_date: nil).each do |inv|
+      sum_loan_dur += inv.campaign.loan_duration
+      count_loan_dur += 1
+    end
+
+    if count_loan_dur != 0 && count_loan_dur != nil
+      @avge_loan_dur = sum_loan_dur/count_loan_dur
+    else
+      @avge_loan_dur = "n/a"
+    end
+
+
+
     @graph_data_pie = {
               # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
               labels: labels_proj,
@@ -55,6 +74,7 @@ class InvestmentsController < ApplicationController
               @graph_data_bar = {
       # labels: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
       labels: labels_months_of_invest,
+      # labels: "",
       datasets: [{
         label: 'Investment / Month',
           # data: [12, 19, 3, 5, 2, 3, 5, 6, 12, 3, 23, 12],
@@ -70,6 +90,13 @@ class InvestmentsController < ApplicationController
           borderWidth: 1
         }]
       }
+
+      @investments_2 = @investments.group(:payment_date).sum(:amount)
+
+      @investments_2 = @investments_2.to_a.map do |inv|
+        [inv.first.strftime("%m/%d/%Y"), inv.last]
+      end
+
     end
 
     def myinvestments

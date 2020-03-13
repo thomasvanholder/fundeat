@@ -30,7 +30,11 @@ const initCharts = () => {
     new Chart(pieCanvas, {
       type: 'pie',
       data: JSON.parse(dataPie),
-      // options: options,
+      options: {
+        legend: {
+          display: false
+        },
+      },
   //     data: JSON.parse(dataPie),
     });
   }
