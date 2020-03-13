@@ -1,8 +1,8 @@
 <div class="my-4">
   <div class="d-flex justify-content-around">
     <div class="d-flex flex-column text-center">
-      <h5 class="m-0"><span id="pay_month">$ <%= (campaign.return_rate * 250 / 12).round(2) %></span></h5>
-      <p class="text-secondary m-0" style="font-size: 12px;">per month</p>
+      <h5 class="m-0"><span id="pay_month">$ <%= (campaign.return_rate * 500 / 12).round(2) %></span></h5>
+      <p class="text-secondary m-0" style="font-size: 12px;">monthly interest</p>
     </div>
     <div>X</div>
     <div class="d-flex flex-column text-center">
@@ -11,7 +11,7 @@
     </div>
     <div>=</div>
     <div class="d-flex flex-column text-center">
-      <h5 class="m-0" id="total_roi">$ <%= (campaign.loan_duration * (campaign.return_rate * 250 / 12)).round(2) %></h5>
+      <h5 class="m-0" id="total_roi">$ <%= (campaign.loan_duration * (campaign.return_rate * 500 / 12)).round(2) + 500 %></h5>
       <p class="text-secondary m-0" style="font-size: 12px;">total return</p>
     </div>
   </div>

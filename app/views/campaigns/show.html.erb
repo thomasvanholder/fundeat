@@ -68,7 +68,7 @@
                     <% if current_user && current_user.owner? %>
                         <h3 class="text-center small m-0 p-2 bg-secondary font-weight-bold"><em> Create Investor Account</em></h3>
                     <% else %>
-                        <%= f.input :amount, class: "input-field", placeholder: "$ 250", label: false, :required => true,  :input_html => { :type => "number" } %>
+                        <%= f.input :amount, class: "input-field", placeholder: "$ 500", label: false, :required => true,  :input_html => { :type => "number" } %>
                         <%= f.submit "Invest", class: "btn btn-success px-5", style:"margin-left: 16px;" %>
                     <% end %>
                 <% end %>
@@ -92,7 +92,7 @@
             <div class="mt-4">
               <h5 style="font-size: 12px;">My reward</h5>
               <% @campaign.rewards.each_with_index do |reward, index| %>
-              <div id="reward-<%= index %>" class="d-flex align-items-center px-3 py-1 mt-2 reward" style="border-radius: 50px;" data-amount="<%= reward.investment_amount %>">
+              <div id="reward-<%= index %>" class="d-flex align-items-center px-3 py-1 mt-2 reward <%= index == 0 ? "active" : "" %>" style="border-radius: 50px;" data-amount="<%= reward.investment_amount %>">
                 <!-- <input type="hidden" id="reward-threshold-<%= index %>" > -->
                 <i class="fas fa-gift"></i>
                 <p class="m-0 ml-4" id="investment_reward"><%= reward.description %></p>

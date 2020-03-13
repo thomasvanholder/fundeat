@@ -48,14 +48,14 @@ investors: [
 PICTURE = {
 profile:
   [
-    "app/assets/images/avatars/anna.png",
-    "app/assets/images/avatars/gerard.png",
-    "app/assets/images/avatars/jim.png",
-    "app/assets/images/avatars/karen.png",
-    "app/assets/images/avatars/nico.png",
-    "app/assets/images/avatars/nick.png",
-    "app/assets/images/avatars/laura.png",
-    "app/assets/images/avatars/alex.png",
+    # "app/assets/images/avatars/1.png",
+    # "app/assets/images/avatars/2.png",
+    # "app/assets/images/avatars/3.png",
+    # "app/assets/images/avatars/4.png",
+    "app/assets/images/avatars/5.png",
+    "app/assets/images/avatars/6.png",
+    "app/assets/images/avatars/7.png",
+    "app/assets/images/avatars/8.png",
   ]
 }
 
@@ -145,7 +145,7 @@ USERS[:investors].each do |inv|
 end
 
 # random faker investors from the web
-20.times do
+200.times do
   investor = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, owner: false, password: "12345678", email: Faker::Internet.email)
   photo = PICTURE[:profile].sample
   investor.photo.attach(io: File.open(photo), filename: "new#{investor.first_name}.png", content_type: 'image/png')
@@ -161,6 +161,7 @@ def create_investment(campaign, reward, investor)
   investment.investor = investor
   investment.save!
 end
+
 
 def create_reward(campaign)
   AMOUNT.each_with_index do |amount, index|

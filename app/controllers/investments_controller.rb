@@ -62,10 +62,31 @@ class InvestmentsController < ApplicationController
                     'rgba(103, 219, 118, 0.4)',
                     'rgba(121, 170, 127, 0.6)',
                     'rgba(188, 225, 146, 0.8)',
+                    'rgba(188, 225, 146, 1)',
+                    'rgba(188, 200, 146, 0.2)',
+                    'rgba(103, 200, 118, 0.4)',
+                    'rgba(121, 200, 127, 0.6)',
+                    'rgba(188, 200, 146, 0.8)',
+                    'rgba(188, 200, 146, 1)',
+                    'rgba(100, 225, 146, 0.2)',
+                    'rgba(100, 219, 118, 0.4)',
+                    'rgba(100, 170, 127, 0.6)',
+                    'rgba(100, 225, 146, 0.8)',
+                    'rgba(100, 225, 146, 1)',
+                    'rgba(100, 120, 130, 0.2)',
+                    'rgba(100, 120, 130, 0.4)',
+                    'rgba(100, 120, 130, 0.6)',
+                    'rgba(100, 120, 130, 0.8)',
+                    'rgba(100, 120, 130, 1)',
+                    'rgba(188, 225, 146, 0.2)',
+                    'rgba(103, 219, 118, 0.4)',
+                    'rgba(121, 170, 127, 0.6)',
+                    'rgba(188, 225, 146, 0.8)',
+                    'rgba(188, 225, 146, 1)',
                   ],
                   borderColor: [
-                    'rgba(33, 127, 45, 1)',
-                    'rgba(33, 127, 45 1)',
+                    # 'rgba(33, 127, 45, 1)',
+                    # 'rgba(33, 127, 45 1)',
                   ],
                   borderWidth: 1
                 }]
@@ -81,7 +102,7 @@ class InvestmentsController < ApplicationController
           data: amount_by_proj,
           backgroundColor: [
             'rgba(188, 225, 146, 0.2)',
-            'rgba(150, 190, 132, 0.2)',
+            'rgba(150, 190, 132, 0.4)',
           ],
           borderColor: [
             'rgba(75, 192, 192, 1)',
@@ -226,12 +247,10 @@ class InvestmentsController < ApplicationController
         line_items: [{
           name: @campaign.title,
           # images: @campaign.photo_url],
-
           amount: @investment.amount * 100,
           currency: 'usd',
           quantity: 1
         }],
-        # success_url: investments_url,
         success_url: investment_link,
         cancel_url: campaigns_url
         )

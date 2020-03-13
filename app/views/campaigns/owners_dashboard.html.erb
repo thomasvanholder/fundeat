@@ -80,8 +80,8 @@
 
           <!-- graph 1 -->
           <div class="col-md-7">
-            <div class="item-dash my-3 mr-2 py-5">
-              <h4 class="text-center">$ Raised over time</h4>
+            <div class="item-dash my-3 mr-2 pt-5" style="padding-bottom: 75px;">
+              <h4 class="text-center px-5 mb-3">$ Raised over time</h4>
               <% array = @company.campaign.investments.group_by_day(:payment_date).sum(:amount).to_a %>
               <% sum = 0
               array.map! do |date, amount|
@@ -93,14 +93,14 @@
 
             <!-- calendar -->
             <div class="col-md-5">
-              <div class="item-dash my-3 mr-4 py-5 d-flex flex-column">
-               <h4 class="text-center">Campaign expiration date</h4>
+              <div class="item-dash my-3 mr-4 pt-5 d-flex flex-column">
+               <h4 class="text-center mb-4">Campaign expiration date</h4>
                <div class="align-self-center">
                 <div id="datepicker2" data-end-date="<%= @company.campaign.expiry_date %>"></div>
               </div>
 
 
-              <div class="countdown" data-date="<%= @company.campaign.expiry_date.strftime("%d-%m-%Y") %>" data-time="00:00">
+              <div class="countdown my-3" data-date="<%= @company.campaign.expiry_date.strftime("%d-%m-%Y") %>" data-time="00:00">
                 <div class="owner-day mx-1 mt-2"><span class="owner-num"></span><span class="owner-word mx-1 mt-2"></span></div>
                 <div class="owner-hour mx-1 mt-2"><span class="owner-num"></span><span class="owner-word mx-1 mt-2"></span></div>
                 <div class="owner-min mx-1 mt-2"><span class="owner-num"></span><span class="owner-word mx-1 mt-2"></span></div>
@@ -157,7 +157,7 @@ const countdown = function(_config) {
 
     // If the count down is over, write some text
     if (distance < 0) {
-      $(".countdown").innerHTML = "<h1>EXPIRED</h1>";
+      $(".countdown").innerHTML = "<span>EXPIRED<span>";
     } else {
       requestAnimationFrame(updateTime);
 
@@ -182,3 +182,10 @@ const mylittlething_countdown = new countdown({
 });
 
 </script>
+
+<style>
+  #chart-1 {
+    padding-left: 23px;
+    padding-top: 19px;
+  }
+</style>

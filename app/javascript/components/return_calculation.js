@@ -27,7 +27,7 @@ if (rangeInput) {
     const range = document.querySelector("#investmentRange")
     const monthPay = Math.round(range.value / 12 * (roi.innerText, 10) / 100, 2)
     payMonth.innerText = `$ ${monthPay}`
-    totalRoi.innerText = `$ ${monthPay * parseInt(months.innerText, 10)}`
+    totalRoi.innerText = `$ ${(monthPay * parseInt(months.innerText, 10)) + parseInt(range.value, 10)}`
   }
 
   const selectReward = (amount) => {
@@ -36,7 +36,7 @@ if (rangeInput) {
     rewardsArray.forEach((reward) => {
       reward.classList.remove("active")
       if ( (parseInt(reward.dataset.amount) <= parseInt(amount)) && !rewardChecked ) {
-        reward.classList.add("active")
+        reward.classList.toggle("active")
         rewardChecked = true;
       }
     })

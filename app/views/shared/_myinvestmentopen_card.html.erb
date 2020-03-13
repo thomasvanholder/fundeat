@@ -33,7 +33,7 @@
         <% elsif days_left = 1 %>
         <td class="p-0 align-middle"><h5 class="m-0"><span class="badge badge-open m-0"> <%= days_left%> day left  </span></h5></td>
         <% else %>
-        <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Funded </span></h5></td>
+        <td class="p-0 align-middle"><h5 class="m-0"> <span class="badge badge-closed m-0">Closed </span></h5></td>
         <% end %>
 
         <td><%= investment.payment_date&.strftime("%B %e, %Y") %></td>
